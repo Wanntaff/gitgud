@@ -16,7 +16,7 @@ export default function CtaBanner() {
           </p>
         </div>
         <a
-          href="https://wa.me/?text=Halo%20Gitgud,%20mau%20tanya%20meja%20untuk%20malam%20ini"
+          href="https://wa.me/6285117484483?text=Halo%20Gitgud,%20mau%20tanya%20meja%20untuk%20malam%20ini"
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => soundEffects.playSuccessChime()}

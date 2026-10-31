@@ -1,7 +1,7 @@
 "use client";
 
 import Logo from "./Logo";
-import { Link as LinkIcon } from "lucide-react";
+import { Link as LinkIcon, MessageCircle } from "lucide-react";
 import { soundEffects } from "@/lib/soundEffects";
 
 function InstagramIcon({ className }: { className?: string }) {
@@ -43,7 +43,17 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex items-center gap-6">
+        <div className="flex flex-wrap items-center gap-5 sm:gap-6">
+          <a
+            href="https://wa.me/6285117484483?text=Halo%20Gitgud,%20mau%20tanya%20info%20kafe%20dong!"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => soundEffects.playButtonClick()}
+            className="text-[#1B64B4] hover:text-brand-orange font-semibold transition-colors flex items-center gap-1.5 whitespace-nowrap cursor-pointer"
+          >
+            <MessageCircle className="w-4 h-4 shrink-0" />
+            <span>+62 851-1748-4483</span>
+          </a>
           <a
             href="https://instagram.com/letsgitgud"
             target="_blank"

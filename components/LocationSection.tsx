@@ -1,6 +1,6 @@
 "use client";
 
-import { MapPin, Clock, Navigation, Check, ExternalLink } from "lucide-react";
+import { MapPin, Clock, Navigation, Check, ExternalLink, MessageCircle } from "lucide-react";
 import { soundEffects } from "@/lib/soundEffects";
 
 export default function LocationSection() {
@@ -95,17 +95,27 @@ export default function LocationSection() {
               </div>
             </div>
 
-            {/* Primary Google Maps Direct Action Button */}
-            <div className="mt-6">
+            {/* Primary Google Maps & WhatsApp Direct Action Buttons */}
+            <div className="mt-6 flex flex-col sm:flex-row gap-3">
               <a
                 href="https://share.google/u0UPT7njRoXYm9kZc"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => soundEffects.playButtonClick()}
-                className="inline-flex items-center justify-center w-full gap-2 bg-brand-blue hover:bg-[#154E8E] text-white font-display font-bold py-3 sm:py-3.5 px-6 rounded border-2 border-[#1B64B4] shadow-brutal-orange transition-all text-xs sm:text-sm tracking-wider uppercase whitespace-nowrap cursor-pointer hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none"
+                className="inline-flex items-center justify-center flex-1 gap-2 bg-brand-blue hover:bg-[#154E8E] text-white font-display font-bold py-3 sm:py-3.5 px-4 rounded border-2 border-[#1B64B4] shadow-[2.5px_2.5px_0px_0px_#E84A27] transition-all text-xs tracking-wider uppercase whitespace-nowrap cursor-pointer hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none"
               >
                 <Navigation className="w-4 h-4 shrink-0" />
-                <span>BUKA DI GOOGLE MAPS</span>
+                <span>GOOGLE MAPS</span>
+              </a>
+              <a
+                href="https://wa.me/6285117484483?text=Halo%20Gitgud,%20mau%20tanya%20arah%20lokasi%20atau%20reservasi!"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => soundEffects.playSuccessChime()}
+                className="inline-flex items-center justify-center flex-1 gap-2 bg-white hover:bg-[#F0F7FF] text-[#1B64B4] font-display font-bold py-3 sm:py-3.5 px-4 rounded border-2 border-[#1B64B4] shadow-[2.5px_2.5px_0px_0px_#5BB5F8] transition-all text-xs tracking-wider uppercase whitespace-nowrap cursor-pointer hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none"
+              >
+                <MessageCircle className="w-4 h-4 text-brand-orange shrink-0" />
+                <span>CHAT WA (+62 851-1748-4483)</span>
               </a>
             </div>
           </div>

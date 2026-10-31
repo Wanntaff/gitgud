@@ -487,7 +487,7 @@ export default function Navbar() {
           </button>
 
           <a
-            href="https://wa.me/?text=Halo%20Gitgud,%20mau%20reservasi%20meja%20boardgame%20dong!"
+            href="https://wa.me/6285117484483?text=Halo%20Gitgud,%20mau%20reservasi%20meja%20boardgame%20dong!"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => soundEffects.playSuccessChime()}

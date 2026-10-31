@@ -582,7 +582,7 @@ export default function GameCatalog() {
         {/* WhatsApp Inquiry Link */}
         <div className="mt-14 text-center">
           <a
-            href="https://wa.me/?text=Halo%20Gitgud,%20apakah%20ada%20game%20..."
+            href="https://wa.me/6285117484483?text=Halo%20Gitgud,%20apakah%20ada%20game%20"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => soundEffects.playSuccessChime()}
