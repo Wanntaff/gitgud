@@ -92,6 +92,13 @@
   animation: fade-in-up 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* Shimmer sweep for premium DicePicker accents */
+@keyframes shimmer-sweep {
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+  100% { transform: translateX(100%); }
+}
+
 /* Tabletop Cafe Vibe Equalizer Wave Animations (Foto 5 Redesign) - GPU Accelerated scaleY */
 @keyframes vibe-wave-1 {
   0%, 100% { transform: scaleY(0.35); }

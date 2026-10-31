@@ -133,16 +133,18 @@ export default function HeroSection() {
 
           <DicePicker />
 
-          {/* Solo Player Banner di Bawah Widget */}
-          <div className="bg-white border-2 border-[#1B64B4]/20 border-l-4 border-l-[#E84A27] rounded-xl p-2.5 sm:p-3 flex items-center gap-2.5 shadow-xs">
-            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-md bg-[#FFF0EB] border border-[#E84A27]/30 flex items-center justify-center text-[#E84A27] shrink-0">
-              <UserCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+          {/* Solo Player Banner — premium style matching DicePicker */}
+          <div className="relative bg-white border border-[#1B64B4]/15 rounded-xl p-3 sm:p-3.5 flex items-start gap-3 overflow-hidden shadow-[0_2px_12px_-4px_rgba(27,100,180,0.08)]">
+            {/* Left accent bar */}
+            <div className="absolute left-0 top-3 bottom-3 w-[3px] rounded-full bg-[#E84A27]" />
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-gradient-to-br from-[#FFF5F0] to-[#FFF0EB] border border-[#E84A27]/20 flex items-center justify-center text-[#E84A27] shrink-0 ml-1 shadow-2xs">
+              <UserCheck className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
             </div>
             <div className="min-w-0">
-              <h4 className="font-display font-bold text-xs sm:text-[13px] text-[#172554] leading-tight">
+              <h4 className="font-display font-bold text-xs sm:text-[13px] text-[#172554] leading-tight tracking-tight">
                 Datang Sendirian? No Problem!
               </h4>
-              <p className="text-[10px] sm:text-[10.5px] text-[#475569] leading-snug mt-0.5 font-sans line-clamp-2">
+              <p className="text-[10px] sm:text-[10.5px] text-[#64748B] leading-snug mt-0.5 font-sans line-clamp-2">
                 Banyak komunitas &amp; game solo yang bisa kamu gabung. Staff dan
                 Game Master kami siap nemenin &amp; ngenalin ke sesama pengunjung!
               </p>
