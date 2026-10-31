@@ -9,14 +9,6 @@
   --color-brand-pink: #F7B5CB;
   --color-brand-pink-dark: #FF7B9E;
   --color-brand-cobalt: #172554;
-  --color-brand-dark: #FFFFFF;
-  --color-brand-darker: #F8FAFC;
-  --color-brand-cream: #172554;
-  --color-brand-card: #FFFFFF;
-
-  /* Aliases for backwards compatibility */
-  --color-brand-yellow: #E84A27;
-  --color-brand-teal: #5BB5F8;
 
   --font-display: var(--font-syne), sans-serif;
   --font-mono: var(--font-space-grotesk), monospace;
@@ -26,12 +18,6 @@
   --shadow-brutal-pink: 4px 4px 0px 0px #F7B5CB;
   --shadow-brutal-lightblue: 4px 4px 0px 0px #5BB5F8;
   --shadow-brutal-blue: 4px 4px 0px 0px #1B64B4;
-  --shadow-brutal-black: 4px 4px 0px 0px #1B64B4;
-  --shadow-brutal-white: 4px 4px 0px 0px #FFFFFF;
-
-  /* Alias shadows */
-  --shadow-brutal-yellow: 4px 4px 0px 0px #E84A27;
-  --shadow-brutal-teal: 4px 4px 0px 0px #5BB5F8;
 }
 
 .border-3 {

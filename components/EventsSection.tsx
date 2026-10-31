@@ -45,7 +45,7 @@ export default function EventsSection() {
           <div className="lg:col-span-5 w-full">
             <div className="bg-gradient-to-b from-[#FFF5F8] via-[#FFF9F6] to-white border-3 border-brand-orange rounded-2xl p-4 sm:p-6 shadow-brutal-orange relative overflow-hidden">
               {/* Tactile Tabletop Perforated Ticket Punch Badge */}
-              <div className="relative inline-flex items-center gap-1.5 px-3 py-1 rounded-xs bg-brand-orange text-white font-mono font-black text-[10px] sm:text-[11px] tracking-wider uppercase border-2 border-[#1B64B4] shadow-[2.5px_2.5px_0px_0px_#1B64B4] mb-3 select-none before:absolute before:-left-1.5 before:top-1/2 before:-translate-y-1/2 before:w-2 before:h-2 before:rounded-full before:bg-[#F8FAFC] after:absolute after:-right-1.5 after:top-1/2 after:-translate-y-1/2 after:w-2 after:h-2 after:rounded-full after:bg-[#F8FAFC]">
+              <div className="relative inline-flex items-center gap-1.5 px-3 py-1 rounded-xs bg-brand-orange text-white font-mono font-black text-[10px] sm:text-[11px] tracking-wider uppercase border-2 border-[#1B64B4] shadow-[2.5px_2.5px_0px_0px_#1B64B4] mb-3 select-none before:absolute before:-left-1.5 before:top-1/2 before:-translate-y-1/2 before:w-2 before:h-2 before:rounded-full before:bg-[#FFF5F8] after:absolute after:-right-1.5 after:top-1/2 after:-translate-y-1/2 after:w-2 after:h-2 after:rounded-full after:bg-[#FFF5F8]">
                 <Ticket className="w-3.5 h-3.5 text-white shrink-0 animate-pulse-subtle" />
                 <span>TICKET // SPECIAL EVENT MINGGUAN</span>
               </div>

@@ -16,7 +16,7 @@ async function main() {
     `--user-data-dir=${tmpDir}`,
     '--no-sandbox',
     '--disable-gpu',
-    'http://localhost:3001'
+    process.env.TARGET_URL || 'http://localhost:3000'
   ], { stdio: 'ignore' });
 
   let tab = null;
@@ -28,7 +28,7 @@ async function main() {
         const text = await res.text();
         if (text) {
           const list = JSON.parse(text);
-          tab = list.find(t => t.url.includes('localhost:3001')) || list[0];
+          tab = list.find(t => t.url.includes('localhost')) || list[0];
           if (tab && tab.webSocketDebuggerUrl) break;
         }
       }

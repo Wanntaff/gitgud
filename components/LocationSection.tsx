@@ -102,7 +102,7 @@ export default function LocationSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => soundEffects.playButtonClick()}
-                className="inline-flex items-center justify-center w-full gap-2 bg-brand-blue hover:bg-blue-600 text-white font-display font-bold py-2.5 sm:py-3 px-5 rounded border-2 border-[#1B64B4] shadow-brutal-orange transition-all text-xs tracking-wider uppercase whitespace-nowrap cursor-pointer hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none"
+                className="inline-flex items-center justify-center w-full gap-2 bg-brand-blue hover:bg-[#154E8E] text-white font-display font-bold py-2.5 sm:py-3 px-5 rounded border-2 border-[#1B64B4] shadow-brutal-orange transition-all text-xs tracking-wider uppercase whitespace-nowrap cursor-pointer hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none"
               >
                 <Navigation className="w-3.5 h-3.5 shrink-0" />
                 <span>BUKA DI GOOGLE MAPS</span>
@@ -125,7 +125,7 @@ export default function LocationSection() {
               {/* Minimalist Floating Top Header Bar */}
               <div className="relative z-10 p-3 sm:p-4 flex items-center justify-between pointer-events-none">
                 <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/95 backdrop-blur-md border border-[#1B64B4]/20 text-[#172554] font-mono text-[11px] font-bold rounded-lg shadow-sm">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="w-2 h-2 rounded-full bg-brand-orange animate-pulse" />
                   <span>BACIRO, YOGYAKARTA</span>
                 </span>
 
