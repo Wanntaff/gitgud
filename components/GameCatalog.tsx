@@ -52,7 +52,7 @@ interface CategoryMeta {
 const CATEGORY_DEFINITIONS: CategoryMeta[] = [
   {
     key: "all",
-    label: "Semua Game",
+    label: "Semua",
     icon: LayoutGrid,
     vibe: "Koleksi lengkap 362 board game fisik siap dimainkan kapan saja di Gitgud Baciro.",
     activeClass:
@@ -64,7 +64,7 @@ const CATEGORY_DEFINITIONS: CategoryMeta[] = [
   },
   {
     key: "party",
-    label: "Party & Fun",
+    label: "Party",
     icon: Flame,
     vibe: "Aturan gampang, tempo cepat, dan dijamin bikin meja ramai ketawa lepas.",
     activeClass:
@@ -76,7 +76,7 @@ const CATEGORY_DEFINITIONS: CategoryMeta[] = [
   },
   {
     key: "casual",
-    label: "Casual Santai",
+    label: "Casual",
     icon: Sparkles,
     vibe: "Gameplay rileks, cocok untuk ngobrol santai sambil ngopi tanpa mikir berat.",
     activeClass:
@@ -88,7 +88,7 @@ const CATEGORY_DEFINITIONS: CategoryMeta[] = [
   },
   {
     key: "strategy",
-    label: "Strategi & Taktik",
+    label: "Strategi",
     icon: Compass,
     vibe: "Rancang taktik, kelola resource, dan rebut kemenangan dengan perhitungan matang.",
     activeClass:
@@ -100,7 +100,7 @@ const CATEGORY_DEFINITIONS: CategoryMeta[] = [
   },
   {
     key: "social-deduction",
-    label: "Sosial Deduksi",
+    label: "Deduksi",
     icon: Eye,
     vibe: "Adu intrik, tuduhan rahasia, dan sandiwara paling seru bareng squad.",
     activeClass:
@@ -112,7 +112,7 @@ const CATEGORY_DEFINITIONS: CategoryMeta[] = [
   },
   {
     key: "battle",
-    label: "Battle & Duel",
+    label: "Battle",
     icon: Swords,
     vibe: "Pertarungan langsung head-to-head, adu hero, dan dominasi arena.",
     activeClass:
@@ -124,7 +124,7 @@ const CATEGORY_DEFINITIONS: CategoryMeta[] = [
   },
   {
     key: "coop",
-    label: "Co-op & Kerjasama",
+    label: "Co-op",
     icon: ShieldCheck,
     vibe: "Menang bersama atau kalah bersama! Saling bantu melawan tantangan game.",
     activeClass:
@@ -136,7 +136,7 @@ const CATEGORY_DEFINITIONS: CategoryMeta[] = [
   },
   {
     key: "great-for-2",
-    label: "Khusus 2 Pemain",
+    label: "2 Pemain",
     icon: Heart,
     vibe: "52 game yang terbukti paling seru untuk kencan, ngedrop bareng bestie, atau duel 1v1.",
     activeClass:
@@ -320,7 +320,7 @@ export default function GameCatalog() {
               type="text"
               value={searchQuery}
               onChange={handleSearchChange}
-              placeholder="Cari dari 362 game... (contoh: Catan, Azul, Werewolf, Wingspan)"
+              placeholder="Cari dari 362 game (contoh: Catan, Azul, Werewolf, Wingspan)"
               className="w-full pl-10 pr-10 py-3 rounded-xl bg-white border-2 border-[#1B64B4]/25 focus:border-[#E84A27] focus:outline-none text-[#172554] placeholder-[#94A3B8] font-mono text-xs sm:text-sm shadow-xs transition-colors"
             />
             {searchQuery && (
@@ -381,7 +381,7 @@ export default function GameCatalog() {
                   key={cat.key}
                   type="button"
                   onClick={() => handleCategoryChange(cat.key)}
-                  className={`relative p-3 rounded-xl font-mono text-xs font-bold transition-all cursor-pointer flex flex-col justify-between min-h-[78px] text-left active:translate-y-0.5 ${
+                  className={`relative p-3 rounded-xl font-mono text-xs font-bold transition-all cursor-pointer flex flex-col justify-between min-h-[82px] sm:min-h-[86px] text-left active:translate-y-0.5 ${
                     isActive ? cat.activeClass : cat.inactiveClass
                   }`}
                 >
@@ -404,8 +404,8 @@ export default function GameCatalog() {
                     </span>
                   </div>
 
-                  <div className="flex items-center justify-between">
-                    <span className="font-display font-black tracking-tight text-[11px] sm:text-xs leading-tight line-clamp-1">
+                  <div className="flex items-center justify-between gap-1 w-full">
+                    <span className="font-display font-black tracking-tight text-xs sm:text-[13px] leading-tight whitespace-nowrap">
                       {cat.label}
                     </span>
                     {isActive && (
