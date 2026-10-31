@@ -208,9 +208,9 @@ export default function DicePicker() {
   };
 
   return (
-    <div className="bg-white border-2 border-[#1B64B4]/20 border-t-4 border-t-[#E84A27] rounded-xl p-3 sm:p-3.5 lg:p-3.5 xl:p-4 relative overflow-hidden shadow-md">
+    <div className="bg-white border-2 border-[#1B64B4]/20 border-t-4 border-t-[#E84A27] rounded-xl p-4 sm:p-5 lg:p-5 xl:p-5 relative overflow-hidden shadow-md">
       {/* Header Card */}
-      <div className="pb-2 mb-2 border-b-2 border-[#1B64B4]/15 flex items-center justify-between gap-3">
+      <div className="pb-3 mb-3 border-b-2 border-[#1B64B4]/15 flex items-center justify-between gap-3">
         <div className="flex items-center gap-2.5 min-w-0">
           <div className="w-7.5 h-7.5 sm:w-8 sm:h-8 rounded-md bg-[#E84A27] text-white flex items-center justify-center shrink-0 shadow-xs">
             <Dices
@@ -254,17 +254,17 @@ export default function DicePicker() {
       </div>
 
       {/* Body Display: Physical Board Game Box Cover Mockup */}
-      <div className="space-y-2 sm:space-y-2.5">
+      <div className="space-y-3 sm:space-y-3.5">
         {/* Physical Box Frame */}
-        <div className="relative rounded-xl bg-gradient-to-b from-[#FFFFFF] via-[#F8FAFC] to-[#F0F7FF] border-2 border-[#1B64B4]/20 p-2.5 sm:p-3 shadow-xs overflow-hidden transition-all">
+        <div className="relative rounded-xl bg-gradient-to-b from-[#FFFFFF] via-[#F8FAFC] to-[#F0F7FF] border-2 border-[#1B64B4]/20 p-3 sm:p-4 shadow-xs overflow-hidden transition-all">
           <div
             className="absolute -right-8 -top-8 w-28 h-28 rounded-full pointer-events-none blur-2xl opacity-15"
             style={{ backgroundColor: selectedGame.boxAccent }}
           />
 
-          <div className="relative z-10 flex flex-col gap-2 sm:gap-2.5">
+          <div className="relative z-10 flex flex-col gap-2.5 sm:gap-3">
             {/* Box Header Strip */}
-            <div className="flex items-center justify-between gap-2 border-b border-[#1B64B4]/15 pb-1.5">
+            <div className="flex items-center justify-between gap-2 border-b border-[#1B64B4]/15 pb-2">
               <div className="flex items-center gap-1.5 min-w-0">
                 <span className="font-mono text-[10px] text-[#475569] uppercase tracking-wider shrink-0 font-bold">
                   D{currentDiceNumber}
@@ -281,7 +281,7 @@ export default function DicePicker() {
             </div>
 
             {/* Physical Box Cover Art Slot (Mockup Cover Game Fisik) */}
-            <div className="rounded-lg border-2 border-[#1B64B4]/20 bg-white p-2 sm:p-2.5 flex items-center justify-between gap-2.5 shadow-xs relative overflow-hidden">
+            <div className="rounded-lg border-2 border-[#1B64B4]/20 bg-white p-2.5 sm:p-3 flex items-center justify-between gap-2.5 shadow-xs relative overflow-hidden">
               {/* Box spine color accent bar on left */}
               <div
                 className="absolute left-0 top-0 bottom-0 w-1.5 rounded-l-md"
@@ -323,7 +323,7 @@ export default function DicePicker() {
             </div>
 
             {/* Tag Info Badges */}
-            <div className="flex flex-wrap items-center gap-1.5">
+            <div className="flex flex-wrap items-center gap-2">
               {/* Category Tag: Pastel Pink #F7B5CB */}
               <span className="bg-[#FFF0F5] text-[#C2185B] border border-[#F7B5CB] font-bold text-[10px] sm:text-[10.5px] px-2 py-0.5 rounded-md">
                 {selectedGame.categoryTag}
@@ -343,7 +343,7 @@ export default function DicePicker() {
             </div>
 
             {/* Quote Rekomendasi Game Master */}
-            <div className="border-l-3 border-[#E84A27] bg-[#FFF8F5] p-1.5 sm:p-2 rounded-r-md">
+            <div className="border-l-3 border-[#E84A27] bg-[#FFF8F5] p-2 sm:p-2.5 rounded-r-md">
               <div className="font-mono text-[9px] font-bold text-[#E84A27] uppercase tracking-wider mb-0.5 flex items-center gap-1">
                 <span>Catatan Game Master</span>
               </div>
@@ -359,7 +359,7 @@ export default function DicePicker() {
           type="button"
           onClick={handleRollClick}
           disabled={isRolling}
-          className="w-full bg-[#1B64B4] hover:bg-[#154E8E] active:scale-[0.99] disabled:opacity-75 disabled:cursor-not-allowed text-white font-display font-bold py-2 sm:py-2.5 px-4 rounded-md transition-all text-xs tracking-wide cursor-pointer flex items-center justify-center gap-2 shadow-[2px_2px_0px_0px_#5BB5F8]"
+          className="w-full bg-[#1B64B4] hover:bg-[#154E8E] active:scale-[0.99] disabled:opacity-75 disabled:cursor-not-allowed text-white font-display font-bold py-2.5 sm:py-3 px-4 rounded-md transition-all text-xs tracking-wide cursor-pointer flex items-center justify-center gap-2 shadow-[2px_2px_0px_0px_#5BB5F8]"
         >
           <Dices
             className={`w-4 h-4 shrink-0 ${isRolling ? "animate-spin" : ""}`}
