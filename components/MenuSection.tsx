@@ -617,11 +617,11 @@ export default function MenuSection() {
   return (
     <section
       id="menu"
-      className="scroll-mt-16 content-visibility-auto min-h-[calc(100vh-4rem)] flex flex-col py-6 sm:py-8 lg:py-10 px-4 lg:px-12 bg-white border-b-2 border-[#1B64B4]/15"
+      className="scroll-mt-16 content-visibility-auto py-16 sm:py-20 lg:py-24 px-4 lg:px-12 bg-white border-b-2 border-[#1B64B4]/15"
     >
-      <div className="max-w-7xl mx-auto w-full my-auto">
+      <div className="max-w-7xl mx-auto w-full">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
           {/* Creative Tabletop Cafe Token Coaster Chip */}
           <div className="inline-flex items-center gap-2 p-1 pr-3.5 bg-[#FFF5F2] border-2 border-brand-orange text-brand-orange rounded-full font-mono text-[11px] sm:text-xs font-black tracking-wider uppercase shadow-[2.5px_2.5px_0px_0px_#E84A27] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-300 group cursor-default">
             <span className="w-6 h-6 rounded-full bg-brand-orange text-white flex items-center justify-center shrink-0 border border-brand-orange shadow-xs group-hover:rotate-12 transition-transform">
@@ -640,16 +640,16 @@ export default function MenuSection() {
             </span>
           </div>
 
-          <h2 className="font-display font-black text-2xl sm:text-3xl md:text-4xl text-[#172554] mt-2.5 tracking-tight">
+          <h2 className="font-display font-black text-2xl sm:text-3xl md:text-4xl text-[#172554] mt-3 tracking-tight leading-tight">
             MENU GITGUD CAFE
           </h2>
-          <p className="text-[#475569] text-xs sm:text-sm mt-1.5 max-w-xl mx-auto leading-relaxed">
+          <p className="text-[#475569] text-xs sm:text-sm mt-2 max-w-xl mx-auto leading-relaxed">
             Diseduh dari biji kopi pilihan dan dimasak fresh setiap hari di Baciro HQ.
             Pemberi stamina utama biar konsentrasi game kamu gak goyah!
           </p>
 
           {/* Interactive Physical Flyer "FLIP TO OTHER SIDE" Switcher */}
-          <div className="mt-5 sm:mt-6 flex items-center justify-center px-2">
+          <div className="mt-6 sm:mt-7 flex items-center justify-center px-2">
             <div className="w-full max-w-md sm:w-auto inline-flex p-1 bg-[#F8FAFC] rounded-xl border-2 border-[#1B64B4]/20 shadow-[2px_2px_0px_0px_rgba(27,100,180,0.15)]">
               {/* THIRSTY SIDE BUTTON */}
               <button
@@ -711,7 +711,7 @@ export default function MenuSection() {
         </div>
 
         {/* Filter Bar: Subcategories, Recommended Barista Filter, & Search */}
-        <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3 mb-6 bg-[#F8FAFC] p-2 sm:p-2.5 rounded-xl border-2 border-[#1B64B4]/15">
+        <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3.5 mb-8 bg-[#F8FAFC] p-3 sm:p-3.5 rounded-xl border-2 border-[#1B64B4]/15">
           {/* Subcategory Pills */}
           <div className="flex-1 min-w-0 flex items-center gap-1.5 overflow-x-auto pb-1 lg:pb-0 scrollbar-none text-xs font-mono">
             {currentSubcategories.map(({ key, label }) => {
@@ -825,9 +825,9 @@ export default function MenuSection() {
 
         {/* Featured Munch of the Day & Specialty Highlight Banner */}
         {activeSide === "hungry" ? (
-          <div className="mb-6 bg-gradient-to-r from-[#FFF5F2] via-white to-[#FFF5F2] p-3.5 sm:p-4 rounded-xl border-2 border-brand-orange/40 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 animate-fade-in-up">
+          <div className="mb-8 bg-gradient-to-r from-[#FFF5F2] via-white to-[#FFF5F2] p-4 sm:p-5 rounded-xl border-2 border-brand-orange/40 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 animate-fade-in-up">
             <div className="flex items-center gap-3">
-              <span className="w-8 h-8 rounded-lg bg-[#FFF0EB] border border-brand-orange/60 text-brand-orange flex items-center justify-center shrink-0 shadow-xs">
+              <span className="w-9 h-9 rounded-lg bg-[#FFF0EB] border border-brand-orange/60 text-brand-orange flex items-center justify-center shrink-0 shadow-xs">
                 <Utensils className="w-4 h-4 text-brand-orange" />
               </span>
               <div>
@@ -836,7 +836,7 @@ export default function MenuSection() {
                     MUNCH OF THE DAY • BOARDGAME COMBO
                   </span>
                 </div>
-                <p className="text-xs text-[#334155] mt-0.5">
+                <p className="text-xs sm:text-sm text-[#334155] mt-0.5">
                   <strong className="text-[#172554]">Chicken Nanban (32k)</strong> +{" "}
                   <strong className="text-[#172554]">Honey Yuzunade (33k)</strong> —
                   paduan juara penambah energi ronde deduksi Blood on the Clocktower!
@@ -849,9 +849,9 @@ export default function MenuSection() {
             </div>
           </div>
         ) : (
-          <div className="mb-6 bg-gradient-to-r from-[#F0F7FF] via-white to-[#F0F7FF] p-3.5 sm:p-4 rounded-xl border-2 border-brand-lightblue/40 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 animate-fade-in-up">
+          <div className="mb-8 bg-gradient-to-r from-[#F0F7FF] via-white to-[#F0F7FF] p-4 sm:p-5 rounded-xl border-2 border-brand-lightblue/40 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 animate-fade-in-up">
             <div className="flex items-center gap-3">
-              <span className="w-8 h-8 rounded-lg bg-[#EBF5FF] border border-brand-lightblue/60 text-[#1B64B4] flex items-center justify-center shrink-0 shadow-xs">
+              <span className="w-9 h-9 rounded-lg bg-[#EBF5FF] border border-brand-lightblue/60 text-[#1B64B4] flex items-center justify-center shrink-0 shadow-xs">
                 <Award className="w-4 h-4 text-[#1B64B4]" />
               </span>
               <div>
@@ -860,7 +860,7 @@ export default function MenuSection() {
                     BARISTA SIGNATURE • ZING &amp; MATCHA PICKS
                   </span>
                 </div>
-                <p className="text-xs text-[#334155] mt-0.5">
+                <p className="text-xs sm:text-sm text-[#334155] mt-0.5">
                   <strong className="text-[#172554]">Honey Yuzunade (33k)</strong> &amp;{" "}
                   <strong className="text-[#172554]">Orangicano (25k)</strong> —
                   sensasi citrus yuzu matcha &amp; espresso jeruk segar favorit komunitas!
@@ -880,7 +880,7 @@ export default function MenuSection() {
             <div ref={menuGridRef} className="scroll-mt-20 lg:scroll-mt-24" />
             <div
               key={`${activeSide}-${selectedSubcategory}-${onlyRecommended ? "rec" : "all"}-page-${safeCurrentPage}`}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3.5 sm:gap-4 animate-flyer-flip"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 animate-flyer-flip"
             >
               {paginatedItems.map((item, idx) => {
                 const borderAccent =
@@ -894,12 +894,12 @@ export default function MenuSection() {
                   <div
                     key={item.id}
                     style={{ animationDelay: `${Math.min(idx * 25, 250)}ms` }}
-                    className={`group relative bg-white p-4 rounded-xl border-2 border-[#1B64B4]/15 transition-all duration-200 hover:-translate-y-1 flex flex-col justify-between animate-fade-in-up shadow-xs ${borderAccent}`}
+                    className={`group relative bg-white p-5 sm:p-5.5 rounded-xl border-2 border-[#1B64B4]/15 transition-all duration-200 hover:-translate-y-1 flex flex-col justify-between min-h-[185px] sm:min-h-[200px] animate-fade-in-up shadow-xs ${borderAccent}`}
                   >
                     <div>
                       {/* Top Meta: Subcategory Badge & Recommended Badge */}
-                      <div className="flex items-center justify-between gap-2 mb-2">
-                        <span className="font-mono text-[10px] font-bold tracking-wider text-[#475569] uppercase bg-[#F8FAFC] px-2 py-0.5 rounded border border-[#1B64B4]/15 font-medium">
+                      <div className="flex items-center justify-between gap-2 mb-2.5">
+                        <span className="font-mono text-[10px] font-bold tracking-wider text-[#475569] uppercase bg-[#F8FAFC] px-2.5 py-0.5 rounded border border-[#1B64B4]/15 font-medium">
                           {item.subcategoryLabel}
                         </span>
 
@@ -912,20 +912,20 @@ export default function MenuSection() {
                       </div>
 
                       {/* Item Name */}
-                      <h3 className="font-display font-bold text-base sm:text-lg text-[#172554] group-hover:text-brand-orange transition-colors">
+                      <h3 className="font-display font-bold text-base sm:text-lg text-[#172554] group-hover:text-brand-orange transition-colors leading-snug">
                         {item.name}
                       </h3>
 
                       {/* Description */}
-                      <p className="text-xs text-[#475569] mt-1 leading-relaxed line-clamp-2">
+                      <p className="text-xs sm:text-[13px] text-[#475569] mt-1.5 leading-relaxed line-clamp-2">
                         {item.description}
                       </p>
                     </div>
 
                     {/* Bottom: Price & Extra Note */}
-                    <div className="mt-3.5 pt-2.5 border-t-2 border-[#1B64B4]/10 flex items-center justify-between gap-2">
+                    <div className="mt-4 pt-3 border-t-2 border-[#1B64B4]/10 flex items-center justify-between gap-2">
                       <div className="flex items-baseline gap-1">
-                        <span className="font-mono font-black text-lg sm:text-xl text-[#172554]">
+                        <span className="font-mono font-black text-xl sm:text-2xl text-[#172554]">
                           {item.price}
                         </span>
                       </div>

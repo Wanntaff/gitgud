@@ -206,11 +206,11 @@ export default function GameCatalog() {
   return (
     <section
       id="games"
-      className="scroll-mt-16 content-visibility-auto min-h-[calc(100vh-4rem)] flex flex-col py-6 sm:py-8 lg:py-10 px-4 lg:px-12 bg-white border-b-2 border-[#1B64B4]/15"
+      className="scroll-mt-16 content-visibility-auto py-16 sm:py-20 lg:py-24 px-4 lg:px-12 bg-white border-b-2 border-[#1B64B4]/15"
     >
-      <div className="max-w-7xl mx-auto w-full my-auto">
+      <div className="max-w-7xl mx-auto w-full">
         {/* Section Header */}
-        <div className="mb-6 sm:mb-8">
+        <div className="mb-8 sm:mb-10">
           {/* Creative Tabletop Playing Card Suit Token Chip */}
           <div className="inline-flex items-center gap-2 p-1 pr-3.5 bg-[#F0F7FF] border-2 border-brand-lightblue text-[#1B64B4] rounded-full font-mono text-[11px] sm:text-xs font-black tracking-wider uppercase shadow-[2.5px_2.5px_0px_0px_#5BB5F8] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-300 group cursor-default">
             <span className="w-6 h-6 rounded-full bg-brand-lightblue text-[#172554] flex items-center justify-center shrink-0 border border-brand-lightblue shadow-xs font-mono font-black text-xs group-hover:scale-110 transition-transform select-none">
@@ -220,18 +220,18 @@ export default function GameCatalog() {
             <span className="text-brand-lightblue select-none">•</span>
             <span className="text-[#172554]">300+ VAULT ARCHIVE</span>
           </div>
-          <h2 className="font-display font-black text-xl sm:text-2xl md:text-3xl text-[#172554] mt-2.5 tracking-tight">
+          <h2 className="font-display font-black text-2xl sm:text-3xl md:text-4xl text-[#172554] mt-3 tracking-tight leading-tight">
             BEBERAPA GAME POPULER KAMI
           </h2>
-          <p className="text-[#475569] text-xs sm:text-sm mt-1.5">
+          <p className="text-[#475569] text-sm sm:text-base mt-2">
             Pilih suasana bermain yang kamu inginkan bersama squad malam ini:
           </p>
         </div>
 
         {/* Interactive Tabletop Cartridge Deck */}
-        <div className="mb-8">
+        <div className="mb-10">
           {/* Cartridge Tabs Strip */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-4">
             {CATEGORY_DEFINITIONS.map((cat) => {
               const isActive = activeCategory === cat.key;
               const Icon = cat.icon;
@@ -245,23 +245,23 @@ export default function GameCatalog() {
                     soundEffects.playTileTap();
                     setActiveCategory(cat.key);
                   }}
-                  className={`relative p-3.5 rounded-lg font-mono text-xs font-bold transition-all cursor-pointer flex flex-col justify-between min-h-[72px] text-left active:translate-y-0.5 ${
+                  className={`relative p-4 sm:p-4.5 rounded-xl font-mono text-xs font-bold transition-all cursor-pointer flex flex-col justify-between min-h-[88px] sm:min-h-[96px] text-left active:translate-y-0.5 ${
                     isActive ? cat.activeClass : cat.inactiveClass
                   }`}
                 >
                   {/* Top Row: Icon & Dynamic Count Badge */}
-                  <div className="flex items-center justify-between w-full mb-2">
+                  <div className="flex items-center justify-between w-full mb-2.5">
                     <div
-                      className={`w-7 h-7 rounded-md flex items-center justify-center ${
+                      className={`w-8 h-8 rounded-lg flex items-center justify-center ${
                         isActive
                           ? "bg-white/40 text-current"
                           : "bg-[#F8FAFC] text-[#475569]"
                       }`}
                     >
-                      <Icon className="w-4 h-4" />
+                      <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
                     </div>
                     <span
-                      className={`text-[10px] font-mono font-black px-1.5 py-0.5 rounded-sm border border-current/20 ${
+                      className={`text-[10px] sm:text-[11px] font-mono font-black px-2 py-0.5 rounded border border-current/20 ${
                         isActive ? cat.badgeClass : "bg-[#F0F7FF] text-[#475569]"
                       }`}
                     >
@@ -271,11 +271,11 @@ export default function GameCatalog() {
 
                   {/* Bottom Row: Label & Tabletop Diamond Pip Active Notch */}
                   <div className="flex items-center justify-between">
-                    <span className="font-display font-black tracking-wide text-xs sm:text-sm">
+                    <span className="font-display font-black tracking-wide text-xs sm:text-sm md:text-base">
                       {cat.label}
                     </span>
                     {isActive && (
-                      <span className="w-1.5 h-1.5 rotate-45 bg-current shrink-0" />
+                      <span className="w-2 h-2 rotate-45 bg-current shrink-0" />
                     )}
                   </div>
                 </button>
@@ -284,7 +284,7 @@ export default function GameCatalog() {
           </div>
 
           {/* Interactive Category Vibe Bar */}
-          <div className="mt-4 p-3.5 bg-[#F8FAFC] rounded-xl border-2 border-[#1B64B4]/15 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-mono">
+          <div className="mt-5 p-4 sm:p-5 bg-[#F8FAFC] rounded-xl border-2 border-[#1B64B4]/15 flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 text-xs sm:text-sm font-mono">
             <div className="flex items-center gap-3">
               {/* Tabletop Cafe Atmosphere Indicator with Animated Kinetic Waves */}
               <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-md bg-white border-2 border-[#1B64B4]/20 shadow-xs shrink-0">
@@ -313,46 +313,48 @@ export default function GameCatalog() {
         <div
           key={activeCategory}
           id="games-container"
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in-up"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 animate-fade-in-up"
         >
           {filteredGames.map((game) => (
             <div
               key={game.id}
-              className={`bg-white border-2 border-[#1B64B4]/15 rounded-xl overflow-hidden ${game.hoverBorder} transition-all shadow-xs hover:shadow-md`}
+              className={`bg-white border-2 border-[#1B64B4]/15 rounded-xl overflow-hidden ${game.hoverBorder} transition-all shadow-xs hover:shadow-md flex flex-col justify-between`}
             >
-              <div
-                className={`h-36 sm:h-40 bg-gradient-to-br ${game.gradient} border-b-2 border-[#1B64B4]/15 flex items-center justify-center p-4 sm:p-5 text-center relative overflow-hidden`}
-              >
-                <span
-                  className={`absolute top-2.5 left-2.5 ${game.badgeBg} text-[9px] font-mono font-black px-2 py-0.5 rounded-xs border border-[#1B64B4]/20 shadow-[2px_2px_0px_0px_rgba(27,100,180,0.2)] whitespace-nowrap z-10 flex items-center gap-1 uppercase tracking-wider`}
+              <div>
+                <div
+                  className={`h-44 sm:h-52 bg-gradient-to-br ${game.gradient} border-b-2 border-[#1B64B4]/15 flex items-center justify-center p-5 sm:p-6 text-center relative overflow-hidden`}
                 >
-                  <span className="text-[8px] opacity-80 select-none">◆</span>
-                  <span>{game.badge}</span>
-                </span>
-                <div className="font-display font-black text-lg sm:text-xl text-[#172554] px-2 leading-tight break-words text-center">
-                  {game.name}
-                </div>
-              </div>
-              <div className="p-4 sm:p-5 bg-white">
-                <div className="flex items-center gap-3 text-xs text-[#475569] font-mono mb-3 font-medium">
-                  <span className="flex items-center gap-1 whitespace-nowrap">
-                    <Users className="w-3.5 h-3.5 text-[#1B64B4]" />{" "}
-                    {game.players}
+                  <span
+                    className={`absolute top-3 left-3 ${game.badgeBg} text-[10px] font-mono font-black px-2.5 py-1 rounded-sm border border-[#1B64B4]/20 shadow-[2px_2px_0px_0px_rgba(27,100,180,0.2)] whitespace-nowrap z-10 flex items-center gap-1 uppercase tracking-wider`}
+                  >
+                    <span className="text-[8px] opacity-80 select-none">◆</span>
+                    <span>{game.badge}</span>
                   </span>
-                  <span className="flex items-center gap-1 whitespace-nowrap">
-                    <Clock className="w-3.5 h-3.5 text-brand-orange" />{" "}
-                    {game.duration}
-                  </span>
+                  <div className="font-display font-black text-xl sm:text-2xl text-[#172554] px-3 leading-snug break-words text-center">
+                    {game.name}
+                  </div>
                 </div>
-                <p className="text-xs text-[#334155] leading-relaxed">
-                  {game.desc}
-                </p>
+                <div className="p-5 sm:p-6 bg-white">
+                  <div className="flex items-center gap-3.5 text-xs sm:text-sm text-[#475569] font-mono mb-3.5 font-medium">
+                    <span className="flex items-center gap-1.5 whitespace-nowrap">
+                      <Users className="w-4 h-4 text-[#1B64B4]" />{" "}
+                      {game.players}
+                    </span>
+                    <span className="flex items-center gap-1.5 whitespace-nowrap">
+                      <Clock className="w-4 h-4 text-brand-orange" />{" "}
+                      {game.duration}
+                    </span>
+                  </div>
+                  <p className="text-xs sm:text-sm text-[#334155] leading-relaxed">
+                    {game.desc}
+                  </p>
+                </div>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-12 text-center">
+        <div className="mt-14 text-center">
           <a
             href="https://wa.me/?text=Halo%20Gitgud,%20apakah%20ada%20game%20..."
             target="_blank"

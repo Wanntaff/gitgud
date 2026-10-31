@@ -46,3 +46,8 @@ next-env.d.ts
 .tmp-chrome-cdp/
 .tmp-profile/
 index.html
+test-*
+orig-*
+*-crop.png
+scripts/*.png
+scripts/*.svg

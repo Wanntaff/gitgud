@@ -7,10 +7,10 @@ export default function LocationSection() {
   return (
     <section
       id="location"
-      className="scroll-mt-16 content-visibility-auto min-h-[calc(100vh-4rem)] flex flex-col py-6 sm:py-8 lg:py-10 px-4 lg:px-12 bg-white border-b-2 border-[#1B64B4]/15"
+      className="scroll-mt-16 content-visibility-auto py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-12 bg-white border-b-2 border-[#1B64B4]/15"
     >
-      <div className="max-w-7xl mx-auto w-full my-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-stretch">
+      <div className="max-w-7xl mx-auto w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
           {/* Left Column: Venue Details & Primary Action */}
           <div className="lg:col-span-5 flex flex-col justify-between">
             <div>
@@ -24,23 +24,23 @@ export default function LocationSection() {
                 <span className="text-[#172554]">BACIRO HEADQUARTERS</span>
               </div>
 
-              <h2 className="font-display font-black text-xl sm:text-2xl md:text-3xl text-[#172554] mt-2.5 tracking-tight">
+              <h2 className="font-display font-black text-2xl sm:text-3xl md:text-4xl text-[#172554] mt-3 tracking-tight">
                 LOKASI & JAM OPERASIONAL
               </h2>
-              <p className="text-[#475569] text-xs sm:text-sm mt-1.5 leading-relaxed">
+              <p className="text-[#475569] text-sm sm:text-base mt-2 leading-relaxed">
                 Lokasi strategis di pusat kota Yogyakarta, suasana tenang di
                 Baciro yang nyaman buat main game lama bareng teman.
               </p>
 
               {/* Address Card */}
-              <div className="mt-5 bg-[#F8FAFC] p-4 rounded-xl border-2 border-[#1B64B4]/15 shadow-sm">
-                <div className="flex items-start gap-3">
-                  <MapPin className="w-4 h-4 text-brand-orange shrink-0 mt-0.5" />
+              <div className="mt-6 bg-[#F8FAFC] p-5 sm:p-6 rounded-xl border-2 border-[#1B64B4]/15 shadow-sm">
+                <div className="flex items-start gap-3.5">
+                  <MapPin className="w-5 h-5 text-brand-orange shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="font-bold text-[#172554] text-xs sm:text-sm">
+                    <h4 className="font-bold text-[#172554] text-sm sm:text-base">
                       Alamat Lengkap:
                     </h4>
-                    <p className="text-xs text-[#334155] mt-1 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-[#334155] mt-1.5 leading-relaxed">
                       Jl. Soka no. 44 Baciro, Gondokusuman, Yogyakarta 55225
                     </p>
                   </div>
@@ -48,19 +48,19 @@ export default function LocationSection() {
               </div>
 
               {/* Hours Table */}
-              <div className="mt-3.5 bg-[#F8FAFC] p-4 rounded-xl border-2 border-[#1B64B4]/15 shadow-sm">
-                <h4 className="font-bold text-[#172554] text-sm mb-3 flex items-center gap-2">
+              <div className="mt-4 sm:mt-5 bg-[#F8FAFC] p-5 sm:p-6 rounded-xl border-2 border-[#1B64B4]/15 shadow-sm">
+                <h4 className="font-bold text-[#172554] text-sm sm:text-base mb-3.5 flex items-center gap-2">
                   <Clock className="w-4 h-4 text-brand-orange" />
                   <span>Jadwal Buka:</span>
                 </h4>
-                <div className="space-y-2 text-xs font-mono">
-                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center py-1.5 border-b border-[#1B64B4]/10 gap-1 sm:gap-2">
+                <div className="space-y-2.5 text-xs sm:text-sm font-mono">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center py-2 sm:py-2.5 border-b border-[#1B64B4]/10 gap-1 sm:gap-2">
                     <span className="text-[#475569]">Senin - Kamis (Coffee)</span>
                     <span className="text-[#172554] font-bold whitespace-nowrap">
                       07.00 - 00.00 WIB
                     </span>
                   </div>
-                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center py-1.5 border-b border-[#1B64B4]/10 gap-1 sm:gap-2">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center py-2 sm:py-2.5 border-b border-[#1B64B4]/10 gap-1 sm:gap-2">
                     <span className="text-[#475569]">
                       Senin - Kamis (Boardgame)
                     </span>
@@ -68,7 +68,7 @@ export default function LocationSection() {
                       10.00 - 23.00 WIB
                     </span>
                   </div>
-                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center py-1.5 bg-[#FFF0EB] border border-[#E84A27]/30 px-2.5 rounded text-[#E84A27] font-bold gap-1 sm:gap-2">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center py-2 sm:py-2.5 bg-[#FFF0EB] border border-[#E84A27]/30 px-3 rounded text-[#E84A27] font-bold gap-1 sm:gap-2">
                     <span className="whitespace-nowrap">Jumat - Minggu (Weekend)</span>
                     <span className="whitespace-nowrap inline-flex items-center gap-1.5">
                       <Clock className="w-3.5 h-3.5 shrink-0" />
@@ -79,32 +79,32 @@ export default function LocationSection() {
               </div>
 
               {/* Venue Facility Badges */}
-              <div className="mt-3.5 flex flex-wrap gap-2 text-xs font-mono">
-                <span className="inline-flex items-center gap-1.5 bg-white px-2.5 py-1.5 rounded-lg border border-[#1B64B4]/20 text-[#334155] text-[11px] shadow-xs">
-                  <Check className="w-3 h-3 text-[#1B64B4] shrink-0" />
+              <div className="mt-4 sm:mt-5 flex flex-wrap gap-2 text-xs font-mono">
+                <span className="inline-flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-[#1B64B4]/20 text-[#334155] text-xs shadow-xs">
+                  <Check className="w-3.5 h-3.5 text-[#1B64B4] shrink-0" />
                   <span>Free Wi-Fi Kencang</span>
                 </span>
-                <span className="inline-flex items-center gap-1.5 bg-white px-2.5 py-1.5 rounded-lg border border-[#1B64B4]/20 text-[#334155] text-[11px] shadow-xs">
-                  <Check className="w-3 h-3 text-[#1B64B4] shrink-0" />
+                <span className="inline-flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-[#1B64B4]/20 text-[#334155] text-xs shadow-xs">
+                  <Check className="w-3.5 h-3.5 text-[#1B64B4] shrink-0" />
                   <span>Colokan Banyak</span>
                 </span>
-                <span className="inline-flex items-center gap-1.5 bg-white px-2.5 py-1.5 rounded-lg border border-[#1B64B4]/20 text-[#334155] text-[11px] shadow-xs">
-                  <Check className="w-3 h-3 text-[#1B64B4] shrink-0" />
+                <span className="inline-flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-[#1B64B4]/20 text-[#334155] text-xs shadow-xs">
+                  <Check className="w-3.5 h-3.5 text-[#1B64B4] shrink-0" />
                   <span>Smoking & AC Area</span>
                 </span>
               </div>
             </div>
 
             {/* Primary Google Maps Direct Action Button */}
-            <div className="mt-5">
+            <div className="mt-6">
               <a
                 href="https://share.google/u0UPT7njRoXYm9kZc"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => soundEffects.playButtonClick()}
-                className="inline-flex items-center justify-center w-full gap-2 bg-brand-blue hover:bg-[#154E8E] text-white font-display font-bold py-2.5 sm:py-3 px-5 rounded border-2 border-[#1B64B4] shadow-brutal-orange transition-all text-xs tracking-wider uppercase whitespace-nowrap cursor-pointer hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none"
+                className="inline-flex items-center justify-center w-full gap-2 bg-brand-blue hover:bg-[#154E8E] text-white font-display font-bold py-3 sm:py-3.5 px-6 rounded border-2 border-[#1B64B4] shadow-brutal-orange transition-all text-xs sm:text-sm tracking-wider uppercase whitespace-nowrap cursor-pointer hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none"
               >
-                <Navigation className="w-3.5 h-3.5 shrink-0" />
+                <Navigation className="w-4 h-4 shrink-0" />
                 <span>BUKA DI GOOGLE MAPS</span>
               </a>
             </div>
@@ -112,7 +112,7 @@ export default function LocationSection() {
 
           {/* Right Column: Clean, Spacious Google Maps Viewport */}
           <div className="lg:col-span-7 flex flex-col">
-            <div className="h-full min-h-[380px] sm:min-h-[440px] lg:min-h-[480px] bg-white border-2 border-[#1B64B4]/25 rounded-xl overflow-hidden relative shadow-brutal-lightblue">
+            <div className="h-full min-h-[440px] sm:min-h-[520px] lg:min-h-[580px] bg-white border-2 border-[#1B64B4]/25 rounded-xl overflow-hidden relative shadow-brutal-lightblue">
               {/* Google Maps Embed Iframe - Clear and unobstructed */}
               <iframe
                 title="Google Maps Lokasi Gitgud Board Game & Cafe Baciro"

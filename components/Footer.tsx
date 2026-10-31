@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import Logo from "./Logo";
 import { Link as LinkIcon } from "lucide-react";
 import { soundEffects } from "@/lib/soundEffects";
 
@@ -27,17 +27,11 @@ function InstagramIcon({ className }: { className?: string }) {
 
 export default function Footer() {
   return (
-    <footer className="bg-[#F8FAFC] py-8 sm:py-10 px-4 lg:px-12 text-[#475569] text-xs font-mono border-t-2 border-[#1B64B4]/15">
+    <footer className="bg-[#F8FAFC] py-12 sm:py-16 px-4 lg:px-12 text-[#475569] text-xs font-mono border-t-2 border-[#1B64B4]/15">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-          <div className="h-10 px-3 py-1 bg-white rounded-xl border-2 border-brand-orange shadow-brutal-orange flex items-center justify-center shrink-0 w-fit">
-            <Image
-              src="/logo.png"
-              alt="Gitgud Board Game & Cafe"
-              width={120}
-              height={38}
-              className="h-6 w-auto object-contain"
-            />
+          <div className="shrink-0">
+            <Logo className="h-8 sm:h-9 w-auto" />
           </div>
           <div>
             <span className="text-[#172554] font-bold font-display text-sm tracking-wide flex items-center gap-1.5 whitespace-nowrap">

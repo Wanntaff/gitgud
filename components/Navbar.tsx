@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import Logo from "./Logo";
 import { MessageCircle, Menu as MenuIcon, X, Volume2, VolumeX } from "lucide-react";
 import MeepleIcon from "./MeepleIcon";
 import { soundEffects, useSoundSettings } from "@/lib/soundEffects";
@@ -377,9 +377,9 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b-2 border-[#1B64B4]/15 px-4 lg:px-12 py-2 sm:py-2.5 [transform:translateZ(0)] will-change-transform shadow-xs">
+    <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b-2 border-[#1B64B4]/15 px-4 lg:px-12 py-2.5 sm:py-3.5 [transform:translateZ(0)] will-change-transform shadow-xs">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
-        {/* Official Client Logo on branded light badge */}
+        {/* Official Client Logo as unboxed pure vector SVG */}
         <Link
           href="/"
           onClick={(e) => {
@@ -405,18 +405,10 @@ export default function Navbar() {
               window.history.pushState(null, "", "/");
             }
           }}
-          className="flex items-center group shrink-0"
+          className="flex items-center group shrink-0 py-0.5"
+          aria-label="Gitgud Board Game and Cafe - Beranda"
         >
-          <div className="h-9 sm:h-10 px-2.5 py-1 bg-white hover:bg-[#F0F7FF] rounded-xl border-2 border-brand-orange shadow-brutal-orange flex items-center justify-center transition-all group-hover:-translate-y-0.5 group-hover:shadow-brutal-pink">
-            <Image
-              src="/logo.png"
-              alt="Gitgud Boardgame and Cafe"
-              width={130}
-              height={40}
-              className="h-6 sm:h-7 w-auto object-contain"
-              priority
-            />
-          </div>
+          <Logo className="h-8 sm:h-9 md:h-10 w-auto" priority />
         </Link>
 
         {/* Desktop Links - Tabletop Board Track Active State */}
