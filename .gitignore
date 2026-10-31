@@ -49,5 +49,10 @@ index.html
 test-*
 orig-*
 *-crop.png
+cand2-*.png
+device-*.png
+final-*.png
+hero-*.png
+section-*.png
 scripts/*.png
 scripts/*.svg

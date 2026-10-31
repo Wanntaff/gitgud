@@ -21,13 +21,13 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden bg-gradient-to-b from-white via-[#F8FAFC] to-[#F0F7FF] py-3 sm:py-3.5 lg:py-3.5 xl:py-4 px-4 sm:px-6 lg:px-12 border-b-2 border-[#1B64B4]/15"
+      className="relative overflow-hidden bg-gradient-to-b from-white via-[#F8FAFC] to-[#F0F7FF] min-h-[calc(100vh-96px)] flex flex-col justify-center py-6 sm:py-8 lg:py-8 px-4 sm:px-6 lg:px-12 border-b-2 border-[#1B64B4]/15"
     >
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-7 xl:gap-8 items-center">
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 xl:gap-10 items-center">
         {/* Kolom Kiri: Copywriting & Hierarki */}
-        <div className="lg:col-span-7 flex flex-col gap-2.5 sm:gap-3 lg:gap-2.5 xl:gap-3 z-10">
+        <div className="lg:col-span-7 flex flex-col gap-3 sm:gap-3.5 lg:gap-3.5 xl:gap-4 z-10">
           {/* Pill Badge Atas */}
-          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-white border-2 border-[#1B64B4]/25 text-xs text-[#172554] font-mono w-fit shadow-xs">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border-2 border-[#1B64B4]/25 text-xs text-[#172554] font-mono w-fit shadow-xs">
             <MapPin className="w-3.5 h-3.5 text-[#E84A27] shrink-0" />
             <span className="font-bold text-[#172554]">Baciro, Jogja</span>
             <span className="w-1.5 h-1.5 rounded-full bg-[#F7B5CB]" />
@@ -35,7 +35,7 @@ export default function HeroSection() {
           </div>
 
           {/* Headline Utama with Squiggle Wave Underline */}
-          <h1 className="font-display font-black text-2xl sm:text-3xl lg:text-[1.55rem] xl:text-[1.65rem] leading-[1.2] tracking-tight text-[#172554]">
+          <h1 className="font-display font-black text-3xl sm:text-4xl md:text-[2.5rem] lg:text-[2.25rem] xl:text-[2.75rem] leading-[1.15] tracking-tight text-[#172554]">
             Bosan Nongkrong Cuma Main HP?{" "}
             <br className="hidden lg:inline" />
             Saatnya{" "}
@@ -60,7 +60,7 @@ export default function HeroSection() {
           </h1>
 
           {/* Subheadline (Bahasa Indonesia Santai) */}
-          <p className="text-[#334155] text-xs sm:text-[13px] lg:text-[13px] xl:text-[14px] leading-relaxed max-w-xl font-sans">
+          <p className="text-[#334155] text-xs sm:text-sm lg:text-sm xl:text-[15px] leading-relaxed max-w-xl font-sans">
             Nongkrong bukan sekadar scrolling HP. Di{" "}
             <strong className="text-[#172554] font-bold">Gitgud</strong>, kamu
             bisa duel taktik, tuduh temanmu di{" "}
@@ -76,7 +76,7 @@ export default function HeroSection() {
             <a
               href="#games"
               onClick={(e) => scrollTo(e, "games")}
-              className="bg-[#E84A27] hover:bg-[#D83B13] active:scale-[0.98] text-white px-4.5 py-2 sm:px-5 sm:py-2.5 rounded-md font-display font-bold text-xs tracking-wide transition-all flex items-center gap-2 shadow-[2px_2px_0px_0px_#1B64B4] border-2 border-[#1B64B4] cursor-pointer"
+              className="bg-[#E84A27] hover:bg-[#D83B13] active:scale-[0.98] text-white px-5 py-2.5 sm:px-5.5 sm:py-2.5 rounded-md font-display font-bold text-xs sm:text-sm tracking-wide transition-all flex items-center gap-2 shadow-[2px_2px_0px_0px_#1B64B4] border-2 border-[#1B64B4] cursor-pointer"
             >
               <Dices className="w-4 h-4 shrink-0" />
               <span>Jelajahi 300+ Koleksi Game</span>
@@ -84,7 +84,7 @@ export default function HeroSection() {
             <a
               href="#events"
               onClick={(e) => scrollTo(e, "events")}
-              className="bg-white hover:bg-[#FFF5F8] border-2 border-brand-pink hover:border-[#E84A27] active:scale-[0.98] text-[#172554] px-4.5 py-2 sm:px-5 sm:py-2.5 rounded-md font-display font-bold text-xs tracking-wide transition-all flex items-center gap-2 shadow-[2px_2px_0px_0px_#F7B5CB] cursor-pointer"
+              className="bg-white hover:bg-[#FFF5F8] border-2 border-brand-pink hover:border-[#E84A27] active:scale-[0.98] text-[#172554] px-5 py-2.5 sm:px-5.5 sm:py-2.5 rounded-md font-display font-bold text-xs sm:text-sm tracking-wide transition-all flex items-center gap-2 shadow-[2px_2px_0px_0px_#F7B5CB] cursor-pointer"
             >
               <CalendarDays className="w-4 h-4 text-[#C2185B] shrink-0" />
               <span>Event BOTC Kamis</span>
@@ -94,7 +94,7 @@ export default function HeroSection() {
           {/* Quick Stats Bar */}
           <div
             data-testid="hero-stats"
-            className="grid grid-cols-3 grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)_minmax(0,1fr)] gap-2.5 sm:gap-4 lg:gap-4 pt-2.5 sm:pt-3 border-t-2 border-[#1B64B4]/15 w-full max-w-xl"
+            className="grid grid-cols-3 grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)_minmax(0,1fr)] gap-2.5 sm:gap-4 lg:gap-4 pt-3 border-t-2 border-[#1B64B4]/15 w-full max-w-xl"
           >
             <div className="min-w-0">
               <div className="font-display font-black text-xl sm:text-2xl lg:text-[1.65rem] xl:text-[1.85rem] text-[#E84A27] tracking-tight whitespace-nowrap">
@@ -124,7 +124,7 @@ export default function HeroSection() {
         </div>
 
         {/* Kolom Kanan: Gud Game Picker & Solo Player Banner */}
-        <div className="lg:col-span-5 flex flex-col gap-2 sm:gap-2.5 z-10 relative">
+        <div className="lg:col-span-5 flex flex-col gap-2.5 sm:gap-3 z-10 relative">
           {/* Ambient Warm Glow behind right card */}
           <div
             className="absolute -top-12 -bottom-12 -left-12 -right-12 sm:-inset-16 bg-[radial-gradient(circle,rgba(232,74,39,0.08)_0%,transparent_70%)] pointer-events-none rounded-full blur-3xl -z-10"

@@ -220,7 +220,7 @@ export default function GameCatalog() {
             <span className="text-brand-lightblue select-none">•</span>
             <span className="text-[#172554]">300+ VAULT ARCHIVE</span>
           </div>
-          <h2 className="font-display font-black text-2xl sm:text-3xl md:text-4xl text-[#172554] mt-3 tracking-tight leading-tight">
+          <h2 className="font-display font-black text-2xl sm:text-[1.75rem] md:text-3xl lg:text-[2rem] xl:text-[2.15rem] text-[#172554] mt-3 tracking-tight leading-tight">
             BEBERAPA GAME POPULER KAMI
           </h2>
           <p className="text-[#475569] text-sm sm:text-base mt-2">

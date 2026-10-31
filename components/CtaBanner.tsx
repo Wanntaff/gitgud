@@ -7,7 +7,7 @@ export default function CtaBanner() {
     <section className="py-14 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-12 bg-brand-orange text-white border-b-2 border-[#D83B13]">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
         <div>
-          <h2 className="font-display font-black text-2xl sm:text-3xl md:text-4xl tracking-tight leading-tight">
+          <h2 className="font-display font-black text-2xl sm:text-[1.75rem] md:text-3xl lg:text-[2rem] xl:text-[2.15rem] tracking-tight leading-tight">
             SIAP NONGKRONG DAN BIKIN KENANGAN BARU?
           </h2>
           <p className="font-medium text-sm sm:text-base mt-2.5 text-white/90 max-w-xl">

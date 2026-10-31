@@ -46,7 +46,7 @@ export default function HowToPlaySection() {
                 <span className="text-brand-lightblue select-none">•</span>
                 <span className="text-[#172554]">NEWBIE GUIDE</span>
               </div>
-              <h2 className="font-display font-black text-2xl sm:text-3xl md:text-4xl text-[#172554] mt-3 tracking-tight leading-tight">
+              <h2 className="font-display font-black text-2xl sm:text-[1.75rem] md:text-3xl lg:text-[2rem] xl:text-[2.15rem] text-[#172554] mt-3 tracking-tight leading-tight">
                 Gimana Cara Main di Gitgud?
               </h2>
             </div>

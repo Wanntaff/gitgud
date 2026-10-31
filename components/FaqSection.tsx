@@ -72,7 +72,7 @@ export default function FaqSection() {
             <span className="text-[#172554]">FAQ & GAME PROTOCOLS</span>
           </div>
 
-          <h2 className="font-display font-black text-2xl sm:text-3xl md:text-4xl text-[#172554] tracking-tight mt-3">
+          <h2 className="font-display font-black text-2xl sm:text-[1.75rem] md:text-3xl lg:text-[2rem] xl:text-[2.15rem] text-[#172554] tracking-tight mt-3">
             PERTANYAAN SERING DITANYAKAN
           </h2>
           <p className="text-[#475569] text-sm sm:text-base mt-2.5 max-w-xl">

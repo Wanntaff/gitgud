@@ -104,7 +104,7 @@ export default function EventsSection() {
                 <span className="text-brand-pink select-none">•</span>
                 <span className="text-[#172554]">COMMUNITY SESSIONS</span>
               </div>
-              <h2 className="font-display font-black text-2xl sm:text-3xl md:text-4xl text-[#172554] mt-3 tracking-tight leading-tight">
+              <h2 className="font-display font-black text-2xl sm:text-[1.75rem] md:text-3xl lg:text-[2rem] xl:text-[2.15rem] text-[#172554] mt-3 tracking-tight leading-tight">
                 SELALU ADA KESERUAN TIAP PEKAN
               </h2>
               <p className="text-[#475569] text-sm sm:text-base mt-2">
