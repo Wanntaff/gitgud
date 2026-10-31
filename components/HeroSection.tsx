@@ -21,11 +21,11 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden bg-gradient-to-b from-white via-[#F8FAFC] to-[#F0F7FF] min-h-[calc(100vh-96px)] flex flex-col justify-center py-6 sm:py-8 lg:py-8 px-4 sm:px-6 lg:px-12 border-b-2 border-[#1B64B4]/15"
+      className="relative overflow-hidden bg-gradient-to-b from-white via-[#F8FAFC] to-[#F0F7FF] min-h-[calc(100vh-96px)] flex flex-col justify-center py-8 sm:py-10 lg:py-10 xl:py-12 px-4 sm:px-6 lg:px-12 border-b-2 border-[#1B64B4]/15"
     >
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 xl:gap-10 items-center">
         {/* Kolom Kiri: Copywriting & Hierarki */}
-        <div className="lg:col-span-7 flex flex-col gap-3 sm:gap-3.5 lg:gap-3.5 xl:gap-4 z-10">
+        <div className="lg:col-span-7 flex flex-col gap-4 sm:gap-5 lg:gap-5 xl:gap-5 z-10">
           {/* Pill Badge Atas */}
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border-2 border-[#1B64B4]/25 text-xs text-[#172554] font-mono w-fit shadow-xs">
             <MapPin className="w-3.5 h-3.5 text-[#E84A27] shrink-0" />
@@ -60,7 +60,7 @@ export default function HeroSection() {
           </h1>
 
           {/* Subheadline (Bahasa Indonesia Santai) */}
-          <p className="text-[#334155] text-xs sm:text-sm lg:text-sm xl:text-[15px] leading-relaxed max-w-xl font-sans">
+          <p className="text-[#334155] text-sm sm:text-[15px] lg:text-[15px] xl:text-base leading-relaxed max-w-xl font-sans">
             Nongkrong bukan sekadar scrolling HP. Di{" "}
             <strong className="text-[#172554] font-bold">Gitgud</strong>, kamu
             bisa duel taktik, tuduh temanmu di{" "}
@@ -72,7 +72,7 @@ export default function HeroSection() {
           </p>
 
           {/* Tombol CTA */}
-          <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 pt-0.5 sm:pt-1">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-3.5 pt-1">
             <a
               href="#games"
               onClick={(e) => scrollTo(e, "games")}
@@ -94,7 +94,7 @@ export default function HeroSection() {
           {/* Quick Stats Bar */}
           <div
             data-testid="hero-stats"
-            className="grid grid-cols-3 grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)_minmax(0,1fr)] gap-2.5 sm:gap-4 lg:gap-4 pt-3 border-t-2 border-[#1B64B4]/15 w-full max-w-xl"
+            className="grid grid-cols-3 grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)_minmax(0,1fr)] gap-3 sm:gap-4 lg:gap-5 pt-4 sm:pt-5 mt-1 border-t-2 border-[#1B64B4]/15 w-full max-w-xl"
           >
             <div className="min-w-0">
               <div className="font-display font-black text-xl sm:text-2xl lg:text-[1.65rem] xl:text-[1.85rem] text-[#E84A27] tracking-tight whitespace-nowrap">
@@ -124,7 +124,7 @@ export default function HeroSection() {
         </div>
 
         {/* Kolom Kanan: Gud Game Picker & Solo Player Banner */}
-        <div className="lg:col-span-5 flex flex-col gap-2.5 sm:gap-3 z-10 relative">
+        <div className="lg:col-span-5 flex flex-col gap-3 sm:gap-3.5 z-10 relative">
           {/* Ambient Warm Glow behind right card */}
           <div
             className="absolute -top-12 -bottom-12 -left-12 -right-12 sm:-inset-16 bg-[radial-gradient(circle,rgba(232,74,39,0.08)_0%,transparent_70%)] pointer-events-none rounded-full blur-3xl -z-10"
@@ -134,7 +134,7 @@ export default function HeroSection() {
           <DicePicker />
 
           {/* Solo Player Banner di Bawah Widget */}
-          <div className="bg-white border-2 border-[#1B64B4]/20 border-l-4 border-l-[#E84A27] rounded-xl p-2 sm:p-2.5 flex items-center gap-2.5 shadow-xs">
+          <div className="bg-white border-2 border-[#1B64B4]/20 border-l-4 border-l-[#E84A27] rounded-xl p-2.5 sm:p-3 flex items-center gap-2.5 shadow-xs">
             <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-md bg-[#FFF0EB] border border-[#E84A27]/30 flex items-center justify-center text-[#E84A27] shrink-0">
               <UserCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </div>
