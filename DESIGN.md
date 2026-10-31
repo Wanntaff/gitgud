@@ -1,0 +1,1 @@
+Gunakan TailwindCSS. Dilarang menggunakan gradient warna-warni yang mencolok. Hindari drop shadow tebal (gunakan shadow-sm atau hapus sama sekali). Untuk tabel data, wajib gunakan fluid layout dan hilangkan horizontal scrolling (zero horizontal overflow). Desain harus terlihat seperti dashboard enterprise yang clean dan minimalis.

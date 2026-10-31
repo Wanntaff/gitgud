@@ -1,26 +1,217 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-brand-orange: #E84A27;
+  --color-brand-orange-hover: #D83B13;
+  --color-brand-orange-light: #FF6842;
+  --color-brand-blue: #1B64B4;
+  --color-brand-lightblue: #5BB5F8;
+  --color-brand-pink: #F7B5CB;
+  --color-brand-pink-dark: #FF7B9E;
+  --color-brand-cobalt: #172554;
+  --color-brand-dark: #FFFFFF;
+  --color-brand-darker: #F8FAFC;
+  --color-brand-cream: #172554;
+  --color-brand-card: #FFFFFF;
+
+  /* Aliases for backwards compatibility */
+  --color-brand-yellow: #E84A27;
+  --color-brand-teal: #5BB5F8;
+
+  --font-display: var(--font-syne), sans-serif;
+  --font-mono: var(--font-space-grotesk), monospace;
+  --font-sans: var(--font-plus-jakarta-sans), sans-serif;
+
+  --shadow-brutal-orange: 4px 4px 0px 0px #E84A27;
+  --shadow-brutal-pink: 4px 4px 0px 0px #F7B5CB;
+  --shadow-brutal-lightblue: 4px 4px 0px 0px #5BB5F8;
+  --shadow-brutal-blue: 4px 4px 0px 0px #1B64B4;
+  --shadow-brutal-black: 4px 4px 0px 0px #1B64B4;
+  --shadow-brutal-white: 4px 4px 0px 0px #FFFFFF;
+
+  /* Alias shadows */
+  --shadow-brutal-yellow: 4px 4px 0px 0px #E84A27;
+  --shadow-brutal-teal: 4px 4px 0px 0px #5BB5F8;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.border-3 {
+  border-style: solid;
+  border-width: 3px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Subtle retro checkerboard pattern */
+.bg-checker {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(27, 100, 180, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(27, 100, 180, 0.06) 1px, transparent 1px);
+}
+
+.bg-checker-dense {
+  background-size: 16px 16px;
+  background-image: 
+    linear-gradient(45deg, #F0F7FF 25%, transparent 25%), 
+    linear-gradient(-45deg, #F0F7FF 25%, transparent 25%), 
+    linear-gradient(45deg, transparent 75%, #F0F7FF 75%), 
+    linear-gradient(-45deg, transparent 75%, #F0F7FF 75%);
+}
+
+.sticker-rotate-left {
+  transform: rotate(-2deg);
+}
+
+.sticker-rotate-right {
+  transform: rotate(3deg);
+}
+
+@keyframes dice-shake {
+  0% { transform: rotate(0deg) scale(1); }
+  20% { transform: rotate(-15deg) scale(1.1); }
+  40% { transform: rotate(15deg) scale(1.1); }
+  60% { transform: rotate(-10deg) scale(1.05); }
+  80% { transform: rotate(10deg) scale(1.05); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+.animate-shake {
+  animation: dice-shake 0.4s ease-in-out infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  contain: layout paint;
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.animate-fade-in-up {
+  animation: fade-in-up 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
+/* Tabletop Cafe Vibe Equalizer Wave Animations (Foto 5 Redesign) - GPU Accelerated scaleY */
+@keyframes vibe-wave-1 {
+  0%, 100% { transform: scaleY(0.35); }
+  50% { transform: scaleY(1); }
+}
+@keyframes vibe-wave-2 {
+  0%, 100% { transform: scaleY(0.9); }
+  50% { transform: scaleY(0.3); }
+}
+@keyframes vibe-wave-3 {
+  0%, 100% { transform: scaleY(0.45); }
+  50% { transform: scaleY(1); }
+}
+@keyframes vibe-wave-4 {
+  0%, 100% { transform: scaleY(0.85); }
+  50% { transform: scaleY(0.25); }
+}
+
+.animate-vibe-1 {
+  transform-origin: bottom;
+  animation: vibe-wave-1 1.1s ease-in-out infinite;
+  will-change: transform;
+  transform: translateZ(0);
+}
+.animate-vibe-2 {
+  transform-origin: bottom;
+  animation: vibe-wave-2 0.8s ease-in-out infinite;
+  will-change: transform;
+  transform: translateZ(0);
+}
+.animate-vibe-3 {
+  transform-origin: bottom;
+  animation: vibe-wave-3 1.25s ease-in-out infinite;
+  will-change: transform;
+  transform: translateZ(0);
+}
+.animate-vibe-4 {
+  transform-origin: bottom;
+  animation: vibe-wave-4 0.95s ease-in-out infinite;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Ambient Tabletop & Cafe Theme Keyframes */
+@keyframes slow-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-slow-spin {
+  animation: slow-spin 12s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+@keyframes coffee-steam {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2.5px); }
+}
+
+.animate-steam {
+  animation: coffee-steam 2.2s ease-in-out infinite;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.04); }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 3s ease-in-out infinite;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+@keyframes badge-shimmer {
+  0% { transform: translateX(-150%); }
+  100% { transform: translateX(250%); }
+}
+
+.animate-shimmer {
+  animation: badge-shimmer 4s ease-in-out infinite;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Modern High-Performance Content Visibility Containment */
+.content-visibility-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 700px;
+}
+
+@keyframes flyer-flip {
+  0% {
+    opacity: 0;
+    transform: perspective(800px) rotateX(6deg) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(800px) rotateX(0deg) translateY(0);
+  }
+}
+
+.animate-flyer-flip {
+  animation: flyer-flip 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+

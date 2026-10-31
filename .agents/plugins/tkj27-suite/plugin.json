@@ -1,0 +1,11 @@
+{
+  "name": "tkj27-suite",
+  "displayName": "TKJ 27 Class Profile Suite",
+  "description": "Unified workspace plugin bundling anti-ai-slop, modern-ui, ui-ux-pro-max, and component-reference-design skills, Next.js modern guidelines, git safety rules, and MCP servers.",
+  "version": "1.0.0",
+  "suggestedPrompts": [
+    "Periksa kepatuhan desain anti-AI slop pada layout dan komponen",
+    "Jelaskan arsitektur layout dan komponen yang digunakan",
+    "Bantu implementasi komponen Next.js modern sesuai panduan"
+  ]
+}
