@@ -377,7 +377,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b-2 border-[#1B64B4]/15 px-4 lg:px-12 py-2.5 sm:py-3.5 [transform:translateZ(0)] will-change-transform shadow-xs">
+    <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b-2 border-[#1B64B4]/15 px-4 lg:px-12 py-2 sm:py-2.5 [transform:translateZ(0)] will-change-transform shadow-xs">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
         {/* Official Client Logo as unboxed pure vector SVG */}
         <Link
@@ -408,7 +408,7 @@ export default function Navbar() {
           className="flex items-center group shrink-0 py-0.5"
           aria-label="Gitgud Board Game and Cafe - Beranda"
         >
-          <Logo className="h-8 sm:h-9 md:h-10 w-auto" priority />
+          <Logo className="h-8 sm:h-8.5 md:h-9 w-auto" priority />
         </Link>
 
         {/* Desktop Links - Tabletop Board Track Active State */}
