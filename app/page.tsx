@@ -14,20 +14,22 @@ import MobileQuickBar from "@/components/MobileQuickBar";
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col bg-white overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-white overflow-x-clip">
       <AnnouncementTicker />
       <Navbar />
-      <HeroSection />
-      <AboutSection />
-      <HowToPlaySection />
-      <GameCatalog />
-      <EventsSection />
-      <MenuSection />
-      <FaqSection />
-      <LocationSection />
-      <CtaBanner />
+      <main className="flex-1">
+        <HeroSection />
+        <AboutSection />
+        <HowToPlaySection />
+        <GameCatalog />
+        <EventsSection />
+        <MenuSection />
+        <FaqSection />
+        <LocationSection />
+        <CtaBanner />
+      </main>
       <Footer />
       <MobileQuickBar />
-    </main>
+    </div>
   );
 }

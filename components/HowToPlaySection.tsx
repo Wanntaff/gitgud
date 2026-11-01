@@ -31,7 +31,7 @@ export default function HowToPlaySection() {
   return (
     <section
       id="how-to-play"
-      className="scroll-mt-16 content-visibility-auto py-8 sm:py-20 lg:py-24 px-4 lg:px-12 bg-[#F8FAFC] border-b-2 border-[#1B64B4]/15"
+      className="scroll-mt-20 py-8 sm:py-20 lg:py-24 px-4 lg:px-12 bg-[#F8FAFC] border-b-2 border-[#1B64B4]/15"
     >
       <div className="max-w-7xl mx-auto w-full">
         <div className="border-2 border-[#1B64B4]/25 bg-white rounded-2xl p-4 sm:p-8 md:p-10 relative shadow-sm overflow-hidden">

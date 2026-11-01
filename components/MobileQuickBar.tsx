@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { MessageCircle, ArrowUp, Dices, Utensils } from "lucide-react";
+import { MessageCircle, Dices, Utensils, MapPin } from "lucide-react";
 import { soundEffects } from "@/lib/soundEffects";
 
 export default function MobileQuickBar() {
@@ -13,7 +13,7 @@ export default function MobileQuickBar() {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           ticking = false;
-          // Show quick bar once scrolled past hero
+          // Tampilkan bar setelah user scroll melewati hero section
           setVisible(window.scrollY > 320);
         });
         ticking = true;
@@ -25,69 +25,68 @@ export default function MobileQuickBar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollTo = (sectionId: string) => {
+  const jumpTo = (sectionId: string) => {
     soundEffects.playButtonClick();
     const el = document.getElementById(sectionId);
     if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      const nav = document.querySelector("nav");
+      const offset = nav ? nav.offsetHeight + 8 : 72;
+      const top = el.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
     }
-  };
-
-  const scrollToTop = () => {
-    soundEffects.playTileTap();
-    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   if (!visible) return null;
 
   return (
     <aside
-      aria-label="Aksi Cepat Mobile"
-      className="fixed bottom-3 inset-x-3 z-40 md:hidden animate-fade-in-up"
+      aria-label="Navigasi Cepat Mobile"
+      className="fixed bottom-0 inset-x-0 z-40 md:hidden animate-fade-in-up"
     >
-      <div className="bg-white/95 backdrop-blur-md border-2 border-[#1B64B4]/25 rounded-2xl p-2 shadow-[0_8px_24px_-4px_rgba(27,100,180,0.22)] flex items-center justify-between gap-1.5 pb-[max(0.5rem,env(safe-area-inset-bottom))]">
-        {/* Quick Jump: Game Catalog */}
-        <button
-          type="button"
-          onClick={() => scrollTo("games")}
-          className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-xl bg-[#F0F7FF] hover:bg-[#E1EFFF] text-[#1B64B4] border border-[#1B64B4]/20 font-mono text-[11px] font-bold transition-all active:scale-95 cursor-pointer truncate"
-        >
-          <Dices className="w-3.5 h-3.5 shrink-0 text-[#1B64B4]" />
-          <span className="truncate">362 Game</span>
-        </button>
+      <div className="bg-white/95 backdrop-blur-md border-t border-[#1B64B4]/15 shadow-[0_-4px_20px_rgba(0,0,0,0.06)] px-3 pt-2 pb-[max(0.6rem,env(safe-area-inset-bottom))]">
+        <div className="flex items-center justify-between gap-1.5 max-w-sm mx-auto">
+          {/* Quick Jump: Game Catalog */}
+          <button
+            type="button"
+            onClick={() => jumpTo("games")}
+            className="flex-1 flex flex-col items-center justify-center py-1 px-1 rounded-lg text-[#475569] hover:text-[#1B64B4] active:bg-[#F0F7FF] transition-colors cursor-pointer"
+          >
+            <Dices className="w-5 h-5 mb-0.5 text-[#1B64B4]" />
+            <span className="font-mono text-[10px] font-bold tracking-tight">Game</span>
+          </button>
 
-        {/* Quick Jump: Menu Cafe */}
-        <button
-          type="button"
-          onClick={() => scrollTo("menu")}
-          className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-xl bg-[#FFF5F2] hover:bg-[#FFEBE5] text-[#E84A27] border border-brand-orange/30 font-mono text-[11px] font-bold transition-all active:scale-95 cursor-pointer truncate"
-        >
-          <Utensils className="w-3.5 h-3.5 shrink-0 text-[#E84A27]" />
-          <span className="truncate">Menu Cafe</span>
-        </button>
+          {/* Quick Jump: Menu Cafe */}
+          <button
+            type="button"
+            onClick={() => jumpTo("menu")}
+            className="flex-1 flex flex-col items-center justify-center py-1 px-1 rounded-lg text-[#475569] hover:text-[#E84A27] active:bg-[#FFF5F2] transition-colors cursor-pointer"
+          >
+            <Utensils className="w-5 h-5 mb-0.5 text-[#E84A27]" />
+            <span className="font-mono text-[10px] font-bold tracking-tight">Menu</span>
+          </button>
 
-        {/* Primary Action: WhatsApp Reservation */}
-        <a
-          href="https://wa.me/6285117484483?text=Halo%20Gitgud,%20mau%20reservasi%20meja%20boardgame%20dong!"
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={() => soundEffects.playSuccessChime()}
-          className="flex-[1.35] inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-brand-orange hover:bg-brand-orange-hover text-white font-display font-black text-xs tracking-wide shadow-[2px_2px_0px_0px_#1B64B4] border border-[#1B64B4] transition-all active:scale-95 cursor-pointer truncate whitespace-nowrap"
-        >
-          <MessageCircle className="w-3.5 h-3.5 shrink-0" />
-          <span>RESERVASI</span>
-        </a>
+          {/* Quick Jump: Lokasi & Jam Buka */}
+          <button
+            type="button"
+            onClick={() => jumpTo("location")}
+            className="flex-1 flex flex-col items-center justify-center py-1 px-1 rounded-lg text-[#475569] hover:text-[#172554] active:bg-[#F0F7FF] transition-colors cursor-pointer"
+          >
+            <MapPin className="w-5 h-5 mb-0.5 text-[#172554]" />
+            <span className="font-mono text-[10px] font-bold tracking-tight">Lokasi</span>
+          </button>
 
-        {/* Back to top icon button */}
-        <button
-          type="button"
-          onClick={scrollToTop}
-          aria-label="Kembali ke atas"
-          title="Kembali ke atas"
-          className="p-2 rounded-xl bg-[#F8FAFC] hover:bg-[#F0F7FF] text-[#64748B] hover:text-[#172554] border border-[#1B64B4]/20 transition-all active:scale-90 cursor-pointer shrink-0"
-        >
-          <ArrowUp className="w-4 h-4" />
-        </button>
+          {/* Primary Action: WhatsApp Reservation Pill */}
+          <a
+            href="https://wa.me/6285117484483?text=Halo%20Gitgud,%20mau%20reservasi%20meja%20boardgame%20dong!"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => soundEffects.playSuccessChime()}
+            className="flex-[1.4] inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-brand-orange hover:bg-brand-orange-hover text-white font-display font-black text-xs tracking-wide shadow-xs border border-[#D83B13] active:scale-95 transition-all cursor-pointer whitespace-nowrap"
+          >
+            <MessageCircle className="w-4 h-4 shrink-0" />
+            <span>RESERVASI</span>
+          </a>
+        </div>
       </div>
     </aside>
   );

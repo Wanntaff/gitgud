@@ -317,14 +317,17 @@ export default function GameCatalog() {
     setDisplayCount(ITEMS_PER_PAGE);
     const el = document.getElementById("games");
     if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      const nav = document.querySelector("nav");
+      const offset = nav ? nav.offsetHeight + 8 : 72;
+      const top = el.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
     }
   };
 
   return (
     <section
       id="games"
-      className="scroll-mt-16 content-visibility-auto py-8 sm:py-20 lg:py-24 px-4 lg:px-12 bg-white border-b-2 border-[#1B64B4]/15"
+      className="scroll-mt-20 py-8 sm:py-20 lg:py-24 px-4 lg:px-12 bg-white border-b-2 border-[#1B64B4]/15"
     >
       <div className="max-w-7xl mx-auto w-full">
         {/* Section Header */}

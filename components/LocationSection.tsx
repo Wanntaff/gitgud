@@ -7,7 +7,7 @@ export default function LocationSection() {
   return (
     <section
       id="location"
-      className="scroll-mt-16 content-visibility-auto py-8 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-12 bg-white border-b-2 border-[#1B64B4]/15"
+      className="scroll-mt-20 py-8 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-12 bg-white border-b-2 border-[#1B64B4]/15"
     >
       <div className="max-w-7xl mx-auto w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-stretch">

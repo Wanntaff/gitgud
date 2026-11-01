@@ -151,7 +151,11 @@ export default function Navbar() {
           if (navOrder.includes(id)) {
             applyActiveSection(id);
           }
-          targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
+          const nav = document.querySelector("nav");
+          const offset = nav ? nav.offsetHeight + 8 : 72;
+          const top =
+            targetEl.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
         }, 150);
       }
     }
@@ -371,7 +375,11 @@ export default function Navbar() {
 
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
+      const nav = document.querySelector("nav");
+      const offset = nav ? nav.offsetHeight + 8 : 72;
+      const top =
+        element.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
       window.history.pushState(null, "", `#${sectionId}`);
     }
   };
