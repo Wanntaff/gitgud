@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useRef } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
 import {
   Coffee,
   Utensils,
@@ -510,6 +510,18 @@ export default function MenuSection() {
   const [onlyRecommended, setOnlyRecommended] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [itemsPerPage, setItemsPerPage] = useState<number>(ITEMS_PER_PAGE);
+
+  // Dynamically update mobile items per page with resize/orientation listener
+  useEffect(() => {
+    const mql = window.matchMedia("(max-width: 767px)");
+    const update = () => {
+      setItemsPerPage(mql.matches ? 6 : ITEMS_PER_PAGE);
+    };
+    update();
+    mql.addEventListener("change", update);
+    return () => mql.removeEventListener("change", update);
+  }, []);
 
   const menuGridRef = useRef<HTMLDivElement>(null);
 
@@ -573,16 +585,16 @@ export default function MenuSection() {
   }, [activeSide, selectedSubcategory, onlyRecommended, searchQuery]);
 
   // Pagination calculations
-  const totalPages = Math.max(1, Math.ceil(filteredItems.length / ITEMS_PER_PAGE));
+  const totalPages = Math.max(1, Math.ceil(filteredItems.length / itemsPerPage));
   const safeCurrentPage = Math.min(currentPage, totalPages);
 
   const paginatedItems = useMemo(() => {
-    const startIndex = (safeCurrentPage - 1) * ITEMS_PER_PAGE;
-    return filteredItems.slice(startIndex, startIndex + ITEMS_PER_PAGE);
-  }, [filteredItems, safeCurrentPage]);
+    const startIndex = (safeCurrentPage - 1) * itemsPerPage;
+    return filteredItems.slice(startIndex, startIndex + itemsPerPage);
+  }, [filteredItems, safeCurrentPage, itemsPerPage]);
 
-  const startItem = (safeCurrentPage - 1) * ITEMS_PER_PAGE + 1;
-  const endItem = Math.min(safeCurrentPage * ITEMS_PER_PAGE, filteredItems.length);
+  const startItem = (safeCurrentPage - 1) * itemsPerPage + 1;
+  const endItem = Math.min(safeCurrentPage * itemsPerPage, filteredItems.length);
 
   const goToPage = (page: number) => {
     const targetPage = Math.max(1, Math.min(page, totalPages));
@@ -617,11 +629,11 @@ export default function MenuSection() {
   return (
     <section
       id="menu"
-      className="scroll-mt-16 content-visibility-auto py-16 sm:py-20 lg:py-24 px-4 lg:px-12 bg-white border-b-2 border-[#1B64B4]/15"
+      className="scroll-mt-16 content-visibility-auto py-8 sm:py-20 lg:py-24 px-4 lg:px-12 bg-white border-b-2 border-[#1B64B4]/15"
     >
       <div className="max-w-7xl mx-auto w-full">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
+        <div className="text-center max-w-3xl mx-auto mb-5 sm:mb-10">
           {/* Creative Tabletop Cafe Token Coaster Chip */}
           <div className="inline-flex items-center gap-2 p-1 pr-3.5 bg-[#FFF5F2] border-2 border-brand-orange text-brand-orange rounded-full font-mono text-[11px] sm:text-xs font-black tracking-wider uppercase shadow-[2.5px_2.5px_0px_0px_#E84A27] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-300 group cursor-default">
             <span className="w-6 h-6 rounded-full bg-brand-orange text-white flex items-center justify-center shrink-0 border border-brand-orange shadow-xs group-hover:rotate-12 transition-transform">
@@ -825,10 +837,10 @@ export default function MenuSection() {
 
         {/* Featured Munch of the Day & Specialty Highlight Banner */}
         {activeSide === "hungry" ? (
-          <div className="mb-8 bg-gradient-to-r from-[#FFF5F2] via-white to-[#FFF5F2] p-4 sm:p-5 rounded-xl border-2 border-brand-orange/40 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 animate-fade-in-up">
+          <div className="mb-6 sm:mb-8 bg-gradient-to-r from-[#FFF5F2] via-white to-[#FFF5F2] p-3.5 sm:p-5 rounded-xl border-2 border-brand-orange/40 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 animate-fade-in-up">
             <div className="flex items-center gap-3">
-              <span className="w-9 h-9 rounded-lg bg-[#FFF0EB] border border-brand-orange/60 text-brand-orange flex items-center justify-center shrink-0 shadow-xs">
-                <Utensils className="w-4 h-4 text-brand-orange" />
+              <span className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-[#FFF0EB] border border-brand-orange/60 text-brand-orange flex items-center justify-center shrink-0 shadow-xs">
+                <Utensils className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-brand-orange" />
               </span>
               <div>
                 <div className="flex items-center gap-2">
@@ -843,16 +855,16 @@ export default function MenuSection() {
                 </p>
               </div>
             </div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-brand-lightblue text-[#172554] font-mono text-[11px] font-black uppercase tracking-wider shadow-[2px_2px_0px_0px_#1B64B4] border-2 border-[#1B64B4] shrink-0 select-none rotate-1 hover:rotate-0 transition-transform">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-brand-lightblue text-[#172554] font-mono text-[10px] sm:text-[11px] font-black uppercase tracking-wider shadow-[2px_2px_0px_0px_#1B64B4] border-2 border-[#1B64B4] shrink-0 select-none rotate-1 hover:rotate-0 transition-transform">
               <ChefHat className="w-3.5 h-3.5 text-[#172554] shrink-0" />
               <span>Barista Pairing</span>
             </div>
           </div>
         ) : (
-          <div className="mb-8 bg-gradient-to-r from-[#F0F7FF] via-white to-[#F0F7FF] p-4 sm:p-5 rounded-xl border-2 border-brand-lightblue/40 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 animate-fade-in-up">
+          <div className="mb-6 sm:mb-8 bg-gradient-to-r from-[#F0F7FF] via-white to-[#F0F7FF] p-3.5 sm:p-5 rounded-xl border-2 border-brand-lightblue/40 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 animate-fade-in-up">
             <div className="flex items-center gap-3">
-              <span className="w-9 h-9 rounded-lg bg-[#EBF5FF] border border-brand-lightblue/60 text-[#1B64B4] flex items-center justify-center shrink-0 shadow-xs">
-                <Award className="w-4 h-4 text-[#1B64B4]" />
+              <span className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-[#EBF5FF] border border-brand-lightblue/60 text-[#1B64B4] flex items-center justify-center shrink-0 shadow-xs">
+                <Award className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#1B64B4]" />
               </span>
               <div>
                 <div className="flex items-center gap-2">
@@ -867,7 +879,7 @@ export default function MenuSection() {
                 </p>
               </div>
             </div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-brand-orange text-white font-mono text-[11px] font-black uppercase tracking-wider shadow-[2px_2px_0px_0px_#1B64B4] border-2 border-[#1B64B4] shrink-0 select-none -rotate-1 hover:rotate-0 transition-transform">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-brand-orange text-white font-mono text-[10px] sm:text-[11px] font-black uppercase tracking-wider shadow-[2px_2px_0px_0px_#1B64B4] border-2 border-[#1B64B4] shrink-0 select-none -rotate-1 hover:rotate-0 transition-transform">
               <Flame className="w-3.5 h-3.5 text-white fill-white shrink-0" />
               <span>Top Rated Zing</span>
             </div>
@@ -880,7 +892,7 @@ export default function MenuSection() {
             <div ref={menuGridRef} className="scroll-mt-20 lg:scroll-mt-24" />
             <div
               key={`${activeSide}-${selectedSubcategory}-${onlyRecommended ? "rec" : "all"}-page-${safeCurrentPage}`}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 animate-flyer-flip"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3.5 sm:gap-5 animate-flyer-flip"
             >
               {paginatedItems.map((item, idx) => {
                 const borderAccent =
@@ -894,17 +906,17 @@ export default function MenuSection() {
                   <div
                     key={item.id}
                     style={{ animationDelay: `${Math.min(idx * 25, 250)}ms` }}
-                    className={`group relative bg-white p-5 sm:p-5.5 rounded-xl border-2 border-[#1B64B4]/15 transition-all duration-200 hover:-translate-y-1 flex flex-col justify-between min-h-[185px] sm:min-h-[200px] animate-fade-in-up shadow-xs ${borderAccent}`}
+                    className={`group relative bg-white p-3.5 sm:p-5.5 rounded-xl border-2 border-[#1B64B4]/15 transition-all duration-200 hover:-translate-y-1 flex flex-col justify-between min-h-0 sm:min-h-[200px] animate-fade-in-up shadow-xs ${borderAccent}`}
                   >
                     <div>
                       {/* Top Meta: Subcategory Badge & Recommended Badge */}
-                      <div className="flex items-center justify-between gap-2 mb-2.5">
-                        <span className="font-mono text-[10px] font-bold tracking-wider text-[#475569] uppercase bg-[#F8FAFC] px-2.5 py-0.5 rounded border border-[#1B64B4]/15 font-medium">
+                      <div className="flex items-center justify-between gap-2 mb-2 sm:mb-2.5">
+                        <span className="font-mono text-[9.5px] sm:text-[10px] font-bold tracking-wider text-[#475569] uppercase bg-[#F8FAFC] px-2 sm:px-2.5 py-0.5 rounded border border-[#1B64B4]/15 font-medium">
                           {item.subcategoryLabel}
                         </span>
 
                         {item.recommended && (
-                          <span className="inline-flex items-center gap-1 text-[10px] font-mono font-bold text-brand-orange bg-[#FFF0EB] border border-brand-orange/40 px-2 py-0.5 rounded-md">
+                          <span className="inline-flex items-center gap-1 text-[9.5px] sm:text-[10px] font-mono font-bold text-brand-orange bg-[#FFF0EB] border border-brand-orange/40 px-2 py-0.5 rounded-md">
                             <ThumbsUp className="w-2.5 h-2.5 shrink-0" />
                             <span>FAVORIT</span>
                           </span>
@@ -912,20 +924,20 @@ export default function MenuSection() {
                       </div>
 
                       {/* Item Name */}
-                      <h3 className="font-display font-bold text-base sm:text-lg text-[#172554] group-hover:text-brand-orange transition-colors leading-snug">
+                      <h3 className="font-display font-bold text-sm sm:text-lg text-[#172554] group-hover:text-brand-orange transition-colors leading-snug">
                         {item.name}
                       </h3>
 
                       {/* Description */}
-                      <p className="text-xs sm:text-[13px] text-[#475569] mt-1.5 leading-relaxed line-clamp-2">
+                      <p className="text-xs sm:text-[13px] text-[#475569] mt-1 sm:mt-1.5 leading-relaxed line-clamp-2">
                         {item.description}
                       </p>
                     </div>
 
                     {/* Bottom: Price & Extra Note */}
-                    <div className="mt-4 pt-3 border-t-2 border-[#1B64B4]/10 flex items-center justify-between gap-2">
+                    <div className="mt-3 sm:mt-4 pt-2.5 sm:pt-3 border-t-2 border-[#1B64B4]/10 flex items-center justify-between gap-2">
                       <div className="flex items-baseline gap-1">
-                        <span className="font-mono font-black text-xl sm:text-2xl text-[#172554]">
+                        <span className="font-mono font-black text-lg sm:text-2xl text-[#172554]">
                           {item.price}
                         </span>
                       </div>
@@ -969,8 +981,45 @@ export default function MenuSection() {
                   </span>
                 </div>
 
-                {/* Navigation Controls */}
-                <div className="flex items-center gap-1.5 sm:gap-2">
+                {/* Mobile Navigation Controls: Thumb-Friendly Prev / Page / Next */}
+                <div className="flex md:hidden items-center justify-between w-full gap-2">
+                  <button
+                    type="button"
+                    onClick={() => goToPage(safeCurrentPage - 1)}
+                    disabled={safeCurrentPage <= 1}
+                    aria-label="Halaman sebelumnya"
+                    className={`flex-1 inline-flex items-center justify-center gap-1 py-2 px-3 rounded-lg font-mono text-xs font-bold transition-all ${
+                      safeCurrentPage <= 1
+                        ? "opacity-35 cursor-not-allowed text-[#94A3B8] border border-[#1B64B4]/10 bg-[#F8FAFC]"
+                        : "bg-white text-[#172554] border-2 border-[#1B64B4]/20 shadow-xs active:scale-95 cursor-pointer"
+                    }`}
+                  >
+                    <ChevronLeft className="w-4 h-4 shrink-0" />
+                    <span>Sebelumnya</span>
+                  </button>
+
+                  <span className="font-mono text-xs font-bold text-[#172554] px-3 py-1.5 rounded-lg bg-[#F0F7FF] border border-[#1B64B4]/20 whitespace-nowrap">
+                    {safeCurrentPage} / {totalPages}
+                  </span>
+
+                  <button
+                    type="button"
+                    onClick={() => goToPage(safeCurrentPage + 1)}
+                    disabled={safeCurrentPage >= totalPages}
+                    aria-label="Halaman berikutnya"
+                    className={`flex-1 inline-flex items-center justify-center gap-1 py-2 px-3 rounded-lg font-mono text-xs font-bold transition-all ${
+                      safeCurrentPage >= totalPages
+                        ? "opacity-35 cursor-not-allowed text-[#94A3B8] border border-[#1B64B4]/10 bg-[#F8FAFC]"
+                        : "bg-white text-[#172554] border-2 border-[#1B64B4]/20 shadow-xs active:scale-95 cursor-pointer"
+                    }`}
+                  >
+                    <span>Berikutnya</span>
+                    <ChevronRight className="w-4 h-4 shrink-0" />
+                  </button>
+                </div>
+
+                {/* Desktop Navigation Controls */}
+                <div className="hidden md:flex items-center gap-1.5 sm:gap-2">
                   <button
                     type="button"
                     onClick={() => goToPage(safeCurrentPage - 1)}

@@ -378,7 +378,7 @@ export default function Navbar() {
 
   return (
     <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b-2 border-[#1B64B4]/15 px-4 lg:px-12 py-2 sm:py-2.5 [transform:translateZ(0)] will-change-transform shadow-xs">
-      <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+      <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
         {/* Official Client Logo as unboxed pure vector SVG */}
         <Link
           href="/"
@@ -408,7 +408,7 @@ export default function Navbar() {
           className="flex items-center group shrink-0 py-0.5"
           aria-label="Gitgud Board Game and Cafe - Beranda"
         >
-          <Logo className="h-8 sm:h-8.5 md:h-9 w-auto" priority />
+          <Logo className="h-7.5 sm:h-8.5 md:h-9 w-auto" priority />
         </Link>
 
         {/* Desktop Links - Tabletop Board Track Active State */}
@@ -462,7 +462,7 @@ export default function Navbar() {
         </div>
 
         {/* Sound Toggle, Action Button & Mobile Hamburger */}
-        <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
+        <div className="flex items-center gap-1 sm:gap-2.5 shrink-0">
           {/* Subtle Tabletop SFX Sound Toggle Button */}
           <button
             type="button"
@@ -491,7 +491,7 @@ export default function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => soundEffects.playSuccessChime()}
-            className="bg-brand-orange hover:bg-brand-orange-hover text-white px-3 sm:px-3.5 py-1.5 sm:py-2 border-2 border-[#1B64B4] font-display font-black text-xs tracking-wide rounded shadow-[2.5px_2.5px_0px_0px_#1B64B4] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all flex items-center gap-1.5 whitespace-nowrap cursor-pointer"
+            className="bg-brand-orange hover:bg-brand-orange-hover text-white px-2.5 sm:px-3.5 py-1.5 sm:py-2 border-2 border-[#1B64B4] font-display font-black text-[11px] sm:text-xs tracking-wide rounded shadow-[2.5px_2.5px_0px_0px_#1B64B4] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all flex items-center gap-1 sm:gap-1.5 whitespace-nowrap cursor-pointer"
           >
             <MessageCircle className="w-3.5 h-3.5 shrink-0" />
             <span>RESERVASI</span>

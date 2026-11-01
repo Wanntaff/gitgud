@@ -223,7 +223,7 @@ export default function DicePicker() {
       />
 
       {/* Main Card */}
-      <div className="bg-white rounded-xl p-4 sm:p-5 lg:p-5 xl:p-5 relative overflow-hidden shadow-[0_4px_24px_-4px_rgba(27,100,180,0.12),0_1px_3px_-1px_rgba(27,100,180,0.06)] border border-[#1B64B4]/15">
+      <div className="bg-white rounded-xl p-3.5 sm:p-5 lg:p-5 xl:p-5 relative overflow-hidden shadow-[0_4px_24px_-4px_rgba(27,100,180,0.12),0_1px_3px_-1px_rgba(27,100,180,0.06)] border border-[#1B64B4]/15">
         {/* Animated top accent bar */}
         <div className="absolute top-0 left-0 right-0 h-[3px] overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-[#E84A27] via-[#F7B5CB] to-[#1B64B4]" />
@@ -418,7 +418,7 @@ export default function DicePicker() {
             type="button"
             onClick={handleRollClick}
             disabled={isRolling}
-            className="group/btn relative w-full bg-[#1B64B4] hover:bg-[#154E8E] active:scale-[0.99] disabled:opacity-75 disabled:cursor-not-allowed text-white font-display font-bold py-3 sm:py-3.5 px-4 rounded-lg transition-all text-xs sm:text-[13px] tracking-wide cursor-pointer flex items-center justify-center gap-2 overflow-hidden shadow-[0_2px_8px_-2px_rgba(27,100,180,0.4)]"
+            className="group/btn relative w-full bg-[#1B64B4] hover:bg-[#154E8E] active:scale-[0.99] disabled:opacity-75 disabled:cursor-not-allowed text-white font-display font-bold py-2.5 sm:py-3.5 px-4 rounded-lg transition-all text-xs sm:text-[13px] tracking-wide cursor-pointer flex items-center justify-center gap-2 overflow-hidden shadow-[0_2px_8px_-2px_rgba(27,100,180,0.4)]"
           >
             {/* Shimmer sweep on hover */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.12] to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700 ease-out pointer-events-none" />

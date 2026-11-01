@@ -58,10 +58,10 @@ export default function FaqSection() {
   return (
     <section
       id="faq"
-      className="scroll-mt-16 content-visibility-auto py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-12 bg-[#F8FAFC] border-b-2 border-[#1B64B4]/15"
+      className="scroll-mt-16 content-visibility-auto py-8 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-12 bg-[#F8FAFC] border-b-2 border-[#1B64B4]/15"
     >
       <div className="max-w-4xl mx-auto w-full">
-        <div className="flex flex-col items-center text-center mb-8 sm:mb-10 lg:mb-12">
+        <div className="flex flex-col items-center text-center mb-5 sm:mb-10 lg:mb-12">
           {/* Creative Tabletop Rulebook Codex Stamp Token */}
           <div className="inline-flex items-center gap-2 p-1 pr-3.5 bg-[#FFF5F2] border-2 border-brand-orange text-brand-orange rounded-full font-mono text-[11px] sm:text-xs font-black tracking-wider uppercase shadow-[3px_3px_0px_0px_#E84A27] mb-2.5 hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-300 cursor-default group">
             <span className="w-6 h-6 rounded-full bg-brand-orange text-white flex items-center justify-center shrink-0 border border-brand-orange shadow-xs group-hover:rotate-12 transition-transform">
@@ -72,16 +72,16 @@ export default function FaqSection() {
             <span className="text-[#172554]">FAQ & GAME PROTOCOLS</span>
           </div>
 
-          <h2 className="font-display font-black text-2xl sm:text-[1.75rem] md:text-3xl lg:text-[2rem] xl:text-[2.15rem] text-[#172554] tracking-tight mt-3">
+          <h2 className="font-display font-black text-2xl sm:text-[1.75rem] md:text-3xl lg:text-[2rem] xl:text-[2.15rem] text-[#172554] tracking-tight mt-2.5 sm:mt-3">
             PERTANYAAN SERING DITANYAKAN
           </h2>
-          <p className="text-[#475569] text-sm sm:text-base mt-2.5 max-w-xl">
+          <p className="text-[#475569] text-xs sm:text-base mt-1.5 sm:mt-2.5 max-w-xl">
             Semua hal yang perlu kamu tahu sebelum nongkrong dan duel game di Gitgud Jogja:
           </p>
         </div>
 
         {/* Interactive Accordion */}
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {FAQS.map((item, index) => {
             const isOpen = openIndex === index;
             return (
@@ -94,25 +94,25 @@ export default function FaqSection() {
                 <button
                   type="button"
                   onClick={() => toggleFaq(index)}
-                  className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 cursor-pointer focus:outline-none"
+                  className="w-full text-left p-4 sm:p-6 flex items-center justify-between gap-3 sm:gap-4 cursor-pointer focus:outline-none"
                   aria-expanded={isOpen}
                 >
                   <span className="font-display font-bold text-sm sm:text-base md:text-lg text-[#172554] leading-snug">
                     {item.q}
                   </span>
                   <div
-                    className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-transform duration-200 ${
+                    className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center shrink-0 transition-transform duration-200 ${
                       isOpen
                         ? "rotate-180 bg-brand-orange text-white"
                         : "bg-[#F0F7FF] text-[#1B64B4]"
                     }`}
                   >
-                    <ChevronDown className="w-4 h-4" />
+                    <ChevronDown className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </div>
                 </button>
 
                 {isOpen && (
-                  <div className="px-6 pb-6 pt-4 text-sm sm:text-base text-[#334155] font-sans leading-relaxed border-t border-[#1B64B4]/10 bg-[#FAFCFF]">
+                  <div className="px-4 pb-4 pt-3 sm:px-6 sm:pb-6 sm:pt-4 text-[13px] sm:text-base text-[#334155] font-sans leading-relaxed border-t border-[#1B64B4]/10 bg-[#FAFCFF]">
                     {item.a}
                   </div>
                 )}

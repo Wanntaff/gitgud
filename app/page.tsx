@@ -10,10 +10,11 @@ import FaqSection from "@/components/FaqSection";
 import LocationSection from "@/components/LocationSection";
 import CtaBanner from "@/components/CtaBanner";
 import Footer from "@/components/Footer";
+import MobileQuickBar from "@/components/MobileQuickBar";
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col bg-white">
+    <main className="min-h-screen flex flex-col bg-white overflow-x-hidden">
       <AnnouncementTicker />
       <Navbar />
       <HeroSection />
@@ -26,6 +27,7 @@ export default function Home() {
       <LocationSection />
       <CtaBanner />
       <Footer />
+      <MobileQuickBar />
     </main>
   );
 }

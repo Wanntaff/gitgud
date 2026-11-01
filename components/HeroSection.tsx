@@ -21,11 +21,11 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden bg-gradient-to-b from-white via-[#F8FAFC] to-[#F0F7FF] min-h-[calc(100vh-96px)] flex flex-col justify-center py-8 sm:py-10 lg:py-10 xl:py-12 px-4 sm:px-6 lg:px-12 border-b-2 border-[#1B64B4]/15"
+      className="relative overflow-hidden bg-gradient-to-b from-white via-[#F8FAFC] to-[#F0F7FF] min-h-[calc(100vh-96px)] flex flex-col justify-center py-6 sm:py-10 lg:py-10 xl:py-12 px-4 sm:px-6 lg:px-12 border-b-2 border-[#1B64B4]/15"
     >
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 xl:gap-10 items-center">
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 lg:gap-8 xl:gap-10 items-center">
         {/* Kolom Kiri: Copywriting & Hierarki */}
-        <div className="lg:col-span-7 flex flex-col gap-4 sm:gap-5 lg:gap-5 xl:gap-5 z-10">
+        <div className="lg:col-span-7 flex flex-col gap-3.5 sm:gap-5 lg:gap-5 xl:gap-5 z-10">
           {/* Pill Badge Atas */}
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border-2 border-[#1B64B4]/25 text-xs text-[#172554] font-mono w-fit shadow-xs">
             <MapPin className="w-3.5 h-3.5 text-[#E84A27] shrink-0" />
@@ -35,7 +35,7 @@ export default function HeroSection() {
           </div>
 
           {/* Headline Utama with Squiggle Wave Underline */}
-          <h1 className="font-display font-black text-3xl sm:text-4xl md:text-[2.5rem] lg:text-[2.25rem] xl:text-[2.75rem] leading-[1.15] tracking-tight text-[#172554]">
+          <h1 className="font-display font-black text-2xl sm:text-4xl md:text-[2.5rem] lg:text-[2.25rem] xl:text-[2.75rem] leading-[1.15] tracking-tight text-[#172554]">
             Bosan Nongkrong Cuma Main HP?{" "}
             <br className="hidden lg:inline" />
             Saatnya{" "}
@@ -60,7 +60,7 @@ export default function HeroSection() {
           </h1>
 
           {/* Subheadline (Bahasa Indonesia Santai) */}
-          <p className="text-[#334155] text-sm sm:text-[15px] lg:text-[15px] xl:text-base leading-relaxed max-w-xl font-sans">
+          <p className="text-[#334155] text-xs sm:text-[15px] lg:text-[15px] xl:text-base leading-relaxed max-w-xl font-sans">
             Nongkrong bukan sekadar scrolling HP. Di{" "}
             <strong className="text-[#172554] font-bold">Gitgud</strong>, kamu
             bisa duel taktik, tuduh temanmu di{" "}
@@ -72,11 +72,11 @@ export default function HeroSection() {
           </p>
 
           {/* Tombol CTA */}
-          <div className="flex flex-wrap items-center gap-3 sm:gap-3.5 pt-1">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3.5 pt-0.5 sm:pt-1">
             <a
               href="#games"
               onClick={(e) => scrollTo(e, "games")}
-              className="bg-[#E84A27] hover:bg-[#D83B13] active:scale-[0.98] text-white px-5 py-2.5 sm:px-5.5 sm:py-2.5 rounded-md font-display font-bold text-xs sm:text-sm tracking-wide transition-all flex items-center gap-2 shadow-[2px_2px_0px_0px_#1B64B4] border-2 border-[#1B64B4] cursor-pointer"
+              className="bg-[#E84A27] hover:bg-[#D83B13] active:scale-[0.98] text-white px-5 py-2.5 sm:px-5.5 sm:py-2.5 rounded-md font-display font-bold text-xs sm:text-sm tracking-wide transition-all flex items-center justify-center gap-2 shadow-[2px_2px_0px_0px_#1B64B4] border-2 border-[#1B64B4] cursor-pointer"
             >
               <Dices className="w-4 h-4 shrink-0" />
               <span>Jelajahi 300+ Koleksi Game</span>
@@ -84,7 +84,7 @@ export default function HeroSection() {
             <a
               href="#events"
               onClick={(e) => scrollTo(e, "events")}
-              className="bg-white hover:bg-[#FFF5F8] border-2 border-brand-pink hover:border-[#E84A27] active:scale-[0.98] text-[#172554] px-5 py-2.5 sm:px-5.5 sm:py-2.5 rounded-md font-display font-bold text-xs sm:text-sm tracking-wide transition-all flex items-center gap-2 shadow-[2px_2px_0px_0px_#F7B5CB] cursor-pointer"
+              className="bg-white hover:bg-[#FFF5F8] border-2 border-brand-pink hover:border-[#E84A27] active:scale-[0.98] text-[#172554] px-5 py-2.5 sm:px-5.5 sm:py-2.5 rounded-md font-display font-bold text-xs sm:text-sm tracking-wide transition-all flex items-center justify-center gap-2 shadow-[2px_2px_0px_0px_#F7B5CB] cursor-pointer"
             >
               <CalendarDays className="w-4 h-4 text-[#C2185B] shrink-0" />
               <span>Event BOTC Kamis</span>
@@ -94,29 +94,29 @@ export default function HeroSection() {
           {/* Quick Stats Bar */}
           <div
             data-testid="hero-stats"
-            className="grid grid-cols-3 grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)_minmax(0,1fr)] gap-3 sm:gap-4 lg:gap-5 pt-4 sm:pt-5 mt-1 border-t-2 border-[#1B64B4]/15 w-full max-w-xl"
+            className="grid grid-cols-3 grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)_minmax(0,1fr)] gap-2 sm:gap-4 lg:gap-5 pt-3 sm:pt-5 mt-0.5 sm:mt-1 border-t-2 border-[#1B64B4]/15 w-full max-w-xl"
           >
             <div className="min-w-0">
-              <div className="font-display font-black text-xl sm:text-2xl lg:text-[1.65rem] xl:text-[1.85rem] text-[#E84A27] tracking-tight whitespace-nowrap">
+              <div className="font-display font-black text-lg sm:text-2xl lg:text-[1.65rem] xl:text-[1.85rem] text-[#E84A27] tracking-tight whitespace-nowrap">
                 300+
               </div>
-              <div className="text-[10.5px] sm:text-xs text-[#475569] font-mono mt-0.5 leading-snug font-medium">
+              <div className="text-[10px] sm:text-xs text-[#475569] font-mono mt-0.5 leading-snug font-medium">
                 Pilihan Board Game
               </div>
             </div>
             <div className="min-w-0">
-              <div className="font-display font-black text-xl sm:text-2xl lg:text-[1.65rem] xl:text-[1.85rem] text-[#1B64B4] tracking-tight whitespace-nowrap">
+              <div className="font-display font-black text-lg sm:text-2xl lg:text-[1.65rem] xl:text-[1.85rem] text-[#1B64B4] tracking-tight whitespace-nowrap">
                 24 Jam
               </div>
-              <div className="text-[10.5px] sm:text-xs text-[#475569] font-mono mt-0.5 leading-snug font-medium">
+              <div className="text-[10px] sm:text-xs text-[#475569] font-mono mt-0.5 leading-snug font-medium">
                 Buka Jumat – Minggu
               </div>
             </div>
             <div className="min-w-0">
-              <div className="font-display font-black text-xl sm:text-2xl lg:text-[1.65rem] xl:text-[1.85rem] text-[#C2185B] tracking-tight whitespace-nowrap">
+              <div className="font-display font-black text-lg sm:text-2xl lg:text-[1.65rem] xl:text-[1.85rem] text-[#C2185B] tracking-tight whitespace-nowrap">
                 100%
               </div>
-              <div className="text-[10.5px] sm:text-xs text-[#475569] font-mono mt-0.5 leading-snug font-medium">
+              <div className="text-[10px] sm:text-xs text-[#475569] font-mono mt-0.5 leading-snug font-medium">
                 Diajarin Game Master
               </div>
             </div>

@@ -5,10 +5,10 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="scroll-mt-16 content-visibility-auto py-16 sm:py-20 lg:py-24 px-4 lg:px-12 bg-white border-b-2 border-[#1B64B4]/15"
+      className="scroll-mt-16 content-visibility-auto py-8 sm:py-20 lg:py-24 px-4 lg:px-12 bg-white border-b-2 border-[#1B64B4]/15"
     >
       <div className="max-w-7xl mx-auto w-full">
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12 lg:mb-14">
+        <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-12 lg:mb-14">
           {/* Creative Tabletop Meeple Guild Seal Ribbon */}
           <div className="inline-flex items-center gap-2 p-1 pr-3.5 bg-[#FFF5F2] border-2 border-brand-orange text-brand-orange rounded-full font-mono text-[11px] sm:text-xs font-black tracking-wider uppercase shadow-[2.5px_2.5px_0px_0px_#E84A27] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-300 group cursor-default">
             <span className="w-6 h-6 rounded-full bg-brand-orange text-white flex items-center justify-center shrink-0 border border-brand-orange shadow-xs group-hover:rotate-12 transition-transform">
@@ -27,14 +27,26 @@ export default function AboutSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
+        {/* Mobile Swipe Notice */}
+        <div className="flex md:hidden items-center justify-between text-xs font-mono text-[#64748B] mb-3 px-1">
+          <span className="flex items-center gap-1.5 text-[11px]">
+            <span className="w-1.5 h-1.5 rounded-full bg-brand-orange animate-pulse" />
+            <span>Geser kartu ke samping →</span>
+          </span>
+          <span className="text-[10px] bg-[#F1F5F9] px-2 py-0.5 rounded-full font-bold text-[#475569]">
+            4 Keunggulan
+          </span>
+        </div>
+
+        {/* Cards: Mobile Touch-Friendly Snap Track / Desktop 4-Col Grid */}
+        <div className="flex md:grid md:grid-cols-2 lg:grid-cols-4 overflow-x-auto md:overflow-visible snap-x snap-mandatory scrollbar-none gap-4 sm:gap-7 -mx-4 px-4 sm:mx-0 sm:px-0 pb-3 md:pb-0 scroll-pl-4 scroll-pr-4">
           {/* Card 1: Dominant Orange */}
-          <div className="bg-white border-2 border-[#1B64B4]/20 rounded-xl p-6 sm:p-7 shadow-brutal-orange hover:-translate-y-1 transition-all flex flex-col justify-between min-h-[220px] sm:min-h-[240px]">
+          <div className="w-[80vw] sm:w-[68vw] max-w-[280px] shrink-0 snap-start md:w-auto md:max-w-none bg-white border-2 border-[#1B64B4]/20 rounded-xl p-5 sm:p-7 shadow-brutal-orange hover:-translate-y-1 transition-all flex flex-col justify-between min-h-[210px] sm:min-h-[240px]">
             <div>
-              <div className="w-12 h-12 bg-brand-orange text-white rounded-lg flex items-center justify-center font-bold mb-4 shadow-xs">
-                <Layers className="w-6 h-6" />
+              <div className="w-11 h-11 sm:w-12 sm:h-12 bg-brand-orange text-white rounded-lg flex items-center justify-center font-bold mb-3.5 sm:mb-4 shadow-xs">
+                <Layers className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
-              <h3 className="font-display font-bold text-lg sm:text-xl text-[#172554] mb-2">
+              <h3 className="font-display font-bold text-base sm:text-xl text-[#172554] mb-1.5 sm:mb-2">
                 300+ Koleksi Game
               </h3>
               <p className="text-[#475569] text-xs sm:text-sm leading-relaxed">
@@ -45,12 +57,12 @@ export default function AboutSection() {
           </div>
 
           {/* Card 2: Light Blue */}
-          <div className="bg-white border-2 border-[#1B64B4]/20 rounded-xl p-6 sm:p-7 shadow-brutal-lightblue hover:-translate-y-1 transition-all flex flex-col justify-between min-h-[220px] sm:min-h-[240px]">
+          <div className="w-[80vw] sm:w-[68vw] max-w-[280px] shrink-0 snap-start md:w-auto md:max-w-none bg-white border-2 border-[#1B64B4]/20 rounded-xl p-5 sm:p-7 shadow-brutal-lightblue hover:-translate-y-1 transition-all flex flex-col justify-between min-h-[210px] sm:min-h-[240px]">
             <div>
-              <div className="w-12 h-12 bg-brand-lightblue text-[#172554] rounded-lg flex items-center justify-center font-bold mb-4 shadow-xs">
-                <Compass className="w-6 h-6" />
+              <div className="w-11 h-11 sm:w-12 sm:h-12 bg-brand-lightblue text-[#172554] rounded-lg flex items-center justify-center font-bold mb-3.5 sm:mb-4 shadow-xs">
+                <Compass className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
-              <h3 className="font-display font-bold text-lg sm:text-xl text-[#172554] mb-2">
+              <h3 className="font-display font-bold text-base sm:text-xl text-[#172554] mb-1.5 sm:mb-2">
                 Game Master Standby
               </h3>
               <p className="text-[#475569] text-xs sm:text-sm leading-relaxed">
@@ -61,12 +73,12 @@ export default function AboutSection() {
           </div>
 
           {/* Card 3: Soft Pink */}
-          <div className="bg-white border-2 border-[#1B64B4]/20 rounded-xl p-6 sm:p-7 shadow-brutal-pink hover:-translate-y-1 transition-all flex flex-col justify-between min-h-[220px] sm:min-h-[240px]">
+          <div className="w-[80vw] sm:w-[68vw] max-w-[280px] shrink-0 snap-start md:w-auto md:max-w-none bg-white border-2 border-[#1B64B4]/20 rounded-xl p-5 sm:p-7 shadow-brutal-pink hover:-translate-y-1 transition-all flex flex-col justify-between min-h-[210px] sm:min-h-[240px]">
             <div>
-              <div className="w-12 h-12 bg-brand-pink text-[#172554] rounded-lg flex items-center justify-center font-bold mb-4 shadow-xs">
-                <Coffee className="w-6 h-6" />
+              <div className="w-11 h-11 sm:w-12 sm:h-12 bg-brand-pink text-[#172554] rounded-lg flex items-center justify-center font-bold mb-3.5 sm:mb-4 shadow-xs">
+                <Coffee className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
-              <h3 className="font-display font-bold text-lg sm:text-xl text-[#172554] mb-2">
+              <h3 className="font-display font-bold text-base sm:text-xl text-[#172554] mb-1.5 sm:mb-2">
                 Specialty Espresso Bar
               </h3>
               <p className="text-[#475569] text-xs sm:text-sm leading-relaxed">
@@ -78,12 +90,12 @@ export default function AboutSection() {
           </div>
 
           {/* Card 4: Royal Blue */}
-          <div className="bg-white border-2 border-[#1B64B4]/20 rounded-xl p-6 sm:p-7 shadow-brutal-blue hover:-translate-y-1 transition-all flex flex-col justify-between min-h-[220px] sm:min-h-[240px]">
+          <div className="w-[80vw] sm:w-[68vw] max-w-[280px] shrink-0 snap-start md:w-auto md:max-w-none bg-white border-2 border-[#1B64B4]/20 rounded-xl p-5 sm:p-7 shadow-brutal-blue hover:-translate-y-1 transition-all flex flex-col justify-between min-h-[210px] sm:min-h-[240px]">
             <div>
-              <div className="w-12 h-12 bg-brand-blue text-white rounded-lg flex items-center justify-center font-bold mb-4 shadow-xs">
-                <Moon className="w-6 h-6" />
+              <div className="w-11 h-11 sm:w-12 sm:h-12 bg-brand-blue text-white rounded-lg flex items-center justify-center font-bold mb-3.5 sm:mb-4 shadow-xs">
+                <Moon className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
-              <h3 className="font-display font-bold text-lg sm:text-xl text-[#172554] mb-2">
+              <h3 className="font-display font-bold text-base sm:text-xl text-[#172554] mb-1.5 sm:mb-2">
                 Weekend <span className="whitespace-nowrap">24 Jam</span>
               </h3>
               <p className="text-[#475569] text-xs sm:text-sm leading-relaxed">

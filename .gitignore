@@ -54,6 +54,7 @@ device-*.png
 final-*.png
 hero-*.png
 section-*.png
+mobile-*.png
 scripts/*.png
 scripts/*.svg
 scripts/*.json

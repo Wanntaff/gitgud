@@ -7,10 +7,10 @@ export default function LocationSection() {
   return (
     <section
       id="location"
-      className="scroll-mt-16 content-visibility-auto py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-12 bg-white border-b-2 border-[#1B64B4]/15"
+      className="scroll-mt-16 content-visibility-auto py-8 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-12 bg-white border-b-2 border-[#1B64B4]/15"
     >
       <div className="max-w-7xl mx-auto w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-stretch">
           {/* Left Column: Venue Details & Primary Action */}
           <div className="lg:col-span-5 flex flex-col justify-between">
             <div>
@@ -24,23 +24,23 @@ export default function LocationSection() {
                 <span className="text-[#172554]">BACIRO HEADQUARTERS</span>
               </div>
 
-              <h2 className="font-display font-black text-2xl sm:text-[1.75rem] md:text-3xl lg:text-[2rem] xl:text-[2.15rem] text-[#172554] mt-3 tracking-tight">
+              <h2 className="font-display font-black text-2xl sm:text-[1.75rem] md:text-3xl lg:text-[2rem] xl:text-[2.15rem] text-[#172554] mt-2.5 sm:mt-3 tracking-tight">
                 LOKASI & JAM OPERASIONAL
               </h2>
-              <p className="text-[#475569] text-sm sm:text-base mt-2 leading-relaxed">
+              <p className="text-[#475569] text-xs sm:text-base mt-1.5 sm:mt-2 leading-relaxed">
                 Lokasi strategis di pusat kota Yogyakarta, suasana tenang di
                 Baciro yang nyaman buat main game lama bareng teman.
               </p>
 
               {/* Address Card */}
-              <div className="mt-6 bg-[#F8FAFC] p-5 sm:p-6 rounded-xl border-2 border-[#1B64B4]/15 shadow-sm">
-                <div className="flex items-start gap-3.5">
-                  <MapPin className="w-5 h-5 text-brand-orange shrink-0 mt-0.5" />
+              <div className="mt-4 sm:mt-6 bg-[#F8FAFC] p-4 sm:p-6 rounded-xl border-2 border-[#1B64B4]/15 shadow-sm">
+                <div className="flex items-start gap-3 sm:gap-3.5">
+                  <MapPin className="w-4.5 h-4.5 sm:w-5 sm:h-5 text-brand-orange shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="font-bold text-[#172554] text-sm sm:text-base">
+                    <h4 className="font-bold text-[#172554] text-xs sm:text-base">
                       Alamat Lengkap:
                     </h4>
-                    <p className="text-xs sm:text-sm text-[#334155] mt-1.5 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-[#334155] mt-1 sm:mt-1.5 leading-relaxed">
                       Jl. Soka no. 44 Baciro, Gondokusuman, Yogyakarta 55225
                     </p>
                   </div>
@@ -48,7 +48,7 @@ export default function LocationSection() {
               </div>
 
               {/* Hours Table */}
-              <div className="mt-4 sm:mt-5 bg-[#F8FAFC] p-5 sm:p-6 rounded-xl border-2 border-[#1B64B4]/15 shadow-sm">
+              <div className="mt-3.5 sm:mt-5 bg-[#F8FAFC] p-4 sm:p-6 rounded-xl border-2 border-[#1B64B4]/15 shadow-sm">
                 <h4 className="font-bold text-[#172554] text-sm sm:text-base mb-3.5 flex items-center gap-2">
                   <Clock className="w-4 h-4 text-brand-orange" />
                   <span>Jadwal Buka:</span>
@@ -122,12 +122,12 @@ export default function LocationSection() {
 
           {/* Right Column: Clean, Spacious Google Maps Viewport */}
           <div className="lg:col-span-7 flex flex-col">
-            <div className="h-full min-h-[440px] sm:min-h-[520px] lg:min-h-[580px] bg-white border-2 border-[#1B64B4]/25 rounded-xl overflow-hidden relative shadow-brutal-lightblue">
+            <div className="h-[280px] sm:h-full sm:min-h-[520px] lg:min-h-[580px] bg-white border-2 border-[#1B64B4]/25 rounded-xl overflow-hidden relative shadow-brutal-lightblue">
               {/* Google Maps Embed Iframe - Clear and unobstructed */}
               <iframe
                 title="Google Maps Lokasi Gitgud Board Game & Cafe Baciro"
                 src="https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1sGitgud+Board+Game+%26+Cafe+Baciro+Yogyakarta!6i16"
-                className="absolute inset-0 w-full h-full border-0 [contain:paint]"
+                className="absolute inset-0 w-full h-full border-0 [contain:paint] pointer-events-none sm:pointer-events-auto"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />

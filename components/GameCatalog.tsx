@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import {
   Users,
   Clock,
@@ -175,6 +175,7 @@ const DIFFICULTY_CONFIG: Record<
 };
 
 const ITEMS_PER_PAGE = 12;
+const MOBILE_INITIAL_COUNT = 6;
 
 export default function GameCatalog() {
   const [activeCategory, setActiveCategory] = useState<CategoryFilter>("all");
@@ -182,6 +183,23 @@ export default function GameCatalog() {
     useState<DifficultyFilter>("all");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [displayCount, setDisplayCount] = useState<number>(ITEMS_PER_PAGE);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [mobileExpanded, setMobileExpanded] = useState<boolean>(false);
+
+  // Dynamic media query listener to handle window resize and device rotation cleanly
+  useEffect(() => {
+    const mql = window.matchMedia("(max-width: 767px)");
+    setIsMobile(mql.matches);
+    const update = (e: MediaQueryListEvent) => {
+      setIsMobile(e.matches);
+    };
+    mql.addEventListener("change", update);
+    return () => mql.removeEventListener("change", update);
+  }, []);
+
+  const getStepCount = () => {
+    return isMobile ? 6 : ITEMS_PER_PAGE;
+  };
 
   // Filter games based on search query, category, and difficulty
   const filteredGames = useMemo(() => {
@@ -261,38 +279,56 @@ export default function GameCatalog() {
     soundEffects.playTileTap();
     setActiveCategory(key);
     setDisplayCount(ITEMS_PER_PAGE);
+    setMobileExpanded(false);
   };
 
   const handleDifficultyChange = (diff: DifficultyFilter) => {
     soundEffects.playTileTap();
     setActiveDifficulty(diff);
     setDisplayCount(ITEMS_PER_PAGE);
+    setMobileExpanded(false);
   };
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
     setDisplayCount(ITEMS_PER_PAGE);
+    setMobileExpanded(false);
   };
 
   const handleClearSearch = () => {
     soundEffects.playButtonClick();
     setSearchQuery("");
     setDisplayCount(ITEMS_PER_PAGE);
+    setMobileExpanded(false);
   };
 
   const handleLoadMore = () => {
     soundEffects.playButtonClick();
-    setDisplayCount((prev) => Math.min(prev + ITEMS_PER_PAGE, filteredGames.length));
+    if (isMobile && !mobileExpanded) {
+      setMobileExpanded(true);
+      return;
+    }
+    setDisplayCount((prev) => Math.min(prev + getStepCount(), filteredGames.length));
+  };
+
+  const handleCollapseMobile = () => {
+    soundEffects.playButtonClick();
+    setMobileExpanded(false);
+    setDisplayCount(ITEMS_PER_PAGE);
+    const el = document.getElementById("games");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   };
 
   return (
     <section
       id="games"
-      className="scroll-mt-16 content-visibility-auto py-16 sm:py-20 lg:py-24 px-4 lg:px-12 bg-white border-b-2 border-[#1B64B4]/15"
+      className="scroll-mt-16 content-visibility-auto py-8 sm:py-20 lg:py-24 px-4 lg:px-12 bg-white border-b-2 border-[#1B64B4]/15"
     >
       <div className="max-w-7xl mx-auto w-full">
         {/* Section Header */}
-        <div className="mb-8 sm:mb-10">
+        <div className="mb-6 sm:mb-10">
           <div className="inline-flex items-center gap-2 p-1 pr-3.5 bg-[#F0F7FF] border-2 border-brand-lightblue text-[#1B64B4] rounded-full font-mono text-[11px] sm:text-xs font-black tracking-wider uppercase shadow-[2.5px_2.5px_0px_0px_#5BB5F8] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-300 group cursor-default">
             <span className="w-6 h-6 rounded-full bg-brand-lightblue text-[#172554] flex items-center justify-center shrink-0 border border-brand-lightblue shadow-xs font-mono font-black text-xs group-hover:scale-110 transition-transform select-none">
               ♠
@@ -301,16 +337,16 @@ export default function GameCatalog() {
             <span className="text-brand-lightblue select-none">•</span>
             <span className="text-[#172554]">362 VAULT ARCHIVE</span>
           </div>
-          <h2 className="font-display font-black text-2xl sm:text-[1.75rem] md:text-3xl lg:text-[2rem] xl:text-[2.15rem] text-[#172554] mt-3 tracking-tight leading-tight">
+          <h2 className="font-display font-black text-2xl sm:text-[1.75rem] md:text-3xl lg:text-[2rem] xl:text-[2.15rem] text-[#172554] mt-2.5 sm:mt-3 tracking-tight leading-tight">
             362 KOLEKSI BOARD GAME GITGUD
           </h2>
-          <p className="text-[#475569] text-sm sm:text-base mt-2 max-w-2xl">
+          <p className="text-[#475569] text-xs sm:text-base mt-1.5 sm:mt-2 max-w-2xl">
             Cari game favoritmu atau jelajahi ratusan judul meja fisik asli Baciro, dari santai bareng teman hingga duel strategi tingkat tinggi:
           </p>
         </div>
 
         {/* Live Search & Filter Bar */}
-        <div className="mb-6 flex flex-col md:flex-row gap-3.5 items-stretch md:items-center justify-between">
+        <div className="mb-5 sm:mb-6 flex flex-col md:flex-row gap-3 sm:gap-3.5 items-stretch md:items-center justify-between">
           {/* Search Input Box */}
           <div className="relative flex-1 max-w-xl">
             <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#1B64B4]">
@@ -321,7 +357,7 @@ export default function GameCatalog() {
               value={searchQuery}
               onChange={handleSearchChange}
               placeholder="Cari dari 362 game (contoh: Catan, Azul, Werewolf, Wingspan)"
-              className="w-full pl-10 pr-10 py-3 rounded-xl bg-white border-2 border-[#1B64B4]/25 focus:border-[#E84A27] focus:outline-none text-[#172554] placeholder-[#94A3B8] font-mono text-xs sm:text-sm shadow-xs transition-colors"
+              className="w-full pl-10 pr-10 py-2.5 sm:py-3 rounded-xl bg-white border-2 border-[#1B64B4]/25 focus:border-[#E84A27] focus:outline-none text-[#172554] placeholder-[#94A3B8] font-mono text-xs sm:text-sm shadow-xs transition-colors"
             />
             {searchQuery && (
               <button
@@ -369,8 +405,19 @@ export default function GameCatalog() {
         </div>
 
         {/* Interactive Cartridge Category Tabs */}
-        <div className="mb-10">
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2.5 sm:gap-3">
+        <div className="mb-6 sm:mb-10">
+          {/* Mobile Swipe Notice */}
+          <div className="flex md:hidden items-center justify-between text-xs font-mono text-[#64748B] mb-2 px-0.5">
+            <span className="flex items-center gap-1.5 text-[11px]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#1B64B4] animate-pulse" />
+              <span>Geser kategori game →</span>
+            </span>
+            <span className="text-[10px] bg-[#F1F5F9] px-2 py-0.5 rounded-full font-bold text-[#475569]">
+              8 Kategori
+            </span>
+          </div>
+
+          <div className="flex md:grid md:grid-cols-4 lg:grid-cols-8 overflow-x-auto md:overflow-visible scrollbar-none gap-2 sm:gap-3 -mx-4 px-4 md:mx-0 md:px-0 pb-1.5 md:pb-0 scroll-pl-4 scroll-pr-4">
             {CATEGORY_DEFINITIONS.map((cat) => {
               const isActive = activeCategory === cat.key;
               const Icon = cat.icon;
@@ -381,22 +428,22 @@ export default function GameCatalog() {
                   key={cat.key}
                   type="button"
                   onClick={() => handleCategoryChange(cat.key)}
-                  className={`relative p-3 rounded-xl font-mono text-xs font-bold transition-all cursor-pointer flex flex-col justify-between min-h-[82px] sm:min-h-[86px] text-left active:translate-y-0.5 ${
+                  className={`w-[110px] min-w-[110px] shrink-0 md:w-auto md:min-w-0 relative p-2.5 sm:p-3 rounded-xl font-mono text-xs font-bold transition-all cursor-pointer flex flex-col justify-between min-h-[76px] sm:min-h-[86px] text-left active:translate-y-0.5 ${
                     isActive ? cat.activeClass : cat.inactiveClass
                   }`}
                 >
-                  <div className="flex items-center justify-between w-full mb-1.5">
+                  <div className="flex items-center justify-between w-full mb-1 sm:mb-1.5">
                     <div
-                      className={`w-6 h-6 rounded-md flex items-center justify-center ${
+                      className={`w-5 h-5 sm:w-6 sm:h-6 rounded-md flex items-center justify-center ${
                         isActive
                           ? "bg-white/40 text-current"
                           : "bg-[#F8FAFC] text-[#475569]"
                       }`}
                     >
-                      <Icon className="w-3.5 h-3.5" />
+                      <Icon className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                     </div>
                     <span
-                      className={`text-[9.5px] font-mono font-black px-1.5 py-0.5 rounded border border-current/20 ${
+                      className={`text-[9px] sm:text-[9.5px] font-mono font-black px-1.5 py-0.5 rounded border border-current/20 ${
                         isActive ? cat.badgeClass : "bg-[#F0F7FF] text-[#475569]"
                       }`}
                     >
@@ -467,8 +514,8 @@ export default function GameCatalog() {
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 animate-fade-in-up">
-            {visibleGames.map((game: NotionGame) => {
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 animate-fade-in-up">
+            {visibleGames.map((game: NotionGame, idx: number) => {
               const diffConfig = game.difficulty
                 ? DIFFICULTY_CONFIG[game.difficulty] || {
                     label: game.difficulty,
@@ -477,35 +524,39 @@ export default function GameCatalog() {
                   }
                 : null;
 
+              const isInitialHiddenOnMobile = idx >= MOBILE_INITIAL_COUNT && !mobileExpanded;
+
               return (
                 <div
                   key={game.id}
                   data-testid="game-card"
-                  className="bg-white border-2 border-[#1B64B4]/15 rounded-xl overflow-hidden hover:border-brand-orange transition-all shadow-xs hover:shadow-md flex flex-col justify-between group"
+                  className={`bg-white border-2 border-[#1B64B4]/15 rounded-xl overflow-hidden hover:border-brand-orange transition-all shadow-xs hover:shadow-md flex-col justify-between group ${
+                    isInitialHiddenOnMobile ? "hidden md:flex" : "flex"
+                  }`}
                 >
                   <div>
                     {/* Card Top Strip with Title & Badges */}
                     <div
-                      className={`min-h-[100px] sm:min-h-[110px] bg-gradient-to-br ${
+                      className={`min-h-[85px] sm:min-h-[110px] bg-gradient-to-br ${
                         diffConfig ? diffConfig.bgGradient : "from-slate-50 to-white"
-                      } border-b border-[#1B64B4]/15 p-4 sm:p-5 flex flex-col justify-between relative overflow-hidden`}
+                      } border-b border-[#1B64B4]/15 p-3.5 sm:p-5 flex flex-col justify-between relative overflow-hidden`}
                     >
                       {/* Top Badges Row */}
-                      <div className="flex items-center justify-between gap-2 mb-2">
+                      <div className="flex items-center justify-between gap-2 mb-1.5 sm:mb-2">
                         {diffConfig ? (
                           <span
-                            className={`text-[9.5px] font-mono font-bold px-2 py-0.5 rounded border shadow-2xs ${diffConfig.badgeClass} flex items-center gap-1`}
+                            className={`text-[9px] sm:text-[9.5px] font-mono font-bold px-2 py-0.5 rounded border shadow-2xs ${diffConfig.badgeClass} flex items-center gap-1`}
                           >
                             <span>{diffConfig.label}</span>
                           </span>
                         ) : (
-                          <span className="text-[9.5px] font-mono text-[#94A3B8]">
+                          <span className="text-[9px] sm:text-[9.5px] font-mono text-[#94A3B8]">
                             Standard
                           </span>
                         )}
 
                         {game.greatFor2p && (
-                          <span className="text-[9.5px] font-mono font-bold px-2 py-0.5 rounded border border-[#F7B5CB] bg-[#FFF0F5] text-[#C2185B] flex items-center gap-1 shadow-2xs">
+                          <span className="text-[9px] sm:text-[9.5px] font-mono font-bold px-2 py-0.5 rounded border border-[#F7B5CB] bg-[#FFF0F5] text-[#C2185B] flex items-center gap-1 shadow-2xs">
                             <Heart className="w-2.5 h-2.5 fill-current" />
                             <span>Great for 2p</span>
                           </span>
@@ -515,24 +566,24 @@ export default function GameCatalog() {
                       {/* Game Title */}
                       <h3
                         data-testid="game-title"
-                        className="font-display font-black text-base sm:text-lg text-[#172554] tracking-tight leading-snug group-hover:text-brand-orange transition-colors"
+                        className="font-display font-black text-sm sm:text-lg text-[#172554] tracking-tight leading-snug group-hover:text-brand-orange transition-colors"
                       >
                         {game.title}
                       </h3>
                     </div>
 
                     {/* Card Body: Category Tags & Specs */}
-                    <div className="p-4 sm:p-4.5 bg-white space-y-3">
+                    <div className="p-3.5 sm:p-4.5 bg-white space-y-2.5 sm:space-y-3">
                       {/* Specs Row */}
                       <div className="flex flex-wrap items-center gap-2 text-xs text-[#475569] font-mono">
                         {game.players && (
-                          <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#F8FAFC] border border-[#1B64B4]/15 text-[10.5px]">
+                          <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#F8FAFC] border border-[#1B64B4]/15 text-[10px] sm:text-[10.5px]">
                             <Users className="w-3 h-3 text-[#1B64B4] shrink-0" />
                             <span>{game.players} Pemain</span>
                           </span>
                         )}
                         {game.playtime && (
-                          <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#FFF8F5] border border-[#E84A27]/20 text-[10.5px] text-[#E84A27]">
+                          <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#FFF8F5] border border-[#E84A27]/20 text-[10px] sm:text-[10.5px] text-[#E84A27]">
                             <Clock className="w-3 h-3 text-[#E84A27] shrink-0" />
                             <span>{game.playtime}m</span>
                           </span>
@@ -545,7 +596,7 @@ export default function GameCatalog() {
                           {game.category.split(",").map((catItem, idx) => (
                             <span
                               key={idx}
-                              className="text-[10px] font-mono font-medium px-2 py-0.5 rounded bg-[#F0F7FF] text-[#1B64B4] border border-[#1B64B4]/15"
+                              className="text-[9.5px] sm:text-[10px] font-mono font-medium px-2 py-0.5 rounded bg-[#F0F7FF] text-[#1B64B4] border border-[#1B64B4]/15"
                             >
                               #{catItem.trim()}
                             </span>
@@ -560,24 +611,43 @@ export default function GameCatalog() {
           </div>
         )}
 
-        {/* Load More Button */}
-        {visibleGames.length < filteredGames.length && (
-          <div className="mt-10 text-center">
+        {/* Load More & Expandable/Collapsible Controls */}
+        <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
+          {(visibleGames.length < filteredGames.length || (!mobileExpanded && filteredGames.length > MOBILE_INITIAL_COUNT)) && (
             <button
               type="button"
               onClick={handleLoadMore}
-              className="inline-flex items-center gap-2 bg-white hover:bg-[#F0F7FF] text-[#1B64B4] border-2 border-[#1B64B4] font-display font-bold text-xs sm:text-sm px-6 py-3 rounded-xl transition-all shadow-[2.5px_2.5px_0px_0px_#1B64B4] active:translate-x-0.5 active:translate-y-0.5 cursor-pointer"
+              className="inline-flex items-center gap-2 bg-white hover:bg-[#F0F7FF] text-[#1B64B4] border-2 border-[#1B64B4] font-display font-bold text-xs sm:text-sm px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl transition-all shadow-[2.5px_2.5px_0px_0px_#1B64B4] active:translate-x-0.5 active:translate-y-0.5 cursor-pointer"
             >
-              <span>
+              <span className="md:hidden">
+                Muat Lebih Banyak (+{Math.min(6, filteredGames.length - (mobileExpanded ? displayCount : MOBILE_INITIAL_COUNT))} Game)
+              </span>
+              <span className="hidden md:inline">
                 Muat Lebih Banyak (+{Math.min(ITEMS_PER_PAGE, filteredGames.length - visibleGames.length)} Game)
               </span>
               <ChevronDown className="w-4 h-4" />
             </button>
-            <p className="text-[#94A3B8] font-mono text-xs mt-2">
-              Menampilkan {visibleGames.length} dari {filteredGames.length} game yang cocok
-            </p>
-          </div>
-        )}
+          )}
+
+          {/* Mobile Collapsible Control: Sembunyikan Sebagian */}
+          {mobileExpanded && (
+            <button
+              type="button"
+              onClick={handleCollapseMobile}
+              className="md:hidden inline-flex items-center gap-2 bg-[#F8FAFC] hover:bg-white text-[#64748B] hover:text-[#172554] border-2 border-[#1B64B4]/20 font-display font-bold text-xs px-4 py-2.5 rounded-xl transition-all cursor-pointer shadow-xs active:translate-y-0.5"
+            >
+              <span>Sembunyikan Sebagian (Kembali ke 6)</span>
+            </button>
+          )}
+        </div>
+        <p className="text-[#94A3B8] font-mono text-xs mt-2 text-center">
+          <span className="md:hidden">
+            Menampilkan {mobileExpanded ? Math.min(displayCount, filteredGames.length) : Math.min(MOBILE_INITIAL_COUNT, filteredGames.length)} dari {filteredGames.length} game yang cocok
+          </span>
+          <span className="hidden md:inline">
+            Menampilkan {visibleGames.length} dari {filteredGames.length} game yang cocok
+          </span>
+        </p>
 
         {/* WhatsApp Inquiry Link */}
         <div className="mt-14 text-center">
