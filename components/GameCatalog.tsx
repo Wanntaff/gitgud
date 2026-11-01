@@ -401,9 +401,9 @@ export default function GameCatalog() {
         <div className="mb-6 sm:mb-10">
           {/* Mobile Swipe Notice */}
           <div className="flex md:hidden items-center justify-between text-xs font-mono text-[#64748B] mb-2 px-0.5">
-            <span className="flex items-center gap-1.5 text-[11px]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#1B64B4] animate-pulse" />
-              <span>Geser kategori game →</span>
+            <span className="inline-flex items-center gap-1.5 text-[11px] font-medium text-[#475569]">
+              <span>Geser kategori game</span>
+              <span className="text-[#1B64B4] font-bold">→</span>
             </span>
             <span className="text-[10px] bg-[#F1F5F9] px-2 py-0.5 rounded-full font-bold text-[#475569]">
               8 Kategori

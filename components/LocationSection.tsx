@@ -134,8 +134,8 @@ export default function LocationSection() {
 
               {/* Minimalist Floating Top Header Bar */}
               <div className="relative z-10 p-3 sm:p-4 flex items-center justify-between pointer-events-none">
-                <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/95 backdrop-blur-md border border-[#1B64B4]/20 text-[#172554] font-mono text-[11px] font-bold rounded-lg shadow-sm">
-                  <span className="w-2 h-2 rounded-full bg-brand-orange animate-pulse" />
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/95 backdrop-blur-md border border-[#1B64B4]/20 text-[#172554] font-mono text-[11px] font-bold rounded-lg shadow-sm">
+                  <MapPin className="w-3.5 h-3.5 text-brand-orange shrink-0" />
                   <span>BACIRO, YOGYAKARTA</span>
                 </span>
 

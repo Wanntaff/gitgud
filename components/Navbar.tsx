@@ -567,13 +567,10 @@ export default function Navbar() {
 
                 {isActive ? (
                   <span
-                    className={`inline-flex items-center gap-1.5 font-mono text-[10px] tracking-widest uppercase px-2.5 py-0.5 rounded-md border font-black ${item.activeBadgeClasses}`}
+                    className={`inline-flex items-center gap-1 font-mono text-[10px] tracking-widest uppercase px-2 py-0.5 rounded-md border font-black ${item.activeBadgeClasses}`}
                   >
-                    <span
-                      className="w-1.5 h-1.5 rounded-full animate-pulse-subtle"
-                      style={{ backgroundColor: item.accentColor }}
-                    />
-                    DI SINI
+                    <span>✓</span>
+                    <span>DI SINI</span>
                   </span>
                 ) : (
                   <span className="text-[#94A3B8] font-mono text-xs pr-1">→</span>

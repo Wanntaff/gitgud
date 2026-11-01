@@ -29,9 +29,9 @@ export default function AboutSection() {
 
         {/* Mobile Swipe Notice */}
         <div className="flex md:hidden items-center justify-between text-xs font-mono text-[#64748B] mb-3 px-1">
-          <span className="flex items-center gap-1.5 text-[11px]">
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-orange animate-pulse" />
-            <span>Geser kartu ke samping →</span>
+          <span className="inline-flex items-center gap-1.5 text-[11px] font-medium text-[#475569]">
+            <span>Geser kartu ke samping</span>
+            <span className="text-brand-orange font-bold">→</span>
           </span>
           <span className="text-[10px] bg-[#F1F5F9] px-2 py-0.5 rounded-full font-bold text-[#475569]">
             4 Keunggulan

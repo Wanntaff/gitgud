@@ -46,7 +46,7 @@ export default function EventsSection() {
             <div className="bg-gradient-to-b from-[#FFF5F8] via-[#FFF9F6] to-white border-3 border-brand-orange rounded-2xl p-5 sm:p-8 shadow-brutal-orange relative overflow-hidden">
               {/* Tactile Tabletop Perforated Ticket Punch Badge */}
               <div className="relative inline-flex items-center gap-1.5 px-3 py-1 rounded-xs bg-brand-orange text-white font-mono font-black text-[10px] sm:text-[11px] tracking-wider uppercase border-2 border-[#1B64B4] shadow-[2.5px_2.5px_0px_0px_#1B64B4] mb-3 select-none before:absolute before:-left-1.5 before:top-1/2 before:-translate-y-1/2 before:w-2 before:h-2 before:rounded-full before:bg-[#FFF5F8] after:absolute after:-right-1.5 after:top-1/2 after:-translate-y-1/2 after:w-2 after:h-2 after:rounded-full after:bg-[#FFF5F8]">
-                <Ticket className="w-3.5 h-3.5 text-white shrink-0 animate-pulse-subtle" />
+                <Ticket className="w-3.5 h-3.5 text-white shrink-0" />
                 <span>TICKET // SPECIAL EVENT MINGGUAN</span>
               </div>
               <h3 className="font-display font-black text-xl sm:text-2xl md:text-3xl text-[#172554] leading-snug mb-2 sm:mb-3 tracking-tight break-words">
@@ -116,9 +116,9 @@ export default function EventsSection() {
 
             {/* Mobile Swipe Notice */}
             <div className="flex lg:hidden items-center justify-between text-xs font-mono text-[#64748B] mb-0.5 px-0.5">
-              <span className="flex items-center gap-1.5 text-[11px]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C2185B] animate-pulse" />
-                <span>Geser jadwal mingguan →</span>
+              <span className="inline-flex items-center gap-1.5 text-[11px] font-medium text-[#475569]">
+                <span>Geser jadwal mingguan</span>
+                <span className="text-[#C2185B] font-bold">→</span>
               </span>
               <span className="text-[10px] bg-[#F1F5F9] px-2 py-0.5 rounded-full font-bold text-[#475569]">
                 3 Sesi Rutin

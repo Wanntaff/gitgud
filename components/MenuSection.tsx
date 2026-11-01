@@ -631,7 +631,7 @@ export default function MenuSection() {
               {activeSide === "thirsty" ? (
                 <Coffee className="w-3.5 h-3.5 text-white shrink-0 animate-steam" />
               ) : (
-                <Utensils className="w-3.5 h-3.5 text-white shrink-0 animate-pulse-subtle" />
+                <Utensils className="w-3.5 h-3.5 text-white shrink-0" />
               )}
             </span>
             <span className="text-[#475569] font-bold text-[10px]">TAVERN 04</span>
@@ -953,11 +953,9 @@ export default function MenuSection() {
               <div className="mt-8 pt-6 border-t-2 border-[#1B64B4]/15 flex flex-col sm:flex-row items-center justify-between gap-4">
                 {/* Range Indicator */}
                 <div className="flex items-center gap-2 text-xs font-mono text-[#475569]">
-                  <span
-                    className={`w-2 h-2 rounded-full shrink-0 ${
-                      activeSide === "thirsty" ? "bg-brand-orange" : "bg-brand-lightblue"
-                    }`}
-                  />
+                  <span className="px-2 py-0.5 rounded bg-[#F1F5F9] text-[#172554] font-bold text-[10px] tracking-wide uppercase">
+                    {activeSide === "thirsty" ? "Minuman" : "Makanan"}
+                  </span>
                   <span>
                     Menampilkan{" "}
                     <strong className="text-[#172554] font-bold">
@@ -1151,18 +1149,18 @@ export default function MenuSection() {
         )}
 
         {/* Cafe Notice Footer */}
-        <div className="mt-8 text-center border-t-2 border-[#1B64B4]/15 pt-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs font-mono text-[#475569]">
-          <div className="flex items-center gap-2">
-            <span
-              className={`w-2 h-2 rounded-full shrink-0 ${
-                activeSide === "thirsty" ? "bg-brand-orange" : "bg-brand-lightblue"
-              }`}
-            />
-            <span>Semua harga sudah termasuk pajak &amp; disajikan siap santap di meja boardgame.</span>
+        <div className="mt-8 pt-4 border-t-2 border-[#1B64B4]/15">
+          <div className="bg-[#F8FAFC] border border-[#1B64B4]/15 rounded-xl px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-2.5 text-xs font-mono text-[#475569] text-center md:text-left">
+            <div className="inline-flex items-center gap-2">
+              <span className="font-bold text-[#172554] tracking-wide">
+                Nett Price:
+              </span>
+              <span>Semua harga sudah termasuk pajak &amp; disajikan siap santap di meja.</span>
+            </div>
+            <span className="text-[#64748B] text-[11px] font-semibold bg-white border border-[#1B64B4]/15 px-3 py-1 rounded-md shadow-2xs shrink-0">
+              Fresh Daily • Baciro HQ
+            </span>
           </div>
-          <span className="text-[#64748B]">
-            Diseduh &amp; Dimasak Fresh di Baciro HQ
-          </span>
         </div>
       </div>
     </section>

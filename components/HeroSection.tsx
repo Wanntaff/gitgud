@@ -34,7 +34,7 @@ export default function HeroSection() {
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border-2 border-[#1B64B4]/25 text-xs text-[#172554] font-mono w-fit shadow-xs">
             <MapPin className="w-3.5 h-3.5 text-[#E84A27] shrink-0" />
             <span className="font-bold text-[#172554]">Baciro, Jogja</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-[#F7B5CB]" />
+            <span className="text-[#CBD5E1] select-none">•</span>
             <span className="text-[#475569] font-medium">Cafe &amp; Board Game Lounge</span>
           </div>
 
