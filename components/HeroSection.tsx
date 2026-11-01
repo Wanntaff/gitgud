@@ -31,8 +31,8 @@ export default function HeroSection() {
         {/* Kolom Kiri: Copywriting & Hierarki */}
         <div className="lg:col-span-7 flex flex-col gap-3.5 sm:gap-5 lg:gap-5 xl:gap-5 z-10">
           {/* Pill Badge Atas */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border-2 border-[#1B64B4]/25 text-xs text-[#172554] font-mono w-fit shadow-xs">
-            <MapPin className="w-3.5 h-3.5 text-[#E84A27] shrink-0" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-slate-200 text-xs text-[#172554] font-mono w-fit shadow-xs">
+            <MapPin className="w-3.5 h-3.5 text-brand-orange shrink-0" />
             <span className="font-bold text-[#172554]">Baciro, Jogja</span>
             <span className="text-[#CBD5E1] select-none">•</span>
             <span className="text-[#475569] font-medium">Cafe &amp; Board Game Lounge</span>
@@ -80,7 +80,7 @@ export default function HeroSection() {
             <a
               href="#games"
               onClick={(e) => scrollTo(e, "games")}
-              className="bg-[#E84A27] hover:bg-[#D83B13] active:scale-[0.98] text-white px-5 py-2.5 sm:px-5.5 sm:py-2.5 rounded-md font-display font-bold text-xs sm:text-sm tracking-wide transition-all flex items-center justify-center gap-2 shadow-[2px_2px_0px_0px_#1B64B4] border-2 border-[#1B64B4] cursor-pointer"
+              className="bg-brand-orange hover:bg-brand-orange-hover active:scale-[0.98] text-white px-5 py-2.5 sm:px-5.5 sm:py-2.5 rounded-lg font-display font-bold text-xs sm:text-sm tracking-wide transition-all flex items-center justify-center gap-2 shadow-xs cursor-pointer"
             >
               <Dices className="w-4 h-4 shrink-0" />
               <span>Jelajahi 300+ Koleksi Game</span>
@@ -88,9 +88,9 @@ export default function HeroSection() {
             <a
               href="#events"
               onClick={(e) => scrollTo(e, "events")}
-              className="bg-white hover:bg-[#FFF5F8] border-2 border-brand-pink hover:border-[#E84A27] active:scale-[0.98] text-[#172554] px-5 py-2.5 sm:px-5.5 sm:py-2.5 rounded-md font-display font-bold text-xs sm:text-sm tracking-wide transition-all flex items-center justify-center gap-2 shadow-[2px_2px_0px_0px_#F7B5CB] cursor-pointer"
+              className="bg-white hover:bg-slate-50 border border-slate-200 active:scale-[0.98] text-[#172554] px-5 py-2.5 sm:px-5.5 sm:py-2.5 rounded-lg font-display font-bold text-xs sm:text-sm tracking-wide transition-all flex items-center justify-center gap-2 shadow-xs cursor-pointer"
             >
-              <CalendarDays className="w-4 h-4 text-[#C2185B] shrink-0" />
+              <CalendarDays className="w-4 h-4 text-brand-orange shrink-0" />
               <span>Event BOTC Kamis</span>
             </a>
           </div>
@@ -98,29 +98,29 @@ export default function HeroSection() {
           {/* Quick Stats Bar */}
           <div
             data-testid="hero-stats"
-            className="grid grid-cols-3 grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)_minmax(0,1fr)] gap-2 sm:gap-4 lg:gap-5 pt-3 sm:pt-5 mt-0.5 sm:mt-1 border-t-2 border-[#1B64B4]/15 w-full max-w-xl"
+            className="grid grid-cols-3 grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)_minmax(0,1fr)] gap-2 sm:gap-4 lg:gap-5 pt-3 sm:pt-5 mt-0.5 sm:mt-1 border-t border-slate-200 w-full max-w-xl"
           >
             <div className="min-w-0">
-              <div className="font-display font-black text-lg sm:text-2xl lg:text-[1.65rem] xl:text-[1.85rem] text-[#E84A27] tracking-tight whitespace-nowrap">
+              <div className="font-display font-black text-lg sm:text-2xl lg:text-[1.65rem] xl:text-[1.85rem] text-brand-orange tracking-tight whitespace-nowrap">
                 300+
               </div>
-              <div className="text-[10px] sm:text-xs text-[#475569] font-mono mt-0.5 leading-snug font-medium">
+              <div className="text-[10px] sm:text-xs text-[#64748B] font-mono mt-0.5 leading-snug font-medium">
                 Pilihan Board Game
               </div>
             </div>
             <div className="min-w-0">
-              <div className="font-display font-black text-lg sm:text-2xl lg:text-[1.65rem] xl:text-[1.85rem] text-[#1B64B4] tracking-tight whitespace-nowrap">
+              <div className="font-display font-black text-lg sm:text-2xl lg:text-[1.65rem] xl:text-[1.85rem] text-[#172554] tracking-tight whitespace-nowrap">
                 24 Jam
               </div>
-              <div className="text-[10px] sm:text-xs text-[#475569] font-mono mt-0.5 leading-snug font-medium">
+              <div className="text-[10px] sm:text-xs text-[#64748B] font-mono mt-0.5 leading-snug font-medium">
                 Buka Jumat – Minggu
               </div>
             </div>
             <div className="min-w-0">
-              <div className="font-display font-black text-lg sm:text-2xl lg:text-[1.65rem] xl:text-[1.85rem] text-[#C2185B] tracking-tight whitespace-nowrap">
+              <div className="font-display font-black text-lg sm:text-2xl lg:text-[1.65rem] xl:text-[1.85rem] text-[#172554] tracking-tight whitespace-nowrap">
                 100%
               </div>
-              <div className="text-[10px] sm:text-xs text-[#475569] font-mono mt-0.5 leading-snug font-medium">
+              <div className="text-[10px] sm:text-xs text-[#64748B] font-mono mt-0.5 leading-snug font-medium">
                 Diajarin Game Master
               </div>
             </div>
@@ -138,10 +138,10 @@ export default function HeroSection() {
           <DicePicker />
 
           {/* Solo Player Banner — premium style matching DicePicker */}
-          <div className="relative bg-white border border-[#1B64B4]/15 rounded-xl p-3 sm:p-3.5 flex items-start gap-3 overflow-hidden shadow-[0_2px_12px_-4px_rgba(27,100,180,0.08)]">
+          <div className="relative bg-white border border-slate-200 rounded-xl p-3 sm:p-3.5 flex items-start gap-3 overflow-hidden shadow-xs">
             {/* Left accent bar */}
-            <div className="absolute left-0 top-3 bottom-3 w-[3px] rounded-full bg-[#E84A27]" />
-            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-gradient-to-br from-[#FFF5F0] to-[#FFF0EB] border border-[#E84A27]/20 flex items-center justify-center text-[#E84A27] shrink-0 ml-1 shadow-2xs">
+            <div className="absolute left-0 top-3 bottom-3 w-[3px] rounded-full bg-brand-orange" />
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-[#FFF5F0] border border-brand-orange/20 flex items-center justify-center text-brand-orange shrink-0 ml-1">
               <UserCheck className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
             </div>
             <div className="min-w-0">

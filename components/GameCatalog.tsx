@@ -57,10 +57,10 @@ const CATEGORY_DEFINITIONS: CategoryMeta[] = [
     icon: LayoutGrid,
     vibe: "Koleksi lengkap 362 board game fisik siap dimainkan kapan saja di Gitgud Baciro.",
     activeClass:
-      "bg-[#E84A27] text-white border-2 border-[#1B64B4] shadow-[2.5px_2.5px_0px_0px_#1B64B4] translate-x-0.5 translate-y-0.5",
+      "bg-brand-orange text-white border-brand-orange shadow-xs",
     inactiveClass:
-      "bg-white hover:bg-[#FFF5F2] text-[#475569] hover:text-[#172554] border-2 border-[#1B64B4]/20 hover:border-brand-orange shadow-[2.5px_2.5px_0px_0px_#5BB5F8]/30 hover:-translate-y-0.5",
-    badgeClass: "bg-white/25 text-white",
+      "bg-white hover:bg-slate-50 text-[#475569] hover:text-[#172554] border border-slate-200 hover:border-slate-300 shadow-2xs",
+    badgeClass: "bg-white/20 text-white",
     vibeBarColor: "bg-brand-orange",
   },
   {
@@ -69,10 +69,10 @@ const CATEGORY_DEFINITIONS: CategoryMeta[] = [
     icon: Flame,
     vibe: "Aturan gampang, tempo cepat, dan dijamin bikin meja ramai ketawa lepas.",
     activeClass:
-      "bg-[#E84A27] text-white border-2 border-[#1B64B4] shadow-[2.5px_2.5px_0px_0px_#1B64B4] translate-x-0.5 translate-y-0.5",
+      "bg-brand-orange text-white border-brand-orange shadow-xs",
     inactiveClass:
-      "bg-white hover:bg-[#FFF5F2] text-[#475569] hover:text-[#172554] border-2 border-[#1B64B4]/20 hover:border-brand-orange shadow-[2.5px_2.5px_0px_0px_#5BB5F8]/30 hover:-translate-y-0.5",
-    badgeClass: "bg-white/25 text-white",
+      "bg-white hover:bg-slate-50 text-[#475569] hover:text-[#172554] border border-slate-200 hover:border-slate-300 shadow-2xs",
+    badgeClass: "bg-white/20 text-white",
     vibeBarColor: "bg-brand-orange",
   },
   {
@@ -81,11 +81,11 @@ const CATEGORY_DEFINITIONS: CategoryMeta[] = [
     icon: Sparkles,
     vibe: "Gameplay rileks, cocok untuk ngobrol santai sambil ngopi tanpa mikir berat.",
     activeClass:
-      "bg-[#5BB5F8] text-[#172554] border-2 border-[#1B64B4] shadow-[2.5px_2.5px_0px_0px_#1B64B4] translate-x-0.5 translate-y-0.5",
+      "bg-brand-orange text-white border-brand-orange shadow-xs",
     inactiveClass:
-      "bg-white hover:bg-[#F0F7FF] text-[#475569] hover:text-[#172554] border-2 border-[#1B64B4]/20 hover:border-brand-lightblue shadow-[2.5px_2.5px_0px_0px_#5BB5F8]/30 hover:-translate-y-0.5",
-    badgeClass: "bg-[#1B64B4]/15 text-[#172554]",
-    vibeBarColor: "bg-[#5BB5F8]",
+      "bg-white hover:bg-slate-50 text-[#475569] hover:text-[#172554] border border-slate-200 hover:border-slate-300 shadow-2xs",
+    badgeClass: "bg-white/20 text-white",
+    vibeBarColor: "bg-brand-orange",
   },
   {
     key: "strategy",
@@ -93,11 +93,11 @@ const CATEGORY_DEFINITIONS: CategoryMeta[] = [
     icon: Compass,
     vibe: "Rancang taktik, kelola resource, dan rebut kemenangan dengan perhitungan matang.",
     activeClass:
-      "bg-[#1B64B4] text-white border-2 border-[#5BB5F8] shadow-[2.5px_2.5px_0px_0px_#5BB5F8] translate-x-0.5 translate-y-0.5",
+      "bg-brand-orange text-white border-brand-orange shadow-xs",
     inactiveClass:
-      "bg-white hover:bg-[#F0F7FF] text-[#475569] hover:text-[#172554] border-2 border-[#1B64B4]/20 hover:border-brand-blue shadow-[2.5px_2.5px_0px_0px_#1B64B4]/25 hover:-translate-y-0.5",
-    badgeClass: "bg-white/25 text-white",
-    vibeBarColor: "bg-[#1B64B4]",
+      "bg-white hover:bg-slate-50 text-[#475569] hover:text-[#172554] border border-slate-200 hover:border-slate-300 shadow-2xs",
+    badgeClass: "bg-white/20 text-white",
+    vibeBarColor: "bg-brand-orange",
   },
   {
     key: "social-deduction",
@@ -105,11 +105,11 @@ const CATEGORY_DEFINITIONS: CategoryMeta[] = [
     icon: Eye,
     vibe: "Adu intrik, tuduhan rahasia, dan sandiwara paling seru bareng squad.",
     activeClass:
-      "bg-[#F7B5CB] text-[#172554] border-2 border-[#1B64B4] shadow-[2.5px_2.5px_0px_0px_#1B64B4] translate-x-0.5 translate-y-0.5",
+      "bg-brand-orange text-white border-brand-orange shadow-xs",
     inactiveClass:
-      "bg-white hover:bg-[#FFF5F8] text-[#475569] hover:text-[#172554] border-2 border-[#1B64B4]/20 hover:border-brand-pink shadow-[2.5px_2.5px_0px_0px_#F7B5CB]/40 hover:-translate-y-0.5",
-    badgeClass: "bg-[#1B64B4]/15 text-[#172554]",
-    vibeBarColor: "bg-[#C2185B]",
+      "bg-white hover:bg-slate-50 text-[#475569] hover:text-[#172554] border border-slate-200 hover:border-slate-300 shadow-2xs",
+    badgeClass: "bg-white/20 text-white",
+    vibeBarColor: "bg-brand-orange",
   },
   {
     key: "battle",
@@ -117,10 +117,10 @@ const CATEGORY_DEFINITIONS: CategoryMeta[] = [
     icon: Swords,
     vibe: "Pertarungan langsung head-to-head, adu hero, dan dominasi arena.",
     activeClass:
-      "bg-[#E84A27] text-white border-2 border-[#1B64B4] shadow-[2.5px_2.5px_0px_0px_#1B64B4] translate-x-0.5 translate-y-0.5",
+      "bg-brand-orange text-white border-brand-orange shadow-xs",
     inactiveClass:
-      "bg-white hover:bg-[#FFF5F2] text-[#475569] hover:text-[#172554] border-2 border-[#1B64B4]/20 hover:border-brand-orange shadow-[2.5px_2.5px_0px_0px_#5BB5F8]/30 hover:-translate-y-0.5",
-    badgeClass: "bg-white/25 text-white",
+      "bg-white hover:bg-slate-50 text-[#475569] hover:text-[#172554] border border-slate-200 hover:border-slate-300 shadow-2xs",
+    badgeClass: "bg-white/20 text-white",
     vibeBarColor: "bg-brand-orange",
   },
   {
@@ -129,11 +129,11 @@ const CATEGORY_DEFINITIONS: CategoryMeta[] = [
     icon: ShieldCheck,
     vibe: "Menang bersama atau kalah bersama! Saling bantu melawan tantangan game.",
     activeClass:
-      "bg-[#5BB5F8] text-[#172554] border-2 border-[#1B64B4] shadow-[2.5px_2.5px_0px_0px_#1B64B4] translate-x-0.5 translate-y-0.5",
+      "bg-brand-orange text-white border-brand-orange shadow-xs",
     inactiveClass:
-      "bg-white hover:bg-[#F0F7FF] text-[#475569] hover:text-[#172554] border-2 border-[#1B64B4]/20 hover:border-brand-lightblue shadow-[2.5px_2.5px_0px_0px_#5BB5F8]/30 hover:-translate-y-0.5",
-    badgeClass: "bg-[#1B64B4]/15 text-[#172554]",
-    vibeBarColor: "bg-[#1B64B4]",
+      "bg-white hover:bg-slate-50 text-[#475569] hover:text-[#172554] border border-slate-200 hover:border-slate-300 shadow-2xs",
+    badgeClass: "bg-white/20 text-white",
+    vibeBarColor: "bg-brand-orange",
   },
   {
     key: "great-for-2",
@@ -141,11 +141,11 @@ const CATEGORY_DEFINITIONS: CategoryMeta[] = [
     icon: Heart,
     vibe: "52 game yang terbukti paling seru untuk kencan, ngedrop bareng bestie, atau duel 1v1.",
     activeClass:
-      "bg-[#F7B5CB] text-[#172554] border-2 border-[#1B64B4] shadow-[2.5px_2.5px_0px_0px_#1B64B4] translate-x-0.5 translate-y-0.5",
+      "bg-brand-orange text-white border-brand-orange shadow-xs",
     inactiveClass:
-      "bg-white hover:bg-[#FFF5F8] text-[#475569] hover:text-[#172554] border-2 border-[#1B64B4]/20 hover:border-brand-pink shadow-[2.5px_2.5px_0px_0px_#F7B5CB]/40 hover:-translate-y-0.5",
-    badgeClass: "bg-[#1B64B4]/15 text-[#172554]",
-    vibeBarColor: "bg-[#C2185B]",
+      "bg-white hover:bg-slate-50 text-[#475569] hover:text-[#172554] border border-slate-200 hover:border-slate-300 shadow-2xs",
+    badgeClass: "bg-white/20 text-white",
+    vibeBarColor: "bg-brand-orange",
   },
 ];
 
@@ -317,18 +317,14 @@ export default function GameCatalog() {
   return (
     <section
       id="games"
-      className="scroll-mt-20 py-8 sm:py-20 lg:py-24 px-4 lg:px-12 bg-white border-b-2 border-[#1B64B4]/15"
+      className="scroll-mt-20 py-8 sm:py-20 lg:py-24 px-4 lg:px-12 bg-white border-b border-slate-200"
     >
       <div className="max-w-7xl mx-auto w-full">
         {/* Section Header */}
         <div className="mb-6 sm:mb-10">
-          <div className="inline-flex items-center gap-2 p-1 pr-3.5 bg-[#F0F7FF] border-2 border-brand-lightblue text-[#1B64B4] rounded-full font-mono text-[11px] sm:text-xs font-black tracking-wider uppercase shadow-[2.5px_2.5px_0px_0px_#5BB5F8] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-300 group cursor-default">
-            <span className="w-6 h-6 rounded-full bg-brand-lightblue text-[#172554] flex items-center justify-center shrink-0 border border-brand-lightblue shadow-xs font-mono font-black text-xs group-hover:scale-110 transition-transform select-none">
-              ♠
-            </span>
-            <span className="text-[#475569] font-bold text-[10px]">DECK 02</span>
-            <span className="text-brand-lightblue select-none">•</span>
-            <span className="text-[#172554]">362 VAULT ARCHIVE</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange font-mono text-xs font-semibold">
+            <LayoutGrid className="w-3.5 h-3.5 text-brand-orange shrink-0" />
+            <span>Katalog Meja Fisik</span>
           </div>
           <h2 className="font-display font-black text-2xl sm:text-[1.75rem] md:text-3xl lg:text-[2rem] xl:text-[2.15rem] text-[#172554] mt-2.5 sm:mt-3 tracking-tight leading-tight">
             362 KOLEKSI BOARD GAME GITGUD
@@ -342,7 +338,7 @@ export default function GameCatalog() {
         <div className="mb-5 sm:mb-6 flex flex-col md:flex-row gap-3 sm:gap-3.5 items-stretch md:items-center justify-between">
           {/* Search Input Box */}
           <div className="relative flex-1 max-w-xl">
-            <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#1B64B4]">
+            <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#64748B]">
               <Search className="w-4 h-4" />
             </div>
             <input
@@ -350,14 +346,14 @@ export default function GameCatalog() {
               value={searchQuery}
               onChange={handleSearchChange}
               placeholder="Cari dari 362 game (contoh: Catan, Azul, Werewolf, Wingspan)"
-              className="w-full pl-10 pr-10 py-2.5 sm:py-3 rounded-xl bg-white border-2 border-[#1B64B4]/25 focus:border-[#E84A27] focus:outline-none text-[#172554] placeholder-[#94A3B8] font-mono text-xs sm:text-sm shadow-xs transition-colors"
+              className="w-full pl-10 pr-10 py-2.5 sm:py-3 rounded-xl bg-white border border-slate-200 focus:border-brand-orange focus:outline-none text-[#172554] placeholder-[#94A3B8] font-mono text-xs sm:text-sm shadow-xs transition-colors"
             />
             {searchQuery && (
               <button
                 type="button"
                 onClick={handleClearSearch}
                 aria-label="Bersihkan pencarian"
-                className="absolute inset-y-0 right-0 pr-3 flex items-center text-[#94A3B8] hover:text-[#E84A27] transition-colors cursor-pointer"
+                className="absolute inset-y-0 right-0 pr-3 flex items-center text-[#94A3B8] hover:text-brand-orange transition-colors cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -387,7 +383,7 @@ export default function GameCatalog() {
                   className={`text-[11px] font-mono font-bold px-3 py-1.5 rounded-lg border transition-all cursor-pointer whitespace-nowrap ${
                     isSelected
                       ? "bg-[#172554] text-white border-[#172554] shadow-xs"
-                      : "bg-white text-[#475569] border-[#1B64B4]/20 hover:border-[#1B64B4] hover:text-[#172554]"
+                      : "bg-white text-[#475569] border-slate-200 hover:border-slate-300 hover:text-[#172554]"
                   }`}
                 >
                   {diffLabel}
@@ -403,9 +399,9 @@ export default function GameCatalog() {
           <div className="flex md:hidden items-center justify-between text-xs font-mono text-[#64748B] mb-2 px-0.5">
             <span className="inline-flex items-center gap-1.5 text-[11px] font-medium text-[#475569]">
               <span>Geser kategori game</span>
-              <span className="text-[#1B64B4] font-bold">→</span>
+              <span className="text-brand-orange font-bold">→</span>
             </span>
-            <span className="text-[10px] bg-[#F1F5F9] px-2 py-0.5 rounded-full font-bold text-[#475569]">
+            <span className="text-[10px] bg-[#F1F5F9] px-2 py-0.5 rounded-full font-medium text-[#475569]">
               8 Kategori
             </span>
           </div>
@@ -458,16 +454,16 @@ export default function GameCatalog() {
           </div>
 
           {/* Category Vibe Bar */}
-          <div className="mt-4 p-3.5 sm:p-4 bg-[#F8FAFC] rounded-xl border-2 border-[#1B64B4]/15 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs sm:text-sm font-mono">
+          <div className="mt-4 p-3.5 sm:p-4 bg-[#F8FAFC] rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs sm:text-sm font-mono">
             <div className="flex items-center gap-3 min-w-0">
-              <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-white border border-[#1B64B4]/20 shadow-2xs shrink-0">
+              <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-white border border-slate-200 shadow-2xs shrink-0">
                 <activeMeta.icon
                   className={`w-3.5 h-3.5 ${activeMeta.vibeBarColor.replace(
                     "bg-",
                     "text-"
                   )} shrink-0`}
                 />
-                <span className="text-[10px] font-mono font-black tracking-widest text-[#172554] uppercase">
+                <span className="text-[10px] font-mono font-bold tracking-widest text-[#172554] uppercase">
                   VIBE
                 </span>
               </div>
@@ -523,7 +519,7 @@ export default function GameCatalog() {
                 <div
                   key={game.id}
                   data-testid="game-card"
-                  className={`bg-white border-2 border-[#1B64B4]/15 rounded-xl overflow-hidden hover:border-brand-orange transition-all shadow-xs hover:shadow-md flex-col justify-between group ${
+                  className={`bg-white border border-slate-200 rounded-xl overflow-hidden hover:border-brand-orange/40 transition-all shadow-xs flex-col justify-between group ${
                     isInitialHiddenOnMobile ? "hidden md:flex" : "flex"
                   }`}
                 >
@@ -532,7 +528,7 @@ export default function GameCatalog() {
                     <div
                       className={`min-h-[85px] sm:min-h-[110px] bg-gradient-to-br ${
                         diffConfig ? diffConfig.bgGradient : "from-slate-50 to-white"
-                      } border-b border-[#1B64B4]/15 p-3.5 sm:p-5 flex flex-col justify-between relative overflow-hidden`}
+                      } border-b border-slate-100 p-3.5 sm:p-5 flex flex-col justify-between relative overflow-hidden`}
                     >
                       {/* Top Badges Row */}
                       <div className="flex items-center justify-between gap-2 mb-1.5 sm:mb-2">
@@ -610,7 +606,7 @@ export default function GameCatalog() {
             <button
               type="button"
               onClick={handleLoadMore}
-              className="inline-flex items-center gap-2 bg-white hover:bg-[#F0F7FF] text-[#1B64B4] border-2 border-[#1B64B4] font-display font-bold text-xs sm:text-sm px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl transition-all shadow-[2.5px_2.5px_0px_0px_#1B64B4] active:translate-x-0.5 active:translate-y-0.5 cursor-pointer"
+              className="inline-flex items-center gap-2 bg-white hover:bg-slate-50 text-[#172554] border border-slate-200 font-display font-bold text-xs sm:text-sm px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg transition-all shadow-xs active:scale-[0.98] cursor-pointer"
             >
               <span className="md:hidden">
                 Muat Lebih Banyak (+{Math.min(6, filteredGames.length - (mobileExpanded ? displayCount : MOBILE_INITIAL_COUNT))} Game)
@@ -627,7 +623,7 @@ export default function GameCatalog() {
             <button
               type="button"
               onClick={handleCollapseMobile}
-              className="md:hidden inline-flex items-center gap-2 bg-[#F8FAFC] hover:bg-white text-[#64748B] hover:text-[#172554] border-2 border-[#1B64B4]/20 font-display font-bold text-xs px-4 py-2.5 rounded-xl transition-all cursor-pointer shadow-xs active:translate-y-0.5"
+              className="md:hidden inline-flex items-center gap-2 bg-[#F8FAFC] hover:bg-white text-[#64748B] hover:text-[#172554] border border-slate-200 font-display font-bold text-xs px-4 py-2.5 rounded-lg transition-all cursor-pointer shadow-xs active:translate-y-0.5"
             >
               <span>Sembunyikan Sebagian (Kembali ke 6)</span>
             </button>

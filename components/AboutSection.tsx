@@ -5,18 +5,14 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="scroll-mt-20 py-8 sm:py-20 lg:py-24 px-4 lg:px-12 bg-white border-b-2 border-[#1B64B4]/15"
+      className="scroll-mt-20 py-8 sm:py-20 lg:py-24 px-4 lg:px-12 bg-white border-b border-slate-200"
     >
       <div className="max-w-7xl mx-auto w-full">
         <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-12 lg:mb-14">
-          {/* Creative Tabletop Meeple Guild Seal Ribbon */}
-          <div className="inline-flex items-center gap-2 p-1 pr-3.5 bg-[#FFF5F2] border-2 border-brand-orange text-brand-orange rounded-full font-mono text-[11px] sm:text-xs font-black tracking-wider uppercase shadow-[2.5px_2.5px_0px_0px_#E84A27] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-300 group cursor-default">
-            <span className="w-6 h-6 rounded-full bg-brand-orange text-white flex items-center justify-center shrink-0 border border-brand-orange shadow-xs group-hover:rotate-12 transition-transform">
-              <MeepleIcon className="w-3.5 h-3.5 text-white shrink-0" />
-            </span>
-            <span className="text-[#475569] font-bold text-[10px]">GUILD 01</span>
-            <span className="text-brand-orange select-none">•</span>
-            <span className="text-[#172554]">LEVEL UP NONGKRONG KAMU</span>
+          {/* Section Eyebrow */}
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange font-mono text-xs font-semibold">
+            <MeepleIcon className="w-3.5 h-3.5 text-brand-orange shrink-0" />
+            <span>Level Up Nongkrong Kamu</span>
           </div>
           <h2 className="font-display font-black text-2xl sm:text-[1.75rem] md:text-3xl lg:text-[2rem] xl:text-[2.15rem] text-[#172554] mt-3 tracking-tight leading-tight">
             BUKAN CAFE BIASA, INI TEMPAT BIKIN CERITA
@@ -33,20 +29,20 @@ export default function AboutSection() {
             <span>Geser kartu ke samping</span>
             <span className="text-brand-orange font-bold">→</span>
           </span>
-          <span className="text-[10px] bg-[#F1F5F9] px-2 py-0.5 rounded-full font-bold text-[#475569]">
+          <span className="text-[10px] bg-[#F1F5F9] px-2 py-0.5 rounded-full font-medium text-[#475569]">
             4 Keunggulan
           </span>
         </div>
 
         {/* Cards: Mobile Touch-Friendly Snap Track / Desktop 4-Col Grid */}
-        <div className="flex md:grid md:grid-cols-2 lg:grid-cols-4 overflow-x-auto md:overflow-visible snap-x snap-mandatory scrollbar-none gap-4 sm:gap-7 -mx-4 px-4 sm:mx-0 sm:px-0 pb-3 md:pb-0 scroll-pl-4 scroll-pr-4">
-          {/* Card 1: Dominant Orange */}
-          <div className="w-[80vw] sm:w-[68vw] max-w-[280px] shrink-0 snap-start md:w-auto md:max-w-none bg-white border-2 border-[#1B64B4]/20 rounded-xl p-5 sm:p-7 shadow-brutal-orange hover:-translate-y-1 transition-all flex flex-col justify-between min-h-[210px] sm:min-h-[240px]">
+        <div className="flex md:grid md:grid-cols-2 lg:grid-cols-4 overflow-x-auto md:overflow-visible snap-x snap-mandatory scrollbar-none gap-4 sm:gap-6 -mx-4 px-4 sm:mx-0 sm:px-0 pb-3 md:pb-0 scroll-pl-4 scroll-pr-4">
+          {/* Card 1 */}
+          <div className="w-[80vw] sm:w-[68vw] max-w-[280px] shrink-0 snap-start md:w-auto md:max-w-none bg-white border border-slate-200 rounded-xl p-5 sm:p-6 shadow-xs hover:border-slate-300 transition-all flex flex-col justify-between min-h-[210px] sm:min-h-[230px]">
             <div>
-              <div className="w-11 h-11 sm:w-12 sm:h-12 bg-brand-orange text-white rounded-lg flex items-center justify-center font-bold mb-3.5 sm:mb-4 shadow-xs">
-                <Layers className="w-5 h-5 sm:w-6 sm:h-6" />
+              <div className="w-10 h-10 sm:w-11 sm:h-11 bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange rounded-lg flex items-center justify-center font-bold mb-3.5 sm:mb-4 shadow-xs">
+                <Layers className="w-5 h-5" />
               </div>
-              <h3 className="font-display font-bold text-base sm:text-xl text-[#172554] mb-1.5 sm:mb-2">
+              <h3 className="font-display font-bold text-base sm:text-lg text-[#172554] mb-1.5">
                 300+ Koleksi Game
               </h3>
               <p className="text-[#475569] text-xs sm:text-sm leading-relaxed">
@@ -56,13 +52,13 @@ export default function AboutSection() {
             </div>
           </div>
 
-          {/* Card 2: Light Blue */}
-          <div className="w-[80vw] sm:w-[68vw] max-w-[280px] shrink-0 snap-start md:w-auto md:max-w-none bg-white border-2 border-[#1B64B4]/20 rounded-xl p-5 sm:p-7 shadow-brutal-lightblue hover:-translate-y-1 transition-all flex flex-col justify-between min-h-[210px] sm:min-h-[240px]">
+          {/* Card 2 */}
+          <div className="w-[80vw] sm:w-[68vw] max-w-[280px] shrink-0 snap-start md:w-auto md:max-w-none bg-white border border-slate-200 rounded-xl p-5 sm:p-6 shadow-xs hover:border-slate-300 transition-all flex flex-col justify-between min-h-[210px] sm:min-h-[230px]">
             <div>
-              <div className="w-11 h-11 sm:w-12 sm:h-12 bg-brand-lightblue text-[#172554] rounded-lg flex items-center justify-center font-bold mb-3.5 sm:mb-4 shadow-xs">
-                <Compass className="w-5 h-5 sm:w-6 sm:h-6" />
+              <div className="w-10 h-10 sm:w-11 sm:h-11 bg-[#F0F7FF] border border-[#1B64B4]/20 text-[#1B64B4] rounded-lg flex items-center justify-center font-bold mb-3.5 sm:mb-4 shadow-xs">
+                <Compass className="w-5 h-5" />
               </div>
-              <h3 className="font-display font-bold text-base sm:text-xl text-[#172554] mb-1.5 sm:mb-2">
+              <h3 className="font-display font-bold text-base sm:text-lg text-[#172554] mb-1.5">
                 Game Master Standby
               </h3>
               <p className="text-[#475569] text-xs sm:text-sm leading-relaxed">
@@ -72,13 +68,13 @@ export default function AboutSection() {
             </div>
           </div>
 
-          {/* Card 3: Soft Pink */}
-          <div className="w-[80vw] sm:w-[68vw] max-w-[280px] shrink-0 snap-start md:w-auto md:max-w-none bg-white border-2 border-[#1B64B4]/20 rounded-xl p-5 sm:p-7 shadow-brutal-pink hover:-translate-y-1 transition-all flex flex-col justify-between min-h-[210px] sm:min-h-[240px]">
+          {/* Card 3 */}
+          <div className="w-[80vw] sm:w-[68vw] max-w-[280px] shrink-0 snap-start md:w-auto md:max-w-none bg-white border border-slate-200 rounded-xl p-5 sm:p-6 shadow-xs hover:border-slate-300 transition-all flex flex-col justify-between min-h-[210px] sm:min-h-[230px]">
             <div>
-              <div className="w-11 h-11 sm:w-12 sm:h-12 bg-brand-pink text-[#172554] rounded-lg flex items-center justify-center font-bold mb-3.5 sm:mb-4 shadow-xs">
-                <Coffee className="w-5 h-5 sm:w-6 sm:h-6" />
+              <div className="w-10 h-10 sm:w-11 sm:h-11 bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange rounded-lg flex items-center justify-center font-bold mb-3.5 sm:mb-4 shadow-xs">
+                <Coffee className="w-5 h-5" />
               </div>
-              <h3 className="font-display font-bold text-base sm:text-xl text-[#172554] mb-1.5 sm:mb-2">
+              <h3 className="font-display font-bold text-base sm:text-lg text-[#172554] mb-1.5">
                 Specialty Espresso Bar
               </h3>
               <p className="text-[#475569] text-xs sm:text-sm leading-relaxed">
@@ -89,19 +85,19 @@ export default function AboutSection() {
             </div>
           </div>
 
-          {/* Card 4: Royal Blue */}
-          <div className="w-[80vw] sm:w-[68vw] max-w-[280px] shrink-0 snap-start md:w-auto md:max-w-none bg-white border-2 border-[#1B64B4]/20 rounded-xl p-5 sm:p-7 shadow-brutal-blue hover:-translate-y-1 transition-all flex flex-col justify-between min-h-[210px] sm:min-h-[240px]">
+          {/* Card 4 */}
+          <div className="w-[80vw] sm:w-[68vw] max-w-[280px] shrink-0 snap-start md:w-auto md:max-w-none bg-white border border-slate-200 rounded-xl p-5 sm:p-6 shadow-xs hover:border-slate-300 transition-all flex flex-col justify-between min-h-[210px] sm:min-h-[230px]">
             <div>
-              <div className="w-11 h-11 sm:w-12 sm:h-12 bg-brand-blue text-white rounded-lg flex items-center justify-center font-bold mb-3.5 sm:mb-4 shadow-xs">
-                <Moon className="w-5 h-5 sm:w-6 sm:h-6" />
+              <div className="w-10 h-10 sm:w-11 sm:h-11 bg-[#F0F7FF] border border-[#172554]/20 text-[#172554] rounded-lg flex items-center justify-center font-bold mb-3.5 sm:mb-4 shadow-xs">
+                <Moon className="w-5 h-5" />
               </div>
-              <h3 className="font-display font-bold text-base sm:text-xl text-[#172554] mb-1.5 sm:mb-2">
+              <h3 className="font-display font-bold text-base sm:text-lg text-[#172554] mb-1.5">
                 Weekend <span className="whitespace-nowrap">24 Jam</span>
               </h3>
               <p className="text-[#475569] text-xs sm:text-sm leading-relaxed">
                 Main game seru kepotong jam tutup cafe? Gak di Gitgud! Hari Jumat
                 sampai Minggu kami gas{" "}
-                <span className="whitespace-nowrap font-semibold text-[#1B64B4]">
+                <span className="whitespace-nowrap font-semibold text-[#172554]">
                   24 jam non-stop
                 </span>{" "}
                 buat kamu dan teman-teman.

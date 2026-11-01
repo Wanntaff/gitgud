@@ -27,40 +27,40 @@ const NAV_ITEMS: NavItem[] = [
     stepNumber: "01",
     accentColor: "#E84A27",
     activeClasses:
-      "bg-[#FFF5F2] text-[#E84A27] border-brand-orange shadow-[2.5px_2.5px_0px_0px_#E84A27]",
+      "bg-[#FFF5F0] text-brand-orange border-brand-orange/30 shadow-xs",
     activeMobileClasses:
-      "bg-[#FFF5F2] text-[#E84A27] border-brand-orange shadow-[3px_3px_0px_0px_#E84A27]",
-    activeIconClass: "text-[#E84A27]",
+      "bg-[#FFF5F0] text-brand-orange border-brand-orange/30 shadow-xs",
+    activeIconClass: "text-brand-orange",
     activeBadgeClasses:
-      "bg-brand-orange/15 text-[#E84A27] border-brand-orange/40",
+      "bg-[#FFF5F0] text-brand-orange border-brand-orange/30",
   },
   {
     id: "games",
     label: "Koleksi Game",
     mobileLabel: "Koleksi Game",
     stepNumber: "02",
-    accentColor: "#1B64B4",
+    accentColor: "#E84A27",
     activeClasses:
-      "bg-[#F0F7FF] text-[#1B64B4] border-brand-lightblue shadow-[2.5px_2.5px_0px_0px_#5BB5F8]",
+      "bg-[#FFF5F0] text-brand-orange border-brand-orange/30 shadow-xs",
     activeMobileClasses:
-      "bg-[#F0F7FF] text-[#1B64B4] border-brand-lightblue shadow-[3px_3px_0px_0px_#5BB5F8]",
-    activeIconClass: "text-[#1B64B4]",
+      "bg-[#FFF5F0] text-brand-orange border-brand-orange/30 shadow-xs",
+    activeIconClass: "text-brand-orange",
     activeBadgeClasses:
-      "bg-[#5BB5F8]/20 text-[#1B64B4] border-[#5BB5F8]/50",
+      "bg-[#FFF5F0] text-brand-orange border-brand-orange/30",
   },
   {
     id: "events",
     label: "Event & BOTC",
     mobileLabel: "Event Mingguan & BOTC",
     stepNumber: "03",
-    accentColor: "#C2185B",
+    accentColor: "#E84A27",
     activeClasses:
-      "bg-[#FFF5F8] text-[#C2185B] border-brand-pink shadow-[2.5px_2.5px_0px_0px_#F7B5CB]",
+      "bg-[#FFF5F0] text-brand-orange border-brand-orange/30 shadow-xs",
     activeMobileClasses:
-      "bg-[#FFF5F8] text-[#C2185B] border-brand-pink shadow-[3px_3px_0px_0px_#F7B5CB]",
-    activeIconClass: "text-[#C2185B]",
+      "bg-[#FFF5F0] text-brand-orange border-brand-orange/30 shadow-xs",
+    activeIconClass: "text-brand-orange",
     activeBadgeClasses:
-      "bg-[#F7B5CB]/30 text-[#C2185B] border-[#F7B5CB]/60",
+      "bg-[#FFF5F0] text-brand-orange border-brand-orange/30",
   },
   {
     id: "menu",
@@ -69,40 +69,40 @@ const NAV_ITEMS: NavItem[] = [
     stepNumber: "04",
     accentColor: "#E84A27",
     activeClasses:
-      "bg-[#FFF5F2] text-[#E84A27] border-brand-orange shadow-[2.5px_2.5px_0px_0px_#E84A27]",
+      "bg-[#FFF5F0] text-brand-orange border-brand-orange/30 shadow-xs",
     activeMobileClasses:
-      "bg-[#FFF5F2] text-[#E84A27] border-brand-orange shadow-[3px_3px_0px_0px_#E84A27]",
-    activeIconClass: "text-[#E84A27]",
+      "bg-[#FFF5F0] text-brand-orange border-brand-orange/30 shadow-xs",
+    activeIconClass: "text-brand-orange",
     activeBadgeClasses:
-      "bg-brand-orange/15 text-[#E84A27] border-brand-orange/40",
+      "bg-[#FFF5F0] text-brand-orange border-brand-orange/30",
   },
   {
     id: "faq",
     label: "FAQ",
     mobileLabel: "FAQ & Tanya Jawab",
     stepNumber: "05",
-    accentColor: "#C2185B",
+    accentColor: "#E84A27",
     activeClasses:
-      "bg-[#FFF5F8] text-[#C2185B] border-brand-pink shadow-[2.5px_2.5px_0px_0px_#F7B5CB]",
+      "bg-[#FFF5F0] text-brand-orange border-brand-orange/30 shadow-xs",
     activeMobileClasses:
-      "bg-[#FFF5F8] text-[#C2185B] border-brand-pink shadow-[3px_3px_0px_0px_#F7B5CB]",
-    activeIconClass: "text-[#C2185B]",
+      "bg-[#FFF5F0] text-brand-orange border-brand-orange/30 shadow-xs",
+    activeIconClass: "text-brand-orange",
     activeBadgeClasses:
-      "bg-[#F7B5CB]/30 text-[#C2185B] border-[#F7B5CB]/60",
+      "bg-[#FFF5F0] text-brand-orange border-brand-orange/30",
   },
   {
     id: "location",
     label: "Lokasi",
     mobileLabel: "Lokasi Baciro & Jam Buka",
     stepNumber: "06",
-    accentColor: "#1B64B4",
+    accentColor: "#E84A27",
     activeClasses:
-      "bg-[#F0F7FF] text-[#1B64B4] border-brand-lightblue shadow-[2.5px_2.5px_0px_0px_#5BB5F8]",
+      "bg-[#FFF5F0] text-brand-orange border-brand-orange/30 shadow-xs",
     activeMobileClasses:
-      "bg-[#F0F7FF] text-[#1B64B4] border-brand-lightblue shadow-[3px_3px_0px_0px_#5BB5F8]",
-    activeIconClass: "text-[#1B64B4]",
+      "bg-[#FFF5F0] text-brand-orange border-brand-orange/30 shadow-xs",
+    activeIconClass: "text-brand-orange",
     activeBadgeClasses:
-      "bg-[#5BB5F8]/20 text-[#1B64B4] border-[#5BB5F8]/50",
+      "bg-[#FFF5F0] text-brand-orange border-brand-orange/30",
   },
 ];
 
@@ -385,7 +385,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b-2 border-[#1B64B4]/15 px-4 lg:px-12 py-2 sm:py-2.5 [transform:translateZ(0)] will-change-transform shadow-xs">
+    <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 px-4 lg:px-12 py-2.5 [transform:translateZ(0)] will-change-transform shadow-xs">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
         {/* Official Client Logo as unboxed pure vector SVG */}
         <Link
@@ -429,10 +429,10 @@ export default function Navbar() {
                 href={`#${item.id}`}
                 onClick={(e) => scrollToSection(e, item.id)}
                 aria-current={isActive ? "page" : undefined}
-                className={`group relative inline-flex items-center gap-1.5 px-2.5 xl:px-3 py-1.5 rounded-lg border-2 transition-all duration-200 whitespace-nowrap cursor-pointer ${
+                className={`group relative inline-flex items-center gap-1.5 px-2.5 xl:px-3 py-1.5 rounded-lg border transition-all duration-200 whitespace-nowrap cursor-pointer ${
                   isActive
                     ? item.activeClasses
-                    : "border-transparent text-[#475569] hover:text-[#172554] hover:border-[#1B64B4]/20 hover:bg-[#F0F7FF]"
+                    : "border-transparent text-[#475569] hover:text-[#172554] hover:bg-slate-50"
                 }`}
               >
                 {/* Fixed 14x14px Meeple Slot: Zero Layout Shift (CLS = 0) */}
@@ -440,7 +440,7 @@ export default function Navbar() {
                   <MeepleIcon
                     className={`w-3.5 h-3.5 ${item.activeIconClass} transition-all duration-200 ${
                       isActive
-                        ? "opacity-100 scale-100 animate-fade-in-up"
+                        ? "opacity-100 scale-100"
                         : "opacity-0 scale-50 group-hover:opacity-30 group-hover:scale-75 text-[#94A3B8]"
                     }`}
                   />
@@ -456,11 +456,10 @@ export default function Navbar() {
                   {item.label}
                 </span>
 
-                {/* Tactile active bottom notch: grounds the meeple piece on the track space */}
+                {/* Active bottom line */}
                 {isActive && (
                   <span
-                    className="absolute -bottom-[2px] left-1/2 -translate-x-1/2 w-4 h-[2px] rounded-full"
-                    style={{ backgroundColor: item.accentColor }}
+                    className="absolute -bottom-[1px] left-1/2 -translate-x-1/2 w-4 h-[2px] rounded-full bg-brand-orange"
                     aria-hidden="true"
                   />
                 )}
@@ -470,7 +469,7 @@ export default function Navbar() {
         </div>
 
         {/* Sound Toggle, Action Button & Mobile Hamburger */}
-        <div className="flex items-center gap-1 sm:gap-2.5 shrink-0">
+        <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
           {/* Subtle Tabletop SFX Sound Toggle Button */}
           <button
             type="button"
@@ -483,8 +482,8 @@ export default function Navbar() {
             }
             className={`p-1.5 sm:p-2 rounded-lg border transition-all cursor-pointer flex items-center justify-center ${
               muted
-                ? "bg-[#F8FAFC] border-[#1B64B4]/20 text-[#64748B] hover:text-[#172554] hover:bg-[#F0F7FF]"
-                : "bg-[#FFF5F2] border-brand-orange/40 text-brand-orange hover:bg-brand-orange/20 shadow-xs"
+                ? "bg-[#F8FAFC] border-slate-200 text-[#64748B] hover:text-[#172554] hover:bg-slate-100"
+                : "bg-[#FFF5F0] border-brand-orange/30 text-brand-orange hover:bg-brand-orange/10 shadow-xs"
             }`}
           >
             {muted ? (
@@ -499,7 +498,7 @@ export default function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => soundEffects.playSuccessChime()}
-            className="bg-brand-orange hover:bg-brand-orange-hover text-white px-2.5 sm:px-3.5 py-1.5 sm:py-2 border-2 border-[#1B64B4] font-display font-black text-[11px] sm:text-xs tracking-wide rounded shadow-[2.5px_2.5px_0px_0px_#1B64B4] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all flex items-center gap-1 sm:gap-1.5 whitespace-nowrap cursor-pointer"
+            className="bg-brand-orange hover:bg-brand-orange-hover active:scale-[0.98] text-white px-3 sm:px-4 py-1.5 sm:py-2 font-display font-bold text-xs tracking-wide rounded-lg shadow-xs transition-all flex items-center gap-1.5 whitespace-nowrap cursor-pointer"
           >
             <MessageCircle className="w-3.5 h-3.5 shrink-0" />
             <span>RESERVASI</span>
@@ -513,7 +512,7 @@ export default function Navbar() {
               setMobileMenuOpen(!mobileMenuOpen);
             }}
             aria-label="Toggle navigation menu"
-            className="lg:hidden p-1.5 sm:p-2 text-[#172554] hover:text-brand-orange bg-[#F8FAFC] border border-[#1B64B4]/20 rounded-lg cursor-pointer"
+            className="lg:hidden p-1.5 sm:p-2 text-[#172554] hover:text-brand-orange bg-[#F8FAFC] border border-slate-200 rounded-lg cursor-pointer"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <MenuIcon className="w-5 h-5" />}
           </button>
@@ -522,7 +521,7 @@ export default function Navbar() {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-[#1B64B4]/15 mt-2.5 pt-3 pb-2 flex flex-col gap-2 font-mono text-sm bg-white animate-fade-in-up">
+        <div className="lg:hidden border-t border-slate-200 mt-2.5 pt-3 pb-2 flex flex-col gap-2 font-mono text-sm bg-white animate-fade-in-up">
           {NAV_ITEMS.map((item) => {
             const isActive = activeSection === item.id;
             return (
@@ -531,19 +530,19 @@ export default function Navbar() {
                 href={`#${item.id}`}
                 onClick={(e) => scrollToSection(e, item.id)}
                 aria-current={isActive ? "page" : undefined}
-                className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl border-2 transition-all cursor-pointer ${
+                className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl border transition-all cursor-pointer ${
                   isActive
                     ? item.activeMobileClasses
-                    : "border-transparent bg-[#F8FAFC] text-[#475569] hover:text-[#172554] hover:bg-[#F0F7FF] hover:border-[#1B64B4]/20"
+                    : "border-transparent bg-[#F8FAFC] text-[#475569] hover:text-[#172554] hover:bg-slate-100"
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  {/* Tabletop Step / Track Number Token */}
+                  {/* Step Number Token */}
                   <span
                     className={`w-6 h-6 rounded-md flex items-center justify-center text-[10px] font-bold border transition-colors ${
                       isActive
                         ? `${item.activeBadgeClasses} shadow-xs`
-                        : "border-[#1B64B4]/20 bg-white text-[#64748B]"
+                        : "border-slate-200 bg-white text-[#64748B]"
                     }`}
                   >
                     {isActive ? (
@@ -557,7 +556,7 @@ export default function Navbar() {
                   <span
                     className={
                       isActive
-                        ? "font-bold tracking-tight"
+                        ? "font-bold tracking-tight text-brand-orange"
                         : "text-[#334155] font-medium"
                     }
                   >

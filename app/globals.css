@@ -14,10 +14,10 @@
   --font-mono: var(--font-space-grotesk), monospace;
   --font-sans: var(--font-plus-jakarta-sans), sans-serif;
 
-  --shadow-brutal-orange: 4px 4px 0px 0px #E84A27;
-  --shadow-brutal-pink: 4px 4px 0px 0px #F7B5CB;
-  --shadow-brutal-lightblue: 4px 4px 0px 0px #5BB5F8;
-  --shadow-brutal-blue: 4px 4px 0px 0px #1B64B4;
+  --shadow-brutal-orange: 0 1px 3px 0 rgba(232, 74, 39, 0.15);
+  --shadow-brutal-pink: 0 1px 3px 0 rgba(247, 181, 203, 0.15);
+  --shadow-brutal-lightblue: 0 1px 3px 0 rgba(91, 181, 248, 0.15);
+  --shadow-brutal-blue: 0 1px 3px 0 rgba(27, 100, 180, 0.15);
 }
 
 .border-3 {

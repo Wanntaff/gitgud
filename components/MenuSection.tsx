@@ -620,27 +620,19 @@ export default function MenuSection() {
   return (
     <section
       id="menu"
-      className="scroll-mt-20 py-8 sm:py-20 lg:py-24 px-4 lg:px-12 bg-white border-b-2 border-[#1B64B4]/15"
+      className="scroll-mt-20 py-8 sm:py-20 lg:py-24 px-4 lg:px-12 bg-white border-b border-slate-200"
     >
       <div className="max-w-7xl mx-auto w-full">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-5 sm:mb-10">
-          {/* Creative Tabletop Cafe Token Coaster Chip */}
-          <div className="inline-flex items-center gap-2 p-1 pr-3.5 bg-[#FFF5F2] border-2 border-brand-orange text-brand-orange rounded-full font-mono text-[11px] sm:text-xs font-black tracking-wider uppercase shadow-[2.5px_2.5px_0px_0px_#E84A27] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-300 group cursor-default">
-            <span className="w-6 h-6 rounded-full bg-brand-orange text-white flex items-center justify-center shrink-0 border border-brand-orange shadow-xs group-hover:rotate-12 transition-transform">
-              {activeSide === "thirsty" ? (
-                <Coffee className="w-3.5 h-3.5 text-white shrink-0 animate-steam" />
-              ) : (
-                <Utensils className="w-3.5 h-3.5 text-white shrink-0" />
-              )}
-            </span>
-            <span className="text-[#475569] font-bold text-[10px]">TAVERN 04</span>
-            <span className="text-brand-orange select-none">•</span>
-            <span className="text-[#172554]">
-              {activeSide === "thirsty"
-                ? "THIRSTY • DRINKS & SPRO"
-                : "HUNGRY • DINE THEN PLAY"}
-            </span>
+          {/* Section Eyebrow */}
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange font-mono text-xs font-semibold">
+            {activeSide === "thirsty" ? (
+              <Coffee className="w-3.5 h-3.5 text-brand-orange shrink-0" />
+            ) : (
+              <Utensils className="w-3.5 h-3.5 text-brand-orange shrink-0" />
+            )}
+            <span>Menu Pilihan Baciro HQ</span>
           </div>
 
           <h2 className="font-display font-black text-2xl sm:text-[1.75rem] md:text-3xl lg:text-[2rem] xl:text-[2.15rem] text-[#172554] mt-3 tracking-tight leading-tight">
@@ -651,17 +643,17 @@ export default function MenuSection() {
             Pemberi stamina utama biar konsentrasi game kamu gak goyah!
           </p>
 
-          {/* Interactive Physical Flyer "FLIP TO OTHER SIDE" Switcher */}
+          {/* Segmented Thirsty / Hungry Switcher */}
           <div className="mt-6 sm:mt-7 flex items-center justify-center px-2">
-            <div className="w-full max-w-md sm:w-auto inline-flex p-1 bg-[#F8FAFC] rounded-xl border-2 border-[#1B64B4]/20 shadow-[2px_2px_0px_0px_rgba(27,100,180,0.15)]">
+            <div className="w-full max-w-md sm:w-auto inline-flex p-1 bg-slate-100 rounded-xl border border-slate-200">
               {/* THIRSTY SIDE BUTTON */}
               <button
                 type="button"
                 onClick={() => handleSideChange("thirsty")}
-                className={`flex-1 sm:flex-initial flex items-center justify-center gap-2 px-3 sm:px-5 py-2 sm:py-2.5 rounded-lg font-display font-black text-xs sm:text-sm transition-all duration-200 cursor-pointer ${
+                className={`flex-1 sm:flex-initial flex items-center justify-center gap-2 px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-display font-bold text-xs sm:text-sm transition-all duration-200 cursor-pointer ${
                   activeSide === "thirsty"
-                    ? "bg-brand-orange text-white border-2 border-[#1B64B4] shadow-xs"
-                    : "text-[#475569] hover:text-[#172554] hover:bg-white border-2 border-transparent"
+                    ? "bg-brand-orange text-white shadow-xs"
+                    : "text-[#475569] hover:text-[#172554]"
                 }`}
               >
                 <CupSoda className="w-4 h-4 shrink-0" />
@@ -675,7 +667,7 @@ export default function MenuSection() {
                   className={`ml-1 text-[10px] font-mono px-1.5 py-0.5 rounded ${
                     activeSide === "thirsty"
                       ? "bg-white/20 text-white font-bold"
-                      : "bg-[#E2E8F0] text-[#475569]"
+                      : "bg-slate-200 text-[#475569]"
                   }`}
                 >
                   {stats.thirstyCount}
@@ -686,10 +678,10 @@ export default function MenuSection() {
               <button
                 type="button"
                 onClick={() => handleSideChange("hungry")}
-                className={`flex-1 sm:flex-initial flex items-center justify-center gap-2 px-3 sm:px-5 py-2 sm:py-2.5 rounded-lg font-display font-black text-xs sm:text-sm transition-all duration-200 cursor-pointer ${
+                className={`flex-1 sm:flex-initial flex items-center justify-center gap-2 px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-display font-bold text-xs sm:text-sm transition-all duration-200 cursor-pointer ${
                   activeSide === "hungry"
-                    ? "bg-brand-lightblue text-[#172554] border-2 border-[#1B64B4] shadow-xs"
-                    : "text-[#475569] hover:text-[#172554] hover:bg-white border-2 border-transparent"
+                    ? "bg-[#172554] text-white shadow-xs"
+                    : "text-[#475569] hover:text-[#172554]"
                 }`}
               >
                 <Utensils className="w-4 h-4 shrink-0" />
@@ -702,8 +694,8 @@ export default function MenuSection() {
                 <span
                   className={`ml-1 text-[10px] font-mono px-1.5 py-0.5 rounded ${
                     activeSide === "hungry"
-                      ? "bg-white/60 text-[#172554] font-bold"
-                      : "bg-[#E2E8F0] text-[#475569]"
+                      ? "bg-white/20 text-white font-bold"
+                      : "bg-slate-200 text-[#475569]"
                   }`}
                 >
                   {stats.hungryCount}
@@ -714,7 +706,7 @@ export default function MenuSection() {
         </div>
 
         {/* Filter Bar: Subcategories, Recommended Barista Filter, & Search */}
-        <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3.5 mb-8 bg-[#F8FAFC] p-3 sm:p-3.5 rounded-xl border-2 border-[#1B64B4]/15">
+        <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3.5 mb-8 bg-[#F8FAFC] p-3 sm:p-3.5 rounded-xl border border-slate-200">
           {/* Subcategory Pills */}
           <div className="flex-1 min-w-0 flex items-center gap-1.5 overflow-x-auto pb-1 lg:pb-0 scrollbar-none text-xs font-mono">
             {currentSubcategories.map(({ key, label }) => {
@@ -730,10 +722,8 @@ export default function MenuSection() {
                   }}
                   className={`px-3 py-1.5 rounded-lg border font-bold transition-all whitespace-nowrap cursor-pointer ${
                     isActive
-                      ? activeSide === "thirsty"
-                        ? "bg-brand-orange text-white border-brand-orange shadow-xs"
-                        : "bg-brand-lightblue text-[#172554] border-brand-lightblue shadow-xs"
-                      : "bg-white text-[#475569] border-[#1B64B4]/20 hover:text-[#172554] hover:border-brand-orange"
+                      ? "bg-brand-orange text-white border-brand-orange shadow-xs"
+                      : "bg-white text-[#475569] border-slate-200 hover:text-[#172554] hover:border-slate-300"
                   }`}
                 >
                   {label}
@@ -807,7 +797,7 @@ export default function MenuSection() {
                   setCurrentPage(1);
                 }}
                 placeholder="Cari menu (e.g. matcha, nanban)..."
-                className="w-full pl-8 pr-8 py-1.5 bg-white border-2 border-[#1B64B4]/20 rounded-lg text-xs text-[#172554] placeholder-[#94A3B8] focus:outline-hidden focus:border-brand-orange transition-colors"
+                className="w-full pl-8 pr-8 py-1.5 bg-white border border-slate-200 rounded-lg text-xs text-[#172554] placeholder-[#94A3B8] focus:outline-hidden focus:border-brand-orange transition-colors"
               />
               {searchQuery && (
                 <button
@@ -828,9 +818,9 @@ export default function MenuSection() {
 
         {/* Featured Munch of the Day & Specialty Highlight Banner */}
         {activeSide === "hungry" ? (
-          <div className="mb-6 sm:mb-8 bg-gradient-to-r from-[#FFF5F2] via-white to-[#FFF5F2] p-3.5 sm:p-5 rounded-xl border-2 border-brand-orange/40 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 animate-fade-in-up">
+          <div className="mb-6 sm:mb-8 bg-gradient-to-r from-[#FFF5F2] via-white to-[#FFF5F2] p-3.5 sm:p-5 rounded-xl border border-brand-orange/30 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 animate-fade-in-up">
             <div className="flex items-center gap-3">
-              <span className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-[#FFF0EB] border border-brand-orange/60 text-brand-orange flex items-center justify-center shrink-0 shadow-xs">
+              <span className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-[#FFF0EB] border border-brand-orange/40 text-brand-orange flex items-center justify-center shrink-0 shadow-xs">
                 <Utensils className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-brand-orange" />
               </span>
               <div>
@@ -846,20 +836,20 @@ export default function MenuSection() {
                 </p>
               </div>
             </div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-brand-lightblue text-[#172554] font-mono text-[10px] sm:text-[11px] font-black uppercase tracking-wider shadow-[2px_2px_0px_0px_#1B64B4] border-2 border-[#1B64B4] shrink-0 select-none rotate-1 hover:rotate-0 transition-transform">
-              <ChefHat className="w-3.5 h-3.5 text-[#172554] shrink-0" />
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white text-[#172554] font-mono text-[10px] sm:text-[11px] font-bold uppercase tracking-wider shadow-xs border border-slate-200 shrink-0 select-none">
+              <ChefHat className="w-3.5 h-3.5 text-brand-orange shrink-0" />
               <span>Barista Pairing</span>
             </div>
           </div>
         ) : (
-          <div className="mb-6 sm:mb-8 bg-gradient-to-r from-[#F0F7FF] via-white to-[#F0F7FF] p-3.5 sm:p-5 rounded-xl border-2 border-brand-lightblue/40 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 animate-fade-in-up">
+          <div className="mb-6 sm:mb-8 bg-gradient-to-r from-[#FFF9F6] via-white to-[#FFF9F6] p-3.5 sm:p-5 rounded-xl border border-brand-orange/30 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 animate-fade-in-up">
             <div className="flex items-center gap-3">
-              <span className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-[#EBF5FF] border border-brand-lightblue/60 text-[#1B64B4] flex items-center justify-center shrink-0 shadow-xs">
-                <Award className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#1B64B4]" />
+              <span className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-[#FFF0EB] border border-brand-orange/40 text-brand-orange flex items-center justify-center shrink-0 shadow-xs">
+                <Award className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-brand-orange" />
               </span>
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#1B64B4]">
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-brand-orange">
                     BARISTA SIGNATURE • ZING &amp; MATCHA PICKS
                   </span>
                 </div>
@@ -870,8 +860,8 @@ export default function MenuSection() {
                 </p>
               </div>
             </div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-brand-orange text-white font-mono text-[10px] sm:text-[11px] font-black uppercase tracking-wider shadow-[2px_2px_0px_0px_#1B64B4] border-2 border-[#1B64B4] shrink-0 select-none -rotate-1 hover:rotate-0 transition-transform">
-              <Flame className="w-3.5 h-3.5 text-white fill-white shrink-0" />
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white text-[#172554] font-mono text-[10px] sm:text-[11px] font-bold uppercase tracking-wider shadow-xs border border-slate-200 shrink-0 select-none">
+              <Flame className="w-3.5 h-3.5 text-brand-orange shrink-0" />
               <span>Top Rated Zing</span>
             </div>
           </div>
@@ -886,28 +876,21 @@ export default function MenuSection() {
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3.5 sm:gap-5 animate-flyer-flip"
             >
               {paginatedItems.map((item, idx) => {
-                const borderAccent =
-                  item.accentColor === "orange"
-                    ? "hover:border-brand-orange group-hover:shadow-[2.5px_2.5px_0px_0px_#E84A27]"
-                    : item.accentColor === "lightblue"
-                    ? "hover:border-brand-lightblue group-hover:shadow-[2.5px_2.5px_0px_0px_#5BB5F8]"
-                    : "hover:border-brand-pink group-hover:shadow-[2.5px_2.5px_0px_0px_#F7B5CB]";
-
                 return (
                   <div
                     key={item.id}
                     style={{ animationDelay: `${Math.min(idx * 25, 250)}ms` }}
-                    className={`group relative bg-white p-3.5 sm:p-5.5 rounded-xl border-2 border-[#1B64B4]/15 transition-all duration-200 hover:-translate-y-1 flex flex-col justify-between min-h-0 sm:min-h-[200px] animate-fade-in-up shadow-xs ${borderAccent}`}
+                    className="group relative bg-white p-3.5 sm:p-5 rounded-xl border border-slate-200 hover:border-slate-300 transition-all duration-200 flex flex-col justify-between min-h-0 sm:min-h-[190px] shadow-xs"
                   >
                     <div>
                       {/* Top Meta: Subcategory Badge & Recommended Badge */}
                       <div className="flex items-center justify-between gap-2 mb-2 sm:mb-2.5">
-                        <span className="font-mono text-[9.5px] sm:text-[10px] font-bold tracking-wider text-[#475569] uppercase bg-[#F8FAFC] px-2 sm:px-2.5 py-0.5 rounded border border-[#1B64B4]/15 font-medium">
+                        <span className="font-mono text-[9.5px] sm:text-[10px] font-medium tracking-wider text-[#475569] uppercase bg-[#F8FAFC] px-2 sm:px-2.5 py-0.5 rounded border border-slate-200">
                           {item.subcategoryLabel}
                         </span>
 
                         {item.recommended && (
-                          <span className="inline-flex items-center gap-1 text-[9.5px] sm:text-[10px] font-mono font-bold text-brand-orange bg-[#FFF0EB] border border-brand-orange/40 px-2 py-0.5 rounded-md">
+                          <span className="inline-flex items-center gap-1 text-[9.5px] sm:text-[10px] font-mono font-bold text-brand-orange bg-[#FFF5F0] border border-brand-orange/30 px-2 py-0.5 rounded-md">
                             <ThumbsUp className="w-2.5 h-2.5 shrink-0" />
                             <span>FAVORIT</span>
                           </span>
@@ -915,7 +898,7 @@ export default function MenuSection() {
                       </div>
 
                       {/* Item Name */}
-                      <h3 className="font-display font-bold text-sm sm:text-lg text-[#172554] group-hover:text-brand-orange transition-colors leading-snug">
+                      <h3 className="font-display font-bold text-sm sm:text-base text-[#172554] group-hover:text-brand-orange transition-colors leading-snug">
                         {item.name}
                       </h3>
 
@@ -926,15 +909,15 @@ export default function MenuSection() {
                     </div>
 
                     {/* Bottom: Price & Extra Note */}
-                    <div className="mt-3 sm:mt-4 pt-2.5 sm:pt-3 border-t-2 border-[#1B64B4]/10 flex items-center justify-between gap-2">
+                    <div className="mt-3 sm:mt-4 pt-2.5 sm:pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
                       <div className="flex items-baseline gap-1">
-                        <span className="font-mono font-black text-lg sm:text-2xl text-[#172554]">
+                        <span className="font-mono font-bold text-base sm:text-xl text-[#172554]">
                           {item.price}
                         </span>
                       </div>
 
                       {item.extra ? (
-                        <span className="font-mono text-[10px] text-[#1B64B4] bg-[#EBF5FF] border border-[#5BB5F8]/40 px-2 py-0.5 rounded font-bold">
+                        <span className="font-mono text-[10px] text-[#172554] bg-[#F0F7FF] border border-[#172554]/20 px-2 py-0.5 rounded font-medium">
                           {item.extra}
                         </span>
                       ) : (
@@ -948,12 +931,12 @@ export default function MenuSection() {
               })}
             </div>
 
-            {/* Neo-brutalist Pagination Controls */}
+            {/* Pagination Controls */}
             {totalPages > 1 && (
-              <div className="mt-8 pt-6 border-t-2 border-[#1B64B4]/15 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="mt-8 pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
                 {/* Range Indicator */}
                 <div className="flex items-center gap-2 text-xs font-mono text-[#475569]">
-                  <span className="px-2 py-0.5 rounded bg-[#F1F5F9] text-[#172554] font-bold text-[10px] tracking-wide uppercase">
+                  <span className="px-2 py-0.5 rounded bg-slate-100 text-[#172554] font-medium text-[10px] tracking-wide uppercase">
                     {activeSide === "thirsty" ? "Minuman" : "Makanan"}
                   </span>
                   <span>
@@ -964,13 +947,13 @@ export default function MenuSection() {
                     dari{" "}
                     <strong className="text-[#172554] font-bold">{filteredItems.length}</strong> menu
                   </span>
-                  <span className="text-[#94A3B8] hidden md:inline">•</span>
+                  <span className="text-slate-300 hidden md:inline">•</span>
                   <span className="text-[#64748B] hidden md:inline">
                     Halaman {safeCurrentPage} dari {totalPages}
                   </span>
                 </div>
 
-                {/* Mobile Navigation Controls: Thumb-Friendly Prev / Page / Next */}
+                {/* Mobile Navigation Controls */}
                 <div className="flex md:hidden items-center justify-between w-full gap-2">
                   <button
                     type="button"
@@ -979,15 +962,15 @@ export default function MenuSection() {
                     aria-label="Halaman sebelumnya"
                     className={`flex-1 inline-flex items-center justify-center gap-1 py-2 px-3 rounded-lg font-mono text-xs font-bold transition-all ${
                       safeCurrentPage <= 1
-                        ? "opacity-35 cursor-not-allowed text-[#94A3B8] border border-[#1B64B4]/10 bg-[#F8FAFC]"
-                        : "bg-white text-[#172554] border-2 border-[#1B64B4]/20 shadow-xs active:scale-95 cursor-pointer"
+                        ? "opacity-35 cursor-not-allowed text-[#94A3B8] border border-slate-100 bg-[#F8FAFC]"
+                        : "bg-white text-[#172554] border border-slate-200 shadow-xs active:scale-95 cursor-pointer"
                     }`}
                   >
                     <ChevronLeft className="w-4 h-4 shrink-0" />
                     <span>Sebelumnya</span>
                   </button>
 
-                  <span className="font-mono text-xs font-bold text-[#172554] px-3 py-1.5 rounded-lg bg-[#F0F7FF] border border-[#1B64B4]/20 whitespace-nowrap">
+                  <span className="font-mono text-xs font-bold text-[#172554] px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 whitespace-nowrap">
                     {safeCurrentPage} / {totalPages}
                   </span>
 
@@ -998,8 +981,8 @@ export default function MenuSection() {
                     aria-label="Halaman berikutnya"
                     className={`flex-1 inline-flex items-center justify-center gap-1 py-2 px-3 rounded-lg font-mono text-xs font-bold transition-all ${
                       safeCurrentPage >= totalPages
-                        ? "opacity-35 cursor-not-allowed text-[#94A3B8] border border-[#1B64B4]/10 bg-[#F8FAFC]"
-                        : "bg-white text-[#172554] border-2 border-[#1B64B4]/20 shadow-xs active:scale-95 cursor-pointer"
+                        ? "opacity-35 cursor-not-allowed text-[#94A3B8] border border-slate-100 bg-[#F8FAFC]"
+                        : "bg-white text-[#172554] border border-slate-200 shadow-xs active:scale-95 cursor-pointer"
                     }`}
                   >
                     <span>Berikutnya</span>
@@ -1016,8 +999,8 @@ export default function MenuSection() {
                     aria-label="Halaman sebelumnya"
                     className={`inline-flex items-center gap-1 px-2.5 sm:px-3 py-2 rounded-lg font-mono text-xs font-bold transition-all duration-200 focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:outline-hidden ${
                       safeCurrentPage <= 1
-                        ? "opacity-35 cursor-not-allowed text-[#94A3B8] border border-[#1B64B4]/10 bg-[#F8FAFC]"
-                        : "bg-white hover:bg-[#F0F7FF] text-[#172554] border-2 border-[#1B64B4]/20 hover:border-[#1B64B4]/40 cursor-pointer shadow-[2px_2px_0px_0px_#1B64B4]/20 hover:-translate-y-0.5 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none"
+                        ? "opacity-35 cursor-not-allowed text-[#94A3B8] border border-slate-100 bg-[#F8FAFC]"
+                        : "bg-white hover:bg-slate-50 text-[#172554] border border-slate-200 cursor-pointer shadow-xs"
                     }`}
                   >
                     <ChevronLeft className="w-4 h-4 shrink-0" />
@@ -1038,11 +1021,9 @@ export default function MenuSection() {
                       }
                       const isActive = p === safeCurrentPage;
                       const activeClasses =
-                        activeSide === "thirsty"
-                          ? "bg-brand-orange text-white border-2 border-[#1B64B4] shadow-[2px_2px_0px_0px_#1B64B4] font-black"
-                          : "bg-brand-lightblue text-[#172554] border-2 border-[#1B64B4] shadow-[2px_2px_0px_0px_#1B64B4] font-black";
+                        "bg-brand-orange text-white border border-brand-orange shadow-xs font-bold";
                       const inactiveClasses =
-                        "bg-white hover:bg-[#F0F7FF] text-[#172554] border-2 border-[#1B64B4]/20 hover:border-[#1B64B4]/40 font-bold shadow-[2px_2px_0px_0px_#1B64B4]/15 hover:-translate-y-0.5 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none";
+                        "bg-white hover:bg-slate-50 text-[#172554] border border-slate-200 font-medium shadow-xs";
 
                       return (
                         <button
@@ -1068,8 +1049,8 @@ export default function MenuSection() {
                     aria-label="Halaman berikutnya"
                     className={`inline-flex items-center gap-1 px-2.5 sm:px-3 py-2 rounded-lg font-mono text-xs font-bold transition-all duration-200 focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:outline-hidden ${
                       safeCurrentPage >= totalPages
-                        ? "opacity-35 cursor-not-allowed text-[#94A3B8] border border-[#1B64B4]/10 bg-[#F8FAFC]"
-                        : "bg-white hover:bg-[#F0F7FF] text-[#172554] border-2 border-[#1B64B4]/20 hover:border-[#1B64B4]/40 cursor-pointer shadow-[2px_2px_0px_0px_#1B64B4]/20 hover:-translate-y-0.5 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none"
+                        ? "opacity-35 cursor-not-allowed text-[#94A3B8] border border-slate-100 bg-[#F8FAFC]"
+                        : "bg-white hover:bg-slate-50 text-[#172554] border border-slate-200 cursor-pointer shadow-xs"
                     }`}
                   >
                     <span className="hidden sm:inline">Berikutnya</span>
@@ -1099,7 +1080,7 @@ export default function MenuSection() {
               <button
                 type="button"
                 onClick={() => handleSideChange(otherSide)}
-                className="w-full sm:w-auto px-4 py-2 bg-brand-orange hover:bg-brand-orange-hover text-white font-mono text-xs font-bold rounded-lg transition-colors cursor-pointer shadow-[2px_2px_0px_0px_#1B64B4] border-2 border-[#1B64B4]"
+                className="w-full sm:w-auto px-4 py-2 bg-brand-orange hover:bg-brand-orange-hover text-white font-mono text-xs font-bold rounded-lg transition-colors cursor-pointer shadow-xs"
               >
                 Buka Menu {otherSide === "thirsty" ? "Minuman" : "Makanan"} ({otherSideMatches.length}) →
               </button>
@@ -1112,7 +1093,7 @@ export default function MenuSection() {
                   setOnlyRecommended(false);
                   setCurrentPage(1);
                 }}
-                className="w-full sm:w-auto px-3.5 py-2 bg-white hover:bg-[#F8FAFC] text-[#475569] font-mono text-xs font-medium rounded-lg border border-[#1B64B4]/20 transition-colors cursor-pointer"
+                className="w-full sm:w-auto px-3.5 py-2 bg-white hover:bg-[#F8FAFC] text-[#475569] font-mono text-xs font-medium rounded-lg border border-slate-200 transition-colors cursor-pointer"
               >
                 Reset Filter
               </button>
@@ -1120,7 +1101,7 @@ export default function MenuSection() {
           </div>
         ) : (
           /* Empty State */
-          <div className="text-center py-12 px-4 bg-white rounded-2xl border-2 border-[#1B64B4]/20 max-w-md mx-auto shadow-xs animate-fade-in-up">
+          <div className="text-center py-12 px-4 bg-white rounded-2xl border border-slate-200 max-w-md mx-auto shadow-xs animate-fade-in-up">
             <Wine className="w-8 h-8 text-[#94A3B8] mx-auto mb-2" />
             <h4 className="font-display font-bold text-base text-[#172554]">
               Menu Tidak Ditemukan
@@ -1141,7 +1122,7 @@ export default function MenuSection() {
                 setOnlyRecommended(false);
                 setCurrentPage(1);
               }}
-              className="mt-4 px-4 py-1.5 bg-brand-orange text-white font-mono text-xs font-bold rounded-lg hover:bg-brand-orange-hover transition-colors cursor-pointer shadow-[2px_2px_0px_0px_#1B64B4] border-2 border-[#1B64B4]"
+              className="mt-4 px-4 py-1.5 bg-brand-orange text-white font-mono text-xs font-bold rounded-lg hover:bg-brand-orange-hover transition-colors cursor-pointer shadow-xs"
             >
               Reset Filter
             </button>
@@ -1149,15 +1130,15 @@ export default function MenuSection() {
         )}
 
         {/* Cafe Notice Footer */}
-        <div className="mt-8 pt-4 border-t-2 border-[#1B64B4]/15">
-          <div className="bg-[#F8FAFC] border border-[#1B64B4]/15 rounded-xl px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-2.5 text-xs font-mono text-[#475569] text-center md:text-left">
+        <div className="mt-8 pt-4 border-t border-slate-200">
+          <div className="bg-[#F8FAFC] border border-slate-200 rounded-xl px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-2.5 text-xs font-mono text-[#475569] text-center md:text-left">
             <div className="inline-flex items-center gap-2">
               <span className="font-bold text-[#172554] tracking-wide">
                 Nett Price:
               </span>
               <span>Semua harga sudah termasuk pajak &amp; disajikan siap santap di meja.</span>
             </div>
-            <span className="text-[#64748B] text-[11px] font-semibold bg-white border border-[#1B64B4]/15 px-3 py-1 rounded-md shadow-2xs shrink-0">
+            <span className="text-[#64748B] text-[11px] font-semibold bg-white border border-slate-200 px-3 py-1 rounded-md shadow-2xs shrink-0">
               Fresh Daily • Baciro HQ
             </span>
           </div>

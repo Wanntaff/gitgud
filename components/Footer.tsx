@@ -27,7 +27,7 @@ function InstagramIcon({ className }: { className?: string }) {
 
 export default function Footer() {
   return (
-    <footer className="bg-[#F8FAFC] py-8 sm:py-16 px-4 lg:px-12 text-[#475569] text-xs font-mono border-t-2 border-[#1B64B4]/15">
+    <footer className="bg-white py-8 sm:py-14 px-4 lg:px-12 text-[#475569] text-xs font-mono border-t border-slate-200">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-5 sm:gap-6">
         <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 text-center sm:text-left">
           <div className="shrink-0 flex justify-center">

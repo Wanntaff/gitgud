@@ -7,47 +7,41 @@ export default function EventsSection() {
   const events = [
     {
       day: "RABU",
-      dayColor: "bg-[#FFF0EB] text-[#E84A27] border border-[#E84A27]/30",
+      dayColor: "bg-[#F8FAFC] text-[#172554] border border-slate-200",
       title: "Trivia Night & Pop Quiz",
       desc: "Uji pengetahuan umum, pop culture, anime & gaming bareng tim kamu berhadiah treat khusus!",
       badge: "Open for Public",
-      badgeColor: "text-[#1B64B4] bg-[#EBF5FF] border border-[#5BB5F8]/40",
-      borderAccent: "border-brand-lightblue",
     },
     {
       day: "SABTU",
-      dayColor: "bg-[#EBF5FF] text-[#1B64B4] border border-[#1B64B4]/30",
+      dayColor: "bg-[#FFF5F0] text-brand-orange border border-brand-orange/20",
       title: "D&D One-Shot Campaign",
       desc: "Sesi petualangan Dungeons & Dragons ramah pemula. Disediakan lembar karakter & dadu.",
       badge: "By Registration",
-      badgeColor: "text-[#E84A27] bg-[#FFF0EB] border border-brand-orange/40",
-      borderAccent: "border-brand-orange",
     },
     {
       day: "MINGGU",
-      dayColor: "bg-[#FFF0F5] text-[#C2185B] border border-[#F7B5CB]",
+      dayColor: "bg-[#F0F7FF] text-[#172554] border border-slate-200",
       title: "Midnight Gaming Chill",
       desc: "Nongkrong santai 24 jam dengan diskon minuman khusus midnight players.",
-      badge: "24 Hours",
-      badgeColor: "text-[#C2185B] bg-[#FFF0F5] border border-[#F7B5CB]",
-      borderAccent: "border-brand-pink",
+      badge: "24 Hours Non-stop",
     },
   ];
 
   return (
     <section
       id="events"
-      className="scroll-mt-20 py-8 sm:py-20 lg:py-24 px-4 lg:px-12 bg-[#F8FAFC] border-b-2 border-[#1B64B4]/15 relative overflow-hidden"
+      className="scroll-mt-20 py-8 sm:py-20 lg:py-24 px-4 lg:px-12 bg-[#F8FAFC] border-b border-slate-200 relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center">
           {/* Left: Event Poster Style Card */}
           <div className="lg:col-span-5 w-full">
-            <div className="bg-gradient-to-b from-[#FFF5F8] via-[#FFF9F6] to-white border-3 border-brand-orange rounded-2xl p-5 sm:p-8 shadow-brutal-orange relative overflow-hidden">
-              {/* Tactile Tabletop Perforated Ticket Punch Badge */}
-              <div className="relative inline-flex items-center gap-1.5 px-3 py-1 rounded-xs bg-brand-orange text-white font-mono font-black text-[10px] sm:text-[11px] tracking-wider uppercase border-2 border-[#1B64B4] shadow-[2.5px_2.5px_0px_0px_#1B64B4] mb-3 select-none before:absolute before:-left-1.5 before:top-1/2 before:-translate-y-1/2 before:w-2 before:h-2 before:rounded-full before:bg-[#FFF5F8] after:absolute after:-right-1.5 after:top-1/2 after:-translate-y-1/2 after:w-2 after:h-2 after:rounded-full after:bg-[#FFF5F8]">
-                <Ticket className="w-3.5 h-3.5 text-white shrink-0" />
-                <span>TICKET // SPECIAL EVENT MINGGUAN</span>
+            <div className="bg-white border border-brand-orange/30 rounded-2xl p-6 sm:p-8 shadow-xs relative overflow-hidden">
+              {/* Event Badge */}
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange font-mono font-bold text-xs tracking-wide uppercase mb-3">
+                <Ticket className="w-3.5 h-3.5 shrink-0" />
+                <span>Special Event Mingguan</span>
               </div>
               <h3 className="font-display font-black text-xl sm:text-2xl md:text-3xl text-[#172554] leading-snug mb-2 sm:mb-3 tracking-tight break-words">
                 BLOOD ON THE
@@ -55,11 +49,11 @@ export default function EventsSection() {
                 <span>CLOCKTOWER</span>{" "}
                 <span className="text-brand-orange">NIGHT</span>
               </h3>
-              <p className="text-[#C2185B] font-mono font-bold text-xs sm:text-sm mb-3 inline-flex items-center gap-1.5">
-                <CalendarDays className="w-4 h-4 shrink-0 text-[#C2185B]" />
+              <p className="text-brand-orange font-mono font-bold text-xs sm:text-sm mb-3 inline-flex items-center gap-1.5">
+                <CalendarDays className="w-4 h-4 shrink-0" />
                 <span>SETIAP KAMIS MALAM — GRATIS!</span>
               </p>
-              <p className="text-[#334155] text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5">
+              <p className="text-[#475569] text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5">
                 Desa kembali penuh dengan kecurigaan... Siapa yang jujur? Siapa
                 yang berbohong? Game deduksi sosial nomor 1 di dunia hadir
                 gratis untuk kamu dan teman-teman!
@@ -67,15 +61,15 @@ export default function EventsSection() {
 
               <div className="space-y-2 text-xs sm:text-sm font-mono text-[#172554] mb-5 sm:mb-6">
                 <div className="flex items-center gap-2.5">
-                  <CheckCircle className="w-4 h-4 text-[#1B64B4] shrink-0" />
+                  <CheckCircle className="w-4 h-4 text-brand-orange shrink-0" />
                   <span>Semua pemain punya ability unik</span>
                 </div>
                 <div className="flex items-center gap-2.5">
-                  <CheckCircle className="w-4 h-4 text-[#1B64B4] shrink-0" />
+                  <CheckCircle className="w-4 h-4 text-brand-orange shrink-0" />
                   <span>Yang mati tetap bisa bicara &amp; ikut voting</span>
                 </div>
                 <div className="flex items-center gap-2.5">
-                  <CheckCircle className="w-4 h-4 text-[#1B64B4] shrink-0" />
+                  <CheckCircle className="w-4 h-4 text-brand-orange shrink-0" />
                   <span>Seat terbatas (Wajib RSVP duluan)</span>
                 </div>
               </div>
@@ -85,7 +79,7 @@ export default function EventsSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => soundEffects.playSuccessChime()}
-                className="w-full block text-center bg-brand-orange hover:bg-brand-orange-hover text-white font-display font-black py-3 sm:py-3.5 px-5 rounded-lg border-2 border-[#1B64B4] shadow-[3px_3px_0px_0px_#F7B5CB] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all text-xs sm:text-sm tracking-wider uppercase whitespace-nowrap cursor-pointer"
+                className="w-full block text-center bg-brand-orange hover:bg-brand-orange-hover active:scale-[0.98] text-white font-display font-bold py-3 sm:py-3.5 px-5 rounded-lg shadow-xs transition-all text-xs sm:text-sm tracking-wider uppercase whitespace-nowrap cursor-pointer"
               >
                 DAFTAR VIA DM INSTAGRAM
               </a>
@@ -95,20 +89,16 @@ export default function EventsSection() {
           {/* Right: Other Events & Schedule */}
           <div className="lg:col-span-7 flex flex-col gap-4 sm:gap-6">
             <div>
-              {/* Creative Tabletop Admission Ticket Pass Token */}
-              <div className="inline-flex items-center gap-2 p-1 pr-3.5 bg-[#FFF0F5] border-2 border-brand-pink text-[#C2185B] rounded-full font-mono text-[11px] sm:text-xs font-black tracking-wider uppercase shadow-[2.5px_2.5px_0px_0px_#F7B5CB] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-300 group cursor-default">
-                <span className="w-6 h-6 rounded-full bg-brand-pink text-[#172554] flex items-center justify-center shrink-0 border border-brand-pink shadow-xs font-mono font-black text-xs group-hover:rotate-12 transition-transform">
-                  <Ticket className="w-3.5 h-3.5 text-[#172554] shrink-0" />
-                </span>
-                <span className="text-[#475569] font-bold text-[10px]">PASS 03</span>
-                <span className="text-brand-pink select-none">•</span>
-                <span className="text-[#172554]">COMMUNITY SESSIONS</span>
+              {/* Section Eyebrow */}
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange font-mono text-xs font-semibold">
+                <CalendarDays className="w-3.5 h-3.5 text-brand-orange shrink-0" />
+                <span>Jadwal Komunitas</span>
               </div>
               <h2 className="font-display font-black text-2xl sm:text-[1.65rem] md:text-[1.75rem] lg:text-2xl xl:text-[1.85rem] 2xl:text-[2.15rem] text-[#172554] mt-2.5 sm:mt-3 tracking-tight leading-tight">
                 SELALU ADA KESERUAN <br className="hidden sm:inline" />
                 TIAP PEKAN
               </h2>
-              <p className="text-[#475569] text-xs sm:text-base mt-1.5 sm:mt-2">
+              <p className="text-[#475569] text-xs sm:text-base mt-1.5 sm:mt-2 leading-relaxed">
                 Gitgud bukan cuma tempat main pasif, kami punya jadwal event
                 komunitas seru yang bisa kamu ikuti:
               </p>
@@ -118,9 +108,9 @@ export default function EventsSection() {
             <div className="flex lg:hidden items-center justify-between text-xs font-mono text-[#64748B] mb-0.5 px-0.5">
               <span className="inline-flex items-center gap-1.5 text-[11px] font-medium text-[#475569]">
                 <span>Geser jadwal mingguan</span>
-                <span className="text-[#C2185B] font-bold">→</span>
+                <span className="text-brand-orange font-bold">→</span>
               </span>
-              <span className="text-[10px] bg-[#F1F5F9] px-2 py-0.5 rounded-full font-bold text-[#475569]">
+              <span className="text-[10px] bg-[#F1F5F9] px-2 py-0.5 rounded-full font-medium text-[#475569]">
                 3 Sesi Rutin
               </span>
             </div>
@@ -130,23 +120,23 @@ export default function EventsSection() {
               {events.map((evt) => (
                 <div
                   key={evt.day}
-                  className="w-[84vw] sm:w-[70vw] max-w-[320px] shrink-0 snap-start lg:w-full lg:max-w-none bg-white p-4.5 sm:p-6 rounded-xl border-2 border-[#1B64B4]/15 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 shadow-xs hover:border-[#1B64B4]/30 transition-all"
+                  className="w-[84vw] sm:w-[70vw] max-w-[320px] shrink-0 snap-start lg:w-full lg:max-w-none bg-white p-4.5 sm:p-5 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 shadow-xs hover:border-slate-300 transition-all"
                 >
                   <div className="flex items-start gap-3.5 sm:gap-4">
                     <div
-                      className={`w-11 h-11 sm:w-12 sm:h-12 rounded-xl ${evt.dayColor} flex flex-col items-center justify-center font-mono font-bold text-xs shrink-0`}
+                      className={`w-11 h-11 sm:w-12 sm:h-12 rounded-lg ${evt.dayColor} flex flex-col items-center justify-center font-mono font-bold text-xs shrink-0`}
                     >
                       <span>{evt.day}</span>
                     </div>
                     <div>
-                      <h4 className="font-display font-bold text-sm sm:text-lg text-[#172554]">
+                      <h4 className="font-display font-bold text-sm sm:text-base text-[#172554]">
                         {evt.title}
                       </h4>
-                      <p className="text-xs sm:text-sm text-[#475569] mt-0.5 sm:mt-1 leading-relaxed">{evt.desc}</p>
+                      <p className="text-xs sm:text-sm text-[#475569] mt-0.5 leading-relaxed">{evt.desc}</p>
                     </div>
                   </div>
                   <span
-                    className={`text-[10px] font-mono font-bold ${evt.badgeColor} border-l-2 ${evt.borderAccent} px-2.5 py-1 rounded-r-xs shrink-0 whitespace-nowrap self-start sm:self-auto tracking-wider uppercase`}
+                    className="text-[10px] font-mono font-semibold bg-[#F8FAFC] border border-slate-200 text-[#475569] px-2.5 py-1 rounded shrink-0 whitespace-nowrap self-start sm:self-auto tracking-wider uppercase"
                   >
                     {evt.badge}
                   </span>
