@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useRef, useEffect } from "react";
+import { useState, useMemo, useRef } from "react";
 import {
   Coffee,
   Utensils,
@@ -16,6 +16,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { soundEffects } from "@/lib/soundEffects";
+import { useIsMobile } from "@/lib/useIsMobile";
 
 interface MenuItem {
   id: string;
@@ -510,18 +511,8 @@ export default function MenuSection() {
   const [onlyRecommended, setOnlyRecommended] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [itemsPerPage, setItemsPerPage] = useState<number>(ITEMS_PER_PAGE);
-
-  // Dynamically update mobile items per page with resize/orientation listener
-  useEffect(() => {
-    const mql = window.matchMedia("(max-width: 767px)");
-    const update = () => {
-      setItemsPerPage(mql.matches ? 6 : ITEMS_PER_PAGE);
-    };
-    update();
-    mql.addEventListener("change", update);
-    return () => mql.removeEventListener("change", update);
-  }, []);
+  const isMobile = useIsMobile();
+  const itemsPerPage = isMobile ? 6 : ITEMS_PER_PAGE;
 
   const menuGridRef = useRef<HTMLDivElement>(null);
 

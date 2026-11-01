@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import {
   Users,
   Clock,
@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { ALL_GAMES, NotionGame } from "@/data/games";
 import { soundEffects } from "@/lib/soundEffects";
+import { useIsMobile } from "@/lib/useIsMobile";
 
 type CategoryFilter =
   | "all"
@@ -183,19 +184,8 @@ export default function GameCatalog() {
     useState<DifficultyFilter>("all");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [displayCount, setDisplayCount] = useState<number>(ITEMS_PER_PAGE);
-  const [isMobile, setIsMobile] = useState<boolean>(false);
+  const isMobile = useIsMobile();
   const [mobileExpanded, setMobileExpanded] = useState<boolean>(false);
-
-  // Dynamic media query listener to handle window resize and device rotation cleanly
-  useEffect(() => {
-    const mql = window.matchMedia("(max-width: 767px)");
-    setIsMobile(mql.matches);
-    const update = (e: MediaQueryListEvent) => {
-      setIsMobile(e.matches);
-    };
-    mql.addEventListener("change", update);
-    return () => mql.removeEventListener("change", update);
-  }, []);
 
   const getStepCount = () => {
     return isMobile ? 6 : ITEMS_PER_PAGE;

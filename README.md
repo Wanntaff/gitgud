@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Gitgud Board Game & Cafe — Yogyakarta
 
-## Getting Started
+Website resmi dan landing page interaktif untuk **Gitgud Board Game & Cafe**, berlokasi di Baciro, Gondokusuman, Yogyakarta.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🎲 Fitur Utama Website
+
+- **Hero & Gud Game Picker Roulette:** Pemilih board game acak interaktif dengan dadu fisik digital dan catatan rekomendasi Game Master.
+- **Katalog 360+ Board Game:** Database lengkap dengan pencarian real-time, filter kategori (Party, Casual, Strategi, Deduksi, Duel 2P), dan indikator tingkat kesulitan (*Piece of Cake* hingga *GITGUD*).
+- **Menu Cafe & Tavern Bites:** Menu lengkap makanan dan minuman (Espresso artisan, Matcha, 'Canos, Coolers, Donburi, Snacks) dengan toggle Thirsty/Hungry dan filter rekomendasi barista.
+- **Jadwal Event Mingguan & Komunitas:** Informasi sesi Blood on the Clocktower (BOTC) Kamis malam dan komunitas D&D.
+- **Panduan Pemula (How to Play) & FAQ:** Alur kunjungan bagi pemain baru dan protokol bermain di cafe.
+- **Peta Lokasi & Jam Operasional:** Integrasi Google Maps, status buka (24 jam saat weekend), dan tautan langsung ke WhatsApp (+62 851-1748-4483).
+- **Mobile-First UX Standar Industri:** Navigasi sentuh halus, touch-friendly snap carousels, scroll budgeting, dan floating quick bar.
+- **Efek Suara Fisik (Sound Effects):** Suara sentuhan kartu, kocokan dadu, dan notifikasi yang dapat dibisukan (*mute/unmute*).
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework:** [Next.js 16 (App Router)](https://nextjs.org/)
+- **Library:** [React 19](https://react.dev/)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **Icons:** [Lucide React](https://lucide.dev/)
+- **Fonts:** Plus Jakarta Sans, Syne, Space Grotesk via `next/font/google`
+- **Linting:** ESLint 9 (Strict Next.js & React Hooks config)
+
+---
+
+## 📁 Struktur Direktori
+
+```text
+gitgud/
+├── app/                  # Next.js App Router (layout, page, globals.css)
+├── components/           # Komponen UI modular (Hero, Navbar, Catalog, Menu, dll.)
+├── data/                 # Database statis board game (games.json & games.ts)
+├── lib/                  # Utilities (soundEffects.ts, useIsMobile.ts)
+├── public/               # Aset statis publik (logo SVG/PNG, icon, cover board game)
+├── scripts/              # Skrip otomasi, scraping data Notion, dan pengujian
+├── next.config.ts        # Konfigurasi Next.js
+├── package.json          # Manajemen dependensi dan scripts npm
+└── tsconfig.json         # Konfigurasi TypeScript
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Menjalankan Proyek Secara Lokal
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Clone repository:**
+   ```bash
+   git clone https://github.com/Wanntaff/gitgud.git
+   cd gitgud
+   ```
 
-## Learn More
+2. **Install dependensi:**
+   ```bash
+   npm install
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+3. **Jalankan development server:**
+   ```bash
+   npm run dev
+   ```
+   Buka [http://localhost:3000](http://localhost:3000) pada browser Anda.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. **Build untuk produksi:**
+   ```bash
+   npm run build
+   npm run start
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+5. **Linting & Code Quality:**
+   ```bash
+   npm run lint
+   ```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🌐 Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Proyek ini telah dikonfigurasi untuk deployment instan di platform **[Vercel](https://vercel.com/)** melalui branch `main`.
+
+---
+
+© 2026 Gitgud Board Game & Cafe. Jl. Soka No. 44 Baciro, Yogyakarta.
