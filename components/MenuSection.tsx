@@ -638,9 +638,8 @@ export default function MenuSection() {
           <h2 className="font-display font-black text-2xl sm:text-[1.75rem] md:text-3xl lg:text-[2rem] xl:text-[2.15rem] text-[#172554] mt-3 tracking-tight leading-tight">
             MENU GITGUD CAFE
           </h2>
-          <p className="text-[#475569] text-xs sm:text-sm mt-2 max-w-xl mx-auto leading-relaxed">
-            Diseduh dari biji kopi pilihan dan dimasak fresh setiap hari di Baciro HQ.
-            Pemberi stamina utama biar konsentrasi game kamu gak goyah!
+          <p className="text-[#475569] text-xs sm:text-sm mt-2 max-w-xl mx-auto leading-relaxed font-sans">
+            Manual brew, espresso racikan barista, dan makanan siap santap yang ramah kartu board game — disajikan langsung ke meja bermain.
           </p>
 
           {/* Segmented Thirsty / Hungry Switcher */}

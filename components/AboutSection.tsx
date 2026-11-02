@@ -12,14 +12,13 @@ export default function AboutSection() {
           {/* Section Eyebrow */}
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange font-mono text-xs font-semibold">
             <MeepleIcon className="w-3.5 h-3.5 text-brand-orange shrink-0" />
-            <span>Level Up Nongkrong Kamu</span>
+            <span>Ruang Bermain &amp; Cafe Baciro</span>
           </div>
           <h2 className="font-display font-black text-2xl sm:text-[1.75rem] md:text-3xl lg:text-[2rem] xl:text-[2.15rem] text-[#172554] mt-3 tracking-tight leading-tight">
-            BUKAN CAFE BIASA, INI TEMPAT BIKIN CERITA
+            MEJA KAYU LEGA, KOLEKSI LENGKAP, GAK ADA KATA BOSAN
           </h2>
-          <p className="text-[#475569] text-sm sm:text-base mt-2.5 max-w-xl mx-auto leading-relaxed">
-            Dari pemula yang baru kenal Uno sampai veteran D&amp;D kampanye puluhan
-            jam, semua punya tempat di meja kami.
+          <p className="text-[#475569] text-sm sm:text-base mt-2.5 max-w-xl mx-auto leading-relaxed font-sans">
+            Mau main party game santai bareng bestie atau adu strategi kampanye berjam-jam, meja di Baciro selalu siap buat squad kamu.
           </p>
         </div>
 
@@ -45,9 +44,8 @@ export default function AboutSection() {
               <h3 className="font-display font-bold text-base sm:text-lg text-[#172554] mb-1.5">
                 300+ Koleksi Game
               </h3>
-              <p className="text-[#475569] text-xs sm:text-sm leading-relaxed">
-                Dari party games seru, strategi berat, bluffing, sampai game
-                langka impor. Katalog game kami terus bertambah tiap bulan!
+              <p className="text-[#475569] text-xs sm:text-sm leading-relaxed font-sans">
+                Dari party game seru, bluffing, deduksi sosial, sampai strategi berat edisi impor original.
               </p>
             </div>
           </div>
@@ -61,9 +59,8 @@ export default function AboutSection() {
               <h3 className="font-display font-bold text-base sm:text-lg text-[#172554] mb-1.5">
                 Game Master Standby
               </h3>
-              <p className="text-[#475569] text-xs sm:text-sm leading-relaxed">
-                Males baca buku panduan 20 halaman? Tenang! Game Master kami
-                bakal jelasin cara mainnya sampai squad kamu langsung paham.
+              <p className="text-[#475569] text-xs sm:text-sm leading-relaxed font-sans">
+                Gak perlu pusing baca rulebook puluhan halaman. Game Master kami jelaskan aturan langsung di meja sampai squad kamu paham.
               </p>
             </div>
           </div>
@@ -77,10 +74,8 @@ export default function AboutSection() {
               <h3 className="font-display font-bold text-base sm:text-lg text-[#172554] mb-1.5">
                 Specialty Espresso Bar
               </h3>
-              <p className="text-[#475569] text-xs sm:text-sm leading-relaxed">
-                Mesin espresso profesional, racikan kopi artisan, dan aneka
-                artisan mocktails &amp; snack ramah boardgame (gak bikin kartu
-                berminyak!).
+              <p className="text-[#475569] text-xs sm:text-sm leading-relaxed font-sans">
+                Mesin espresso profesional, racikan kopi artisan, serta aneka mocktail dan camilan ramah kartu yang gak bikin tangan berminyak.
               </p>
             </div>
           </div>
@@ -94,13 +89,8 @@ export default function AboutSection() {
               <h3 className="font-display font-bold text-base sm:text-lg text-[#172554] mb-1.5">
                 Weekend <span className="whitespace-nowrap">24 Jam</span>
               </h3>
-              <p className="text-[#475569] text-xs sm:text-sm leading-relaxed">
-                Main game seru kepotong jam tutup cafe? Gak di Gitgud! Hari Jumat
-                sampai Minggu kami gas{" "}
-                <span className="whitespace-nowrap font-semibold text-[#172554]">
-                  24 jam non-stop
-                </span>{" "}
-                buat kamu dan teman-teman.
+              <p className="text-[#475569] text-xs sm:text-sm leading-relaxed font-sans">
+                Sesi adu taktik gak bakal kepotong jam tutup. Dari Jumat pagi sampai Minggu tengah malam, kami buka 24 jam non-stop.
               </p>
             </div>
           </div>

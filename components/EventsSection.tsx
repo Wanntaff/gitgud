@@ -95,12 +95,11 @@ export default function EventsSection() {
                 <span>Jadwal Komunitas</span>
               </div>
               <h2 className="font-display font-black text-2xl sm:text-[1.65rem] md:text-[1.75rem] lg:text-2xl xl:text-[1.85rem] 2xl:text-[2.15rem] text-[#172554] mt-2.5 sm:mt-3 tracking-tight leading-tight">
-                SELALU ADA KESERUAN <br className="hidden sm:inline" />
-                TIAP PEKAN
+                JADWAL MAIN BARENG <br className="hidden sm:inline" />
+                KOMUNITAS BACIRO
               </h2>
-              <p className="text-[#475569] text-xs sm:text-base mt-1.5 sm:mt-2 leading-relaxed">
-                Gitgud bukan cuma tempat main pasif, kami punya jadwal event
-                komunitas seru yang bisa kamu ikuti:
+              <p className="text-[#475569] text-xs sm:text-base mt-1.5 sm:mt-2 leading-relaxed font-sans">
+                Terbuka untuk umum. Datang sendirian pun langsung dapat meja dan teman main baru:
               </p>
             </div>
 

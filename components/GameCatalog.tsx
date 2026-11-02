@@ -329,8 +329,8 @@ export default function GameCatalog() {
           <h2 className="font-display font-black text-2xl sm:text-[1.75rem] md:text-3xl lg:text-[2rem] xl:text-[2.15rem] text-[#172554] mt-2.5 sm:mt-3 tracking-tight leading-tight">
             362 KOLEKSI BOARD GAME GITGUD
           </h2>
-          <p className="text-[#475569] text-xs sm:text-base mt-1.5 sm:mt-2 max-w-2xl">
-            Cari game favoritmu atau jelajahi ratusan judul meja fisik asli Baciro, dari santai bareng teman hingga duel strategi tingkat tinggi:
+          <p className="text-[#475569] text-xs sm:text-base mt-1.5 sm:mt-2 max-w-2xl font-sans">
+            Koleksi game fisik original yang siap dimainkan langsung di meja. Gunakan filter pencarian untuk menemukan judul yang pas dengan suasana squad kamu:
           </p>
         </div>
 
@@ -533,21 +533,19 @@ export default function GameCatalog() {
                       {/* Top Badges Row */}
                       <div className="flex items-center justify-between gap-2 mb-1.5 sm:mb-2">
                         {diffConfig ? (
-                          <span
-                            className={`text-[9px] sm:text-[9.5px] font-mono font-bold px-2 py-0.5 rounded border shadow-2xs ${diffConfig.badgeClass} flex items-center gap-1`}
-                          >
-                            <span>{diffConfig.label}</span>
+                          <span className="text-[10px] font-sans font-medium px-2 py-0.5 rounded-md bg-white/95 border border-slate-200 text-[#334155] shadow-2xs">
+                            {diffConfig.label}
                           </span>
                         ) : (
-                          <span className="text-[9px] sm:text-[9.5px] font-mono text-[#94A3B8]">
-                            Standard
+                          <span className="text-[10px] font-sans font-medium text-[#94A3B8]">
+                            Semua Level
                           </span>
                         )}
 
                         {game.greatFor2p && (
-                          <span className="text-[9px] sm:text-[9.5px] font-mono font-bold px-2 py-0.5 rounded border border-[#F7B5CB] bg-[#FFF0F5] text-[#C2185B] flex items-center gap-1 shadow-2xs">
-                            <Heart className="w-2.5 h-2.5 fill-current" />
-                            <span>Great for 2p</span>
+                          <span className="text-[10px] font-sans font-medium px-2 py-0.5 rounded-md border border-rose-200/90 bg-white text-[#BE123C] flex items-center gap-1 shadow-2xs">
+                            <Heart className="w-2.5 h-2.5 fill-current text-rose-500" />
+                            <span>Cocok 2 Orang</span>
                           </span>
                         )}
                       </div>
@@ -561,33 +559,36 @@ export default function GameCatalog() {
                       </h3>
                     </div>
 
-                    {/* Card Body: Category Tags & Specs */}
-                    <div className="p-3.5 sm:p-4.5 bg-white space-y-2.5 sm:space-y-3">
-                      {/* Specs Row */}
-                      <div className="flex flex-wrap items-center gap-2 text-xs text-[#475569] font-mono">
+                    {/* Card Body: Specs & Clean Category Tags */}
+                    <div className="p-3.5 sm:p-4 bg-white space-y-2.5">
+                      {/* Specs Row: Refined Tabular Metrics (No loud pastel bubble buttons) */}
+                      <div className="flex items-center gap-3 text-xs text-[#64748B] font-sans">
                         {game.players && (
-                          <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#F8FAFC] border border-[#1B64B4]/15 text-[10px] sm:text-[10.5px]">
-                            <Users className="w-3 h-3 text-[#1B64B4] shrink-0" />
+                          <span className="inline-flex items-center gap-1.5 text-[#334155] font-medium text-[11px]">
+                            <Users className="w-3.5 h-3.5 text-[#94A3B8] shrink-0" strokeWidth={1.8} />
                             <span>{game.players} Pemain</span>
                           </span>
                         )}
                         {game.playtime && (
-                          <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#FFF8F5] border border-[#E84A27]/20 text-[10px] sm:text-[10.5px] text-[#E84A27]">
-                            <Clock className="w-3 h-3 text-[#E84A27] shrink-0" />
-                            <span>{game.playtime}m</span>
-                          </span>
+                          <>
+                            <span className="text-slate-300 select-none">•</span>
+                            <span className="inline-flex items-center gap-1.5 text-[#334155] font-medium text-[11px]">
+                              <Clock className="w-3.5 h-3.5 text-[#94A3B8] shrink-0" strokeWidth={1.8} />
+                              <span>{game.playtime} mnt</span>
+                            </span>
+                          </>
                         )}
                       </div>
 
-                      {/* Categories Badges */}
+                      {/* Categories: Minimalist Editorial Tags (No baby-blue or #hashtags) */}
                       {game.category && (
-                        <div className="flex flex-wrap items-center gap-1.5 pt-1 border-t border-slate-100">
+                        <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-slate-100">
                           {game.category.split(",").map((catItem, idx) => (
                             <span
                               key={idx}
-                              className="text-[9.5px] sm:text-[10px] font-mono font-medium px-2 py-0.5 rounded bg-[#F0F7FF] text-[#1B64B4] border border-[#1B64B4]/15"
+                              className="text-[10px] font-sans font-medium px-2 py-0.5 rounded bg-slate-50 border border-slate-200/70 text-[#475569]"
                             >
-                              #{catItem.trim()}
+                              {catItem.trim()}
                             </span>
                           ))}
                         </div>

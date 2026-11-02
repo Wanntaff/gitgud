@@ -46,14 +46,14 @@ export default function FaqSection() {
           {/* Section Eyebrow */}
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange font-mono text-xs font-semibold">
             <BookOpen className="w-3.5 h-3.5 text-brand-orange shrink-0" />
-            <span>FAQ &amp; Tanya Jawab</span>
+            <span>Bantuan &amp; Info Praktis</span>
           </div>
 
           <h2 className="font-display font-black text-2xl sm:text-[1.75rem] md:text-3xl lg:text-[2rem] xl:text-[2.15rem] text-[#172554] tracking-tight mt-2.5 sm:mt-3">
-            PERTANYAAN SERING DITANYAKAN
+            PERTANYAAN SEPUTAR GITGUD
           </h2>
-          <p className="text-[#475569] text-xs sm:text-base mt-1.5 sm:mt-2.5 max-w-xl">
-            Semua hal yang perlu kamu tahu sebelum nongkrong dan duel game di Gitgud Jogja:
+          <p className="text-[#475569] text-xs sm:text-base mt-1.5 sm:mt-2.5 max-w-xl font-sans">
+            Informasi praktis seputar biaya, alur main, jam operasional, dan sesi komunitas di Baciro HQ:
           </p>
         </div>
 

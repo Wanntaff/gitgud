@@ -1,6 +1,6 @@
 "use client";
 
-import { MapPin, Clock, Navigation, Check, ExternalLink, MessageCircle } from "lucide-react";
+import { MapPin, Clock, Navigation, ExternalLink, MessageCircle, Wifi, Zap, Wind } from "lucide-react";
 import { soundEffects } from "@/lib/soundEffects";
 
 export default function LocationSection() {
@@ -24,8 +24,8 @@ export default function LocationSection() {
                 LOKASI & JAM OPERASIONAL
               </h2>
               <p className="text-[#475569] text-xs sm:text-base mt-1.5 sm:mt-2 leading-relaxed">
-                Lokasi strategis di pusat kota Yogyakarta, suasana tenang di
-                Baciro yang nyaman buat main game lama bareng teman.
+                Terletak di Baciro, Gondokusuman — area tenang dengan akses mudah,
+                parkir aman, dan meja bermain kayu yang lega.
               </p>
 
               {/* Address Card */}
@@ -36,7 +36,7 @@ export default function LocationSection() {
                     <h4 className="font-bold text-[#172554] text-xs sm:text-base">
                       Alamat Lengkap:
                     </h4>
-                    <p className="text-xs sm:text-sm text-[#334155] mt-1 sm:mt-1.5 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-[#334155] mt-1 sm:mt-1.5 leading-relaxed font-sans">
                       Jl. Soka no. 44 Baciro, Gondokusuman, Yogyakarta 55225
                     </p>
                   </div>
@@ -51,14 +51,14 @@ export default function LocationSection() {
                 </h4>
                 <div className="space-y-2.5 text-xs sm:text-sm font-mono">
                   <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center py-2 sm:py-2.5 border-b border-slate-200/80 gap-1 sm:gap-2">
-                    <span className="text-[#475569]">Senin - Kamis (Coffee)</span>
+                    <span className="text-[#475569]">Senin - Kamis (Coffee Bar)</span>
                     <span className="text-[#172554] font-bold whitespace-nowrap">
                       07.00 - 00.00 WIB
                     </span>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center py-2 sm:py-2.5 border-b border-slate-200/80 gap-1 sm:gap-2">
                     <span className="text-[#475569]">
-                      Senin - Kamis (Boardgame)
+                      Senin - Kamis (Board Game)
                     </span>
                     <span className="text-[#172554] font-bold whitespace-nowrap">
                       10.00 - 23.00 WIB
@@ -68,26 +68,29 @@ export default function LocationSection() {
                     <span className="whitespace-nowrap">Jumat - Minggu (Weekend)</span>
                     <span className="whitespace-nowrap inline-flex items-center gap-1.5">
                       <Clock className="w-3.5 h-3.5 shrink-0" />
-                      <span>24 JAM NON-STOP!</span>
+                      <span>24 JAM NON-STOP</span>
                     </span>
                   </div>
                 </div>
               </div>
 
-              {/* Venue Facility Badges */}
-              <div className="mt-4 sm:mt-5 flex flex-wrap gap-2 text-xs font-mono">
-                <span className="inline-flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-slate-200 text-[#475569] text-xs shadow-2xs">
-                  <Check className="w-3.5 h-3.5 text-brand-orange shrink-0" />
-                  <span>Free Wi-Fi Kencang</span>
-                </span>
-                <span className="inline-flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-slate-200 text-[#475569] text-xs shadow-2xs">
-                  <Check className="w-3.5 h-3.5 text-brand-orange shrink-0" />
-                  <span>Colokan Banyak</span>
-                </span>
-                <span className="inline-flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-slate-200 text-[#475569] text-xs shadow-2xs">
-                  <Check className="w-3.5 h-3.5 text-brand-orange shrink-0" />
-                  <span>Smoking & AC Area</span>
-                </span>
+              {/* Venue Facility Grid: Balanced 3-column micro-strip (Never orphaned or wrapping unevenly) */}
+              <div className="mt-4 sm:mt-5 grid grid-cols-3 gap-2">
+                <div className="flex flex-col items-center justify-center text-center p-2.5 sm:p-3 rounded-xl bg-[#F8FAFC] border border-slate-200 shadow-2xs">
+                  <Wifi className="w-4 h-4 text-brand-orange mb-1 shrink-0" strokeWidth={1.8} />
+                  <span className="font-semibold text-[11px] sm:text-xs text-[#172554] leading-tight">Wi-Fi Kencang</span>
+                  <span className="text-[9.5px] text-[#64748B] font-mono mt-0.5">Fiber Optic</span>
+                </div>
+                <div className="flex flex-col items-center justify-center text-center p-2.5 sm:p-3 rounded-xl bg-[#F8FAFC] border border-slate-200 shadow-2xs">
+                  <Zap className="w-4 h-4 text-brand-orange mb-1 shrink-0" strokeWidth={1.8} />
+                  <span className="font-semibold text-[11px] sm:text-xs text-[#172554] leading-tight">Colokan Meja</span>
+                  <span className="text-[9.5px] text-[#64748B] font-mono mt-0.5">Tiap Sudut</span>
+                </div>
+                <div className="flex flex-col items-center justify-center text-center p-2.5 sm:p-3 rounded-xl bg-[#F8FAFC] border border-slate-200 shadow-2xs">
+                  <Wind className="w-4 h-4 text-brand-orange mb-1 shrink-0" strokeWidth={1.8} />
+                  <span className="font-semibold text-[11px] sm:text-xs text-[#172554] leading-tight">AC &amp; Smoking</span>
+                  <span className="text-[9.5px] text-[#64748B] font-mono mt-0.5">Area Terpisah</span>
+                </div>
               </div>
             </div>
 

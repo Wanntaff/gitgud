@@ -4,23 +4,23 @@ export default function HowToPlaySection() {
   const steps = [
     {
       num: "01",
-      title: "Datang & Pilih Meja",
-      desc: "Langsung mampir ke cafe di Baciro, pilih meja yang paling cozy buat squad kamu.",
+      title: "Pilih Meja Squad",
+      desc: "Langsung mampir ke Baciro HQ, pilih meja kayu lega yang paling nyaman buat rombonganmu.",
     },
     {
       num: "02",
-      title: "Pesan Minuman / Snack",
-      desc: "Order kopi favorit kamu di bar biar sesi main makin fokus dan seru.",
+      title: "Pesan Kopi & Camilan",
+      desc: "Order minuman atau makanan di bar untuk nemenin fokus adu taktik tanpa bikin kartu berminyak.",
     },
     {
       num: "03",
-      title: "Pilih Game di Rak",
-      desc: "Pilih sendiri game yang kamu suka atau minta rekomendasi game master kami.",
+      title: "Ambil Game di Rak",
+      desc: "Pilih bebas dari 300+ koleksi fisik, atau minta rekomendasi judul yang cocok dari Game Master.",
     },
     {
       num: "04",
-      title: "Diajarin Sampai Paham!",
-      desc: "Game Master bakal mandu rules step-by-step. Kamu tinggal enjoy gamenya!",
+      title: "Dipandu Sampai Paham",
+      desc: "Game Master siap menjelaskan aturan main langkah demi langkah. Duduk santai tanpa perlu baca rulebook.",
     },
   ];
 
@@ -36,15 +36,15 @@ export default function HowToPlaySection() {
               {/* Section Eyebrow */}
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F0F7FF] border border-[#1B64B4]/20 text-[#1B64B4] font-mono text-xs font-semibold">
                 <Compass className="w-3.5 h-3.5 text-[#1B64B4] shrink-0" />
-                <span>Panduan Pemula</span>
+                <span>Alur Kunjungan</span>
               </div>
               <h2 className="font-display font-black text-2xl sm:text-[1.75rem] md:text-3xl lg:text-[2rem] xl:text-[2.15rem] text-[#172554] mt-3 tracking-tight leading-tight">
-                Gimana Cara Main di Gitgud?
+                CARA NONGKRONG &amp; MAIN DI GITGUD
               </h2>
             </div>
-            <span className="text-xs sm:text-sm text-[#475569] font-mono max-w-sm leading-relaxed">
-              Gak perlu malu kalau baru pertama kali! Langkahnya gampang banget:
-            </span>
+            <p className="text-xs sm:text-sm text-[#475569] font-sans max-w-sm leading-relaxed">
+              Pertama kali main di cafe board game? Alurnya santai dan fleksibel tanpa birokrasi ribet:
+            </p>
           </div>
 
           {/* Mobile Swipe Notice */}
