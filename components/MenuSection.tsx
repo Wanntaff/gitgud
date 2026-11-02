@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useRef } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
 import {
   Coffee,
   Utensils,
@@ -515,6 +515,43 @@ export default function MenuSection() {
   const itemsPerPage = isMobile ? 6 : ITEMS_PER_PAGE;
 
   const menuGridRef = useRef<HTMLDivElement>(null);
+  const subcategoryTrackRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  const checkScrollability = () => {
+    const el = subcategoryTrackRef.current;
+    if (!el) return;
+    const { scrollLeft, scrollWidth, clientWidth } = el;
+    setCanScrollLeft(scrollLeft > 6);
+    setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 6);
+  };
+
+  useEffect(() => {
+    const el = subcategoryTrackRef.current;
+    if (!el) return;
+    // reset scroll position on side change
+    el.scrollLeft = 0;
+    // Small timeout to allow layout to settle
+    const timer = setTimeout(checkScrollability, 50);
+    el.addEventListener("scroll", checkScrollability, { passive: true });
+    window.addEventListener("resize", checkScrollability, { passive: true });
+    return () => {
+      clearTimeout(timer);
+      el.removeEventListener("scroll", checkScrollability);
+      window.removeEventListener("resize", checkScrollability);
+    };
+  }, [activeSide]);
+
+  const scrollSubcategories = (direction: "left" | "right") => {
+    soundEffects.playTileTap();
+    if (subcategoryTrackRef.current) {
+      subcategoryTrackRef.current.scrollBy({
+        left: direction === "left" ? -180 : 180,
+        behavior: "smooth",
+      });
+    }
+  };
 
   const otherSide = activeSide === "thirsty" ? "hungry" : "thirsty";
 
@@ -626,7 +663,7 @@ export default function MenuSection() {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-5 sm:mb-10">
           {/* Section Eyebrow */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange font-mono text-xs font-semibold">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange font-sans text-xs font-semibold">
             {activeSide === "thirsty" ? (
               <Coffee className="w-3.5 h-3.5 text-brand-orange shrink-0" />
             ) : (
@@ -658,14 +695,14 @@ export default function MenuSection() {
                 <CupSoda className="w-4 h-4 shrink-0" />
                 <span className="tracking-wide">
                   THIRSTY{" "}
-                  <span className="hidden min-[360px]:inline font-mono text-[11px] sm:text-xs opacity-80">
+                  <span className="hidden min-[360px]:inline font-sans text-[11px] sm:text-xs opacity-80">
                     (DRINKS)
                   </span>
                 </span>
                 <span
-                  className={`ml-1 text-[10px] font-mono px-1.5 py-0.5 rounded ${
+                  className={`ml-1 text-[10px] font-sans font-bold px-1.5 py-0.5 rounded ${
                     activeSide === "thirsty"
-                      ? "bg-white/20 text-white font-bold"
+                      ? "bg-white/20 text-white"
                       : "bg-slate-200 text-[#475569]"
                   }`}
                 >
@@ -686,14 +723,14 @@ export default function MenuSection() {
                 <Utensils className="w-4 h-4 shrink-0" />
                 <span className="tracking-wide">
                   HUNGRY{" "}
-                  <span className="hidden min-[360px]:inline font-mono text-[11px] sm:text-xs opacity-80">
+                  <span className="hidden min-[360px]:inline font-sans text-[11px] sm:text-xs opacity-80">
                     (FOOD)
                   </span>
                 </span>
                 <span
-                  className={`ml-1 text-[10px] font-mono px-1.5 py-0.5 rounded ${
+                  className={`ml-1 text-[10px] font-sans font-bold px-1.5 py-0.5 rounded ${
                     activeSide === "hungry"
-                      ? "bg-white/20 text-white font-bold"
+                      ? "bg-white/20 text-white"
                       : "bg-slate-200 text-[#475569]"
                   }`}
                 >
@@ -706,29 +743,69 @@ export default function MenuSection() {
 
         {/* Filter Bar: Subcategories, Recommended Barista Filter, & Search */}
         <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3.5 mb-8 bg-[#F8FAFC] p-3 sm:p-3.5 rounded-xl border border-slate-200">
-          {/* Subcategory Pills */}
-          <div className="flex-1 min-w-0 flex items-center gap-1.5 overflow-x-auto pb-1 lg:pb-0 scrollbar-none text-xs font-mono">
-            {currentSubcategories.map(({ key, label }) => {
-              const isActive = selectedSubcategory === key;
-              return (
-                <button
-                  key={key}
-                  type="button"
-                  onClick={() => {
-                    soundEffects.playTileTap();
-                    setSelectedSubcategory(key);
-                    setCurrentPage(1);
-                  }}
-                  className={`px-3 py-1.5 rounded-lg border font-bold transition-all whitespace-nowrap cursor-pointer ${
-                    isActive
-                      ? "bg-brand-orange text-white border-brand-orange shadow-xs"
-                      : "bg-white text-[#475569] border-slate-200 hover:text-[#172554] hover:border-slate-300"
-                  }`}
-                >
-                  {label}
-                </button>
-              );
-            })}
+          {/* Subcategory Track with Interactive iOS-style Scroll Chevrons & Edge Fades */}
+          <div className="flex-1 min-w-0 relative flex items-center">
+            {/* Left Scroll Chevron */}
+            {canScrollLeft && (
+              <button
+                type="button"
+                onClick={() => scrollSubcategories("left")}
+                aria-label="Geser kategori menu ke kiri"
+                className="absolute left-0 z-20 w-7 h-7 sm:w-7.5 sm:h-7.5 rounded-full bg-white/95 backdrop-blur-md border border-slate-200 shadow-md flex items-center justify-center text-[#172554] hover:text-brand-orange hover:border-brand-orange hover:bg-white active:scale-90 transition-all cursor-pointer -translate-x-1"
+              >
+                <ChevronLeft className="w-4 h-4 shrink-0" strokeWidth={2.2} />
+              </button>
+            )}
+
+            {/* Left Fade Gradient Mask */}
+            {canScrollLeft && (
+              <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-10 bg-gradient-to-r from-[#F8FAFC] via-[#F8FAFC]/80 to-transparent pointer-events-none z-10" />
+            )}
+
+            {/* Subcategory Pills Track */}
+            <div
+              ref={subcategoryTrackRef}
+              className="flex-1 min-w-0 flex items-center gap-1.5 overflow-x-auto pb-1 lg:pb-0 scrollbar-none text-xs font-sans font-semibold scroll-smooth"
+            >
+              {currentSubcategories.map(({ key, label }) => {
+                const isActive = selectedSubcategory === key;
+                return (
+                  <button
+                    key={key}
+                    type="button"
+                    onClick={() => {
+                      soundEffects.playTileTap();
+                      setSelectedSubcategory(key);
+                      setCurrentPage(1);
+                    }}
+                    className={`px-3 py-1.5 rounded-lg border font-semibold transition-all whitespace-nowrap cursor-pointer active:scale-[0.97] ${
+                      isActive
+                        ? "bg-brand-orange text-white border-brand-orange shadow-xs"
+                        : "bg-white text-[#475569] border-slate-200 hover:text-[#172554] hover:border-slate-300"
+                    }`}
+                  >
+                    {label}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Right Fade Gradient Mask */}
+            {canScrollRight && (
+              <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-10 bg-gradient-to-l from-[#F8FAFC] via-[#F8FAFC]/80 to-transparent pointer-events-none z-10" />
+            )}
+
+            {/* Right Scroll Chevron */}
+            {canScrollRight && (
+              <button
+                type="button"
+                onClick={() => scrollSubcategories("right")}
+                aria-label="Geser kategori menu ke kanan"
+                className="absolute right-0 z-20 w-7 h-7 sm:w-7.5 sm:h-7.5 rounded-full bg-white/95 backdrop-blur-md border border-slate-200 shadow-md flex items-center justify-center text-[#172554] hover:text-brand-orange hover:border-brand-orange hover:bg-white active:scale-90 transition-all cursor-pointer translate-x-1"
+              >
+                <ChevronRight className="w-4 h-4 shrink-0" strokeWidth={2.2} />
+              </button>
+            )}
           </div>
 
           {/* Right Controls: Rekomendasi Barista Toggle + Cross-Side Match + Search Box */}
@@ -743,7 +820,7 @@ export default function MenuSection() {
               }}
               aria-pressed={onlyRecommended}
               title="Filter rekomendasi barista"
-              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border font-mono text-xs font-bold transition-all duration-200 cursor-pointer whitespace-nowrap shrink-0 ${
+              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border font-sans text-xs font-semibold transition-all duration-200 cursor-pointer whitespace-nowrap shrink-0 ${
                 onlyRecommended
                   ? activeSide === "thirsty"
                     ? "bg-brand-orange text-white border-brand-orange shadow-xs"
@@ -763,11 +840,11 @@ export default function MenuSection() {
               <span className="hidden sm:inline">Rekomendasi Barista</span>
               <span className="sm:hidden">Rekomendasi</span>
               <span
-                className={`text-[10px] font-mono px-1.5 py-0.5 rounded ${
+                className={`text-[10px] font-sans font-bold px-1.5 py-0.5 rounded ${
                   onlyRecommended
                     ? activeSide === "thirsty"
-                      ? "bg-white/20 text-white font-bold"
-                      : "bg-white/60 text-[#172554] font-bold"
+                      ? "bg-white/20 text-white"
+                      : "bg-white/60 text-[#172554]"
                     : "bg-[#E2E8F0] text-[#475569]"
                 }`}
               >
@@ -779,7 +856,7 @@ export default function MenuSection() {
               <button
                 type="button"
                 onClick={() => handleSideChange(otherSide)}
-                className="hidden xl:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-brand-orange/15 hover:bg-brand-orange/25 border border-brand-orange/40 text-brand-orange text-[11px] font-mono font-bold transition-all shrink-0 cursor-pointer"
+                className="hidden xl:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-brand-orange/15 hover:bg-brand-orange/25 border border-brand-orange/40 text-brand-orange text-[11px] font-sans font-bold transition-all shrink-0 cursor-pointer"
               >
                 <span>{otherSideMatches.length} di {otherSide === "thirsty" ? "Drinks" : "Food"}</span>
                 <span>→</span>
@@ -824,7 +901,7 @@ export default function MenuSection() {
               </span>
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-brand-orange">
+                  <span className="text-[10px] font-sans font-bold uppercase tracking-wider text-brand-orange">
                     MUNCH OF THE DAY • BOARDGAME COMBO
                   </span>
                 </div>
@@ -835,7 +912,7 @@ export default function MenuSection() {
                 </p>
               </div>
             </div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white text-[#172554] font-mono text-[10px] sm:text-[11px] font-bold uppercase tracking-wider shadow-xs border border-slate-200 shrink-0 select-none">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white text-[#172554] font-sans text-[10px] sm:text-[11px] font-bold uppercase tracking-wider shadow-xs border border-slate-200 shrink-0 select-none">
               <ChefHat className="w-3.5 h-3.5 text-brand-orange shrink-0" />
               <span>Barista Pairing</span>
             </div>
@@ -848,7 +925,7 @@ export default function MenuSection() {
               </span>
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-brand-orange">
+                  <span className="text-[10px] font-sans font-bold uppercase tracking-wider text-brand-orange">
                     BARISTA SIGNATURE • ZING &amp; MATCHA PICKS
                   </span>
                 </div>
@@ -859,7 +936,7 @@ export default function MenuSection() {
                 </p>
               </div>
             </div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white text-[#172554] font-mono text-[10px] sm:text-[11px] font-bold uppercase tracking-wider shadow-xs border border-slate-200 shrink-0 select-none">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white text-[#172554] font-sans text-[10px] sm:text-[11px] font-bold uppercase tracking-wider shadow-xs border border-slate-200 shrink-0 select-none">
               <Flame className="w-3.5 h-3.5 text-brand-orange shrink-0" />
               <span>Top Rated Zing</span>
             </div>
@@ -884,12 +961,12 @@ export default function MenuSection() {
                     <div>
                       {/* Top Meta: Subcategory Badge & Recommended Badge */}
                       <div className="flex items-center justify-between gap-2 mb-2 sm:mb-2.5">
-                        <span className="font-mono text-[9.5px] sm:text-[10px] font-medium tracking-wider text-[#475569] uppercase bg-[#F8FAFC] px-2 sm:px-2.5 py-0.5 rounded border border-slate-200">
+                        <span className="font-sans text-[9.5px] sm:text-[10px] font-medium tracking-wider text-[#475569] uppercase bg-[#F8FAFC] px-2 sm:px-2.5 py-0.5 rounded border border-slate-200">
                           {item.subcategoryLabel}
                         </span>
 
                         {item.recommended && (
-                          <span className="inline-flex items-center gap-1 text-[9.5px] sm:text-[10px] font-mono font-bold text-brand-orange bg-[#FFF5F0] border border-brand-orange/30 px-2 py-0.5 rounded-md">
+                          <span className="inline-flex items-center gap-1 text-[9.5px] sm:text-[10px] font-sans font-bold text-brand-orange bg-[#FFF5F0] border border-brand-orange/30 px-2 py-0.5 rounded-md">
                             <ThumbsUp className="w-2.5 h-2.5 shrink-0" />
                             <span>FAVORIT</span>
                           </span>
@@ -910,17 +987,17 @@ export default function MenuSection() {
                     {/* Bottom: Price & Extra Note */}
                     <div className="mt-3 sm:mt-4 pt-2.5 sm:pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
                       <div className="flex items-baseline gap-1">
-                        <span className="font-mono font-bold text-base sm:text-xl text-[#172554]">
+                        <span className="font-sans font-bold text-base sm:text-xl text-[#172554]">
                           {item.price}
                         </span>
                       </div>
 
                       {item.extra ? (
-                        <span className="font-mono text-[10px] text-[#172554] bg-[#F0F7FF] border border-[#172554]/20 px-2 py-0.5 rounded font-medium">
+                        <span className="font-sans text-[10px] text-[#172554] bg-[#F0F7FF] border border-[#172554]/20 px-2 py-0.5 rounded font-medium">
                           {item.extra}
                         </span>
                       ) : (
-                        <span className="font-mono text-[10px] text-[#64748B]">
+                        <span className="font-sans text-[10px] text-[#64748B]">
                           {item.side === "thirsty" ? "Cold / Fresh" : "Freshly Cooked"}
                         </span>
                       )}
@@ -934,7 +1011,7 @@ export default function MenuSection() {
             {totalPages > 1 && (
               <div className="mt-8 pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
                 {/* Range Indicator */}
-                <div className="flex items-center gap-2 text-xs font-mono text-[#475569]">
+                <div className="flex items-center gap-2 text-xs font-sans text-[#475569]">
                   <span className="px-2 py-0.5 rounded bg-slate-100 text-[#172554] font-medium text-[10px] tracking-wide uppercase">
                     {activeSide === "thirsty" ? "Minuman" : "Makanan"}
                   </span>
@@ -959,7 +1036,7 @@ export default function MenuSection() {
                     onClick={() => goToPage(safeCurrentPage - 1)}
                     disabled={safeCurrentPage <= 1}
                     aria-label="Halaman sebelumnya"
-                    className={`flex-1 inline-flex items-center justify-center gap-1 py-2 px-3 rounded-lg font-mono text-xs font-bold transition-all ${
+                    className={`flex-1 inline-flex items-center justify-center gap-1 py-2 px-3 rounded-lg font-sans text-xs font-bold transition-all ${
                       safeCurrentPage <= 1
                         ? "opacity-35 cursor-not-allowed text-[#94A3B8] border border-slate-100 bg-[#F8FAFC]"
                         : "bg-white text-[#172554] border border-slate-200 shadow-xs active:scale-95 cursor-pointer"
@@ -969,7 +1046,7 @@ export default function MenuSection() {
                     <span>Sebelumnya</span>
                   </button>
 
-                  <span className="font-mono text-xs font-bold text-[#172554] px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 whitespace-nowrap">
+                  <span className="font-sans text-xs font-bold text-[#172554] px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 whitespace-nowrap">
                     {safeCurrentPage} / {totalPages}
                   </span>
 
@@ -978,7 +1055,7 @@ export default function MenuSection() {
                     onClick={() => goToPage(safeCurrentPage + 1)}
                     disabled={safeCurrentPage >= totalPages}
                     aria-label="Halaman berikutnya"
-                    className={`flex-1 inline-flex items-center justify-center gap-1 py-2 px-3 rounded-lg font-mono text-xs font-bold transition-all ${
+                    className={`flex-1 inline-flex items-center justify-center gap-1 py-2 px-3 rounded-lg font-sans text-xs font-bold transition-all ${
                       safeCurrentPage >= totalPages
                         ? "opacity-35 cursor-not-allowed text-[#94A3B8] border border-slate-100 bg-[#F8FAFC]"
                         : "bg-white text-[#172554] border border-slate-200 shadow-xs active:scale-95 cursor-pointer"
@@ -996,7 +1073,7 @@ export default function MenuSection() {
                     onClick={() => goToPage(safeCurrentPage - 1)}
                     disabled={safeCurrentPage <= 1}
                     aria-label="Halaman sebelumnya"
-                    className={`inline-flex items-center gap-1 px-2.5 sm:px-3 py-2 rounded-lg font-mono text-xs font-bold transition-all duration-200 focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:outline-hidden ${
+                    className={`inline-flex items-center gap-1 px-2.5 sm:px-3 py-2 rounded-lg font-sans text-xs font-bold transition-all duration-200 focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:outline-hidden ${
                       safeCurrentPage <= 1
                         ? "opacity-35 cursor-not-allowed text-[#94A3B8] border border-slate-100 bg-[#F8FAFC]"
                         : "bg-white hover:bg-slate-50 text-[#172554] border border-slate-200 cursor-pointer shadow-xs"
@@ -1012,7 +1089,7 @@ export default function MenuSection() {
                         return (
                           <span
                             key={`ellipsis-${idx}`}
-                            className="w-8 h-9 flex items-center justify-center text-xs font-mono text-[#94A3B8] select-none"
+                            className="w-8 h-9 flex items-center justify-center text-xs font-sans text-[#94A3B8] select-none"
                           >
                             ...
                           </span>
@@ -1031,7 +1108,7 @@ export default function MenuSection() {
                           onClick={() => goToPage(p)}
                           aria-current={isActive ? "page" : undefined}
                           aria-label={`Ke halaman ${p}`}
-                          className={`w-9 h-9 flex items-center justify-center rounded-lg font-mono text-xs transition-all duration-200 cursor-pointer focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:outline-hidden ${
+                          className={`w-9 h-9 flex items-center justify-center rounded-lg font-sans text-xs transition-all duration-200 cursor-pointer focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:outline-hidden ${
                             isActive ? activeClasses : inactiveClasses
                           }`}
                         >
@@ -1046,7 +1123,7 @@ export default function MenuSection() {
                     onClick={() => goToPage(safeCurrentPage + 1)}
                     disabled={safeCurrentPage >= totalPages}
                     aria-label="Halaman berikutnya"
-                    className={`inline-flex items-center gap-1 px-2.5 sm:px-3 py-2 rounded-lg font-mono text-xs font-bold transition-all duration-200 focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:outline-hidden ${
+                    className={`inline-flex items-center gap-1 px-2.5 sm:px-3 py-2 rounded-lg font-sans text-xs font-bold transition-all duration-200 focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:outline-hidden ${
                       safeCurrentPage >= totalPages
                         ? "opacity-35 cursor-not-allowed text-[#94A3B8] border border-slate-100 bg-[#F8FAFC]"
                         : "bg-white hover:bg-slate-50 text-[#172554] border border-slate-200 cursor-pointer shadow-xs"
@@ -1079,7 +1156,7 @@ export default function MenuSection() {
               <button
                 type="button"
                 onClick={() => handleSideChange(otherSide)}
-                className="w-full sm:w-auto px-4 py-2 bg-brand-orange hover:bg-brand-orange-hover text-white font-mono text-xs font-bold rounded-lg transition-colors cursor-pointer shadow-xs"
+                className="w-full sm:w-auto px-4 py-2 bg-brand-orange hover:bg-brand-orange-hover text-white font-sans text-xs font-bold rounded-lg transition-colors cursor-pointer shadow-xs"
               >
                 Buka Menu {otherSide === "thirsty" ? "Minuman" : "Makanan"} ({otherSideMatches.length}) →
               </button>
@@ -1092,7 +1169,7 @@ export default function MenuSection() {
                   setOnlyRecommended(false);
                   setCurrentPage(1);
                 }}
-                className="w-full sm:w-auto px-3.5 py-2 bg-white hover:bg-[#F8FAFC] text-[#475569] font-mono text-xs font-medium rounded-lg border border-slate-200 transition-colors cursor-pointer"
+                className="w-full sm:w-auto px-3.5 py-2 bg-white hover:bg-[#F8FAFC] text-[#475569] font-sans text-xs font-medium rounded-lg border border-slate-200 transition-colors cursor-pointer"
               >
                 Reset Filter
               </button>
@@ -1121,7 +1198,7 @@ export default function MenuSection() {
                 setOnlyRecommended(false);
                 setCurrentPage(1);
               }}
-              className="mt-4 px-4 py-1.5 bg-brand-orange text-white font-mono text-xs font-bold rounded-lg hover:bg-brand-orange-hover transition-colors cursor-pointer shadow-xs"
+              className="mt-4 px-4 py-1.5 bg-brand-orange text-white font-sans text-xs font-bold rounded-lg hover:bg-brand-orange-hover transition-colors cursor-pointer shadow-xs"
             >
               Reset Filter
             </button>
@@ -1130,7 +1207,7 @@ export default function MenuSection() {
 
         {/* Cafe Notice Footer */}
         <div className="mt-8 pt-4 border-t border-slate-200">
-          <div className="bg-[#F8FAFC] border border-slate-200 rounded-xl px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-2.5 text-xs font-mono text-[#475569] text-center md:text-left">
+          <div className="bg-[#F8FAFC] border border-slate-200 rounded-xl px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-2.5 text-xs font-sans text-[#475569] text-center md:text-left">
             <div className="inline-flex items-center gap-2">
               <span className="font-bold text-[#172554] tracking-wide">
                 Nett Price:

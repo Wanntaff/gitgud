@@ -230,14 +230,14 @@ export default function DicePicker({ compact = false }: DicePickerProps) {
               <h3 className="font-display font-bold text-xs sm:text-[13px] text-[#172554] truncate leading-tight">
                 Gud Game Picker
               </h3>
-              <p className="text-[9px] font-mono text-[#64748B] truncate tracking-wide uppercase">
+              <p className="text-[9px] font-sans font-medium text-[#64748B] truncate tracking-wide uppercase">
                 Baciro Roulette
               </p>
             </div>
           </div>
 
           <div className="flex items-center gap-1.5 shrink-0">
-            <span className="font-mono text-[9.5px] text-brand-orange font-bold px-2 py-0.5 rounded bg-[#FFF5F0] border border-brand-orange/20">
+            <span className="font-sans text-[9.5px] text-brand-orange font-bold px-2 py-0.5 rounded bg-[#FFF5F0] border border-brand-orange/20">
               #{rollCount}
             </span>
             <button
@@ -264,18 +264,18 @@ export default function DicePicker({ compact = false }: DicePickerProps) {
                 className="w-4.5 h-4.5 sm:w-5 sm:h-5 shrink-0"
                 style={{ color: selectedGame.boxAccent }}
               />
-              <span className="text-[6.5px] font-mono font-bold text-[#94A3B8]">D{currentDiceNumber}</span>
+              <span className="text-[6.5px] font-sans font-bold text-[#94A3B8]">D{currentDiceNumber}</span>
             </div>
             <div className="min-w-0">
               <div className="flex items-center gap-1.5 flex-wrap">
                 <h4 className="font-display font-bold text-xs sm:text-sm text-[#172554] truncate">
                   {selectedGame.name}
                 </h4>
-                <span className="text-[9px] font-mono font-semibold text-[#172554] bg-white border border-slate-200 px-1.5 py-0.2 rounded">
+                <span className="text-[9px] font-sans font-semibold text-[#172554] bg-white border border-slate-200 px-1.5 py-0.2 rounded">
                   {selectedGame.badgeLabel}
                 </span>
               </div>
-              <div className="flex items-center gap-2 text-[10px] text-[#64748B] font-mono mt-0.5">
+              <div className="flex items-center gap-2 text-[10px] text-[#64748B] font-sans font-medium mt-0.5">
                 <span>{selectedGame.categoryTag}</span>
                 <span>•</span>
                 <span>{selectedGame.players}</span>
@@ -330,7 +330,7 @@ export default function DicePicker({ compact = false }: DicePickerProps) {
               <h3 className="font-display font-bold text-sm sm:text-[15px] text-[#172554] truncate leading-tight tracking-tight">
                 Gud Game Picker
               </h3>
-              <p className="text-[10px] sm:text-[10.5px] font-mono text-[#64748B] truncate tracking-wide uppercase">
+              <p className="text-[10px] sm:text-[10.5px] font-sans font-medium text-[#64748B] truncate tracking-wide uppercase">
                 Baciro Tabletop Roulette
               </p>
             </div>
@@ -338,7 +338,7 @@ export default function DicePicker({ compact = false }: DicePickerProps) {
 
           {/* Counter & Re-roll */}
           <div className="flex items-center gap-1.5 shrink-0">
-            <div className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-[#F8FAFC] border border-slate-200 text-[10px] sm:text-[10.5px] font-mono">
+            <div className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-[#F8FAFC] border border-slate-200 text-[10px] sm:text-[10.5px] font-sans">
               <span className="text-[#64748B] font-medium">Kocokan</span>
               <span className="font-bold text-brand-orange tabular-nums">#{rollCount}</span>
             </div>
@@ -370,15 +370,15 @@ export default function DicePicker({ compact = false }: DicePickerProps) {
               {/* Box Header Strip */}
               <div className="flex items-center justify-between gap-2 pb-2.5 border-b border-slate-200/80">
                 <div className="flex items-center gap-2 min-w-0">
-                  <span className="inline-flex items-center justify-center w-5 h-5 rounded bg-white border border-slate-200 font-mono text-[9px] text-[#172554] font-bold shrink-0">
+                  <span className="inline-flex items-center justify-center w-5 h-5 rounded bg-white border border-slate-200 font-sans text-[9px] text-[#172554] font-bold shrink-0">
                     D{currentDiceNumber}
                   </span>
                   <span className="text-slate-300 select-none">•</span>
-                  <span className="font-mono text-[10.5px] text-[#475569] font-medium truncate">
+                  <span className="font-sans text-[10.5px] text-[#475569] font-medium truncate">
                     {selectedGame.boxSubtitle}
                   </span>
                 </div>
-                <span className="inline-flex items-center gap-1 font-mono text-[9px] text-[#172554] bg-white px-2 py-0.5 rounded-md border border-slate-200 shrink-0 font-semibold shadow-xs">
+                <span className="inline-flex items-center gap-1 font-sans text-[9px] text-[#172554] bg-white px-2 py-0.5 rounded-md border border-slate-200 shrink-0 font-semibold shadow-xs">
                   <Award className="w-3 h-3 text-brand-orange" />
                   <span>{selectedGame.badgeLabel}</span>
                 </span>
@@ -404,7 +404,7 @@ export default function DicePicker({ compact = false }: DicePickerProps) {
                         className="w-5 h-5 sm:w-5.5 sm:h-5.5 shrink-0"
                         style={{ color: selectedGame.boxAccent }}
                       />
-                      <span className="text-[6.5px] font-mono font-bold tracking-[0.15em] uppercase text-[#94A3B8] mt-0.5">
+                      <span className="text-[6.5px] font-sans font-bold tracking-[0.15em] uppercase text-[#94A3B8] mt-0.5">
                         BOX
                       </span>
                     </div>
@@ -415,7 +415,7 @@ export default function DicePicker({ compact = false }: DicePickerProps) {
                     <h4 className="font-display font-bold text-[13px] sm:text-sm xl:text-[15px] text-[#172554] tracking-tight leading-snug truncate">
                       {selectedGame.name}
                     </h4>
-                    <p className="text-[10px] sm:text-[10.5px] font-mono text-[#64748B] mt-0.5 truncate tracking-wide">
+                    <p className="text-[10px] sm:text-[10.5px] font-sans text-[#64748B] mt-0.5 truncate tracking-wide">
                       Edisi Meja Fisik Gitgud Cafe
                     </p>
                   </div>
@@ -438,7 +438,7 @@ export default function DicePicker({ compact = false }: DicePickerProps) {
                   <span>{selectedGame.players}</span>
                 </span>
 
-                <span className="bg-white text-[#64748B] font-mono text-[10px] sm:text-[10.5px] px-2.5 py-1 rounded-md flex items-center gap-1 border border-slate-200 shadow-xs">
+                <span className="bg-white text-[#64748B] font-sans text-[10px] sm:text-[10.5px] px-2.5 py-1 rounded-md flex items-center gap-1 border border-slate-200 shadow-xs">
                   <Clock className="w-3 h-3 text-brand-orange shrink-0" />
                   <span>{selectedGame.duration}</span>
                 </span>
@@ -446,7 +446,7 @@ export default function DicePicker({ compact = false }: DicePickerProps) {
 
               {/* GM Quote */}
               <div className="relative bg-[#FFF9F6] border-l-[3px] border-brand-orange p-2.5 sm:p-3 rounded-r-lg overflow-hidden">
-                <div className="font-mono text-[8px] sm:text-[9px] font-bold text-brand-orange uppercase tracking-[0.15em] mb-1 flex items-center gap-1.5">
+                <div className="font-sans text-[8px] sm:text-[9px] font-bold text-brand-orange uppercase tracking-[0.15em] mb-1 flex items-center gap-1.5">
                   <span className="w-3 h-[1.5px] bg-brand-orange/40 rounded-full" />
                   <span>Catatan Game Master</span>
                 </div>

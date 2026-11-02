@@ -12,7 +12,7 @@
 
   --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro", var(--font-plus-jakarta-sans), system-ui, sans-serif;
   --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro", var(--font-plus-jakarta-sans), system-ui, sans-serif;
-  --font-mono: "SF Mono", ui-monospace, Menlo, Monaco, Consolas, monospace;
+  --font-mono: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro", var(--font-plus-jakarta-sans), system-ui, sans-serif;
 
   --shadow-brutal-orange: 0 1px 3px 0 rgba(232, 74, 39, 0.15);
   --shadow-brutal-pink: 0 1px 3px 0 rgba(247, 181, 203, 0.15);
@@ -20,7 +20,8 @@
   --shadow-brutal-blue: 0 1px 3px 0 rgba(27, 100, 180, 0.15);
 }
 
-html {
+html, body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro", var(--font-plus-jakarta-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;

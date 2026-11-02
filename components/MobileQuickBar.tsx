@@ -54,7 +54,7 @@ export default function MobileQuickBar() {
             className="flex-1 flex flex-col items-center justify-center py-1 px-1 rounded-lg text-[#475569] hover:text-[#172554] active:bg-slate-50 transition-colors cursor-pointer"
           >
             <Dices className="w-5 h-5 mb-0.5 text-[#172554]" />
-            <span className="font-mono text-[10px] font-bold tracking-tight">Game</span>
+            <span className="font-sans text-[10px] font-bold tracking-tight">Game</span>
           </button>
 
           {/* Quick Jump: Menu Cafe */}
@@ -64,7 +64,7 @@ export default function MobileQuickBar() {
             className="flex-1 flex flex-col items-center justify-center py-1 px-1 rounded-lg text-[#475569] hover:text-brand-orange active:bg-[#FFF5F0] transition-colors cursor-pointer"
           >
             <Utensils className="w-5 h-5 mb-0.5 text-brand-orange" />
-            <span className="font-mono text-[10px] font-bold tracking-tight">Menu</span>
+            <span className="font-sans text-[10px] font-bold tracking-tight">Menu</span>
           </button>
 
           {/* Quick Jump: Lokasi & Jam Buka */}
@@ -74,7 +74,7 @@ export default function MobileQuickBar() {
             className="flex-1 flex flex-col items-center justify-center py-1 px-1 rounded-lg text-[#475569] hover:text-[#172554] active:bg-slate-50 transition-colors cursor-pointer"
           >
             <MapPin className="w-5 h-5 mb-0.5 text-[#172554]" />
-            <span className="font-mono text-[10px] font-bold tracking-tight">Lokasi</span>
+            <span className="font-sans text-[10px] font-bold tracking-tight">Lokasi</span>
           </button>
 
           {/* Primary Action: WhatsApp Reservation Pill */}

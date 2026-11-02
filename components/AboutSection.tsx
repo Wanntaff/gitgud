@@ -10,7 +10,7 @@ export default function AboutSection() {
       <div className="max-w-7xl mx-auto w-full">
         <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-12 lg:mb-14">
           {/* Section Eyebrow */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange font-mono text-xs font-semibold">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange font-sans text-xs font-semibold">
             <MeepleIcon className="w-3.5 h-3.5 text-brand-orange shrink-0" />
             <span>Ruang Bermain &amp; Cafe Baciro</span>
           </div>
@@ -23,7 +23,7 @@ export default function AboutSection() {
         </div>
 
         {/* Mobile Swipe Notice */}
-        <div className="flex md:hidden items-center justify-between text-xs font-mono text-[#64748B] mb-3 px-1">
+        <div className="flex md:hidden items-center justify-between text-xs font-sans text-[#64748B] mb-3 px-1">
           <span className="inline-flex items-center gap-1.5 text-[11px] font-medium text-[#475569]">
             <span>Geser kartu ke samping</span>
             <span className="text-brand-orange font-bold">→</span>

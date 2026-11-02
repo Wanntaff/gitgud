@@ -15,7 +15,7 @@ export default function LocationSection() {
           <div className="lg:col-span-5 flex flex-col justify-between">
             <div>
               {/* Section Eyebrow */}
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange font-mono text-xs font-semibold">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange font-sans text-xs font-semibold">
                 <MapPin className="w-3.5 h-3.5 text-brand-orange shrink-0" />
                 <span>Lokasi &amp; Jam Buka</span>
               </div>
@@ -49,7 +49,7 @@ export default function LocationSection() {
                   <Clock className="w-4 h-4 text-brand-orange" />
                   <span>Jadwal Buka:</span>
                 </h4>
-                <div className="space-y-2.5 text-xs sm:text-sm font-mono">
+                <div className="space-y-2.5 text-xs sm:text-sm font-sans">
                   <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center py-2 sm:py-2.5 border-b border-slate-200/80 gap-1 sm:gap-2">
                     <span className="text-[#475569]">Senin - Kamis (Coffee Bar)</span>
                     <span className="text-[#172554] font-bold whitespace-nowrap">
@@ -79,17 +79,17 @@ export default function LocationSection() {
                 <div className="tabletop-card flex flex-col items-center justify-center text-center p-2.5 sm:p-3 rounded-xl bg-[#F8FAFC] hover:bg-white border border-slate-200 hover:border-slate-300 shadow-2xs hover:shadow-xs cursor-default">
                   <Wifi className="w-4 h-4 text-brand-orange mb-1 shrink-0" strokeWidth={1.8} />
                   <span className="font-semibold text-[11px] sm:text-xs text-[#172554] leading-tight">Wi-Fi Kencang</span>
-                  <span className="text-[9.5px] text-[#64748B] font-mono mt-0.5">Fiber Optic</span>
+                  <span className="text-[9.5px] text-[#64748B] font-sans mt-0.5">Fiber Optic</span>
                 </div>
                 <div className="tabletop-card flex flex-col items-center justify-center text-center p-2.5 sm:p-3 rounded-xl bg-[#F8FAFC] hover:bg-white border border-slate-200 hover:border-slate-300 shadow-2xs hover:shadow-xs cursor-default">
                   <Zap className="w-4 h-4 text-brand-orange mb-1 shrink-0" strokeWidth={1.8} />
                   <span className="font-semibold text-[11px] sm:text-xs text-[#172554] leading-tight">Colokan Meja</span>
-                  <span className="text-[9.5px] text-[#64748B] font-mono mt-0.5">Tiap Sudut</span>
+                  <span className="text-[9.5px] text-[#64748B] font-sans mt-0.5">Tiap Sudut</span>
                 </div>
                 <div className="tabletop-card flex flex-col items-center justify-center text-center p-2.5 sm:p-3 rounded-xl bg-[#F8FAFC] hover:bg-white border border-slate-200 hover:border-slate-300 shadow-2xs hover:shadow-xs cursor-default">
                   <Wind className="w-4 h-4 text-brand-orange mb-1 shrink-0" strokeWidth={1.8} />
                   <span className="font-semibold text-[11px] sm:text-xs text-[#172554] leading-tight">AC &amp; Smoking</span>
-                  <span className="text-[9.5px] text-[#64748B] font-mono mt-0.5">Area Terpisah</span>
+                  <span className="text-[9.5px] text-[#64748B] font-sans mt-0.5">Area Terpisah</span>
                 </div>
               </div>
             </div>
@@ -133,7 +133,7 @@ export default function LocationSection() {
 
               {/* Minimalist Floating Top Header Bar */}
               <div className="relative z-10 p-3 sm:p-4 flex items-center justify-between pointer-events-none">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/95 backdrop-blur-md border border-slate-200 text-[#172554] font-mono text-[11px] font-bold rounded-lg shadow-xs">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/95 backdrop-blur-md border border-slate-200 text-[#172554] font-sans text-[11px] font-bold rounded-lg shadow-xs">
                   <MapPin className="w-3.5 h-3.5 text-brand-orange shrink-0" />
                   <span>BACIRO, YOGYAKARTA</span>
                 </span>
@@ -144,7 +144,7 @@ export default function LocationSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => soundEffects.playButtonClick()}
-                  className="pointer-events-auto inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/95 hover:bg-slate-50 text-[#172554] font-mono text-[11px] font-bold rounded-lg border border-slate-200 shadow-xs backdrop-blur-md transition-all cursor-pointer"
+                  className="pointer-events-auto inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/95 hover:bg-slate-50 text-[#172554] font-sans text-[11px] font-bold rounded-lg border border-slate-200 shadow-xs backdrop-blur-md transition-all cursor-pointer"
                 >
                   <span>Buka Maps</span>
                   <ExternalLink className="w-3 h-3 text-[#64748B]" />

@@ -25,7 +25,7 @@ export default function AnnouncementTicker() {
   ];
 
   return (
-    <div className="bg-brand-orange text-white font-mono text-[11px] sm:text-xs font-bold uppercase tracking-wider py-1.5 sm:py-2 overflow-hidden border-b border-[#D83B13]/60 select-none shadow-xs max-w-full [contain:paint]">
+    <div className="bg-brand-orange text-white font-sans text-[11px] sm:text-xs font-bold uppercase tracking-wider py-1.5 sm:py-2 overflow-hidden border-b border-[#D83B13]/60 select-none shadow-xs max-w-full [contain:paint]">
       <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
         {/* Track 1 */}
         <div className="flex shrink-0 items-center">

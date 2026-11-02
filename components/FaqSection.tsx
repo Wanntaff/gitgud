@@ -44,7 +44,7 @@ export default function FaqSection() {
       <div className="max-w-4xl mx-auto w-full">
         <div className="flex flex-col items-center text-center mb-5 sm:mb-10 lg:mb-12">
           {/* Section Eyebrow */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange font-mono text-xs font-semibold">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange font-sans text-xs font-semibold">
             <BookOpen className="w-3.5 h-3.5 text-brand-orange shrink-0" />
             <span>Bantuan &amp; Info Praktis</span>
           </div>

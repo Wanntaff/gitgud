@@ -134,7 +134,7 @@ export default function HeroSection() {
       <div className="grid w-full flex-1 grid-cols-1 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
         <div className="hero-copy relative z-10 flex flex-col justify-center px-5 py-8 sm:px-8 sm:py-12 lg:py-10 xl:py-12">
           <div className="max-w-[650px]">
-            <div className="mb-5 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-[#475569] sm:mb-7">
+            <div className="mb-5 flex flex-wrap items-center gap-x-3 gap-y-1 font-sans text-[11px] font-semibold uppercase tracking-[0.16em] text-[#475569] sm:mb-7">
               <span className="inline-flex items-center gap-2 text-[#172554]">
                 <MapPin className="h-4 w-4 text-brand-orange" strokeWidth={1.8} />
                 Baciro, Yogyakarta
@@ -367,7 +367,7 @@ export default function HeroSection() {
           <figcaption className="hero-photo-caption absolute inset-x-0 bottom-0 z-20 flex items-end justify-between gap-4 p-5 text-white sm:p-7 lg:p-8">
             <div key={activeSlideData.id} className="animate-caption-switch">
               {heroSlides.length > 1 && (
-                <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#FF8566] font-bold block mb-1">
+                <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#FF8566] font-bold block mb-1">
                   {activeSlideData.badge}
                 </span>
               )}
@@ -378,7 +378,7 @@ export default function HeroSection() {
                 {activeSlideData.description}
               </p>
             </div>
-            <div className="hidden shrink-0 flex-col items-end gap-1 font-mono text-[10px] uppercase tracking-[0.18em] text-white/80 sm:flex">
+            <div className="hidden shrink-0 flex-col items-end gap-1 font-sans text-[10px] uppercase tracking-[0.18em] text-white/80 sm:flex">
               <span>{activeSlideData.tag}</span>
               {heroSlides.length > 1 && (
                 <span className="text-[9px] text-white/50 tracking-wider">

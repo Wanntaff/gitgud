@@ -422,7 +422,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Links - Tabletop Board Track Active State */}
-        <div className="hidden lg:flex items-center gap-1 xl:gap-2 font-mono text-xs xl:text-sm font-semibold shrink-0">
+        <div className="hidden lg:flex items-center gap-1 xl:gap-2 font-sans text-xs xl:text-sm font-semibold shrink-0">
           {NAV_ITEMS.map((item) => {
             const isActive = activeSection === item.id;
             return (
@@ -523,7 +523,7 @@ export default function Navbar() {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-slate-200 mt-2.5 pt-3 pb-2 flex flex-col gap-2 font-mono text-sm bg-white animate-fade-in-up">
+        <div className="lg:hidden border-t border-slate-200 mt-2.5 pt-3 pb-2 flex flex-col gap-2 font-sans text-sm bg-white animate-fade-in-up">
           {NAV_ITEMS.map((item) => {
             const isActive = activeSection === item.id;
             return (
@@ -568,13 +568,13 @@ export default function Navbar() {
 
                 {isActive ? (
                   <span
-                    className={`inline-flex items-center gap-1 font-mono text-[10px] tracking-widest uppercase px-2 py-0.5 rounded-md border font-black ${item.activeBadgeClasses}`}
+                    className={`inline-flex items-center gap-1 font-sans text-[10px] tracking-widest uppercase px-2 py-0.5 rounded-md border font-black ${item.activeBadgeClasses}`}
                   >
                     <span>✓</span>
                     <span>DI SINI</span>
                   </span>
                 ) : (
-                  <span className="text-[#94A3B8] font-mono text-xs pr-1">→</span>
+                  <span className="text-[#94A3B8] font-sans text-xs pr-1">→</span>
                 )}
               </a>
             );

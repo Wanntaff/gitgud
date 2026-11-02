@@ -34,7 +34,7 @@ export default function HowToPlaySection() {
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4 mb-5 sm:mb-10">
             <div>
               {/* Section Eyebrow */}
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F0F7FF] border border-[#1B64B4]/20 text-[#1B64B4] font-mono text-xs font-semibold">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F0F7FF] border border-[#1B64B4]/20 text-[#1B64B4] font-sans text-xs font-semibold">
                 <Compass className="w-3.5 h-3.5 text-[#1B64B4] shrink-0" />
                 <span>Alur Kunjungan</span>
               </div>
@@ -48,7 +48,7 @@ export default function HowToPlaySection() {
           </div>
 
           {/* Mobile Swipe Notice */}
-          <div className="flex sm:hidden items-center justify-between text-xs font-mono text-[#64748B] mb-3 px-0.5">
+          <div className="flex sm:hidden items-center justify-between text-xs font-sans text-[#64748B] mb-3 px-0.5">
             <span className="inline-flex items-center gap-1.5 text-[11px] font-medium text-[#475569]">
               <span>Geser tahapan (01–04)</span>
               <span className="text-brand-orange font-bold">→</span>

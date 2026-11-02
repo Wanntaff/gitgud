@@ -322,7 +322,7 @@ export default function GameCatalog() {
       <div className="max-w-7xl mx-auto w-full">
         {/* Section Header */}
         <div className="mb-6 sm:mb-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange font-mono text-xs font-semibold">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange font-sans text-xs font-semibold">
             <LayoutGrid className="w-3.5 h-3.5 text-brand-orange shrink-0" />
             <span>Katalog Meja Fisik</span>
           </div>
@@ -346,7 +346,7 @@ export default function GameCatalog() {
               value={searchQuery}
               onChange={handleSearchChange}
               placeholder="Cari dari 362 game (contoh: Catan, Azul, Werewolf, Wingspan)"
-              className="w-full pl-10 pr-10 py-2.5 sm:py-3 rounded-xl bg-white border border-slate-200 focus:border-brand-orange focus:outline-none text-[#172554] placeholder-[#94A3B8] font-mono text-xs sm:text-sm shadow-xs transition-colors"
+              className="w-full pl-10 pr-10 py-2.5 sm:py-3 rounded-xl bg-white border border-slate-200 focus:border-brand-orange focus:outline-none text-[#172554] placeholder-[#94A3B8] font-sans text-xs sm:text-sm shadow-xs transition-colors"
             />
             {searchQuery && (
               <button
@@ -362,7 +362,7 @@ export default function GameCatalog() {
 
           {/* Difficulty Quick Filter */}
           <div className="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0 scrollbar-none">
-            <span className="text-[11px] font-mono font-bold text-[#475569] whitespace-nowrap shrink-0 mr-1">
+            <span className="text-[11px] font-sans font-bold text-[#475569] whitespace-nowrap shrink-0 mr-1">
               Kesulitan:
             </span>
             {(
@@ -380,7 +380,7 @@ export default function GameCatalog() {
                   key={diffKey}
                   type="button"
                   onClick={() => handleDifficultyChange(diffKey as DifficultyFilter)}
-                  className={`text-[11px] font-mono font-bold px-3 py-1.5 rounded-lg border transition-all cursor-pointer whitespace-nowrap ${
+                  className={`text-[11px] font-sans font-semibold px-3 py-1.5 rounded-lg border transition-all cursor-pointer whitespace-nowrap ${
                     isSelected
                       ? "bg-[#172554] text-white border-[#172554] shadow-xs"
                       : "bg-white text-[#475569] border-slate-200 hover:border-slate-300 hover:text-[#172554]"
@@ -396,7 +396,7 @@ export default function GameCatalog() {
         {/* Interactive Cartridge Category Tabs */}
         <div className="mb-6 sm:mb-10">
           {/* Mobile Swipe Notice */}
-          <div className="flex md:hidden items-center justify-between text-xs font-mono text-[#64748B] mb-2 px-0.5">
+          <div className="flex md:hidden items-center justify-between text-xs font-sans text-[#64748B] mb-2 px-0.5">
             <span className="inline-flex items-center gap-1.5 text-[11px] font-medium text-[#475569]">
               <span>Geser kategori game</span>
               <span className="text-brand-orange font-bold">→</span>
@@ -417,7 +417,7 @@ export default function GameCatalog() {
                   key={cat.key}
                   type="button"
                   onClick={() => handleCategoryChange(cat.key)}
-                  className={`w-[110px] min-w-[110px] shrink-0 md:w-auto md:min-w-0 relative p-2.5 sm:p-3 rounded-xl font-mono text-xs font-bold transition-all cursor-pointer flex flex-col justify-between min-h-[76px] sm:min-h-[86px] text-left active:translate-y-0.5 ${
+                  className={`w-[110px] min-w-[110px] shrink-0 md:w-auto md:min-w-0 relative p-2.5 sm:p-3 rounded-xl font-sans text-xs font-semibold transition-all cursor-pointer flex flex-col justify-between min-h-[76px] sm:min-h-[86px] text-left active:translate-y-0.5 ${
                     isActive ? cat.activeClass : cat.inactiveClass
                   }`}
                 >
@@ -432,7 +432,7 @@ export default function GameCatalog() {
                       <Icon className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                     </div>
                     <span
-                      className={`text-[9px] sm:text-[9.5px] font-mono font-black px-1.5 py-0.5 rounded border border-current/20 ${
+                      className={`text-[9px] sm:text-[9.5px] font-sans font-bold px-1.5 py-0.5 rounded border border-current/20 ${
                         isActive ? cat.badgeClass : "bg-[#F0F7FF] text-[#475569]"
                       }`}
                     >
@@ -454,7 +454,7 @@ export default function GameCatalog() {
           </div>
 
           {/* Category Vibe Bar */}
-          <div className="mt-4 p-3.5 sm:p-4 bg-[#F8FAFC] rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs sm:text-sm font-mono">
+          <div className="mt-4 p-3.5 sm:p-4 bg-[#F8FAFC] rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs sm:text-sm font-sans">
             <div className="flex items-center gap-3 min-w-0">
               <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-white border border-slate-200 shadow-2xs shrink-0">
                 <activeMeta.icon
@@ -463,7 +463,7 @@ export default function GameCatalog() {
                     "text-"
                   )} shrink-0`}
                 />
-                <span className="text-[10px] font-mono font-bold tracking-widest text-[#172554] uppercase">
+                <span className="text-[10px] font-sans font-bold tracking-widest text-[#172554] uppercase">
                   VIBE
                 </span>
               </div>
@@ -497,7 +497,7 @@ export default function GameCatalog() {
                 setActiveCategory("all");
                 setActiveDifficulty("all");
               }}
-              className="mt-4 px-4 py-2 rounded-lg bg-[#E84A27] text-white font-mono text-xs font-bold hover:bg-[#D83B13] transition-colors cursor-pointer"
+              className="mt-4 px-4 py-2 rounded-lg bg-[#E84A27] text-white font-sans text-xs font-bold hover:bg-[#D83B13] transition-colors cursor-pointer"
             >
               Reset Semua Filter
             </button>
@@ -630,7 +630,7 @@ export default function GameCatalog() {
             </button>
           )}
         </div>
-        <p className="text-[#94A3B8] font-mono text-xs mt-2 text-center">
+        <p className="text-[#94A3B8] font-sans text-xs mt-2 text-center">
           <span className="md:hidden">
             Menampilkan {mobileExpanded ? Math.min(displayCount, filteredGames.length) : Math.min(MOBILE_INITIAL_COUNT, filteredGames.length)} dari {filteredGames.length} game yang cocok
           </span>
@@ -646,7 +646,7 @@ export default function GameCatalog() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => soundEffects.playSuccessChime()}
-            className="inline-flex items-center gap-2 text-brand-orange hover:text-[#1B64B4] font-mono text-sm font-bold underline underline-offset-4 transition-colors cursor-pointer"
+            className="inline-flex items-center gap-2 text-brand-orange hover:text-[#1B64B4] font-sans text-sm font-bold underline underline-offset-4 transition-colors cursor-pointer"
           >
             <span>
               Mau tanya ketersediaan board game tertentu? Chat kami di WhatsApp

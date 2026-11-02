@@ -39,7 +39,7 @@ export default function EventsSection() {
           <div className="lg:col-span-5 w-full">
             <div className="bg-white border border-brand-orange/30 rounded-2xl p-6 sm:p-8 shadow-xs relative overflow-hidden">
               {/* Event Badge */}
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange font-mono font-bold text-xs tracking-wide uppercase mb-3">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange font-sans font-bold text-xs tracking-wide uppercase mb-3">
                 <Ticket className="w-3.5 h-3.5 shrink-0" />
                 <span>Special Event Mingguan</span>
               </div>
@@ -49,7 +49,7 @@ export default function EventsSection() {
                 <span>CLOCKTOWER</span>{" "}
                 <span className="text-brand-orange">NIGHT</span>
               </h3>
-              <p className="text-brand-orange font-mono font-bold text-xs sm:text-sm mb-3 inline-flex items-center gap-1.5">
+              <p className="text-brand-orange font-sans font-bold text-xs sm:text-sm mb-3 inline-flex items-center gap-1.5">
                 <CalendarDays className="w-4 h-4 shrink-0" />
                 <span>SETIAP KAMIS MALAM — GRATIS!</span>
               </p>
@@ -59,7 +59,7 @@ export default function EventsSection() {
                 gratis untuk kamu dan teman-teman!
               </p>
 
-              <div className="space-y-2 text-xs sm:text-sm font-mono text-[#172554] mb-5 sm:mb-6">
+              <div className="space-y-2 text-xs sm:text-sm font-sans text-[#172554] mb-5 sm:mb-6">
                 <div className="flex items-center gap-2.5">
                   <CheckCircle className="w-4 h-4 text-brand-orange shrink-0" />
                   <span>Semua pemain punya ability unik</span>
@@ -90,7 +90,7 @@ export default function EventsSection() {
           <div className="lg:col-span-7 flex flex-col gap-4 sm:gap-6">
             <div>
               {/* Section Eyebrow */}
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange font-mono text-xs font-semibold">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange font-sans text-xs font-semibold">
                 <CalendarDays className="w-3.5 h-3.5 text-brand-orange shrink-0" />
                 <span>Jadwal Komunitas</span>
               </div>
@@ -103,7 +103,7 @@ export default function EventsSection() {
             </div>
 
             {/* Mobile Swipe Notice */}
-            <div className="flex lg:hidden items-center justify-between text-xs font-mono text-[#64748B] mb-0.5 px-0.5">
+            <div className="flex lg:hidden items-center justify-between text-xs font-sans text-[#64748B] mb-0.5 px-0.5">
               <span className="inline-flex items-center gap-1.5 text-[11px] font-medium text-[#475569]">
                 <span>Geser jadwal mingguan</span>
                 <span className="text-brand-orange font-bold">→</span>
@@ -122,7 +122,7 @@ export default function EventsSection() {
                 >
                   <div className="flex items-start gap-3.5 sm:gap-4">
                     <div
-                      className={`w-11 h-11 sm:w-12 sm:h-12 rounded-lg ${evt.dayColor} flex flex-col items-center justify-center font-mono font-bold text-xs shrink-0`}
+                      className={`w-11 h-11 sm:w-12 sm:h-12 rounded-lg ${evt.dayColor} flex flex-col items-center justify-center font-sans font-bold text-xs shrink-0`}
                     >
                       <span>{evt.day}</span>
                     </div>
@@ -134,7 +134,7 @@ export default function EventsSection() {
                     </div>
                   </div>
                   <span
-                    className="text-[10px] font-mono font-semibold bg-[#F8FAFC] border border-slate-200 text-[#475569] px-2.5 py-1 rounded shrink-0 whitespace-nowrap self-start sm:self-auto tracking-wider uppercase"
+                    className="text-[10px] font-sans font-semibold bg-[#F8FAFC] border border-slate-200 text-[#475569] px-2.5 py-1 rounded shrink-0 whitespace-nowrap self-start sm:self-auto tracking-wider uppercase"
                   >
                     {evt.badge}
                   </span>
