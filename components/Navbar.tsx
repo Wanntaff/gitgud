@@ -480,16 +480,16 @@ export default function Navbar() {
                 ? "Efek suara nonaktif — Klik untuk aktifkan"
                 : "Efek suara aktif — Klik untuk bisukan"
             }
-            className={`p-1.5 sm:p-2 rounded-lg border transition-all cursor-pointer flex items-center justify-center ${
+            className={`p-1.5 sm:p-2 rounded-lg border transition-all cursor-pointer flex items-center justify-center active:scale-90 ${
               muted
                 ? "bg-[#F8FAFC] border-slate-200 text-[#64748B] hover:text-[#172554] hover:bg-slate-100"
                 : "bg-[#FFF5F0] border-brand-orange/30 text-brand-orange hover:bg-brand-orange/10 shadow-xs"
             }`}
           >
             {muted ? (
-              <VolumeX className="w-4 h-4 shrink-0" />
+              <VolumeX className="w-4 h-4 shrink-0 transition-transform" />
             ) : (
-              <Volume2 className="w-4 h-4 shrink-0" />
+              <Volume2 className="w-4 h-4 shrink-0 transition-transform hover:scale-110" />
             )}
           </button>
 

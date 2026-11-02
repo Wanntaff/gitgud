@@ -879,7 +879,7 @@ export default function MenuSection() {
                   <div
                     key={item.id}
                     style={{ animationDelay: `${Math.min(idx * 25, 250)}ms` }}
-                    className="group relative bg-white p-3.5 sm:p-5 rounded-xl border border-slate-200 hover:border-slate-300 transition-all duration-200 flex flex-col justify-between min-h-0 sm:min-h-[190px] shadow-xs"
+                    className="tabletop-card group relative bg-white p-3.5 sm:p-5 rounded-xl border border-slate-200 hover:border-slate-300 hover:shadow-md flex flex-col justify-between min-h-0 sm:min-h-[190px] shadow-xs cursor-default"
                   >
                     <div>
                       {/* Top Meta: Subcategory Badge & Recommended Badge */}

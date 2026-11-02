@@ -64,9 +64,9 @@ export default function FaqSection() {
             return (
               <div
                 key={index}
-                className={`bg-white border rounded-xl overflow-hidden transition-all duration-200 ${
+                className={`tabletop-card bg-white border rounded-xl overflow-hidden transition-all duration-200 ${
                   isOpen
-                    ? "border-slate-300 shadow-xs"
+                    ? "border-slate-300 shadow-sm"
                     : "border-slate-200 hover:border-slate-300 shadow-2xs"
                 }`}
               >
@@ -91,7 +91,7 @@ export default function FaqSection() {
                 </button>
 
                 {isOpen && (
-                  <div className="px-4 pb-4 pt-3 sm:px-5 sm:pb-5 sm:pt-3 text-[13px] sm:text-sm text-[#475569] font-sans leading-relaxed border-t border-slate-100 bg-[#F8FAFC]">
+                  <div className="px-4 pb-4 pt-3 sm:px-5 sm:pb-5 sm:pt-3 text-[13px] sm:text-sm text-[#475569] font-sans leading-relaxed border-t border-slate-100 bg-[#F8FAFC] animate-fade-in-up">
                     {item.a}
                   </div>
                 )}

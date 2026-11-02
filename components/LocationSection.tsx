@@ -20,8 +20,8 @@ export default function LocationSection() {
                 <span>Lokasi &amp; Jam Buka</span>
               </div>
 
-              <h2 className="font-display font-black text-2xl sm:text-[1.75rem] md:text-3xl lg:text-[2rem] xl:text-[2.15rem] text-[#172554] mt-2.5 sm:mt-3 tracking-tight">
-                LOKASI & JAM OPERASIONAL
+              <h2 className="font-display font-black text-2xl sm:text-[1.75rem] md:text-2xl lg:text-[1.65rem] xl:text-[1.85rem] text-[#172554] mt-2.5 sm:mt-3 tracking-tight sm:whitespace-nowrap lg:whitespace-normal xl:whitespace-nowrap">
+                LOKASI &amp; JAM OPERASIONAL
               </h2>
               <p className="text-[#475569] text-xs sm:text-base mt-1.5 sm:mt-2 leading-relaxed">
                 Terletak di Baciro, Gondokusuman — area tenang dengan akses mudah,
@@ -76,17 +76,17 @@ export default function LocationSection() {
 
               {/* Venue Facility Grid: Balanced 3-column micro-strip (Never orphaned or wrapping unevenly) */}
               <div className="mt-4 sm:mt-5 grid grid-cols-3 gap-2">
-                <div className="flex flex-col items-center justify-center text-center p-2.5 sm:p-3 rounded-xl bg-[#F8FAFC] border border-slate-200 shadow-2xs">
+                <div className="tabletop-card flex flex-col items-center justify-center text-center p-2.5 sm:p-3 rounded-xl bg-[#F8FAFC] hover:bg-white border border-slate-200 hover:border-slate-300 shadow-2xs hover:shadow-xs cursor-default">
                   <Wifi className="w-4 h-4 text-brand-orange mb-1 shrink-0" strokeWidth={1.8} />
                   <span className="font-semibold text-[11px] sm:text-xs text-[#172554] leading-tight">Wi-Fi Kencang</span>
                   <span className="text-[9.5px] text-[#64748B] font-mono mt-0.5">Fiber Optic</span>
                 </div>
-                <div className="flex flex-col items-center justify-center text-center p-2.5 sm:p-3 rounded-xl bg-[#F8FAFC] border border-slate-200 shadow-2xs">
+                <div className="tabletop-card flex flex-col items-center justify-center text-center p-2.5 sm:p-3 rounded-xl bg-[#F8FAFC] hover:bg-white border border-slate-200 hover:border-slate-300 shadow-2xs hover:shadow-xs cursor-default">
                   <Zap className="w-4 h-4 text-brand-orange mb-1 shrink-0" strokeWidth={1.8} />
                   <span className="font-semibold text-[11px] sm:text-xs text-[#172554] leading-tight">Colokan Meja</span>
                   <span className="text-[9.5px] text-[#64748B] font-mono mt-0.5">Tiap Sudut</span>
                 </div>
-                <div className="flex flex-col items-center justify-center text-center p-2.5 sm:p-3 rounded-xl bg-[#F8FAFC] border border-slate-200 shadow-2xs">
+                <div className="tabletop-card flex flex-col items-center justify-center text-center p-2.5 sm:p-3 rounded-xl bg-[#F8FAFC] hover:bg-white border border-slate-200 hover:border-slate-300 shadow-2xs hover:shadow-xs cursor-default">
                   <Wind className="w-4 h-4 text-brand-orange mb-1 shrink-0" strokeWidth={1.8} />
                   <span className="font-semibold text-[11px] sm:text-xs text-[#172554] leading-tight">AC &amp; Smoking</span>
                   <span className="text-[9.5px] text-[#64748B] font-mono mt-0.5">Area Terpisah</span>

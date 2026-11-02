@@ -63,16 +63,16 @@ export default function HowToPlaySection() {
             {steps.map((step) => (
               <div
                 key={step.num}
-                className="w-[76vw] max-w-[260px] shrink-0 snap-start sm:w-auto sm:max-w-none bg-[#F8FAFC] p-4.5 sm:p-6 rounded-xl border border-slate-200 hover:border-slate-300 transition-colors shadow-xs min-h-[160px] sm:min-h-[180px] flex flex-col justify-between"
+                className="tabletop-card group w-[76vw] max-w-[260px] shrink-0 snap-start sm:w-auto sm:max-w-none bg-[#F8FAFC] hover:bg-white p-4.5 sm:p-6 rounded-xl border border-slate-200 hover:border-slate-300 hover:shadow-sm shadow-xs min-h-[160px] sm:min-h-[180px] flex flex-col justify-between cursor-default"
               >
                 <div>
-                  <div className="font-display font-black text-3xl sm:text-4xl text-brand-orange mb-2">
+                  <div className="font-display font-black text-3xl sm:text-4xl text-brand-orange mb-2 group-hover:scale-105 origin-left transition-transform duration-200">
                     {step.num}
                   </div>
-                  <h4 className="font-bold text-[#172554] text-sm sm:text-base mb-1.5">
+                  <h4 className="font-bold text-[#172554] text-sm sm:text-base mb-1.5 group-hover:text-brand-orange transition-colors duration-200">
                     {step.title}
                   </h4>
-                  <p className="text-xs sm:text-sm text-[#475569] leading-relaxed">{step.desc}</p>
+                  <p className="text-xs sm:text-sm text-[#475569] leading-relaxed font-sans">{step.desc}</p>
                 </div>
               </div>
             ))}

@@ -94,9 +94,8 @@ export default function EventsSection() {
                 <CalendarDays className="w-3.5 h-3.5 text-brand-orange shrink-0" />
                 <span>Jadwal Komunitas</span>
               </div>
-              <h2 className="font-display font-black text-2xl sm:text-[1.65rem] md:text-[1.75rem] lg:text-2xl xl:text-[1.85rem] 2xl:text-[2.15rem] text-[#172554] mt-2.5 sm:mt-3 tracking-tight leading-tight">
-                JADWAL MAIN BARENG <br className="hidden sm:inline" />
-                KOMUNITAS BACIRO
+              <h2 className="font-display font-black text-2xl sm:text-[1.65rem] md:text-2xl lg:text-[1.75rem] xl:text-[2rem] text-[#172554] mt-2.5 sm:mt-3 tracking-tight leading-tight">
+                JADWAL MAIN BARENG KOMUNITAS BACIRO
               </h2>
               <p className="text-[#475569] text-xs sm:text-base mt-1.5 sm:mt-2 leading-relaxed font-sans">
                 Terbuka untuk umum. Datang sendirian pun langsung dapat meja dan teman main baru:
@@ -119,7 +118,7 @@ export default function EventsSection() {
               {events.map((evt) => (
                 <div
                   key={evt.day}
-                  className="w-[84vw] sm:w-[70vw] max-w-[320px] shrink-0 snap-start lg:w-full lg:max-w-none bg-white p-4.5 sm:p-5 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 shadow-xs hover:border-slate-300 transition-all"
+                  className="tabletop-slide-card w-[84vw] sm:w-[70vw] max-w-[320px] shrink-0 snap-start lg:w-full lg:max-w-none bg-white hover:bg-slate-50/60 p-4.5 sm:p-5 rounded-xl border border-slate-200 hover:border-slate-300 hover:shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 shadow-xs cursor-default"
                 >
                   <div className="flex items-start gap-3.5 sm:gap-4">
                     <div

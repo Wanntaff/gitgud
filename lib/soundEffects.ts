@@ -60,7 +60,7 @@ class TabletopAudioManager {
         if (AudioCtx) {
           this.ctx = new AudioCtx();
           this.masterGain = this.ctx.createGain();
-          this.masterGain.gain.setValueAtTime(0.25, this.ctx.currentTime);
+          this.masterGain.gain.setValueAtTime(0.85, this.ctx.currentTime);
           this.masterGain.connect(this.ctx.destination);
         }
       } catch (err) {
@@ -127,7 +127,7 @@ class TabletopAudioManager {
       filter.frequency.setValueAtTime(450, now);
       filter.Q.setValueAtTime(4, now);
 
-      gain.gain.setValueAtTime(0.35, now);
+      gain.gain.setValueAtTime(0.65, now);
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.065);
 
       osc.connect(filter);
@@ -144,7 +144,7 @@ class TabletopAudioManager {
       clickOsc.frequency.setValueAtTime(1200, now);
       clickOsc.frequency.exponentialRampToValueAtTime(400, now + 0.02);
 
-      clickGain.gain.setValueAtTime(0.25, now);
+      clickGain.gain.setValueAtTime(0.45, now);
       clickGain.gain.exponentialRampToValueAtTime(0.001, now + 0.025);
 
       clickOsc.connect(clickGain);
@@ -181,7 +181,7 @@ class TabletopAudioManager {
       filter.type = "highpass";
       filter.frequency.setValueAtTime(800, now);
 
-      gain.gain.setValueAtTime(0.3, now);
+      gain.gain.setValueAtTime(0.6, now);
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.045);
 
       osc.connect(filter);
@@ -208,7 +208,7 @@ class TabletopAudioManager {
       noiseFilter.Q.setValueAtTime(2, now);
 
       const noiseGain = ctx.createGain();
-      noiseGain.gain.setValueAtTime(0.18, now);
+      noiseGain.gain.setValueAtTime(0.35, now);
       noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 0.025);
 
       noise.connect(noiseFilter);
@@ -247,7 +247,7 @@ class TabletopAudioManager {
       filter.frequency.setValueAtTime(baseFreq * 0.8, now);
       filter.Q.setValueAtTime(5, now);
 
-      gain.gain.setValueAtTime(0.28, now);
+      gain.gain.setValueAtTime(0.55, now);
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.035);
 
       osc.connect(filter);
@@ -280,7 +280,7 @@ class TabletopAudioManager {
       osc.frequency.setValueAtTime(1100, now);
       osc.frequency.exponentialRampToValueAtTime(350, now + 0.03);
 
-      gain.gain.setValueAtTime(0.22, now);
+      gain.gain.setValueAtTime(0.55, now);
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.035);
 
       osc.connect(gain);
@@ -316,7 +316,7 @@ class TabletopAudioManager {
         osc.frequency.setValueAtTime(freq, noteStart);
 
         gain.gain.setValueAtTime(0.001, noteStart);
-        gain.gain.linearRampToValueAtTime(0.2, noteStart + 0.02);
+        gain.gain.linearRampToValueAtTime(0.45, noteStart + 0.02);
         gain.gain.exponentialRampToValueAtTime(0.001, noteStart + 0.35);
 
         osc.connect(gain);
@@ -351,7 +351,7 @@ class TabletopAudioManager {
         osc.frequency.exponentialRampToValueAtTime(1200, now + 0.04);
       }
 
-      gain.gain.setValueAtTime(0.2, now);
+      gain.gain.setValueAtTime(0.45, now);
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
 
       osc.connect(gain);

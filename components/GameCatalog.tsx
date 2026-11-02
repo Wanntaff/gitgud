@@ -519,7 +519,7 @@ export default function GameCatalog() {
                 <div
                   key={game.id}
                   data-testid="game-card"
-                  className={`bg-white border border-slate-200 rounded-xl overflow-hidden hover:border-brand-orange/40 transition-all shadow-xs flex-col justify-between group ${
+                  className={`tabletop-card bg-white border border-slate-200 rounded-xl overflow-hidden hover:border-brand-orange/50 hover:shadow-md transition-all shadow-xs flex-col justify-between group ${
                     isInitialHiddenOnMobile ? "hidden md:flex" : "flex"
                   }`}
                 >

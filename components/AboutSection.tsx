@@ -36,9 +36,9 @@ export default function AboutSection() {
         {/* Cards: Mobile Touch-Friendly Snap Track / Desktop 4-Col Grid */}
         <div className="flex md:grid md:grid-cols-2 lg:grid-cols-4 overflow-x-auto md:overflow-visible snap-x snap-mandatory scrollbar-none gap-4 sm:gap-6 -mx-4 px-4 sm:mx-0 sm:px-0 pb-3 md:pb-0 scroll-pl-4 scroll-pr-4">
           {/* Card 1 */}
-          <div className="w-[80vw] sm:w-[68vw] max-w-[280px] shrink-0 snap-start md:w-auto md:max-w-none bg-white border border-slate-200 rounded-xl p-5 sm:p-6 shadow-xs hover:border-slate-300 transition-all flex flex-col justify-between min-h-[210px] sm:min-h-[230px]">
+          <div className="tabletop-card group w-[80vw] sm:w-[68vw] max-w-[280px] shrink-0 snap-start md:w-auto md:max-w-none bg-white border border-slate-200 rounded-xl p-5 sm:p-6 shadow-xs hover:border-slate-300 hover:shadow-sm flex flex-col justify-between min-h-[210px] sm:min-h-[230px]">
             <div>
-              <div className="w-10 h-10 sm:w-11 sm:h-11 bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange rounded-lg flex items-center justify-center font-bold mb-3.5 sm:mb-4 shadow-xs">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange rounded-lg flex items-center justify-center font-bold mb-3.5 sm:mb-4 shadow-xs group-hover:scale-105 group-hover:-rotate-3 transition-transform duration-200">
                 <Layers className="w-5 h-5" />
               </div>
               <h3 className="font-display font-bold text-base sm:text-lg text-[#172554] mb-1.5">
@@ -51,9 +51,9 @@ export default function AboutSection() {
           </div>
 
           {/* Card 2 */}
-          <div className="w-[80vw] sm:w-[68vw] max-w-[280px] shrink-0 snap-start md:w-auto md:max-w-none bg-white border border-slate-200 rounded-xl p-5 sm:p-6 shadow-xs hover:border-slate-300 transition-all flex flex-col justify-between min-h-[210px] sm:min-h-[230px]">
+          <div className="tabletop-card group w-[80vw] sm:w-[68vw] max-w-[280px] shrink-0 snap-start md:w-auto md:max-w-none bg-white border border-slate-200 rounded-xl p-5 sm:p-6 shadow-xs hover:border-slate-300 hover:shadow-sm flex flex-col justify-between min-h-[210px] sm:min-h-[230px]">
             <div>
-              <div className="w-10 h-10 sm:w-11 sm:h-11 bg-[#F0F7FF] border border-[#1B64B4]/20 text-[#1B64B4] rounded-lg flex items-center justify-center font-bold mb-3.5 sm:mb-4 shadow-xs">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 bg-[#F0F7FF] border border-[#1B64B4]/20 text-[#1B64B4] rounded-lg flex items-center justify-center font-bold mb-3.5 sm:mb-4 shadow-xs group-hover:scale-105 group-hover:-rotate-3 transition-transform duration-200">
                 <Compass className="w-5 h-5" />
               </div>
               <h3 className="font-display font-bold text-base sm:text-lg text-[#172554] mb-1.5">
@@ -66,9 +66,9 @@ export default function AboutSection() {
           </div>
 
           {/* Card 3 */}
-          <div className="w-[80vw] sm:w-[68vw] max-w-[280px] shrink-0 snap-start md:w-auto md:max-w-none bg-white border border-slate-200 rounded-xl p-5 sm:p-6 shadow-xs hover:border-slate-300 transition-all flex flex-col justify-between min-h-[210px] sm:min-h-[230px]">
+          <div className="tabletop-card group w-[80vw] sm:w-[68vw] max-w-[280px] shrink-0 snap-start md:w-auto md:max-w-none bg-white border border-slate-200 rounded-xl p-5 sm:p-6 shadow-xs hover:border-slate-300 hover:shadow-sm flex flex-col justify-between min-h-[210px] sm:min-h-[230px]">
             <div>
-              <div className="w-10 h-10 sm:w-11 sm:h-11 bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange rounded-lg flex items-center justify-center font-bold mb-3.5 sm:mb-4 shadow-xs">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange rounded-lg flex items-center justify-center font-bold mb-3.5 sm:mb-4 shadow-xs group-hover:scale-105 group-hover:-rotate-3 transition-transform duration-200">
                 <Coffee className="w-5 h-5" />
               </div>
               <h3 className="font-display font-bold text-base sm:text-lg text-[#172554] mb-1.5">
@@ -81,9 +81,9 @@ export default function AboutSection() {
           </div>
 
           {/* Card 4 */}
-          <div className="w-[80vw] sm:w-[68vw] max-w-[280px] shrink-0 snap-start md:w-auto md:max-w-none bg-white border border-slate-200 rounded-xl p-5 sm:p-6 shadow-xs hover:border-slate-300 transition-all flex flex-col justify-between min-h-[210px] sm:min-h-[230px]">
+          <div className="tabletop-card group w-[80vw] sm:w-[68vw] max-w-[280px] shrink-0 snap-start md:w-auto md:max-w-none bg-white border border-slate-200 rounded-xl p-5 sm:p-6 shadow-xs hover:border-slate-300 hover:shadow-sm flex flex-col justify-between min-h-[210px] sm:min-h-[230px]">
             <div>
-              <div className="w-10 h-10 sm:w-11 sm:h-11 bg-[#F0F7FF] border border-[#172554]/20 text-[#172554] rounded-lg flex items-center justify-center font-bold mb-3.5 sm:mb-4 shadow-xs">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 bg-[#F0F7FF] border border-[#172554]/20 text-[#172554] rounded-lg flex items-center justify-center font-bold mb-3.5 sm:mb-4 shadow-xs group-hover:scale-105 group-hover:-rotate-3 transition-transform duration-200">
                 <Moon className="w-5 h-5" />
               </div>
               <h3 className="font-display font-bold text-base sm:text-lg text-[#172554] mb-1.5">
