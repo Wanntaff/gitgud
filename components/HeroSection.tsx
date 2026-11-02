@@ -8,9 +8,6 @@ import {
   ChevronRight,
   Dices,
   MapPin,
-  Users,
-  Coffee,
-  Compass,
 } from "lucide-react";
 import { soundEffects } from "@/lib/soundEffects";
 
@@ -22,8 +19,6 @@ interface HeroSlide {
   title: string;
   description: string;
   tag: string;
-  tabLabel: string;
-  icon: React.ComponentType<{ className?: string }>;
 }
 
 const heroSlides: HeroSlide[] = [
@@ -35,8 +30,6 @@ const heroSlides: HeroSlide[] = [
     title: "Meja penuh. HP turun.",
     description: "Board game, kopi artisan, dan obrolan seru yang nggak kelar-kelar.",
     tag: "Baciro / Jogja",
-    tabLabel: "Squad",
-    icon: Users,
   },
   {
     id: "lounge",
@@ -46,8 +39,6 @@ const heroSlides: HeroSlide[] = [
     title: "Tinggal tunjuk, langsung main.",
     description: "Koleksi board game fisik terlengkap di Jogja dari party game santai sampai strategi berat.",
     tag: "Koleksi Terlengkap",
-    tabLabel: "300+ Game",
-    icon: Dices,
   },
   {
     id: "coffee",
@@ -57,8 +48,6 @@ const heroSlides: HeroSlide[] = [
     title: "Kopi fresh. Gak bikin berminyak.",
     description: "Seduhan artisan kopi dan snack yang ramah kartu board game selama sesi main.",
     tag: "Brewed Fresh Daily",
-    tabLabel: "Bar",
-    icon: Coffee,
   },
   {
     id: "gamemaster",
@@ -68,12 +57,10 @@ const heroSlides: HeroSlide[] = [
     title: "Baru pertama kali? Santai.",
     description: "Game Master kami siap memandu aturan langsung di meja tanpa perlu pusing baca rulebook.",
     tag: "100% Diajarin",
-    tabLabel: "Guide",
-    icon: Compass,
   },
 ];
 
-const SLIDE_DURATION = 6000; // 6s per ambient mood transition
+const SLIDE_DURATION = 5500; // 5.5s per slide auto-transition
 
 export default function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -287,9 +274,9 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative flex flex-col overflow-hidden border-b border-slate-200 bg-[#F3F0E9] lg:min-h-[calc(100svh-112px)]"
+      className="relative flex flex-col overflow-hidden border-b border-slate-200 bg-[#F3F0E9] min-h-[calc(100svh-94px)] sm:min-h-[calc(100svh-96px)] lg:min-h-[calc(100svh-112px)]"
     >
-      {/* Mobile Atmospheric Background Photography (Subtle & Elegant, 18%-22% Opacity Canvas) */}
+      {/* Mobile Atmospheric Background Photography (Rich, Clear, & Vibrant Auto-Slide Canvas) */}
       <div
         className="block lg:hidden absolute inset-0 z-0 overflow-hidden pointer-events-none select-none"
         aria-hidden="true"
@@ -300,7 +287,7 @@ export default function HeroSection() {
             <div
               key={slide.id}
               className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                isActive ? "opacity-100" : "opacity-0"
+                isActive ? "opacity-100 z-10" : "opacity-0 z-0"
               }`}
             >
               <Image
@@ -309,28 +296,29 @@ export default function HeroSection() {
                 fill
                 priority={idx === 0}
                 sizes="100vw"
-                className="object-cover object-[50%_35%] filter saturate-[0.85] contrast-[1.08]"
+                className="object-cover object-[50%_35%] filter saturate-[1.05] contrast-[1.05]"
               />
             </div>
           );
         })}
 
-        {/* Multi-layered Calibrated Scrims & Ambient Lighting */}
-        {/* 1. Global warm linen ambient wash matching Gitgud light palette */}
-        <div className="absolute inset-0 bg-[#F3F0E9]/80 backdrop-blur-[1.5px]" />
-        {/* 2. Top and bottom architectural gradient bleed */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#F3F0E9] via-transparent to-[#F3F0E9]/95" />
-        {/* 3. Subtle chromatic warm glow accent */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(232,74,39,0.09),transparent_70%)]" />
+        {/* Directional Luxury Scrims: Preserves clarity without washed-out milky blur */}
+        {/* 1. Subtle warm ambient tint (16% only, keeping the photography clearly visible) */}
+        <div className="absolute inset-0 bg-[#F3F0E9]/16" />
+        {/* 2. Top soft scrim for location pill legibility */}
+        <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-[#F3F0E9]/95 via-[#F3F0E9]/45 to-transparent" />
+        {/* 3. Bottom architectural scrim for CTAs and stats contrast */}
+        <div className="absolute bottom-0 inset-x-0 h-72 sm:h-80 bg-gradient-to-t from-[#F3F0E9] via-[#F3F0E9]/80 45% to-transparent" />
       </div>
 
       <div className="grid w-full flex-1 grid-cols-1 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
-        {/* Left Column (Desktop) / Main Atmospheric Column (Mobile) */}
-        <div className="hero-copy relative z-10 flex flex-col justify-center px-4 py-7 sm:px-8 sm:py-10 lg:py-10 xl:py-12">
+        {/* Left Column (Desktop) / Main Full-Viewport Column (Mobile) */}
+        <div className="hero-copy relative z-10 flex flex-col justify-between flex-1 px-4 py-6 sm:px-8 sm:py-8 lg:py-10 xl:py-12">
+          {/* Top Block: Eyebrow, Headline, & Description */}
           <div className="max-w-[650px]">
             {/* Location & Concept Eyebrow */}
             <div className="mb-3 sm:mb-6 flex flex-wrap items-center gap-x-2.5 sm:gap-x-3 gap-y-1 font-sans text-[11px] font-semibold uppercase tracking-[0.16em] text-[#475569]">
-              <span className="inline-flex items-center gap-1.5 sm:gap-2 text-[#172554] bg-white/60 sm:bg-transparent backdrop-blur-sm sm:backdrop-blur-none px-2 py-0.5 sm:px-0 sm:py-0 rounded-md sm:rounded-none border border-slate-200/60 sm:border-0 shadow-2xs sm:shadow-none">
+              <span className="inline-flex items-center gap-1.5 sm:gap-2 text-[#172554] bg-white/70 backdrop-blur-sm sm:backdrop-blur-none px-2.5 py-1 sm:px-0 sm:py-0 rounded-md sm:rounded-none border border-slate-200/60 sm:border-0 shadow-2xs sm:shadow-none">
                 <MapPin className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-brand-orange" strokeWidth={1.8} />
                 Baciro, Yogyakarta
               </span>
@@ -339,7 +327,7 @@ export default function HeroSection() {
             </div>
 
             {/* Responsive Editorial Headline */}
-            <h1 className="font-display text-[2rem] sm:text-4xl lg:text-[clamp(2.65rem,4.7vw,4.6rem)] font-bold uppercase leading-[1.08] lg:leading-[0.96] tracking-tight lg:tracking-[-0.045em] text-[#172554]">
+            <h1 className="font-display text-[2.15rem] sm:text-4xl lg:text-[clamp(2.65rem,4.7vw,4.6rem)] font-bold uppercase leading-[1.06] lg:leading-[0.96] tracking-tight lg:tracking-[-0.045em] text-[#172554]">
               {/* Mobile Presentation: 2 punchy, cohesive lines */}
               <span className="block lg:hidden overflow-hidden">
                 <span className="hero-title-line block">
@@ -384,50 +372,22 @@ export default function HeroSection() {
               </span>
             </h1>
 
-            {/* Mobile-Only Ambient Atmosphere Mood Selector Pill (Land-book Curated Pattern) */}
-            <div className="block lg:hidden mt-3.5 sm:mt-4">
-              <div className="inline-flex items-center gap-1 p-1 rounded-full bg-white/80 backdrop-blur-md border border-slate-200/90 shadow-2xs">
-                <span className="pl-2 pr-1 font-sans text-[10px] uppercase font-bold tracking-wider text-[#172554] flex items-center gap-1.5 shrink-0">
-                  <span className="w-1.5 h-1.5 rounded-full bg-brand-orange animate-pulse" />
-                  <span>Suasana:</span>
-                </span>
-                <div className="flex items-center gap-1" role="tablist" aria-label="Pilih Suasana Background">
-                  {heroSlides.map((slide, idx) => {
-                    const isActive = idx === currentSlide;
-                    return (
-                      <button
-                        key={slide.id}
-                        type="button"
-                        role="tab"
-                        aria-selected={isActive}
-                        onClick={() => goToSlide(idx)}
-                        className={`px-2.5 py-1 rounded-full font-sans text-[10.5px] transition-all cursor-pointer ${
-                          isActive
-                            ? "bg-[#172554] text-white font-bold shadow-xs scale-102"
-                            : "text-[#64748B] hover:text-[#172554] font-medium"
-                        }`}
-                      >
-                        {slide.tabLabel}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-
             {/* Description Paragraph */}
-            <p className="mt-3.5 sm:mt-6 max-w-[520px] text-xs sm:text-sm lg:text-base leading-relaxed text-[#334155] font-sans">
+            <p className="mt-3.5 sm:mt-6 max-w-[520px] text-xs sm:text-sm lg:text-base leading-relaxed text-[#334155] font-sans font-medium">
               Pilih satu dari 300+ board game, pesan kopi, lalu main bareng
               sampai lupa cek HP. Baru pertama kali? Game Master kami siap
               ngajarin di meja.
             </p>
+          </div>
 
+          {/* Bottom Block: CTAs and Micro-Stats pinned above screen bottom */}
+          <div className="max-w-[650px] mt-6 sm:mt-8">
             {/* Responsive Call-to-Actions (Full touch targets on mobile) */}
-            <div className="mt-5 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-6">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-6">
               <a
                 href="#games"
                 onClick={(e) => scrollTo(e, "games")}
-                className="group luxury-btn luxury-sheen w-full sm:w-auto inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl sm:rounded-md border border-brand-orange bg-brand-orange px-5 py-3 sm:py-3 font-display text-xs sm:text-sm font-bold text-white transition-colors duration-150 hover:border-brand-orange-hover hover:bg-brand-orange-hover focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-orange shadow-sm text-center"
+                className="group luxury-btn luxury-sheen w-full sm:w-auto inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl sm:rounded-md border border-brand-orange bg-brand-orange px-5 py-3.5 sm:py-3 font-display text-xs sm:text-sm font-bold text-white transition-colors duration-150 hover:border-brand-orange-hover hover:bg-brand-orange-hover focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-orange shadow-sm text-center"
               >
                 <Dices className="h-4 w-4" strokeWidth={1.8} />
                 <span>Pilih Game Buat Squad</span>
@@ -435,7 +395,7 @@ export default function HeroSection() {
               <a
                 href="#events"
                 onClick={(e) => scrollTo(e, "events")}
-                className="group w-full sm:w-auto inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl sm:rounded-none border border-slate-300 sm:border-0 sm:border-b sm:border-[#172554]/30 bg-white/80 sm:bg-transparent backdrop-blur-sm sm:backdrop-blur-none px-4 py-2.5 sm:px-0 sm:py-0 sm:pb-1 font-display text-xs sm:text-sm font-bold text-[#172554] transition-colors duration-150 hover:border-brand-orange hover:text-brand-orange focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-orange text-center shadow-2xs sm:shadow-none"
+                className="group w-full sm:w-auto inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl sm:rounded-none border border-slate-300 sm:border-0 sm:border-b sm:border-[#172554]/30 bg-white/85 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none px-4 py-3 sm:px-0 sm:py-0 sm:pb-1 font-display text-xs sm:text-sm font-bold text-[#172554] transition-colors duration-150 hover:border-brand-orange hover:text-brand-orange focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-orange text-center shadow-2xs sm:shadow-none"
               >
                 <span>Event BOTC Kamis</span>
                 <ArrowRight
@@ -448,9 +408,9 @@ export default function HeroSection() {
             {/* Micro Stats (Balanced 3-column micro-strip on mobile) */}
             <dl
               data-testid="hero-stats"
-              className="mt-6 sm:mt-10 grid max-w-[540px] grid-cols-3 gap-2 sm:gap-6 border-t border-[#172554]/15 sm:border-[#172554]/20 pt-3.5 sm:pt-4"
+              className="mt-5 sm:mt-10 grid max-w-[540px] grid-cols-3 gap-2 sm:gap-6 border-t border-[#172554]/15 sm:border-[#172554]/20 pt-3.5 sm:pt-4"
             >
-              <div className="flex flex-col rounded-xl sm:rounded-none bg-white/75 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none p-2.5 sm:p-0 border border-slate-200/80 sm:border-0 text-center sm:text-left shadow-2xs sm:shadow-none">
+              <div className="flex flex-col rounded-xl sm:rounded-none bg-white/80 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none p-2.5 sm:p-0 border border-slate-200/80 sm:border-0 text-center sm:text-left shadow-2xs sm:shadow-none">
                 <dd className="order-1 font-display text-lg sm:text-2xl font-bold text-[#172554]">
                   300+
                 </dd>
@@ -458,7 +418,7 @@ export default function HeroSection() {
                   Koleksi board game
                 </dt>
               </div>
-              <div className="flex flex-col rounded-xl sm:rounded-none bg-white/75 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none p-2.5 sm:p-0 border border-slate-200/80 sm:border-0 text-center sm:text-left shadow-2xs sm:shadow-none">
+              <div className="flex flex-col rounded-xl sm:rounded-none bg-white/80 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none p-2.5 sm:p-0 border border-slate-200/80 sm:border-0 text-center sm:text-left shadow-2xs sm:shadow-none">
                 <dd className="order-1 font-display text-lg sm:text-2xl font-bold text-[#172554]">
                   24 Jam
                 </dd>
@@ -466,7 +426,7 @@ export default function HeroSection() {
                   Jumat s/d Minggu
                 </dt>
               </div>
-              <div className="flex flex-col rounded-xl sm:rounded-none bg-white/75 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none p-2.5 sm:p-0 border border-slate-200/80 sm:border-0 text-center sm:text-left shadow-2xs sm:shadow-none">
+              <div className="flex flex-col rounded-xl sm:rounded-none bg-white/80 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none p-2.5 sm:p-0 border border-slate-200/80 sm:border-0 text-center sm:text-left shadow-2xs sm:shadow-none">
                 <dd className="order-1 font-display text-lg sm:text-2xl font-bold text-[#172554]">
                   100%
                 </dd>

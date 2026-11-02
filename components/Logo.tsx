@@ -15,7 +15,6 @@ interface LogoProps {
  * - 100% exact vector paths with crisp counter holes in all letterforms
  * - Dynamic instance-scoped gradient IDs (zero DOM collisions)
  * - Tabletop Collector's Edition holographic foil glint & kinetic spring elevation
- * - Playful tabletop lucky star / meeple twinkle that reveals on hover
  * - Full accessibility with prefers-reduced-motion support
  */
 export default function Logo({

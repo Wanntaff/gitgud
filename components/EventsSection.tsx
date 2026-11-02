@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { CheckCircle, CalendarDays, Ticket } from "lucide-react";
 import { soundEffects } from "@/lib/soundEffects";
@@ -94,7 +94,7 @@ export default function EventsSection() {
                 <CalendarDays className="w-3.5 h-3.5 text-brand-orange shrink-0" />
                 <span>Jadwal Komunitas</span>
               </div>
-              <h2 className="font-display font-bold text-xl sm:text-[1.65rem] md:text-2xl lg:text-[1.75rem] xl:text-[2rem] text-[#172554] mt-2.5 sm:mt-3 tracking-tight leading-tight">
+              <h2 className="font-display font-bold text-[clamp(0.82rem,3.7vw,1.85rem)] text-[#172554] mt-2.5 sm:mt-3 tracking-tight leading-tight whitespace-nowrap">
                 JADWAL MAIN BARENG KOMUNITAS BACIRO
               </h2>
               <p className="text-[#475569] text-xs sm:text-base mt-1.5 sm:mt-2 leading-relaxed font-sans">

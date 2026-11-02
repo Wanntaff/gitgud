@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useMemo, useRef, useEffect } from "react";
 import {
@@ -517,7 +517,7 @@ export default function MenuSection() {
   const menuGridRef = useRef<HTMLDivElement>(null);
   const subcategoryTrackRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
 
   const checkScrollability = () => {
     const el = subcategoryTrackRef.current;
@@ -530,14 +530,25 @@ export default function MenuSection() {
   useEffect(() => {
     const el = subcategoryTrackRef.current;
     if (!el) return;
-    // reset scroll position on side change
     el.scrollLeft = 0;
-    // Small timeout to allow layout to settle
-    const timer = setTimeout(checkScrollability, 50);
+    
+    // Multiple measurement passes to ensure layout settles after font & style paint
+    checkScrollability();
+    const timer1 = setTimeout(checkScrollability, 60);
+    const timer2 = setTimeout(checkScrollability, 250);
+
+    const resizeObserver = typeof ResizeObserver !== "undefined"
+      ? new ResizeObserver(() => checkScrollability())
+      : null;
+    if (resizeObserver) resizeObserver.observe(el);
+
     el.addEventListener("scroll", checkScrollability, { passive: true });
     window.addEventListener("resize", checkScrollability, { passive: true });
+
     return () => {
-      clearTimeout(timer);
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      if (resizeObserver) resizeObserver.disconnect();
       el.removeEventListener("scroll", checkScrollability);
       window.removeEventListener("resize", checkScrollability);
     };
