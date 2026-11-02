@@ -37,6 +37,10 @@ export interface GameSuggestion {
   Icon: LucideIcon;
 }
 
+export interface DicePickerProps {
+  compact?: boolean;
+}
+
 export const GAME_SUGGESTIONS: GameSuggestion[] = [
   {
     id: "botc",
@@ -124,7 +128,7 @@ export const GAME_SUGGESTIONS: GameSuggestion[] = [
   },
 ];
 
-export default function DicePicker() {
+export default function DicePicker({ compact = false }: DicePickerProps) {
   const [selectedGame, setSelectedGame] = useState<GameSuggestion>(
     GAME_SUGGESTIONS[0]
   );
@@ -206,6 +210,94 @@ export default function DicePicker() {
         return <Dice6 {...props} />;
     }
   };
+
+  if (compact) {
+    return (
+      <div className="relative group/card bg-white rounded-2xl p-3.5 sm:p-4 border border-slate-200/90 shadow-xs overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-[2px] bg-brand-orange/80" />
+
+        {/* Header Strip */}
+        <div className="pb-2.5 mb-2.5 border-b border-slate-100 flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2 min-w-0">
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange flex items-center justify-center shrink-0 shadow-xs">
+              <Dices
+                className={`w-4 h-4 transition-transform ${
+                  isRolling ? "animate-spin" : ""
+                }`}
+              />
+            </div>
+            <div className="min-w-0">
+              <h3 className="font-display font-bold text-xs sm:text-[13px] text-[#172554] truncate leading-tight">
+                Gud Game Picker
+              </h3>
+              <p className="text-[9px] font-mono text-[#64748B] truncate tracking-wide uppercase">
+                Baciro Roulette
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-1.5 shrink-0">
+            <span className="font-mono text-[9.5px] text-brand-orange font-bold px-2 py-0.5 rounded bg-[#FFF5F0] border border-brand-orange/20">
+              #{rollCount}
+            </span>
+            <button
+              type="button"
+              onClick={handleRollClick}
+              disabled={isRolling}
+              title="Kocok dadu kembali"
+              aria-label="Kocok dadu kembali"
+              className="p-1 rounded-md bg-white hover:bg-slate-50 border border-slate-200 text-[#475569] hover:text-[#172554] transition-all cursor-pointer disabled:opacity-50 active:scale-95 shadow-xs"
+            >
+              <RotateCw className={`w-3.5 h-3.5 ${isRolling ? "animate-spin" : ""}`} />
+            </button>
+          </div>
+        </div>
+
+        {/* Compact Result Card & Action */}
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-[#F8FAFC] border border-slate-200/90 p-2.5 sm:p-3 rounded-xl">
+          <div className="flex items-center gap-3 min-w-0">
+            <div
+              className="w-10 h-10 sm:w-11 sm:h-11 rounded-lg border flex flex-col items-center justify-center bg-white shrink-0 shadow-xs"
+              style={{ borderColor: `${selectedGame.boxAccent}40` }}
+            >
+              <selectedGame.Icon
+                className="w-4.5 h-4.5 sm:w-5 sm:h-5 shrink-0"
+                style={{ color: selectedGame.boxAccent }}
+              />
+              <span className="text-[6.5px] font-mono font-bold text-[#94A3B8]">D{currentDiceNumber}</span>
+            </div>
+            <div className="min-w-0">
+              <div className="flex items-center gap-1.5 flex-wrap">
+                <h4 className="font-display font-bold text-xs sm:text-sm text-[#172554] truncate">
+                  {selectedGame.name}
+                </h4>
+                <span className="text-[9px] font-mono font-semibold text-[#172554] bg-white border border-slate-200 px-1.5 py-0.2 rounded">
+                  {selectedGame.badgeLabel}
+                </span>
+              </div>
+              <div className="flex items-center gap-2 text-[10px] text-[#64748B] font-mono mt-0.5">
+                <span>{selectedGame.categoryTag}</span>
+                <span>•</span>
+                <span>{selectedGame.players}</span>
+                <span>•</span>
+                <span>{selectedGame.duration}</span>
+              </div>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={handleRollClick}
+            disabled={isRolling}
+            className="sm:w-auto shrink-0 bg-brand-orange hover:bg-brand-orange-hover active:scale-[0.98] text-white font-display font-bold py-2 px-3.5 rounded-lg text-xs tracking-wide transition-all cursor-pointer flex items-center justify-center gap-1.5 shadow-xs"
+          >
+            <Dices className={`w-3.5 h-3.5 ${isRolling ? "animate-spin" : ""}`} />
+            <span>{isRolling ? "Mengacak..." : "Roll Game Lain"}</span>
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="relative group/card">

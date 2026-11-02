@@ -1,6 +1,7 @@
 "use client";
 
-import { Dices, CalendarDays, MapPin, UserCheck } from "lucide-react";
+import Image from "next/image";
+import { Dices, CalendarDays, MapPin, UserCheck, Coffee, Sparkles } from "lucide-react";
 import DicePicker from "./DicePicker";
 import { soundEffects } from "@/lib/soundEffects";
 
@@ -25,11 +26,11 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden bg-gradient-to-b from-white via-[#F8FAFC] to-[#F0F7FF] min-h-[calc(100vh-96px)] flex flex-col justify-center py-6 sm:py-10 lg:py-10 xl:py-12 px-4 sm:px-6 lg:px-12 border-b-2 border-[#1B64B4]/15"
+      className="relative overflow-hidden bg-gradient-to-b from-white via-[#F8FAFC] to-[#F0F7FF] min-h-[calc(100vh-96px)] flex flex-col justify-center py-6 sm:py-10 lg:py-10 xl:py-12 px-4 sm:px-6 lg:px-12 border-b border-slate-200"
     >
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 lg:gap-8 xl:gap-10 items-center">
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 xl:gap-10 items-center">
         {/* Kolom Kiri: Copywriting & Hierarki */}
-        <div className="lg:col-span-7 flex flex-col gap-3.5 sm:gap-5 lg:gap-5 xl:gap-5 z-10">
+        <div className="lg:col-span-5 xl:col-span-5 flex flex-col gap-3.5 sm:gap-4.5 z-10">
           {/* Pill Badge Atas */}
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-slate-200 text-xs text-[#172554] font-mono w-fit shadow-xs">
             <MapPin className="w-3.5 h-3.5 text-brand-orange shrink-0" />
@@ -127,31 +128,111 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Kolom Kanan: Gud Game Picker & Solo Player Banner */}
-        <div className="lg:col-span-5 flex flex-col gap-3 sm:gap-3.5 z-10 relative">
-          {/* Ambient Warm Glow behind right card */}
+        {/* Kolom Kanan: The Living Bento Hero Grid */}
+        <div className="lg:col-span-7 xl:col-span-7 z-10 relative">
+          {/* Ambient Warm Glow */}
           <div
-            className="absolute -top-12 -bottom-12 -left-12 -right-12 sm:-inset-16 bg-[radial-gradient(circle,rgba(232,74,39,0.08)_0%,transparent_70%)] pointer-events-none rounded-full blur-3xl -z-10"
+            className="absolute -top-12 -bottom-12 -left-12 -right-12 sm:-inset-16 bg-[radial-gradient(circle,rgba(232,74,39,0.06)_0%,transparent_70%)] pointer-events-none rounded-full blur-3xl -z-10"
             aria-hidden="true"
           />
 
-          <DicePicker />
+          <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 sm:gap-3.5">
+            {/* Cell 1: Primary Cafe & Game Atmosphere Photo */}
+            <div className="sm:col-span-7 relative rounded-2xl overflow-hidden border border-slate-200/90 bg-slate-900 shadow-xs group min-h-[250px] sm:min-h-[300px] flex flex-col justify-between p-3.5 sm:p-4">
+              <Image
+                src="/cafe/hero-lounge.jpg"
+                alt="Suasana Meja Board Game & Cafe Gitgud Baciro Jogja"
+                fill
+                priority
+                sizes="(max-width: 640px) 100vw, 45vw"
+                className="object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
+              />
+              {/* Soft gradient overlay for high contrast readability */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A1120]/90 via-[#0A1120]/30 to-black/15 pointer-events-none" />
 
-          {/* Solo Player Banner — premium style matching DicePicker */}
-          <div className="relative bg-white border border-slate-200 rounded-xl p-3 sm:p-3.5 flex items-start gap-3 overflow-hidden shadow-xs">
-            {/* Left accent bar */}
-            <div className="absolute left-0 top-3 bottom-3 w-[3px] rounded-full bg-brand-orange" />
-            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-[#FFF5F0] border border-brand-orange/20 flex items-center justify-center text-brand-orange shrink-0 ml-1">
-              <UserCheck className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
+              {/* Top Floating Badge */}
+              <div className="relative z-10 flex items-center justify-between gap-2">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md border border-white/40 text-[#172554] font-mono text-[10px] font-bold shadow-xs">
+                  <MapPin className="w-3 h-3 text-brand-orange shrink-0" />
+                  <span>BACIRO HQ // MEJA 04</span>
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#172554]/90 backdrop-blur-md border border-white/20 text-white font-mono text-[10px] font-medium">
+                  <Sparkles className="w-3 h-3 text-amber-300 shrink-0" />
+                  <span>Atmosphere</span>
+                </span>
+              </div>
+
+              {/* Bottom Caption & Vibe Detail */}
+              <div className="relative z-10 text-white">
+                <div className="font-mono text-[9.5px] uppercase tracking-widest text-[#FF8566] font-bold mb-0.5">
+                  Tabletop &amp; Cafe Lounge
+                </div>
+                <h3 className="font-display font-bold text-sm sm:text-base text-white leading-snug">
+                  Meja Kayu Lega &amp; Suasana Hangat Bareng Squad
+                </h3>
+                <p className="text-[11px] text-slate-200/90 mt-0.5 line-clamp-2 font-sans">
+                  Ratusan game fisik asli siap dimainkan santai tanpa batasan waktu terburu-buru.
+                </p>
+              </div>
             </div>
-            <div className="min-w-0">
-              <h4 className="font-display font-bold text-xs sm:text-[13px] text-[#172554] leading-tight tracking-tight">
-                Datang Sendirian? No Problem!
-              </h4>
-              <p className="text-[10px] sm:text-[10.5px] text-[#64748B] leading-snug mt-0.5 font-sans line-clamp-2">
-                Banyak komunitas &amp; game solo yang bisa kamu gabung. Staff dan
-                Game Master kami siap nemenin &amp; ngenalin ke sesama pengunjung!
-              </p>
+
+            {/* Right Stack in Bento: Cell 2 (Coffee) + Cell 3 (Solo Player) */}
+            <div className="sm:col-span-5 flex flex-col gap-3 sm:gap-3.5">
+              {/* Cell 2: Specialty Coffee Bar Macro Photo */}
+              <div className="relative rounded-2xl overflow-hidden border border-slate-200/90 bg-slate-900 shadow-xs group h-[145px] sm:h-[150px] flex flex-col justify-between p-3">
+                <Image
+                  src="/cafe/hero-coffee.jpg"
+                  alt="Specialty Espresso Bar Gitgud Cafe"
+                  fill
+                  sizes="(max-width: 640px) 100vw, 30vw"
+                  className="object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A1120]/90 via-black/35 to-black/10 pointer-events-none" />
+
+                {/* Top Tag */}
+                <div className="relative z-10 flex items-center justify-between">
+                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-white/95 backdrop-blur-md text-[#172554] font-mono text-[9px] font-bold shadow-xs">
+                    <Coffee className="w-3 h-3 text-brand-orange shrink-0" />
+                    <span>SPECIALTY BAR</span>
+                  </span>
+                </div>
+
+                {/* Bottom Label */}
+                <div className="relative z-10 text-white">
+                  <h4 className="font-display font-bold text-xs sm:text-[13px] text-white leading-tight">
+                    Artisan Coffee &amp; Snack
+                  </h4>
+                  <p className="text-[9.5px] text-slate-200 mt-0.5 font-mono">
+                    Diseduh fresh • Gak bikin kartu berminyak
+                  </p>
+                </div>
+              </div>
+
+              {/* Cell 3: Solo Player Friendly Card */}
+              <div className="relative rounded-2xl border border-slate-200 bg-white p-3 sm:p-3.5 shadow-xs flex-1 flex flex-col justify-between overflow-hidden">
+                <div className="absolute left-0 top-3 bottom-3 w-[2.5px] rounded-full bg-brand-orange" />
+                <div className="flex items-start gap-2.5 pl-1">
+                  <div className="w-7 h-7 rounded-lg bg-[#FFF5F0] border border-brand-orange/20 flex items-center justify-center text-brand-orange shrink-0">
+                    <UserCheck className="w-3.5 h-3.5" />
+                  </div>
+                  <div className="min-w-0">
+                    <span className="font-mono text-[8.5px] font-bold text-brand-orange uppercase tracking-wider block">
+                      COMMUNITY WELCOME
+                    </span>
+                    <h4 className="font-display font-bold text-xs text-[#172554] leading-tight mt-0.5">
+                      Datang Solo? No Problem!
+                    </h4>
+                  </div>
+                </div>
+                <p className="text-[10px] text-[#64748B] pl-1 mt-1.5 leading-snug font-sans line-clamp-2">
+                  Game Master kami siap nemenin &amp; ngenalin kamu ke meja open-squad yang ramah.
+                </p>
+              </div>
+            </div>
+
+            {/* Cell 4: Full-width Interactive Base: Compact DicePicker */}
+            <div className="sm:col-span-12">
+              <DicePicker compact />
             </div>
           </div>
         </div>
