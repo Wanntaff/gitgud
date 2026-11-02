@@ -2,7 +2,16 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
-import { ArrowRight, ChevronLeft, ChevronRight, Dices, MapPin } from "lucide-react";
+import {
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  Dices,
+  MapPin,
+  Users,
+  Coffee,
+  Compass,
+} from "lucide-react";
 import { soundEffects } from "@/lib/soundEffects";
 
 interface HeroSlide {
@@ -13,6 +22,8 @@ interface HeroSlide {
   title: string;
   description: string;
   tag: string;
+  tabLabel: string;
+  icon: React.ComponentType<{ className?: string }>;
 }
 
 const heroSlides: HeroSlide[] = [
@@ -22,8 +33,10 @@ const heroSlides: HeroSlide[] = [
     alt: "Empat teman bermain board game sambil menikmati kopi di suasana kafe yang hangat",
     badge: "01 // MEJA SQUAD",
     title: "Meja penuh. HP turun.",
-    description: "Board game, kopi, dan cerita yang nggak kelar-kelar.",
+    description: "Board game, kopi artisan, dan obrolan seru yang nggak kelar-kelar.",
     tag: "Baciro / Jogja",
+    tabLabel: "Squad",
+    icon: Users,
   },
   {
     id: "lounge",
@@ -33,6 +46,8 @@ const heroSlides: HeroSlide[] = [
     title: "Tinggal tunjuk, langsung main.",
     description: "Koleksi board game fisik terlengkap di Jogja dari party game santai sampai strategi berat.",
     tag: "Koleksi Terlengkap",
+    tabLabel: "300+ Game",
+    icon: Dices,
   },
   {
     id: "coffee",
@@ -42,6 +57,8 @@ const heroSlides: HeroSlide[] = [
     title: "Kopi fresh. Gak bikin berminyak.",
     description: "Seduhan artisan kopi dan snack yang ramah kartu board game selama sesi main.",
     tag: "Brewed Fresh Daily",
+    tabLabel: "Bar",
+    icon: Coffee,
   },
   {
     id: "gamemaster",
@@ -51,10 +68,12 @@ const heroSlides: HeroSlide[] = [
     title: "Baru pertama kali? Santai.",
     description: "Game Master kami siap memandu aturan langsung di meja tanpa perlu pusing baca rulebook.",
     tag: "100% Diajarin",
+    tabLabel: "Guide",
+    icon: Compass,
   },
 ];
 
-const SLIDE_DURATION = 5500; // 5.5s per slide
+const SLIDE_DURATION = 5500; // 5.5s per slide on desktop
 
 export default function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -78,6 +97,8 @@ export default function HeroSection() {
     if (heroSlides.length <= 1 || isPaused) return;
     const isReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (isReduced) return;
+    // Auto-slide only on desktop viewports; mobile gallery remains deliberate and interactive
+    if (typeof window !== "undefined" && window.innerWidth < 1024) return;
 
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
@@ -126,53 +147,168 @@ export default function HeroSection() {
 
   const activeSlideData = heroSlides[currentSlide] ?? heroSlides[0];
 
-  const renderCarousel = (isMobileVariant: boolean) => (
-    <figure
-      className={
-        isMobileVariant
-          ? "hero-photo-shell group relative my-4 sm:my-5 w-full aspect-[16/10] sm:aspect-[16/9] rounded-2xl overflow-hidden bg-[#1C211D] border border-slate-200/80 shadow-md select-none"
-          : "hero-photo-shell group relative min-h-[580px] h-full overflow-hidden bg-[#1C211D] select-none"
-      }
-      onPointerMove={!isMobileVariant ? movePhoto : undefined}
-      onPointerLeave={
-        !isMobileVariant
-          ? (e) => {
-              resetPhoto(e);
-              setIsPaused(false);
+  {/* Dedicated Mobile Lookbook: Tabletop Card Framing + Tactile 4-Scene Switcher */}
+  const renderMobileLookbook = () => (
+    <div className="relative my-3.5 sm:my-5 w-full">
+      {/* Physical Tabletop Offset Depth Layer */}
+      <div
+        className="absolute -inset-1 sm:-inset-1.5 rounded-2xl bg-gradient-to-tr from-brand-orange/15 via-[#172554]/5 to-transparent transform -rotate-1 pointer-events-none"
+        aria-hidden="true"
+      />
+
+      {/* Main Photographic Lookbook Card */}
+      <figure
+        className="relative w-full aspect-[16/10.5] sm:aspect-[16/9] rounded-2xl overflow-hidden bg-[#1C211D] border border-slate-200/90 shadow-md select-none touch-pan-y"
+        onTouchStart={(e) => {
+          touchStartXRef.current = e.touches[0].clientX;
+        }}
+        onTouchEnd={(e) => {
+          if (touchStartXRef.current === null) return;
+          const diffX = e.changedTouches[0].clientX - touchStartXRef.current;
+          if (Math.abs(diffX) > 40) {
+            soundEffects.playButtonClick();
+            if (diffX < 0) {
+              nextSlide();
+            } else {
+              prevSlide();
             }
-          : undefined
-      }
-      onPointerEnter={!isMobileVariant ? () => setIsPaused(true) : undefined}
-      onTouchStart={(e) => {
-        setIsPaused(true);
-        touchStartXRef.current = e.touches[0].clientX;
-      }}
-      onTouchEnd={(e) => {
-        setIsPaused(false);
-        if (touchStartXRef.current === null) return;
-        const diffX = e.changedTouches[0].clientX - touchStartXRef.current;
-        if (Math.abs(diffX) > 40) {
-          if (diffX < 0) {
-            nextSlide();
-          } else {
-            prevSlide();
           }
-        }
-        touchStartXRef.current = null;
+          touchStartXRef.current = null;
+        }}
+        role="region"
+        aria-roledescription="carousel"
+        aria-label="Galeri Suasana Kafe Gitgud"
+      >
+        {/* Slide Photos with Crossfade */}
+        <div className="absolute inset-0">
+          {heroSlides.map((slide, idx) => {
+            const isActive = idx === currentSlide;
+            return (
+              <div
+                key={slide.id}
+                className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${
+                  isActive ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
+                }`}
+                aria-hidden={!isActive}
+              >
+                <Image
+                  src={slide.src}
+                  alt={slide.alt}
+                  fill
+                  priority={idx === 0}
+                  sizes="100vw"
+                  className="object-cover object-[52%_50%]"
+                />
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Floating Header Badges */}
+        <div className="absolute top-2.5 inset-x-2.5 z-20 flex items-center justify-between pointer-events-none">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-md border border-white/20 text-white text-[10px] font-sans font-semibold tracking-wider shadow-xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-brand-orange animate-pulse" />
+            <span>SUASANA • 0{currentSlide + 1}/04</span>
+          </div>
+          <div className="inline-flex items-center px-2 py-0.5 rounded-full bg-black/45 backdrop-blur-md border border-white/15 text-white/90 text-[10px] font-sans font-medium">
+            <span>{activeSlideData.tag}</span>
+          </div>
+        </div>
+
+        {/* Touch Navigation Chevrons */}
+        <div className="pointer-events-none absolute inset-y-0 inset-x-2 z-25 flex items-center justify-between">
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              soundEffects.playButtonClick();
+              prevSlide();
+            }}
+            aria-label="Foto sebelumnya"
+            className="pointer-events-auto w-7.5 h-7.5 rounded-full bg-black/45 hover:bg-black/70 border border-white/25 text-white backdrop-blur-md flex items-center justify-center transition-all cursor-pointer shadow-md active:scale-90"
+          >
+            <ChevronLeft className="w-4 h-4 text-white" />
+          </button>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              soundEffects.playButtonClick();
+              nextSlide();
+            }}
+            aria-label="Foto selanjutnya"
+            className="pointer-events-auto w-7.5 h-7.5 rounded-full bg-black/45 hover:bg-black/70 border border-white/25 text-white backdrop-blur-md flex items-center justify-center transition-all cursor-pointer shadow-md active:scale-90"
+          >
+            <ChevronRight className="w-4 h-4 text-white" />
+          </button>
+        </div>
+
+        {/* Soft Dark Gradient Base for Caption Legibility */}
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0A1120]/95 via-[#0A1120]/55 to-transparent z-15 h-24 sm:h-28"
+          aria-hidden="true"
+        />
+
+        {/* Editorial Caption on Lower Third */}
+        <figcaption className="absolute inset-x-0 bottom-0 z-20 p-3 sm:p-4 text-white">
+          <div key={activeSlideData.id} className="animate-caption-switch min-w-0">
+            <span className="font-sans text-[9.5px] uppercase tracking-[0.2em] text-[#FF8566] font-bold block mb-0.5">
+              {activeSlideData.badge}
+            </span>
+            <p className="font-display font-bold text-sm sm:text-base tracking-tight text-white leading-tight">
+              {activeSlideData.title}
+            </p>
+            <p className="text-white/85 font-sans text-[11px] leading-snug mt-0.5 max-w-[280px]">
+              {activeSlideData.description}
+            </p>
+          </div>
+        </figcaption>
+      </figure>
+
+      {/* Tactile 4-Scene Switcher Dock */}
+      <div className="mt-2.5 grid grid-cols-4 gap-1.5" role="tablist" aria-label="Pilih Suasana Kafe">
+        {heroSlides.map((slide, idx) => {
+          const isActive = idx === currentSlide;
+          const IconComponent = slide.icon;
+          return (
+            <button
+              key={slide.id}
+              type="button"
+              role="tab"
+              aria-selected={isActive}
+              onClick={() => goToSlide(idx)}
+              className={`py-2 px-1 rounded-xl flex flex-col sm:flex-row items-center justify-center gap-1 text-center transition-all cursor-pointer select-none active:scale-95 ${
+                isActive
+                  ? "bg-[#172554] text-white shadow-xs font-bold scale-[1.02]"
+                  : "bg-white/90 hover:bg-white text-[#475569] border border-slate-200/80 hover:border-slate-300 font-medium"
+              }`}
+            >
+              <IconComponent className={`w-3.5 h-3.5 shrink-0 ${isActive ? "text-brand-orange" : "text-[#64748B]"}`} />
+              <span className="font-sans text-[10.5px] leading-tight whitespace-nowrap">{slide.tabLabel}</span>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+
+  {/* Desktop Editorial Carousel: Preserves full-height presentation and cursor parallax */}
+  const renderDesktopCarousel = () => (
+    <figure
+      className="hero-photo-shell group relative min-h-[580px] h-full overflow-hidden bg-[#1C211D] select-none"
+      onPointerMove={movePhoto}
+      onPointerLeave={(e) => {
+        resetPhoto(e);
+        setIsPaused(false);
       }}
+      onPointerEnter={() => setIsPaused(true)}
       role="region"
       aria-roledescription="carousel"
       aria-label="Galeri Suasana Kafe Gitgud"
     >
       {/* Segmented iOS-Style Story Progress Bars */}
       {heroSlides.length > 1 && (
-        <div
-          className={`absolute z-30 flex items-center gap-1.5 sm:gap-2 ${
-            isMobileVariant
-              ? "top-3 inset-x-3 sm:inset-x-6"
-              : "top-4 inset-x-4 sm:inset-x-8"
-          }`}
-        >
+        <div className="absolute z-30 flex items-center gap-2 top-4 inset-x-8">
           {heroSlides.map((slide, idx) => {
             const isActive = idx === currentSlide;
             const isPassed = idx < currentSlide;
@@ -182,7 +318,7 @@ export default function HeroSection() {
                 type="button"
                 onClick={() => goToSlide(idx)}
                 aria-label={`Buka slide ${idx + 1}: ${slide.title}`}
-                className="relative h-[3px] sm:h-[3.5px] flex-1 rounded-full bg-white/25 backdrop-blur-sm overflow-hidden transition-all hover:h-[5px] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white cursor-pointer"
+                className="relative h-[3.5px] flex-1 rounded-full bg-white/25 backdrop-blur-sm overflow-hidden transition-all hover:h-[5px] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white cursor-pointer"
               >
                 <span
                   key={`${slide.id}-${isActive ? currentSlide : "inactive"}`}
@@ -225,7 +361,7 @@ export default function HeroSection() {
                 alt={slide.alt}
                 fill
                 priority={idx === 0}
-                sizes={isMobileVariant ? "100vw" : "(max-width: 1023px) 100vw, 56vw"}
+                sizes="(max-width: 1023px) 100vw, 56vw"
                 className="hero-photo-image object-cover object-[52%_50%]"
               />
             </div>
@@ -235,21 +371,13 @@ export default function HeroSection() {
 
       {/* Soft Dark Gradient Base for Caption Legibility */}
       <div
-        className={`pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0A1120]/95 via-[#0A1120]/50 to-transparent z-15 ${
-          isMobileVariant ? "h-24 sm:h-28" : "h-48"
-        }`}
+        className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0A1120]/95 via-[#0A1120]/50 to-transparent z-15 h-48"
         aria-hidden="true"
       />
 
-      {/* Sleek Arrow Controls (Visible and touch-tappable on mobile; hover-reveal on desktop) */}
+      {/* Sleek Arrow Controls (hover-reveal on desktop) */}
       {heroSlides.length > 1 && (
-        <div
-          className={`pointer-events-none absolute inset-y-0 z-25 flex items-center justify-between ${
-            isMobileVariant
-              ? "inset-x-2.5 sm:inset-x-3"
-              : "inset-x-3 sm:inset-x-5"
-          }`}
-        >
+        <div className="pointer-events-none absolute inset-y-0 z-25 flex items-center justify-between inset-x-5">
           <button
             type="button"
             onClick={(e) => {
@@ -258,11 +386,7 @@ export default function HeroSection() {
               prevSlide();
             }}
             aria-label="Foto sebelumnya"
-            className={`pointer-events-auto w-7.5 h-7.5 sm:w-9 sm:h-9 rounded-full bg-black/40 hover:bg-black/70 border border-white/20 text-white backdrop-blur-md flex items-center justify-center transition-all cursor-pointer shadow-md active:scale-90 ${
-              isMobileVariant
-                ? "opacity-90"
-                : "opacity-0 group-hover:opacity-100 focus-visible:opacity-100"
-            }`}
+            className="pointer-events-auto w-9 h-9 rounded-full bg-black/40 hover:bg-black/70 border border-white/20 text-white backdrop-blur-md flex items-center justify-center transition-all cursor-pointer shadow-md active:scale-90 opacity-0 group-hover:opacity-100 focus-visible:opacity-100"
           >
             <ChevronLeft className="w-4 h-4 text-white" />
           </button>
@@ -274,58 +398,32 @@ export default function HeroSection() {
               nextSlide();
             }}
             aria-label="Foto selanjutnya"
-            className={`pointer-events-auto w-7.5 h-7.5 sm:w-9 sm:h-9 rounded-full bg-black/40 hover:bg-black/70 border border-white/20 text-white backdrop-blur-md flex items-center justify-center transition-all cursor-pointer shadow-md active:scale-90 ${
-              isMobileVariant
-                ? "opacity-90"
-                : "opacity-0 group-hover:opacity-100 focus-visible:opacity-100"
-            }`}
+            className="pointer-events-auto w-9 h-9 rounded-full bg-black/40 hover:bg-black/70 border border-white/20 text-white backdrop-blur-md flex items-center justify-center transition-all cursor-pointer shadow-md active:scale-90 opacity-0 group-hover:opacity-100 focus-visible:opacity-100"
           >
             <ChevronRight className="w-4 h-4 text-white" />
           </button>
         </div>
       )}
 
-      {/* Dynamic Editorial Caption with Smooth Switch Animation */}
-      <figcaption
-        className={`hero-photo-caption absolute inset-x-0 bottom-0 z-20 flex items-end justify-between gap-3 sm:gap-4 text-white ${
-          isMobileVariant ? "p-3 sm:p-4" : "p-5 sm:p-7 lg:p-8"
-        }`}
-      >
+      {/* Dynamic Editorial Caption */}
+      <figcaption className="hero-photo-caption absolute inset-x-0 bottom-0 z-20 flex items-end justify-between gap-4 text-white p-6 sm:p-8">
         <div key={activeSlideData.id} className="animate-caption-switch min-w-0">
           {heroSlides.length > 1 && (
-            <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#FF8566] font-bold block mb-0.5 sm:mb-1">
+            <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#FF8566] font-bold block mb-1">
               {activeSlideData.badge}
             </span>
           )}
-          <p
-            className={`font-display font-bold tracking-tight text-white ${
-              isMobileVariant ? "text-sm sm:text-base" : "text-xl sm:text-2xl"
-            }`}
-          >
+          <p className="font-display font-bold tracking-tight text-white text-xl sm:text-2xl">
             {activeSlideData.title}
           </p>
-          <p
-            className={`text-white/85 font-sans ${
-              isMobileVariant
-                ? "text-[11px] leading-snug mt-0.5 max-w-[280px]"
-                : "mt-1 max-w-[340px] text-xs sm:text-sm leading-relaxed"
-            }`}
-          >
+          <p className="text-white/85 font-sans mt-1 max-w-[340px] text-xs sm:text-sm leading-relaxed">
             {activeSlideData.description}
           </p>
         </div>
         <div className="shrink-0 flex flex-col items-end gap-1 font-sans text-[10px] uppercase tracking-[0.18em] text-white/80">
-          <span className={isMobileVariant ? "hidden sm:inline" : ""}>
-            {activeSlideData.tag}
-          </span>
+          <span>{activeSlideData.tag}</span>
           {heroSlides.length > 1 && (
-            <span
-              className={`rounded-full bg-black/35 backdrop-blur-sm px-2 py-0.5 border border-white/10 ${
-                isMobileVariant
-                  ? "text-[9px] text-white/90 font-bold"
-                  : "text-[9px] text-white/50 tracking-wider"
-              }`}
-            >
+            <span className="rounded-full bg-black/35 backdrop-blur-sm px-2 py-0.5 border border-white/10 text-[9px] text-white/50 tracking-wider">
               0{currentSlide + 1} / 0{heroSlides.length}
             </span>
           )}
@@ -399,9 +497,9 @@ export default function HeroSection() {
               </span>
             </h1>
 
-            {/* Mobile Visual Showcase Card: Instant visual hook right below headline */}
+            {/* Mobile Visual Showcase Card: Bespoke Curated Atmosphere Lookbook */}
             <div className="block lg:hidden">
-              {renderCarousel(true)}
+              {renderMobileLookbook()}
             </div>
 
             {/* Description Paragraph */}
@@ -469,7 +567,7 @@ export default function HeroSection() {
 
         {/* Right Column (Desktop Only): Full-height editorial photo showcase */}
         <div className="hidden lg:block h-full">
-          {renderCarousel(false)}
+          {renderDesktopCarousel()}
         </div>
       </div>
     </section>

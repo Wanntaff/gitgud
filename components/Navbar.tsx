@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
@@ -479,8 +479,8 @@ export default function Navbar() {
             aria-label={muted ? "Aktifkan efek suara" : "Matikan efek suara"}
             title={
               muted
-                ? "Efek suara nonaktif — Klik untuk aktifkan"
-                : "Efek suara aktif — Klik untuk bisukan"
+                ? "Efek suara nonaktif - Klik untuk aktifkan"
+                : "Efek suara aktif - Klik untuk bisukan"
             }
             className={`p-1.5 sm:p-2 rounded-lg border transition-all cursor-pointer flex items-center justify-center active:scale-90 ${
               muted

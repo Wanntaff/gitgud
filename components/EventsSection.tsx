@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { CheckCircle, CalendarDays, Ticket } from "lucide-react";
 import { soundEffects } from "@/lib/soundEffects";
@@ -43,7 +43,7 @@ export default function EventsSection() {
                 <Ticket className="w-3.5 h-3.5 shrink-0" />
                 <span>Special Event Mingguan</span>
               </div>
-              <h3 className="font-display font-black text-xl sm:text-2xl md:text-3xl text-[#172554] leading-snug mb-2 sm:mb-3 tracking-tight break-words">
+              <h3 className="font-display font-bold text-xl sm:text-2xl md:text-3xl text-[#172554] leading-snug mb-2 sm:mb-3 tracking-tight break-words">
                 BLOOD ON THE
                 <br />
                 <span>CLOCKTOWER</span>{" "}
@@ -51,10 +51,10 @@ export default function EventsSection() {
               </h3>
               <p className="text-brand-orange font-sans font-bold text-xs sm:text-sm mb-3 inline-flex items-center gap-1.5">
                 <CalendarDays className="w-4 h-4 shrink-0" />
-                <span>SETIAP KAMIS MALAM — GRATIS!</span>
+                <span>SETIAP KAMIS MALAM: GRATIS!</span>
               </p>
               <p className="text-[#475569] text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5">
-                Desa kembali penuh dengan kecurigaan... Siapa yang jujur? Siapa
+                Desa kembali penuh dengan kecurigaan. Siapa yang jujur? Siapa
                 yang berbohong? Game deduksi sosial nomor 1 di dunia hadir
                 gratis untuk kamu dan teman-teman!
               </p>
@@ -94,7 +94,7 @@ export default function EventsSection() {
                 <CalendarDays className="w-3.5 h-3.5 text-brand-orange shrink-0" />
                 <span>Jadwal Komunitas</span>
               </div>
-              <h2 className="font-display font-black text-xl sm:text-[1.65rem] md:text-2xl lg:text-[1.75rem] xl:text-[2rem] text-[#172554] mt-2.5 sm:mt-3 tracking-tight leading-tight">
+              <h2 className="font-display font-bold text-xl sm:text-[1.65rem] md:text-2xl lg:text-[1.75rem] xl:text-[2rem] text-[#172554] mt-2.5 sm:mt-3 tracking-tight leading-tight">
                 JADWAL MAIN BARENG KOMUNITAS BACIRO
               </h2>
               <p className="text-[#475569] text-xs sm:text-base mt-1.5 sm:mt-2 leading-relaxed font-sans">

@@ -4,7 +4,7 @@ export default function AnnouncementTicker() {
   const tickerItems = [
     {
       icon: Dices,
-      text: "Blood on the Clocktower — Gratis Setiap Kamis!",
+      text: "Blood on the Clocktower: Gratis Setiap Kamis!",
     },
     {
       icon: Clock,

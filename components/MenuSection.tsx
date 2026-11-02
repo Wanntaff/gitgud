@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useMemo, useRef, useEffect } from "react";
 import {
@@ -672,11 +672,11 @@ export default function MenuSection() {
             <span>Menu Pilihan Baciro HQ</span>
           </div>
 
-          <h2 className="font-display font-black text-xl sm:text-[1.75rem] md:text-3xl lg:text-[2rem] xl:text-[2.15rem] text-[#172554] mt-2.5 sm:mt-3 tracking-tight leading-tight">
+          <h2 className="font-display font-bold text-xl sm:text-[1.75rem] md:text-3xl lg:text-[2rem] xl:text-[2.15rem] text-[#172554] mt-2.5 sm:mt-3 tracking-tight leading-tight">
             MENU GITGUD CAFE
           </h2>
           <p className="text-[#475569] text-xs sm:text-sm mt-2 max-w-xl mx-auto leading-relaxed font-sans">
-            Manual brew, espresso racikan barista, dan makanan siap santap yang ramah kartu board game — disajikan langsung ke meja bermain.
+            Manual brew, espresso racikan barista, dan makanan siap santap yang ramah kartu board game - disajikan langsung ke meja bermain.
           </p>
 
           {/* Segmented Thirsty / Hungry Switcher */}
@@ -912,7 +912,7 @@ export default function MenuSection() {
               </div>
               <p className="text-xs sm:text-sm text-[#334155] leading-relaxed">
                 <strong className="text-[#172554]">Chicken Nanban (32k)</strong> +{" "}
-                <strong className="text-[#172554]">Honey Yuzunade (33k)</strong> —
+                <strong className="text-[#172554]">Honey Yuzunade (33k)</strong> -
                 paduan juara penambah energi ronde deduksi Blood on the Clocktower!
               </p>
             </div>
@@ -940,7 +940,7 @@ export default function MenuSection() {
               </div>
               <p className="text-xs sm:text-sm text-[#334155] leading-relaxed">
                 <strong className="text-[#172554]">Honey Yuzunade (33k)</strong> &amp;{" "}
-                <strong className="text-[#172554]">Orangicano (25k)</strong> —
+                <strong className="text-[#172554]">Orangicano (25k)</strong> -
                 sensasi citrus yuzu matcha &amp; espresso jeruk segar favorit komunitas!
               </p>
             </div>

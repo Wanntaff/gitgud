@@ -1,4 +1,4 @@
-import { Layers, Compass, Coffee, Moon } from "lucide-react";
+﻿import { Layers, Compass, Coffee, Moon } from "lucide-react";
 import MeepleIcon from "./MeepleIcon";
 
 export default function AboutSection() {
@@ -14,7 +14,7 @@ export default function AboutSection() {
             <MeepleIcon className="w-3.5 h-3.5 text-brand-orange shrink-0" />
             <span>Ruang Bermain &amp; Cafe Baciro</span>
           </div>
-          <h2 className="font-display font-black text-xl sm:text-[1.75rem] md:text-3xl lg:text-[2rem] xl:text-[2.15rem] text-[#172554] mt-2.5 sm:mt-3 tracking-tight leading-tight">
+          <h2 className="font-display font-bold text-xl sm:text-[1.75rem] md:text-3xl lg:text-[2rem] xl:text-[2.15rem] text-[#172554] mt-2.5 sm:mt-3 tracking-tight leading-tight">
             MEJA KAYU LEGA, KOLEKSI LENGKAP, GAK ADA KATA BOSAN
           </h2>
           <p className="text-[#475569] text-sm sm:text-base mt-2.5 max-w-xl mx-auto leading-relaxed font-sans">
