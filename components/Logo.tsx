@@ -125,16 +125,6 @@ export default function Logo({
             fill={`url(#${blueGradientId})`}
             fillRule="evenodd"
           />
-
-          {/* Tabletop Lucky Sparkle Pip (reveals and twinkles charmingly on hover) */}
-          <g className="opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 ease-out origin-[3500px_40px] motion-reduce:opacity-100">
-            {/* 4-point golden tabletop sparkle */}
-            <path
-              d="M 3500 20 Q 3500 40 3520 40 Q 3500 40 3500 60 Q 3500 40 3480 40 Q 3500 40 3500 20 Z"
-              fill="#FFA085"
-            />
-            <circle cx="3500" cy="40" r="3" fill="#FFFFFF" />
-          </g>
         </g>
       </svg>
     </div>

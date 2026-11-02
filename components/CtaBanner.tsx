@@ -19,7 +19,7 @@ export default function CtaBanner() {
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => soundEffects.playSuccessChime()}
-          className="w-full sm:w-auto text-center bg-white hover:bg-slate-50 text-brand-orange px-6 sm:px-7 py-3 sm:py-3.5 rounded-lg font-display font-bold text-xs sm:text-sm md:text-base tracking-wide shadow-xs active:scale-[0.98] transition-all shrink-0 whitespace-nowrap cursor-pointer"
+          className="luxury-btn luxury-sheen w-full sm:w-auto text-center bg-white hover:bg-slate-50 text-brand-orange px-6 sm:px-7 py-3 sm:py-3.5 rounded-lg font-display font-bold text-xs sm:text-sm md:text-base tracking-wide shadow-sm active:scale-[0.98] transition-all shrink-0 whitespace-nowrap cursor-pointer"
         >
           HUBUNGI KAMI VIA WHATSAPP
         </a>

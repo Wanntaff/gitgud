@@ -31,7 +31,7 @@ export default function EventsSection() {
   return (
     <section
       id="events"
-      className="scroll-mt-20 py-8 sm:py-20 lg:py-24 px-4 lg:px-12 bg-[#F8FAFC] border-b border-slate-200 relative overflow-hidden"
+      className="scroll-mt-[58px] py-8 sm:py-20 lg:py-24 px-4 lg:px-12 bg-[#F8FAFC] border-b border-slate-200 relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center">
@@ -79,7 +79,7 @@ export default function EventsSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => soundEffects.playSuccessChime()}
-                className="w-full block text-center bg-brand-orange hover:bg-brand-orange-hover active:scale-[0.98] text-white font-display font-bold py-3 sm:py-3.5 px-5 rounded-lg shadow-xs transition-all text-xs sm:text-sm tracking-wider uppercase whitespace-nowrap cursor-pointer"
+                className="luxury-btn luxury-sheen w-full block text-center bg-brand-orange hover:bg-brand-orange-hover active:scale-[0.98] text-white font-display font-bold py-3 sm:py-3.5 px-5 rounded-lg shadow-sm transition-all text-xs sm:text-sm tracking-wider uppercase whitespace-nowrap cursor-pointer"
               >
                 DAFTAR VIA DM INSTAGRAM
               </a>

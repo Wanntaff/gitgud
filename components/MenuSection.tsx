@@ -620,7 +620,7 @@ export default function MenuSection() {
   return (
     <section
       id="menu"
-      className="scroll-mt-20 py-8 sm:py-20 lg:py-24 px-4 lg:px-12 bg-white border-b border-slate-200"
+      className="scroll-mt-[58px] py-8 sm:py-20 lg:py-24 px-4 lg:px-12 bg-white border-b border-slate-200"
     >
       <div className="max-w-7xl mx-auto w-full">
         {/* Section Header */}
@@ -869,7 +869,7 @@ export default function MenuSection() {
         {/* Menu Items Grid with Physical Flyer Transition */}
         {filteredItems.length > 0 ? (
           <>
-            <div ref={menuGridRef} className="scroll-mt-20 lg:scroll-mt-24" />
+            <div ref={menuGridRef} className="scroll-mt-[58px]" />
             <div
               key={`${activeSide}-${selectedSubcategory}-${onlyRecommended ? "rec" : "all"}-page-${safeCurrentPage}`}
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3.5 sm:gap-5 animate-flyer-flip"

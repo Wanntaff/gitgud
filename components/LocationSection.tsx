@@ -7,7 +7,7 @@ export default function LocationSection() {
   return (
     <section
       id="location"
-      className="scroll-mt-20 py-8 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-12 bg-white border-b border-slate-200"
+      className="scroll-mt-[58px] py-8 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-12 bg-white border-b border-slate-200"
     >
       <div className="max-w-7xl mx-auto w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-stretch">
@@ -101,7 +101,7 @@ export default function LocationSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => soundEffects.playButtonClick()}
-                className="inline-flex items-center justify-center flex-1 gap-2 bg-brand-orange hover:bg-brand-orange-hover text-white font-display font-bold py-3 sm:py-3.5 px-4 rounded-lg shadow-xs transition-all text-xs tracking-wider uppercase whitespace-nowrap cursor-pointer active:scale-[0.98]"
+                className="luxury-btn luxury-sheen inline-flex items-center justify-center flex-1 gap-2 bg-brand-orange hover:bg-brand-orange-hover text-white font-display font-bold py-3 sm:py-3.5 px-4 rounded-lg shadow-sm transition-all text-xs tracking-wider uppercase whitespace-nowrap cursor-pointer active:scale-[0.98]"
               >
                 <Navigation className="w-4 h-4 shrink-0" />
                 <span>GOOGLE MAPS</span>
@@ -111,7 +111,7 @@ export default function LocationSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => soundEffects.playSuccessChime()}
-                className="inline-flex items-center justify-center flex-1 gap-2 bg-white hover:bg-slate-50 text-[#172554] font-display font-bold py-3 sm:py-3.5 px-4 rounded-lg border border-slate-200 shadow-xs transition-all text-xs tracking-wider uppercase whitespace-nowrap cursor-pointer active:scale-[0.98]"
+                className="luxury-btn inline-flex items-center justify-center flex-1 gap-2 bg-white hover:bg-slate-50 text-[#172554] font-display font-bold py-3 sm:py-3.5 px-4 rounded-lg border border-slate-200 shadow-xs transition-all text-xs tracking-wider uppercase whitespace-nowrap cursor-pointer active:scale-[0.98]"
               >
                 <MessageCircle className="w-4 h-4 text-brand-orange shrink-0" />
                 <span>CHAT WA (+62 851-1748-4483)</span>

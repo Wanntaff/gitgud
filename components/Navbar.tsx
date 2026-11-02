@@ -152,9 +152,10 @@ export default function Navbar() {
             applyActiveSection(id);
           }
           const nav = document.querySelector("nav");
-          const offset = nav ? nav.offsetHeight + 8 : 72;
-          const top =
-            targetEl.getBoundingClientRect().top + window.scrollY - offset;
+          const navHeight = nav ? Math.round(nav.getBoundingClientRect().height) : 58;
+          const top = Math.round(
+            targetEl.getBoundingClientRect().top + window.scrollY - navHeight
+          );
           window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
         }, 150);
       }
@@ -376,9 +377,10 @@ export default function Navbar() {
     const element = document.getElementById(sectionId);
     if (element) {
       const nav = document.querySelector("nav");
-      const offset = nav ? nav.offsetHeight + 8 : 72;
-      const top =
-        element.getBoundingClientRect().top + window.scrollY - offset;
+      const navHeight = nav ? Math.round(nav.getBoundingClientRect().height) : 58;
+      const top = Math.round(
+        element.getBoundingClientRect().top + window.scrollY - navHeight
+      );
       window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
       window.history.pushState(null, "", `#${sectionId}`);
     }

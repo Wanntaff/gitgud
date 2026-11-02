@@ -39,7 +39,7 @@ export default function FaqSection() {
   return (
     <section
       id="faq"
-      className="scroll-mt-20 py-8 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-12 bg-[#F8FAFC] border-b border-slate-200"
+      className="scroll-mt-[58px] py-8 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-12 bg-[#F8FAFC] border-b border-slate-200"
     >
       <div className="max-w-4xl mx-auto w-full">
         <div className="flex flex-col items-center text-center mb-5 sm:mb-10 lg:mb-12">

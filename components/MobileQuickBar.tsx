@@ -30,8 +30,10 @@ export default function MobileQuickBar() {
     const el = document.getElementById(sectionId);
     if (el) {
       const nav = document.querySelector("nav");
-      const offset = nav ? nav.offsetHeight + 8 : 72;
-      const top = el.getBoundingClientRect().top + window.scrollY - offset;
+      const navHeight = nav ? Math.round(nav.getBoundingClientRect().height) : 58;
+      const top = Math.round(
+        el.getBoundingClientRect().top + window.scrollY - navHeight
+      );
       window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
     }
   };

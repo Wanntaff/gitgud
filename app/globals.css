@@ -83,21 +83,6 @@ html {
   contain: layout paint;
 }
 
-@keyframes fade-in-up {
-  0% {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in-up {
-  animation: fade-in-up 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
 /* Shimmer sweep for premium DicePicker accents */
 @keyframes shimmer-sweep {
   0% { transform: translateX(-100%); }
@@ -311,11 +296,11 @@ html {
   animation: caption-switch 300ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* Tactile Tabletop Animations */
+/* Luxury & Tactile Tabletop Animations */
 @keyframes fade-in-up {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(14px);
   }
   to {
     opacity: 1;
@@ -324,30 +309,110 @@ html {
 }
 
 .animate-fade-in-up {
-  animation: fade-in-up 400ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: fade-in-up 380ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* Tactile micro-elevation for physical board game feel */
+/* Staggered Entrance Utility Classes */
+.stagger-1 { animation-delay: 40ms; }
+.stagger-2 { animation-delay: 80ms; }
+.stagger-3 { animation-delay: 120ms; }
+.stagger-4 { animation-delay: 160ms; }
+.stagger-5 { animation-delay: 200ms; }
+
+/* Tactile micro-elevation for physical board game feel (Awwwards/Apple grade) */
 .tabletop-card {
-  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 220ms cubic-bezier(0.16, 1, 0.3, 1), border-color 220ms ease;
+  position: relative;
+  transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 260ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 220ms ease;
   will-change: transform;
 }
 
 .tabletop-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px -6px rgba(23, 37, 84, 0.08), 0 4px 10px -2px rgba(23, 37, 84, 0.04);
 }
 
 .tabletop-card:active {
-  transform: translateY(0) scale(0.99);
+  transform: translateY(-1px) scale(0.99);
+  transition-duration: 100ms;
 }
 
 .tabletop-slide-card {
-  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1), border-color 220ms ease, box-shadow 220ms ease;
+  position: relative;
+  transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 220ms ease,
+              box-shadow 260ms cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
 }
 
 .tabletop-slide-card:hover {
-  transform: translateX(4px);
+  transform: translateX(4px) translateY(-1px);
+  box-shadow: 0 8px 20px -4px rgba(23, 37, 84, 0.06);
+}
+
+.tabletop-slide-card:active {
+  transform: translateX(1px);
+}
+
+/* Apple-style spring press on interactive buttons */
+.luxury-btn {
+  position: relative;
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 180ms cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 150ms ease,
+              border-color 150ms ease;
+  will-change: transform;
+}
+
+.luxury-btn:hover {
+  transform: translateY(-1.5px);
+  box-shadow: 0 6px 16px -3px rgba(232, 74, 39, 0.25);
+}
+
+.luxury-btn:active {
+  transform: translateY(0.5px) scale(0.98);
+  transition-duration: 90ms;
+}
+
+/* Hairline specular sheen sweep across primary hero/CTA buttons */
+@keyframes luxury-sheen {
+  0% { transform: translateX(-160%) skewX(-18deg); }
+  22%, 100% { transform: translateX(260%) skewX(-18deg); }
+}
+
+.luxury-sheen {
+  position: relative;
+  overflow: hidden;
+}
+
+.luxury-sheen::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.26) 50%,
+    transparent 100%
+  );
+  animation: luxury-sheen 6.5s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  pointer-events: none;
+}
+
+/* Breathing ambient warmth for hero & banners */
+@keyframes ambient-glow {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(1.05); }
+}
+
+.animate-ambient-glow {
+  animation: ambient-glow 7s ease-in-out infinite;
+  will-change: opacity, transform;
+  transform: translateZ(0);
 }
 
 @keyframes subtle-float {
@@ -362,6 +427,9 @@ html {
 @media (prefers-reduced-motion: reduce) {
   .tabletop-card,
   .tabletop-slide-card,
+  .luxury-btn,
+  .luxury-sheen::after,
+  .animate-ambient-glow,
   .animate-subtle-float,
   .animate-fade-in-up {
     animation: none !important;

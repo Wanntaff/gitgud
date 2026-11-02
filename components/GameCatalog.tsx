@@ -11,7 +11,7 @@ import {
   Flame,
   Search,
   X,
-  Sparkles,
+  Smile,
   Heart,
   Swords,
   ShieldCheck,
@@ -78,7 +78,7 @@ const CATEGORY_DEFINITIONS: CategoryMeta[] = [
   {
     key: "casual",
     label: "Casual",
-    icon: Sparkles,
+    icon: Smile,
     vibe: "Gameplay rileks, cocok untuk ngobrol santai sambil ngopi tanpa mikir berat.",
     activeClass:
       "bg-brand-orange text-white border-brand-orange shadow-xs",
@@ -308,8 +308,8 @@ export default function GameCatalog() {
     const el = document.getElementById("games");
     if (el) {
       const nav = document.querySelector("nav");
-      const offset = nav ? nav.offsetHeight + 8 : 72;
-      const top = el.getBoundingClientRect().top + window.scrollY - offset;
+      const navHeight = nav ? Math.round(nav.getBoundingClientRect().height) : 58;
+      const top = Math.round(el.getBoundingClientRect().top + window.scrollY - navHeight);
       window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
     }
   };
@@ -317,7 +317,7 @@ export default function GameCatalog() {
   return (
     <section
       id="games"
-      className="scroll-mt-20 py-8 sm:py-20 lg:py-24 px-4 lg:px-12 bg-white border-b border-slate-200"
+      className="scroll-mt-[58px] py-8 sm:py-20 lg:py-24 px-4 lg:px-12 bg-white border-b border-slate-200"
     >
       <div className="max-w-7xl mx-auto w-full">
         {/* Section Header */}
