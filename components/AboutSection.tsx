@@ -38,11 +38,8 @@ export default function AboutSection() {
           {/* Card 1 */}
           <div className="tabletop-card group w-[80vw] sm:w-[68vw] max-w-[280px] shrink-0 snap-start md:w-auto md:max-w-none bg-white border border-slate-200 rounded-xl p-5 sm:p-6 shadow-xs hover:border-slate-300 hover:shadow-sm flex flex-col justify-between min-h-[210px] sm:min-h-[230px]">
             <div>
-              <div className="flex items-center justify-between mb-3.5 sm:mb-4">
-                <div className="w-10 h-10 sm:w-11 sm:h-11 bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange rounded-lg flex items-center justify-center font-bold shadow-xs group-hover:scale-105 group-hover:-rotate-3 transition-transform duration-200">
-                  <Layers className="w-5 h-5" />
-                </div>
-                <span className="font-sans text-[11px] font-bold text-[#94A3B8] tracking-widest">01</span>
+              <div className="w-10 h-10 sm:w-11 sm:h-11 bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange rounded-lg flex items-center justify-center font-bold mb-3.5 sm:mb-4 shadow-xs group-hover:scale-105 group-hover:-rotate-3 transition-transform duration-200">
+                <Layers className="w-5 h-5" />
               </div>
               <h3 className="font-display font-bold text-base sm:text-lg text-[#172554] mb-1.5">
                 300+ Koleksi Game
@@ -56,11 +53,8 @@ export default function AboutSection() {
           {/* Card 2 */}
           <div className="tabletop-card group w-[80vw] sm:w-[68vw] max-w-[280px] shrink-0 snap-start md:w-auto md:max-w-none bg-white border border-slate-200 rounded-xl p-5 sm:p-6 shadow-xs hover:border-slate-300 hover:shadow-sm flex flex-col justify-between min-h-[210px] sm:min-h-[230px]">
             <div>
-              <div className="flex items-center justify-between mb-3.5 sm:mb-4">
-                <div className="w-10 h-10 sm:w-11 sm:h-11 bg-[#F0F7FF] border border-[#1B64B4]/20 text-[#1B64B4] rounded-lg flex items-center justify-center font-bold shadow-xs group-hover:scale-105 group-hover:-rotate-3 transition-transform duration-200">
-                  <Compass className="w-5 h-5" />
-                </div>
-                <span className="font-sans text-[11px] font-bold text-[#94A3B8] tracking-widest">02</span>
+              <div className="w-10 h-10 sm:w-11 sm:h-11 bg-[#F0F7FF] border border-[#1B64B4]/20 text-[#1B64B4] rounded-lg flex items-center justify-center font-bold mb-3.5 sm:mb-4 shadow-xs group-hover:scale-105 group-hover:-rotate-3 transition-transform duration-200">
+                <Compass className="w-5 h-5" />
               </div>
               <h3 className="font-display font-bold text-base sm:text-lg text-[#172554] mb-1.5">
                 Game Master Standby
@@ -74,11 +68,8 @@ export default function AboutSection() {
           {/* Card 3 */}
           <div className="tabletop-card group w-[80vw] sm:w-[68vw] max-w-[280px] shrink-0 snap-start md:w-auto md:max-w-none bg-white border border-slate-200 rounded-xl p-5 sm:p-6 shadow-xs hover:border-slate-300 hover:shadow-sm flex flex-col justify-between min-h-[210px] sm:min-h-[230px]">
             <div>
-              <div className="flex items-center justify-between mb-3.5 sm:mb-4">
-                <div className="w-10 h-10 sm:w-11 sm:h-11 bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange rounded-lg flex items-center justify-center font-bold shadow-xs group-hover:scale-105 group-hover:-rotate-3 transition-transform duration-200">
-                  <Coffee className="w-5 h-5" />
-                </div>
-                <span className="font-sans text-[11px] font-bold text-[#94A3B8] tracking-widest">03</span>
+              <div className="w-10 h-10 sm:w-11 sm:h-11 bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange rounded-lg flex items-center justify-center font-bold mb-3.5 sm:mb-4 shadow-xs group-hover:scale-105 group-hover:-rotate-3 transition-transform duration-200">
+                <Coffee className="w-5 h-5" />
               </div>
               <h3 className="font-display font-bold text-base sm:text-lg text-[#172554] mb-1.5">
                 Specialty Espresso Bar
@@ -92,11 +83,8 @@ export default function AboutSection() {
           {/* Card 4 */}
           <div className="tabletop-card group w-[80vw] sm:w-[68vw] max-w-[280px] shrink-0 snap-start md:w-auto md:max-w-none bg-white border border-slate-200 rounded-xl p-5 sm:p-6 shadow-xs hover:border-slate-300 hover:shadow-sm flex flex-col justify-between min-h-[210px] sm:min-h-[230px]">
             <div>
-              <div className="flex items-center justify-between mb-3.5 sm:mb-4">
-                <div className="w-10 h-10 sm:w-11 sm:h-11 bg-[#F0F7FF] border border-[#172554]/20 text-[#172554] rounded-lg flex items-center justify-center font-bold shadow-xs group-hover:scale-105 group-hover:-rotate-3 transition-transform duration-200">
-                  <Moon className="w-5 h-5" />
-                </div>
-                <span className="font-sans text-[11px] font-bold text-[#94A3B8] tracking-widest">04</span>
+              <div className="w-10 h-10 sm:w-11 sm:h-11 bg-[#F0F7FF] border border-[#172554]/20 text-[#172554] rounded-lg flex items-center justify-center font-bold mb-3.5 sm:mb-4 shadow-xs group-hover:scale-105 group-hover:-rotate-3 transition-transform duration-200">
+                <Moon className="w-5 h-5" />
               </div>
               <h3 className="font-display font-bold text-base sm:text-lg text-[#172554] mb-1.5">
                 Weekend <span className="whitespace-nowrap">24 Jam</span>
