@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import {
   ArrowRight,
@@ -73,12 +73,11 @@ const heroSlides: HeroSlide[] = [
   },
 ];
 
-const SLIDE_DURATION = 5500; // 5.5s per slide on desktop
+const SLIDE_DURATION = 6000; // 6s per ambient mood transition
 
 export default function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const touchStartXRef = useRef<number | null>(null);
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
@@ -97,8 +96,6 @@ export default function HeroSection() {
     if (heroSlides.length <= 1 || isPaused) return;
     const isReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (isReduced) return;
-    // Auto-slide only on desktop viewports; mobile gallery remains deliberate and interactive
-    if (typeof window !== "undefined" && window.innerWidth < 1024) return;
 
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
@@ -146,151 +143,6 @@ export default function HeroSection() {
   };
 
   const activeSlideData = heroSlides[currentSlide] ?? heroSlides[0];
-
-  {/* Dedicated Mobile Lookbook: Tabletop Card Framing + Tactile 4-Scene Switcher */}
-  const renderMobileLookbook = () => (
-    <div className="relative my-3.5 sm:my-5 w-full">
-      {/* Physical Tabletop Offset Depth Layer */}
-      <div
-        className="absolute -inset-1 sm:-inset-1.5 rounded-2xl bg-gradient-to-tr from-brand-orange/15 via-[#172554]/5 to-transparent transform -rotate-1 pointer-events-none"
-        aria-hidden="true"
-      />
-
-      {/* Main Photographic Lookbook Card */}
-      <figure
-        className="relative w-full aspect-[16/10.5] sm:aspect-[16/9] rounded-2xl overflow-hidden bg-[#1C211D] border border-slate-200/90 shadow-md select-none touch-pan-y"
-        onTouchStart={(e) => {
-          touchStartXRef.current = e.touches[0].clientX;
-        }}
-        onTouchEnd={(e) => {
-          if (touchStartXRef.current === null) return;
-          const diffX = e.changedTouches[0].clientX - touchStartXRef.current;
-          if (Math.abs(diffX) > 40) {
-            soundEffects.playButtonClick();
-            if (diffX < 0) {
-              nextSlide();
-            } else {
-              prevSlide();
-            }
-          }
-          touchStartXRef.current = null;
-        }}
-        role="region"
-        aria-roledescription="carousel"
-        aria-label="Galeri Suasana Kafe Gitgud"
-      >
-        {/* Slide Photos with Crossfade */}
-        <div className="absolute inset-0">
-          {heroSlides.map((slide, idx) => {
-            const isActive = idx === currentSlide;
-            return (
-              <div
-                key={slide.id}
-                className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${
-                  isActive ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
-                }`}
-                aria-hidden={!isActive}
-              >
-                <Image
-                  src={slide.src}
-                  alt={slide.alt}
-                  fill
-                  priority={idx === 0}
-                  sizes="100vw"
-                  className="object-cover object-[52%_50%]"
-                />
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Floating Header Badges */}
-        <div className="absolute top-2.5 inset-x-2.5 z-20 flex items-center justify-between pointer-events-none">
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-md border border-white/20 text-white text-[10px] font-sans font-semibold tracking-wider shadow-xs">
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-orange animate-pulse" />
-            <span>SUASANA • 0{currentSlide + 1}/04</span>
-          </div>
-          <div className="inline-flex items-center px-2 py-0.5 rounded-full bg-black/45 backdrop-blur-md border border-white/15 text-white/90 text-[10px] font-sans font-medium">
-            <span>{activeSlideData.tag}</span>
-          </div>
-        </div>
-
-        {/* Touch Navigation Chevrons */}
-        <div className="pointer-events-none absolute inset-y-0 inset-x-2 z-25 flex items-center justify-between">
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              soundEffects.playButtonClick();
-              prevSlide();
-            }}
-            aria-label="Foto sebelumnya"
-            className="pointer-events-auto w-7.5 h-7.5 rounded-full bg-black/45 hover:bg-black/70 border border-white/25 text-white backdrop-blur-md flex items-center justify-center transition-all cursor-pointer shadow-md active:scale-90"
-          >
-            <ChevronLeft className="w-4 h-4 text-white" />
-          </button>
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              soundEffects.playButtonClick();
-              nextSlide();
-            }}
-            aria-label="Foto selanjutnya"
-            className="pointer-events-auto w-7.5 h-7.5 rounded-full bg-black/45 hover:bg-black/70 border border-white/25 text-white backdrop-blur-md flex items-center justify-center transition-all cursor-pointer shadow-md active:scale-90"
-          >
-            <ChevronRight className="w-4 h-4 text-white" />
-          </button>
-        </div>
-
-        {/* Soft Dark Gradient Base for Caption Legibility */}
-        <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0A1120]/95 via-[#0A1120]/55 to-transparent z-15 h-24 sm:h-28"
-          aria-hidden="true"
-        />
-
-        {/* Editorial Caption on Lower Third */}
-        <figcaption className="absolute inset-x-0 bottom-0 z-20 p-3 sm:p-4 text-white">
-          <div key={activeSlideData.id} className="animate-caption-switch min-w-0">
-            <span className="font-sans text-[9.5px] uppercase tracking-[0.2em] text-[#FF8566] font-bold block mb-0.5">
-              {activeSlideData.badge}
-            </span>
-            <p className="font-display font-bold text-sm sm:text-base tracking-tight text-white leading-tight">
-              {activeSlideData.title}
-            </p>
-            <p className="text-white/85 font-sans text-[11px] leading-snug mt-0.5 max-w-[280px]">
-              {activeSlideData.description}
-            </p>
-          </div>
-        </figcaption>
-      </figure>
-
-      {/* Tactile 4-Scene Switcher Dock */}
-      <div className="mt-2.5 grid grid-cols-4 gap-1.5" role="tablist" aria-label="Pilih Suasana Kafe">
-        {heroSlides.map((slide, idx) => {
-          const isActive = idx === currentSlide;
-          const IconComponent = slide.icon;
-          return (
-            <button
-              key={slide.id}
-              type="button"
-              role="tab"
-              aria-selected={isActive}
-              onClick={() => goToSlide(idx)}
-              className={`py-2 px-1 rounded-xl flex flex-col sm:flex-row items-center justify-center gap-1 text-center transition-all cursor-pointer select-none active:scale-95 ${
-                isActive
-                  ? "bg-[#172554] text-white shadow-xs font-bold scale-[1.02]"
-                  : "bg-white/90 hover:bg-white text-[#475569] border border-slate-200/80 hover:border-slate-300 font-medium"
-              }`}
-            >
-              <IconComponent className={`w-3.5 h-3.5 shrink-0 ${isActive ? "text-brand-orange" : "text-[#64748B]"}`} />
-              <span className="font-sans text-[10.5px] leading-tight whitespace-nowrap">{slide.tabLabel}</span>
-            </button>
-          );
-        })}
-      </div>
-    </div>
-  );
 
   {/* Desktop Editorial Carousel: Preserves full-height presentation and cursor parallax */}
   const renderDesktopCarousel = () => (
@@ -437,13 +289,48 @@ export default function HeroSection() {
       id="hero"
       className="relative flex flex-col overflow-hidden border-b border-slate-200 bg-[#F3F0E9] lg:min-h-[calc(100svh-112px)]"
     >
+      {/* Mobile Atmospheric Background Photography (Subtle & Elegant, 18%-22% Opacity Canvas) */}
+      <div
+        className="block lg:hidden absolute inset-0 z-0 overflow-hidden pointer-events-none select-none"
+        aria-hidden="true"
+      >
+        {heroSlides.map((slide, idx) => {
+          const isActive = idx === currentSlide;
+          return (
+            <div
+              key={slide.id}
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                isActive ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              <Image
+                src={slide.src}
+                alt=""
+                fill
+                priority={idx === 0}
+                sizes="100vw"
+                className="object-cover object-[50%_35%] filter saturate-[0.85] contrast-[1.08]"
+              />
+            </div>
+          );
+        })}
+
+        {/* Multi-layered Calibrated Scrims & Ambient Lighting */}
+        {/* 1. Global warm linen ambient wash matching Gitgud light palette */}
+        <div className="absolute inset-0 bg-[#F3F0E9]/80 backdrop-blur-[1.5px]" />
+        {/* 2. Top and bottom architectural gradient bleed */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#F3F0E9] via-transparent to-[#F3F0E9]/95" />
+        {/* 3. Subtle chromatic warm glow accent */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(232,74,39,0.09),transparent_70%)]" />
+      </div>
+
       <div className="grid w-full flex-1 grid-cols-1 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
-        {/* Left Column (Desktop) / Main Column (Mobile) */}
-        <div className="hero-copy relative z-10 flex flex-col justify-center px-4 py-6 sm:px-8 sm:py-10 lg:py-10 xl:py-12">
+        {/* Left Column (Desktop) / Main Atmospheric Column (Mobile) */}
+        <div className="hero-copy relative z-10 flex flex-col justify-center px-4 py-7 sm:px-8 sm:py-10 lg:py-10 xl:py-12">
           <div className="max-w-[650px]">
             {/* Location & Concept Eyebrow */}
-            <div className="mb-3.5 sm:mb-6 flex flex-wrap items-center gap-x-2.5 sm:gap-x-3 gap-y-1 font-sans text-[11px] font-semibold uppercase tracking-[0.16em] text-[#475569]">
-              <span className="inline-flex items-center gap-1.5 sm:gap-2 text-[#172554]">
+            <div className="mb-3 sm:mb-6 flex flex-wrap items-center gap-x-2.5 sm:gap-x-3 gap-y-1 font-sans text-[11px] font-semibold uppercase tracking-[0.16em] text-[#475569]">
+              <span className="inline-flex items-center gap-1.5 sm:gap-2 text-[#172554] bg-white/60 sm:bg-transparent backdrop-blur-sm sm:backdrop-blur-none px-2 py-0.5 sm:px-0 sm:py-0 rounded-md sm:rounded-none border border-slate-200/60 sm:border-0 shadow-2xs sm:shadow-none">
                 <MapPin className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-brand-orange" strokeWidth={1.8} />
                 Baciro, Yogyakarta
               </span>
@@ -452,7 +339,7 @@ export default function HeroSection() {
             </div>
 
             {/* Responsive Editorial Headline */}
-            <h1 className="font-display text-3xl sm:text-4xl lg:text-[clamp(2.65rem,4.7vw,4.6rem)] font-bold uppercase leading-[1.05] lg:leading-[0.96] tracking-tight lg:tracking-[-0.045em] text-[#172554]">
+            <h1 className="font-display text-[2rem] sm:text-4xl lg:text-[clamp(2.65rem,4.7vw,4.6rem)] font-bold uppercase leading-[1.08] lg:leading-[0.96] tracking-tight lg:tracking-[-0.045em] text-[#172554]">
               {/* Mobile Presentation: 2 punchy, cohesive lines */}
               <span className="block lg:hidden overflow-hidden">
                 <span className="hero-title-line block">
@@ -497,13 +384,39 @@ export default function HeroSection() {
               </span>
             </h1>
 
-            {/* Mobile Visual Showcase Card: Bespoke Curated Atmosphere Lookbook */}
-            <div className="block lg:hidden">
-              {renderMobileLookbook()}
+            {/* Mobile-Only Ambient Atmosphere Mood Selector Pill (Land-book Curated Pattern) */}
+            <div className="block lg:hidden mt-3.5 sm:mt-4">
+              <div className="inline-flex items-center gap-1 p-1 rounded-full bg-white/80 backdrop-blur-md border border-slate-200/90 shadow-2xs">
+                <span className="pl-2 pr-1 font-sans text-[10px] uppercase font-bold tracking-wider text-[#172554] flex items-center gap-1.5 shrink-0">
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand-orange animate-pulse" />
+                  <span>Suasana:</span>
+                </span>
+                <div className="flex items-center gap-1" role="tablist" aria-label="Pilih Suasana Background">
+                  {heroSlides.map((slide, idx) => {
+                    const isActive = idx === currentSlide;
+                    return (
+                      <button
+                        key={slide.id}
+                        type="button"
+                        role="tab"
+                        aria-selected={isActive}
+                        onClick={() => goToSlide(idx)}
+                        className={`px-2.5 py-1 rounded-full font-sans text-[10.5px] transition-all cursor-pointer ${
+                          isActive
+                            ? "bg-[#172554] text-white font-bold shadow-xs scale-102"
+                            : "text-[#64748B] hover:text-[#172554] font-medium"
+                        }`}
+                      >
+                        {slide.tabLabel}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
 
             {/* Description Paragraph */}
-            <p className="mt-3.5 sm:mt-6 max-w-[520px] text-xs sm:text-sm lg:text-base leading-relaxed text-[#475569] font-sans">
+            <p className="mt-3.5 sm:mt-6 max-w-[520px] text-xs sm:text-sm lg:text-base leading-relaxed text-[#334155] font-sans">
               Pilih satu dari 300+ board game, pesan kopi, lalu main bareng
               sampai lupa cek HP. Baru pertama kali? Game Master kami siap
               ngajarin di meja.
@@ -522,7 +435,7 @@ export default function HeroSection() {
               <a
                 href="#events"
                 onClick={(e) => scrollTo(e, "events")}
-                className="group w-full sm:w-auto inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl sm:rounded-none border border-slate-300 sm:border-0 sm:border-b sm:border-[#172554]/30 bg-white/70 sm:bg-transparent px-4 py-2.5 sm:px-0 sm:py-0 sm:pb-1 font-display text-xs sm:text-sm font-bold text-[#172554] transition-colors duration-150 hover:border-brand-orange hover:text-brand-orange focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-orange text-center shadow-2xs sm:shadow-none"
+                className="group w-full sm:w-auto inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl sm:rounded-none border border-slate-300 sm:border-0 sm:border-b sm:border-[#172554]/30 bg-white/80 sm:bg-transparent backdrop-blur-sm sm:backdrop-blur-none px-4 py-2.5 sm:px-0 sm:py-0 sm:pb-1 font-display text-xs sm:text-sm font-bold text-[#172554] transition-colors duration-150 hover:border-brand-orange hover:text-brand-orange focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-orange text-center shadow-2xs sm:shadow-none"
               >
                 <span>Event BOTC Kamis</span>
                 <ArrowRight
@@ -537,7 +450,7 @@ export default function HeroSection() {
               data-testid="hero-stats"
               className="mt-6 sm:mt-10 grid max-w-[540px] grid-cols-3 gap-2 sm:gap-6 border-t border-[#172554]/15 sm:border-[#172554]/20 pt-3.5 sm:pt-4"
             >
-              <div className="flex flex-col rounded-lg sm:rounded-none bg-white/60 sm:bg-transparent p-2 sm:p-0 border border-slate-200/60 sm:border-0 text-center sm:text-left">
+              <div className="flex flex-col rounded-xl sm:rounded-none bg-white/75 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none p-2.5 sm:p-0 border border-slate-200/80 sm:border-0 text-center sm:text-left shadow-2xs sm:shadow-none">
                 <dd className="order-1 font-display text-lg sm:text-2xl font-bold text-[#172554]">
                   300+
                 </dd>
@@ -545,7 +458,7 @@ export default function HeroSection() {
                   Koleksi board game
                 </dt>
               </div>
-              <div className="flex flex-col rounded-lg sm:rounded-none bg-white/60 sm:bg-transparent p-2 sm:p-0 border border-slate-200/60 sm:border-0 text-center sm:text-left">
+              <div className="flex flex-col rounded-xl sm:rounded-none bg-white/75 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none p-2.5 sm:p-0 border border-slate-200/80 sm:border-0 text-center sm:text-left shadow-2xs sm:shadow-none">
                 <dd className="order-1 font-display text-lg sm:text-2xl font-bold text-[#172554]">
                   24 Jam
                 </dd>
@@ -553,7 +466,7 @@ export default function HeroSection() {
                   Jumat s/d Minggu
                 </dt>
               </div>
-              <div className="flex flex-col rounded-lg sm:rounded-none bg-white/60 sm:bg-transparent p-2 sm:p-0 border border-slate-200/60 sm:border-0 text-center sm:text-left">
+              <div className="flex flex-col rounded-xl sm:rounded-none bg-white/75 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none p-2.5 sm:p-0 border border-slate-200/80 sm:border-0 text-center sm:text-left shadow-2xs sm:shadow-none">
                 <dd className="order-1 font-display text-lg sm:text-2xl font-bold text-[#172554]">
                   100%
                 </dd>
