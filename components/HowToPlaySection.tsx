@@ -1,4 +1,4 @@
-﻿import { Compass } from "lucide-react";
+import { Compass } from "lucide-react";
 
 export default function HowToPlaySection() {
   const steps = [
@@ -30,7 +30,7 @@ export default function HowToPlaySection() {
       className="scroll-mt-[58px] py-8 sm:py-20 lg:py-24 px-4 lg:px-12 bg-[#F8FAFC] border-b border-slate-200"
     >
       <div className="max-w-7xl mx-auto w-full">
-        <div className="border border-slate-200 bg-white rounded-2xl p-5 sm:p-8 md:p-10 relative shadow-xs overflow-hidden">
+        <div className="border border-slate-200 bg-white rounded-2xl p-5 sm:p-8 md:p-10 relative shadow-xs overflow-hidden scroll-reveal">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4 mb-5 sm:mb-10">
             <div>
               {/* Section Eyebrow */}
@@ -48,7 +48,7 @@ export default function HowToPlaySection() {
           </div>
 
           {/* Mobile Swipe Notice */}
-          <div className="flex sm:hidden items-center justify-between text-xs font-sans text-[#64748B] mb-3 px-0.5">
+          <div className="flex sm:hidden items-center justify-between text-xs font-sans text-[#64748B] mb-3 px-0.5 scroll-reveal">
             <span className="inline-flex items-center gap-1.5 text-[11px] font-medium text-[#475569]">
               <span>Geser tahapan (01–04)</span>
               <span className="text-brand-orange font-bold">→</span>
@@ -60,10 +60,10 @@ export default function HowToPlaySection() {
 
           {/* Steps: Mobile Touch-Friendly Snap Track / Desktop 4-Col Grid */}
           <div className="flex sm:grid sm:grid-cols-2 md:grid-cols-4 overflow-x-auto sm:overflow-visible snap-x snap-mandatory scrollbar-none gap-3.5 sm:gap-6 -mx-4 px-4 sm:mx-0 sm:px-0 pb-2 sm:pb-0 scroll-pl-4 scroll-pr-4">
-            {steps.map((step) => (
+            {steps.map((step, idx) => (
               <div
                 key={step.num}
-                className="tabletop-card group w-[76vw] max-w-[260px] shrink-0 snap-start sm:w-auto sm:max-w-none bg-[#F8FAFC] hover:bg-white p-4.5 sm:p-6 rounded-xl border border-slate-200 hover:border-slate-300 hover:shadow-sm shadow-xs min-h-[160px] sm:min-h-[180px] flex flex-col justify-between cursor-default"
+                className={`tabletop-card group w-[76vw] max-w-[260px] shrink-0 snap-start sm:w-auto sm:max-w-none bg-[#F8FAFC] hover:bg-white p-4.5 sm:p-6 rounded-xl border border-slate-200 hover:border-slate-300 hover:shadow-sm shadow-xs min-h-[160px] sm:min-h-[180px] flex flex-col justify-between cursor-default scroll-reveal stagger-${idx + 1}`}
               >
                 <div>
                   <div className="font-display font-black text-3xl sm:text-4xl text-brand-orange mb-2 group-hover:scale-105 origin-left transition-transform duration-200">

@@ -315,69 +315,99 @@ export default function HeroSection() {
         {/* Left Column (Desktop) / Main Full-Viewport Column (Mobile) */}
         <div className="hero-copy relative z-10 flex flex-col justify-between flex-1 px-4 py-6 sm:px-8 sm:py-8 lg:py-10 xl:py-12">
           {/* Top Block: Eyebrow, Headline, & Description */}
-          <div className="max-w-[650px]">
-            {/* Location & Concept Eyebrow */}
-            <div className="mb-3 sm:mb-6 flex flex-wrap items-center gap-x-2.5 sm:gap-x-3 gap-y-1 font-sans text-[11px] font-semibold uppercase tracking-[0.16em] text-[#475569]">
-              <span className="inline-flex items-center gap-1.5 sm:gap-2 text-[#172554] bg-white/70 backdrop-blur-sm sm:backdrop-blur-none px-2.5 py-1 sm:px-0 sm:py-0 rounded-md sm:rounded-none border border-slate-200/60 sm:border-0 shadow-2xs sm:shadow-none">
-                <MapPin className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-brand-orange" strokeWidth={1.8} />
-                Baciro, Yogyakarta
-              </span>
-              <span className="h-px w-5 sm:w-7 bg-[#A8A196]" aria-hidden="true" />
-              <span>Board game &amp; cafe</span>
-            </div>
+          <div className="max-w-[650px] w-full">
+            {/* Mobile Presentation: Floating Frosted Glass Luxury Plaque (100% Crisp Legibility & Editorial Depth) */}
+            <div className="block lg:hidden w-full rounded-2xl bg-[#FAF8F5]/92 backdrop-blur-xl border border-white/80 p-4.5 xs:p-5 sm:p-6 shadow-[0_16px_36px_-6px_rgba(23,37,84,0.14)] ring-1 ring-black/5 relative overflow-hidden animate-fade-in-up">
+              {/* Subtle top hairline gradient */}
+              <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-brand-orange/70 to-transparent" />
 
-            {/* Responsive Editorial Headline */}
-            <h1 className="font-display text-[2.15rem] sm:text-4xl lg:text-[clamp(2.65rem,4.7vw,4.6rem)] font-bold uppercase leading-[1.06] lg:leading-[0.96] tracking-tight lg:tracking-[-0.045em] text-[#172554]">
-              {/* Mobile Presentation: 2 punchy, cohesive lines */}
-              <span className="block lg:hidden overflow-hidden">
-                <span className="hero-title-line block">
-                  Bosan Main HP?
+              {/* Header: Location Eyebrow + Live Slide Badge */}
+              <div className="flex items-center justify-between gap-2 mb-3">
+                <div className="inline-flex items-center gap-1.5 font-sans text-[10.5px] font-semibold uppercase tracking-[0.14em] text-[#172554] bg-white/85 px-2.5 py-1 rounded-md border border-slate-200/60 shadow-2xs">
+                  <MapPin className="h-3.5 w-3.5 text-brand-orange shrink-0" strokeWidth={1.8} />
+                  <span>Baciro, Yogyakarta</span>
+                </div>
+                <span className="font-sans text-[9px] font-bold uppercase tracking-[0.14em] text-brand-orange bg-[#FFF5F0] border border-brand-orange/20 px-2 py-0.5 rounded-md shrink-0 transition-all duration-300">
+                  {activeSlideData.badge}
                 </span>
-              </span>
-              <span className="block lg:hidden overflow-hidden">
-                <span className="hero-title-line block text-[#172554]" style={{ animationDelay: "60ms" }}>
+              </div>
+
+              {/* Headline: Punchy, balanced, deep cobalt with brand orange accent */}
+              <h1 className="font-display text-[1.85rem] xs:text-[2.05rem] font-bold uppercase leading-[1.08] tracking-tight text-[#172554]">
+                Bosan Main HP?
+                <span className="block text-[#172554] mt-0.5">
                   Adu taktik <span className="text-brand-orange">di Gitgud.</span>
                 </span>
-              </span>
+              </h1>
 
-              {/* Desktop Presentation: 4 staggered poster lines */}
-              <span className="hidden lg:block overflow-hidden">
-                <span className="hero-title-line block whitespace-nowrap">
-                  Bosan
-                </span>
-              </span>
-              <span className="hidden lg:block overflow-hidden">
-                <span
-                  className="hero-title-line block whitespace-nowrap"
-                  style={{ animationDelay: "60ms" }}
-                >
-                  Main HP?
-                </span>
-              </span>
-              <span className="hidden lg:block overflow-hidden">
-                <span
-                  className="hero-title-line block whitespace-nowrap"
-                  style={{ animationDelay: "120ms" }}
-                >
-                  Adu taktik
-                </span>
-              </span>
-              <span className="hidden lg:block overflow-hidden">
-                <span
-                  className="hero-title-line block whitespace-nowrap text-brand-orange"
-                  style={{ animationDelay: "180ms" }}
-                >
-                  di Gitgud.
-                </span>
-              </span>
-            </h1>
+              {/* Description: High-contrast legible dark slate */}
+              <p className="mt-2.5 text-xs xs:text-[13px] leading-relaxed text-[#334155] font-sans font-medium">
+                Pilih satu dari 300+ board game, pesan kopi, lalu main bareng sampai lupa cek HP. Baru pertama kali? Game Master kami siap ngajarin di meja.
+              </p>
 
-            {/* Description Paragraph */}
-            <p className="mt-3.5 sm:mt-6 max-w-[520px] text-xs sm:text-sm lg:text-base leading-relaxed text-[#334155] font-sans font-medium">
-              Pilih satu dari 300+ board game, pesan kopi, lalu main bareng
-              sampai lupa cek HP. Baru pertama kali? Game Master kami siap
-              ngajarin di meja.
-            </p>
+              {/* Live Mood Context Bar */}
+              <div className="mt-3.5 pt-2.5 border-t border-slate-200/60 flex items-center justify-between text-[10px] text-[#64748B] font-sans">
+                <span className="font-medium truncate pr-2">
+                  Suasana: <strong className="text-[#172554] font-semibold">{activeSlideData.title}</strong>
+                </span>
+                <span className="font-mono text-[9.5px] font-bold text-[#172554]/75 shrink-0 bg-white/70 px-1.5 py-0.5 rounded border border-slate-200/60">
+                  0{currentSlide + 1} / 0{heroSlides.length}
+                </span>
+              </div>
+            </div>
+
+            {/* Desktop Presentation: 100% Preserved Original Editorial Layout */}
+            <div className="hidden lg:block">
+              {/* Location & Concept Eyebrow */}
+              <div className="mb-6 flex flex-wrap items-center gap-x-3 gap-y-1 font-sans text-[11px] font-semibold uppercase tracking-[0.16em] text-[#475569]">
+                <span className="inline-flex items-center gap-2 text-[#172554]">
+                  <MapPin className="h-4 w-4 text-brand-orange" strokeWidth={1.8} />
+                  Baciro, Yogyakarta
+                </span>
+                <span className="h-px w-7 bg-[#A8A196]" aria-hidden="true" />
+                <span>Board game &amp; cafe</span>
+              </div>
+
+              {/* Responsive Editorial Headline */}
+              <h1 className="font-display text-[clamp(2.65rem,4.7vw,4.6rem)] font-bold uppercase leading-[0.96] tracking-[-0.045em] text-[#172554]">
+                <span className="block overflow-hidden">
+                  <span className="hero-title-line block whitespace-nowrap">
+                    Bosan
+                  </span>
+                </span>
+                <span className="block overflow-hidden">
+                  <span
+                    className="hero-title-line block whitespace-nowrap"
+                    style={{ animationDelay: "60ms" }}
+                  >
+                    Main HP?
+                  </span>
+                </span>
+                <span className="block overflow-hidden">
+                  <span
+                    className="hero-title-line block whitespace-nowrap"
+                    style={{ animationDelay: "120ms" }}
+                  >
+                    Adu taktik
+                  </span>
+                </span>
+                <span className="block overflow-hidden">
+                  <span
+                    className="hero-title-line block whitespace-nowrap text-brand-orange"
+                    style={{ animationDelay: "180ms" }}
+                  >
+                    di Gitgud.
+                  </span>
+                </span>
+              </h1>
+
+              {/* Description Paragraph */}
+              <p className="mt-6 max-w-[520px] text-base leading-relaxed text-[#334155] font-sans font-medium">
+                Pilih satu dari 300+ board game, pesan kopi, lalu main bareng
+                sampai lupa cek HP. Baru pertama kali? Game Master kami siap
+                ngajarin di meja.
+              </p>
+            </div>
           </div>
 
           {/* Bottom Block: CTAs and Micro-Stats pinned above screen bottom */}

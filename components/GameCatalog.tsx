@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useMemo } from "react";
 import {
@@ -321,7 +321,7 @@ export default function GameCatalog() {
     >
       <div className="max-w-7xl mx-auto w-full">
         {/* Section Header */}
-        <div className="mb-6 sm:mb-10">
+        <div className="mb-6 sm:mb-10 scroll-reveal">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange font-sans text-xs font-semibold">
             <LayoutGrid className="w-3.5 h-3.5 text-brand-orange shrink-0" />
             <span>Katalog Meja Fisik</span>
@@ -335,7 +335,7 @@ export default function GameCatalog() {
         </div>
 
         {/* Live Search & Filter Bar */}
-        <div className="mb-5 sm:mb-6 flex flex-col md:flex-row gap-3 sm:gap-3.5 items-stretch md:items-center justify-between">
+        <div className="mb-5 sm:mb-6 flex flex-col md:flex-row gap-3 sm:gap-3.5 items-stretch md:items-center justify-between scroll-reveal">
           {/* Search Input Box */}
           <div className="relative flex-1 max-w-xl">
             <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#64748B]">
@@ -394,7 +394,7 @@ export default function GameCatalog() {
         </div>
 
         {/* Interactive Cartridge Category Tabs */}
-        <div className="mb-6 sm:mb-10">
+        <div className="mb-6 sm:mb-10 scroll-reveal">
           {/* Mobile Swipe Notice */}
           <div className="flex md:hidden items-center justify-between text-xs font-sans text-[#64748B] mb-2 px-0.5">
             <span className="inline-flex items-center gap-1.5 text-[11px] font-medium text-[#475569]">
@@ -503,7 +503,7 @@ export default function GameCatalog() {
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 animate-fade-in-up">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 animate-fade-in-up scroll-reveal">
             {visibleGames.map((game: NotionGame, idx: number) => {
               const diffConfig = game.difficulty
                 ? DIFFICULTY_CONFIG[game.difficulty] || {

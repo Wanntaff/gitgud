@@ -672,7 +672,7 @@ export default function MenuSection() {
     >
       <div className="max-w-7xl mx-auto w-full">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-5 sm:mb-10">
+        <div className="text-center max-w-3xl mx-auto mb-5 sm:mb-10 scroll-reveal">
           {/* Section Eyebrow */}
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange font-sans text-xs font-semibold">
             {activeSide === "thirsty" ? (
@@ -691,7 +691,7 @@ export default function MenuSection() {
           </p>
 
           {/* Segmented Thirsty / Hungry Switcher */}
-          <div className="mt-6 sm:mt-7 flex items-center justify-center px-2">
+          <div className="mt-6 sm:mt-7 flex items-center justify-center px-2 scroll-reveal stagger-1">
             <div className="w-full max-w-md sm:w-auto inline-flex p-1 bg-slate-100 rounded-xl border border-slate-200">
               {/* THIRSTY SIDE BUTTON */}
               <button
@@ -753,7 +753,7 @@ export default function MenuSection() {
         </div>
 
         {/* Filter Bar: Subcategories, Recommended Barista Filter, & Search */}
-        <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3.5 mb-8 bg-[#F8FAFC] p-3 sm:p-3.5 rounded-xl border border-slate-200">
+        <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3.5 mb-8 bg-[#F8FAFC] p-3 sm:p-3.5 rounded-xl border border-slate-200 scroll-reveal stagger-2">
           {/* Subcategory Track with Interactive iOS-style Scroll Chevrons & Edge Fades */}
           <div className="flex-1 min-w-0 relative flex items-center">
             {/* Left Scroll Chevron */}
@@ -776,7 +776,7 @@ export default function MenuSection() {
             {/* Subcategory Pills Track */}
             <div
               ref={subcategoryTrackRef}
-              className="flex-1 min-w-0 flex items-center gap-1.5 overflow-x-auto pb-1 lg:pb-0 scrollbar-none text-xs font-sans font-semibold scroll-smooth"
+              className="flex-1 min-w-0 flex items-center gap-1.5 overflow-x-auto px-1.5 pb-1 lg:pb-0 scrollbar-none text-xs font-sans font-semibold scroll-smooth"
             >
               {currentSubcategories.map(({ key, label }) => {
                 const isActive = selectedSubcategory === key;
@@ -784,12 +784,17 @@ export default function MenuSection() {
                   <button
                     key={key}
                     type="button"
-                    onClick={() => {
+                    onClick={(e) => {
                       soundEffects.playTileTap();
                       setSelectedSubcategory(key);
                       setCurrentPage(1);
+                      e.currentTarget.scrollIntoView({
+                        behavior: "smooth",
+                        block: "nearest",
+                        inline: "center",
+                      });
                     }}
-                    className={`px-3 py-1.5 rounded-lg border font-semibold transition-all whitespace-nowrap cursor-pointer active:scale-[0.97] ${
+                    className={`px-3 py-1.5 rounded-lg border font-semibold transition-all whitespace-nowrap cursor-pointer active:scale-[0.97] shrink-0 ${
                       isActive
                         ? "bg-brand-orange text-white border-brand-orange shadow-xs"
                         : "bg-white text-[#475569] border-slate-200 hover:text-[#172554] hover:border-slate-300"
@@ -905,7 +910,7 @@ export default function MenuSection() {
 
         {/* Featured Munch of the Day & Specialty Highlight Banner */}
         {activeSide === "hungry" ? (
-          <div className="mb-6 sm:mb-8 bg-gradient-to-r from-[#FFF5F2] via-white to-[#FFF5F2] p-3.5 sm:p-5 rounded-xl border border-brand-orange/30 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3 animate-fade-in-up">
+          <div className="mb-6 sm:mb-8 bg-gradient-to-r from-[#FFF5F2] via-white to-[#FFF5F2] p-3.5 sm:p-5 rounded-xl border border-brand-orange/30 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3 animate-fade-in-up scroll-reveal stagger-3">
             <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
               <div className="flex items-center justify-between gap-2">
                 <div className="flex items-center gap-2">
@@ -933,7 +938,7 @@ export default function MenuSection() {
             </div>
           </div>
         ) : (
-          <div className="mb-6 sm:mb-8 bg-gradient-to-r from-[#FFF9F6] via-white to-[#FFF9F6] p-3.5 sm:p-5 rounded-xl border border-brand-orange/30 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3 animate-fade-in-up">
+          <div className="mb-6 sm:mb-8 bg-gradient-to-r from-[#FFF9F6] via-white to-[#FFF9F6] p-3.5 sm:p-5 rounded-xl border border-brand-orange/30 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3 animate-fade-in-up scroll-reveal stagger-3">
             <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
               <div className="flex items-center justify-between gap-2">
                 <div className="flex items-center gap-2">
@@ -968,7 +973,7 @@ export default function MenuSection() {
             <div ref={menuGridRef} className="scroll-mt-[58px]" />
             <div
               key={`${activeSide}-${selectedSubcategory}-${onlyRecommended ? "rec" : "all"}-page-${safeCurrentPage}`}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3.5 sm:gap-5 animate-flyer-flip"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3.5 sm:gap-5 animate-flyer-flip scroll-reveal"
             >
               {paginatedItems.map((item, idx) => {
                 return (
@@ -1225,7 +1230,7 @@ export default function MenuSection() {
         )}
 
         {/* Cafe Notice Footer */}
-        <div className="mt-8 pt-4 border-t border-slate-200">
+        <div className="mt-8 pt-4 border-t border-slate-200 scroll-reveal">
           <div className="bg-[#F8FAFC] border border-slate-200 rounded-xl p-3.5 sm:px-4 sm:py-3 flex flex-col md:flex-row items-center justify-between gap-3 text-xs font-sans text-[#475569] text-center md:text-left">
             <div className="flex flex-col sm:flex-row items-center gap-1.5 sm:gap-2.5 text-center sm:text-left">
               <span className="font-bold text-[#172554] tracking-wide whitespace-nowrap bg-white border border-slate-200/90 px-2.5 py-0.5 rounded-md text-[11px] shadow-2xs">

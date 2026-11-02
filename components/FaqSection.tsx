@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import { ChevronDown, BookOpen } from "lucide-react";
@@ -42,7 +42,7 @@ export default function FaqSection() {
       className="scroll-mt-[58px] py-8 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-12 bg-[#F8FAFC] border-b border-slate-200"
     >
       <div className="max-w-4xl mx-auto w-full">
-        <div className="flex flex-col items-center text-center mb-5 sm:mb-10 lg:mb-12">
+        <div className="flex flex-col items-center text-center mb-5 sm:mb-10 lg:mb-12 scroll-reveal">
           {/* Section Eyebrow */}
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange font-sans text-xs font-semibold">
             <BookOpen className="w-3.5 h-3.5 text-brand-orange shrink-0" />
@@ -64,7 +64,7 @@ export default function FaqSection() {
             return (
               <div
                 key={index}
-                className={`tabletop-card bg-white border rounded-xl overflow-hidden transition-all duration-200 ${
+                className={`tabletop-card bg-white border rounded-xl overflow-hidden transition-all duration-200 scroll-reveal stagger-${index + 1} ${
                   isOpen
                     ? "border-slate-300 shadow-sm"
                     : "border-slate-200 hover:border-slate-300 shadow-2xs"

@@ -1,6 +1,6 @@
 "use client";
 
-import { MapPin, Clock, Navigation, ExternalLink, MessageCircle, Wifi, Zap, Wind } from "lucide-react";
+import { MapPin, Clock, MessageCircle, Navigation, ExternalLink, Wifi, Zap, Wind } from "lucide-react";
 import { soundEffects } from "@/lib/soundEffects";
 
 export default function LocationSection() {
@@ -12,7 +12,7 @@ export default function LocationSection() {
       <div className="max-w-7xl mx-auto w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-stretch">
           {/* Left Column: Venue Details & Primary Action */}
-          <div className="lg:col-span-5 flex flex-col justify-between">
+          <div className="lg:col-span-5 flex flex-col justify-between scroll-reveal">
             <div>
               {/* Section Eyebrow */}
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange font-sans text-xs font-semibold">
@@ -120,13 +120,13 @@ export default function LocationSection() {
           </div>
 
           {/* Right Column: Clean, Spacious Google Maps Viewport */}
-          <div className="lg:col-span-7 flex flex-col">
+          <div className="lg:col-span-7 flex flex-col scroll-reveal">
             <div className="h-[280px] sm:h-full sm:min-h-[520px] lg:min-h-[580px] bg-white border border-slate-200 rounded-xl overflow-hidden relative shadow-xs">
               {/* Google Maps Embed Iframe */}
               <iframe
                 title="Google Maps Lokasi Gitgud Board Game & Cafe Baciro"
                 src="https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1sGitgud+Board+Game+%26+Cafe+Baciro+Yogyakarta!6i16"
-                className="absolute inset-0 w-full h-full border-0 [contain:paint] pointer-events-none sm:pointer-events-auto"
+                className="absolute inset-0 w-full h-full border-0 [contain:paint]"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />

@@ -1,16 +1,16 @@
 "use client";
 
-import { CheckCircle, CalendarDays, Ticket } from "lucide-react";
+import { CalendarDays, CheckCircle, Ticket } from "lucide-react";
 import { soundEffects } from "@/lib/soundEffects";
 
 export default function EventsSection() {
   const events = [
     {
-      day: "RABU",
-      dayColor: "bg-[#F8FAFC] text-[#172554] border border-slate-200",
-      title: "Trivia Night & Pop Quiz",
-      desc: "Uji pengetahuan umum, pop culture, anime & gaming bareng tim kamu berhadiah treat khusus!",
-      badge: "Open for Public",
+      day: "KAMIS",
+      dayColor: "bg-[#FFF5F0] text-brand-orange border border-brand-orange/20",
+      title: "Blood on the Clocktower Night",
+      desc: "Event deduksi sosial mingguan paling ramai di Jogja. Terbuka untuk umum & pemula.",
+      badge: "Gratis Main",
     },
     {
       day: "SABTU",
@@ -36,7 +36,7 @@ export default function EventsSection() {
       <div className="max-w-7xl mx-auto w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center">
           {/* Left: Event Poster Style Card */}
-          <div className="lg:col-span-5 w-full">
+          <div className="lg:col-span-5 w-full scroll-reveal">
             <div className="bg-white border border-brand-orange/30 rounded-2xl p-6 sm:p-8 shadow-xs relative overflow-hidden">
               {/* Event Badge */}
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange font-sans font-bold text-xs tracking-wide uppercase mb-3">
@@ -87,7 +87,7 @@ export default function EventsSection() {
           </div>
 
           {/* Right: Other Events & Schedule */}
-          <div className="lg:col-span-7 flex flex-col gap-4 sm:gap-6">
+          <div className="lg:col-span-7 flex flex-col gap-4 sm:gap-6 scroll-reveal">
             <div>
               {/* Section Eyebrow */}
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFF5F0] border border-brand-orange/20 text-brand-orange font-sans text-xs font-semibold">
@@ -104,10 +104,10 @@ export default function EventsSection() {
 
             {/* Events: Clean Vertical Stack on Mobile & Desktop */}
             <div className="flex flex-col gap-3 sm:gap-4 mt-2 sm:mt-1">
-              {events.map((evt) => (
+              {events.map((evt, idx) => (
                 <div
                   key={evt.day}
-                  className="tabletop-card w-full bg-white hover:bg-slate-50/60 p-3.5 sm:p-5 rounded-xl border border-slate-200 hover:border-slate-300 hover:shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 shadow-xs cursor-default"
+                  className={`tabletop-card w-full bg-white hover:bg-slate-50/60 p-3.5 sm:p-5 rounded-xl border border-slate-200 hover:border-slate-300 hover:shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 shadow-xs cursor-default scroll-reveal stagger-${idx + 1}`}
                 >
                   <div className="flex items-start gap-3 sm:gap-4">
                     <div

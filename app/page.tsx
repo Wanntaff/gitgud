@@ -11,10 +11,12 @@ import LocationSection from "@/components/LocationSection";
 import CtaBanner from "@/components/CtaBanner";
 import Footer from "@/components/Footer";
 import MobileQuickBar from "@/components/MobileQuickBar";
+import ScrollRevealManager from "@/components/ScrollRevealManager";
 
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-white overflow-x-clip">
+      <ScrollRevealManager />
       <AnnouncementTicker />
       <Navbar />
       <main className="flex-1">
