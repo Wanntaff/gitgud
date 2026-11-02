@@ -126,30 +126,254 @@ export default function HeroSection() {
 
   const activeSlideData = heroSlides[currentSlide] ?? heroSlides[0];
 
+  const renderCarousel = (isMobileVariant: boolean) => (
+    <figure
+      className={
+        isMobileVariant
+          ? "hero-photo-shell group relative my-4 sm:my-5 w-full aspect-[16/10] sm:aspect-[16/9] rounded-2xl overflow-hidden bg-[#1C211D] border border-slate-200/80 shadow-md select-none"
+          : "hero-photo-shell group relative min-h-[580px] h-full overflow-hidden bg-[#1C211D] select-none"
+      }
+      onPointerMove={!isMobileVariant ? movePhoto : undefined}
+      onPointerLeave={
+        !isMobileVariant
+          ? (e) => {
+              resetPhoto(e);
+              setIsPaused(false);
+            }
+          : undefined
+      }
+      onPointerEnter={!isMobileVariant ? () => setIsPaused(true) : undefined}
+      onTouchStart={(e) => {
+        setIsPaused(true);
+        touchStartXRef.current = e.touches[0].clientX;
+      }}
+      onTouchEnd={(e) => {
+        setIsPaused(false);
+        if (touchStartXRef.current === null) return;
+        const diffX = e.changedTouches[0].clientX - touchStartXRef.current;
+        if (Math.abs(diffX) > 40) {
+          if (diffX < 0) {
+            nextSlide();
+          } else {
+            prevSlide();
+          }
+        }
+        touchStartXRef.current = null;
+      }}
+      role="region"
+      aria-roledescription="carousel"
+      aria-label="Galeri Suasana Kafe Gitgud"
+    >
+      {/* Segmented iOS-Style Story Progress Bars */}
+      {heroSlides.length > 1 && (
+        <div
+          className={`absolute z-30 flex items-center gap-1.5 sm:gap-2 ${
+            isMobileVariant
+              ? "top-3 inset-x-3 sm:inset-x-6"
+              : "top-4 inset-x-4 sm:inset-x-8"
+          }`}
+        >
+          {heroSlides.map((slide, idx) => {
+            const isActive = idx === currentSlide;
+            const isPassed = idx < currentSlide;
+            return (
+              <button
+                key={slide.id}
+                type="button"
+                onClick={() => goToSlide(idx)}
+                aria-label={`Buka slide ${idx + 1}: ${slide.title}`}
+                className="relative h-[3px] sm:h-[3.5px] flex-1 rounded-full bg-white/25 backdrop-blur-sm overflow-hidden transition-all hover:h-[5px] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white cursor-pointer"
+              >
+                <span
+                  key={`${slide.id}-${isActive ? currentSlide : "inactive"}`}
+                  className={`absolute inset-0 bg-white rounded-full ${
+                    isPassed
+                      ? "w-full"
+                      : isActive
+                      ? "w-full origin-left"
+                      : "w-0"
+                  }`}
+                  style={
+                    isActive
+                      ? {
+                          animation: `slide-progress ${SLIDE_DURATION}ms linear forwards`,
+                          animationPlayState: isPaused ? "paused" : "running",
+                        }
+                      : undefined
+                  }
+                />
+              </button>
+            );
+          })}
+        </div>
+      )}
+
+      {/* Interactive Slide Photos Layer */}
+      <div className="hero-photo-settle absolute inset-0">
+        {heroSlides.map((slide, idx) => {
+          const isActive = idx === currentSlide;
+          return (
+            <div
+              key={slide.id}
+              className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                isActive ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
+              }`}
+              aria-hidden={!isActive}
+            >
+              <Image
+                src={slide.src}
+                alt={slide.alt}
+                fill
+                priority={idx === 0}
+                sizes={isMobileVariant ? "100vw" : "(max-width: 1023px) 100vw, 56vw"}
+                className="hero-photo-image object-cover object-[52%_50%]"
+              />
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Soft Dark Gradient Base for Caption Legibility */}
+      <div
+        className={`pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0A1120]/95 via-[#0A1120]/50 to-transparent z-15 ${
+          isMobileVariant ? "h-24 sm:h-28" : "h-48"
+        }`}
+        aria-hidden="true"
+      />
+
+      {/* Sleek Arrow Controls (Visible and touch-tappable on mobile; hover-reveal on desktop) */}
+      {heroSlides.length > 1 && (
+        <div
+          className={`pointer-events-none absolute inset-y-0 z-25 flex items-center justify-between ${
+            isMobileVariant
+              ? "inset-x-2.5 sm:inset-x-3"
+              : "inset-x-3 sm:inset-x-5"
+          }`}
+        >
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              soundEffects.playButtonClick();
+              prevSlide();
+            }}
+            aria-label="Foto sebelumnya"
+            className={`pointer-events-auto w-7.5 h-7.5 sm:w-9 sm:h-9 rounded-full bg-black/40 hover:bg-black/70 border border-white/20 text-white backdrop-blur-md flex items-center justify-center transition-all cursor-pointer shadow-md active:scale-90 ${
+              isMobileVariant
+                ? "opacity-90"
+                : "opacity-0 group-hover:opacity-100 focus-visible:opacity-100"
+            }`}
+          >
+            <ChevronLeft className="w-4 h-4 text-white" />
+          </button>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              soundEffects.playButtonClick();
+              nextSlide();
+            }}
+            aria-label="Foto selanjutnya"
+            className={`pointer-events-auto w-7.5 h-7.5 sm:w-9 sm:h-9 rounded-full bg-black/40 hover:bg-black/70 border border-white/20 text-white backdrop-blur-md flex items-center justify-center transition-all cursor-pointer shadow-md active:scale-90 ${
+              isMobileVariant
+                ? "opacity-90"
+                : "opacity-0 group-hover:opacity-100 focus-visible:opacity-100"
+            }`}
+          >
+            <ChevronRight className="w-4 h-4 text-white" />
+          </button>
+        </div>
+      )}
+
+      {/* Dynamic Editorial Caption with Smooth Switch Animation */}
+      <figcaption
+        className={`hero-photo-caption absolute inset-x-0 bottom-0 z-20 flex items-end justify-between gap-3 sm:gap-4 text-white ${
+          isMobileVariant ? "p-3 sm:p-4" : "p-5 sm:p-7 lg:p-8"
+        }`}
+      >
+        <div key={activeSlideData.id} className="animate-caption-switch min-w-0">
+          {heroSlides.length > 1 && (
+            <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#FF8566] font-bold block mb-0.5 sm:mb-1">
+              {activeSlideData.badge}
+            </span>
+          )}
+          <p
+            className={`font-display font-bold tracking-tight text-white ${
+              isMobileVariant ? "text-sm sm:text-base" : "text-xl sm:text-2xl"
+            }`}
+          >
+            {activeSlideData.title}
+          </p>
+          <p
+            className={`text-white/85 font-sans ${
+              isMobileVariant
+                ? "text-[11px] leading-tight line-clamp-1 mt-0.5"
+                : "mt-1 max-w-[340px] text-xs sm:text-sm leading-relaxed"
+            }`}
+          >
+            {activeSlideData.description}
+          </p>
+        </div>
+        <div className="shrink-0 flex flex-col items-end gap-1 font-sans text-[10px] uppercase tracking-[0.18em] text-white/80">
+          <span className={isMobileVariant ? "hidden sm:inline" : ""}>
+            {activeSlideData.tag}
+          </span>
+          {heroSlides.length > 1 && (
+            <span
+              className={`rounded-full bg-black/35 backdrop-blur-sm px-2 py-0.5 border border-white/10 ${
+                isMobileVariant
+                  ? "text-[9px] text-white/90 font-bold"
+                  : "text-[9px] text-white/50 tracking-wider"
+              }`}
+            >
+              0{currentSlide + 1} / 0{heroSlides.length}
+            </span>
+          )}
+        </div>
+      </figcaption>
+    </figure>
+  );
+
   return (
     <section
       id="hero"
       className="relative flex flex-col overflow-hidden border-b border-slate-200 bg-[#F3F0E9] lg:min-h-[calc(100svh-112px)]"
     >
       <div className="grid w-full flex-1 grid-cols-1 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
-        <div className="hero-copy relative z-10 flex flex-col justify-center px-5 py-8 sm:px-8 sm:py-12 lg:py-10 xl:py-12">
+        {/* Left Column (Desktop) / Main Column (Mobile) */}
+        <div className="hero-copy relative z-10 flex flex-col justify-center px-4 py-6 sm:px-8 sm:py-10 lg:py-10 xl:py-12">
           <div className="max-w-[650px]">
-            <div className="mb-5 flex flex-wrap items-center gap-x-3 gap-y-1 font-sans text-[11px] font-semibold uppercase tracking-[0.16em] text-[#475569] sm:mb-7">
-              <span className="inline-flex items-center gap-2 text-[#172554]">
-                <MapPin className="h-4 w-4 text-brand-orange" strokeWidth={1.8} />
+            {/* Location & Concept Eyebrow */}
+            <div className="mb-3.5 sm:mb-6 flex flex-wrap items-center gap-x-2.5 sm:gap-x-3 gap-y-1 font-sans text-[11px] font-semibold uppercase tracking-[0.16em] text-[#475569]">
+              <span className="inline-flex items-center gap-1.5 sm:gap-2 text-[#172554]">
+                <MapPin className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-brand-orange" strokeWidth={1.8} />
                 Baciro, Yogyakarta
               </span>
-              <span className="h-px w-7 bg-[#A8A196]" aria-hidden="true" />
+              <span className="h-px w-5 sm:w-7 bg-[#A8A196]" aria-hidden="true" />
               <span>Board game &amp; cafe</span>
             </div>
 
-            <h1 className="font-display text-[clamp(2.65rem,4.7vw,4.6rem)] font-bold uppercase leading-[0.96] tracking-[-0.045em] text-[#172554]">
-              <span className="block overflow-hidden">
+            {/* Responsive Editorial Headline */}
+            <h1 className="font-display text-3xl sm:text-4xl lg:text-[clamp(2.65rem,4.7vw,4.6rem)] font-bold uppercase leading-[1.05] lg:leading-[0.96] tracking-tight lg:tracking-[-0.045em] text-[#172554]">
+              {/* Mobile Presentation: 2 punchy, cohesive lines */}
+              <span className="block lg:hidden overflow-hidden">
+                <span className="hero-title-line block">
+                  Bosan Main HP?
+                </span>
+              </span>
+              <span className="block lg:hidden overflow-hidden">
+                <span className="hero-title-line block text-[#172554]" style={{ animationDelay: "60ms" }}>
+                  Adu taktik <span className="text-brand-orange">di Gitgud.</span>
+                </span>
+              </span>
+
+              {/* Desktop Presentation: 4 staggered poster lines */}
+              <span className="hidden lg:block overflow-hidden">
                 <span className="hero-title-line block whitespace-nowrap">
                   Bosan
                 </span>
               </span>
-              <span className="block overflow-hidden">
+              <span className="hidden lg:block overflow-hidden">
                 <span
                   className="hero-title-line block whitespace-nowrap"
                   style={{ animationDelay: "60ms" }}
@@ -157,7 +381,7 @@ export default function HeroSection() {
                   Main HP?
                 </span>
               </span>
-              <span className="block overflow-hidden">
+              <span className="hidden lg:block overflow-hidden">
                 <span
                   className="hero-title-line block whitespace-nowrap"
                   style={{ animationDelay: "120ms" }}
@@ -165,7 +389,7 @@ export default function HeroSection() {
                   Adu taktik
                 </span>
               </span>
-              <span className="block overflow-hidden">
+              <span className="hidden lg:block overflow-hidden">
                 <span
                   className="hero-title-line block whitespace-nowrap text-brand-orange"
                   style={{ animationDelay: "180ms" }}
@@ -175,27 +399,34 @@ export default function HeroSection() {
               </span>
             </h1>
 
-            <p className="mt-5 max-w-[520px] text-sm leading-relaxed text-[#475569] sm:mt-6 sm:text-base font-sans">
+            {/* Mobile Visual Showcase Card: Instant visual hook right below headline */}
+            <div className="block lg:hidden">
+              {renderCarousel(true)}
+            </div>
+
+            {/* Description Paragraph */}
+            <p className="mt-3.5 sm:mt-6 max-w-[520px] text-xs sm:text-sm lg:text-base leading-relaxed text-[#475569] font-sans">
               Pilih satu dari 300+ board game, pesan kopi, lalu main bareng
               sampai lupa cek HP. Baru pertama kali? Game Master kami siap
               ngajarin di meja.
             </p>
 
-            <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-4 sm:mt-8">
+            {/* Responsive Call-to-Actions (Full touch targets on mobile) */}
+            <div className="mt-5 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-6">
               <a
                 href="#games"
                 onClick={(e) => scrollTo(e, "games")}
-                className="group luxury-btn luxury-sheen inline-flex cursor-pointer items-center justify-center gap-2 rounded-md border border-brand-orange bg-brand-orange px-5 py-3 font-display text-sm font-bold text-white transition-colors duration-150 hover:border-brand-orange-hover hover:bg-brand-orange-hover focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-orange shadow-sm"
+                className="group luxury-btn luxury-sheen w-full sm:w-auto inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl sm:rounded-md border border-brand-orange bg-brand-orange px-5 py-3 sm:py-3 font-display text-xs sm:text-sm font-bold text-white transition-colors duration-150 hover:border-brand-orange-hover hover:bg-brand-orange-hover focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-orange shadow-sm text-center"
               >
                 <Dices className="h-4 w-4" strokeWidth={1.8} />
-                Pilih Game Buat Squad
+                <span>Pilih Game Buat Squad</span>
               </a>
               <a
                 href="#events"
                 onClick={(e) => scrollTo(e, "events")}
-                className="group inline-flex cursor-pointer items-center gap-2 border-b border-[#172554]/30 pb-1 font-display text-sm font-bold text-[#172554] transition-colors duration-150 hover:border-brand-orange hover:text-brand-orange focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-orange"
+                className="group w-full sm:w-auto inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl sm:rounded-none border border-slate-300 sm:border-0 sm:border-b sm:border-[#172554]/30 bg-white/70 sm:bg-transparent px-4 py-2.5 sm:px-0 sm:py-0 sm:pb-1 font-display text-xs sm:text-sm font-bold text-[#172554] transition-colors duration-150 hover:border-brand-orange hover:text-brand-orange focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-orange text-center shadow-2xs sm:shadow-none"
               >
-                Event BOTC Kamis
+                <span>Event BOTC Kamis</span>
                 <ArrowRight
                   className="h-4 w-4 transition-transform duration-150 group-hover:translate-x-1"
                   strokeWidth={1.8}
@@ -203,31 +434,32 @@ export default function HeroSection() {
               </a>
             </div>
 
+            {/* Micro Stats (Balanced 3-column micro-strip on mobile) */}
             <dl
               data-testid="hero-stats"
-              className="mt-8 grid max-w-[540px] grid-cols-3 gap-3 border-t border-[#172554]/20 pt-4 sm:mt-10 sm:gap-6"
+              className="mt-6 sm:mt-10 grid max-w-[540px] grid-cols-3 gap-2 sm:gap-6 border-t border-[#172554]/15 sm:border-[#172554]/20 pt-3.5 sm:pt-4"
             >
-              <div className="flex flex-col">
-                <dd className="order-1 font-display text-xl font-bold text-[#172554] sm:text-2xl">
+              <div className="flex flex-col rounded-lg sm:rounded-none bg-white/60 sm:bg-transparent p-2 sm:p-0 border border-slate-200/60 sm:border-0 text-center sm:text-left">
+                <dd className="order-1 font-display text-lg sm:text-2xl font-bold text-[#172554]">
                   300+
                 </dd>
-                <dt className="order-2 mt-1 text-[10px] leading-snug text-[#5D626B] sm:text-xs">
+                <dt className="order-2 mt-0.5 sm:mt-1 text-[9.5px] sm:text-xs leading-tight text-[#5D626B] font-sans">
                   Koleksi board game
                 </dt>
               </div>
-              <div className="flex flex-col">
-                <dd className="order-1 font-display text-xl font-bold text-[#172554] sm:text-2xl">
+              <div className="flex flex-col rounded-lg sm:rounded-none bg-white/60 sm:bg-transparent p-2 sm:p-0 border border-slate-200/60 sm:border-0 text-center sm:text-left">
+                <dd className="order-1 font-display text-lg sm:text-2xl font-bold text-[#172554]">
                   24 Jam
                 </dd>
-                <dt className="order-2 mt-1 text-[10px] leading-snug text-[#5D626B] sm:text-xs">
-                  Jumat sampai Minggu
+                <dt className="order-2 mt-0.5 sm:mt-1 text-[9.5px] sm:text-xs leading-tight text-[#5D626B] font-sans">
+                  Jumat s/d Minggu
                 </dt>
               </div>
-              <div className="flex flex-col">
-                <dd className="order-1 font-display text-xl font-bold text-[#172554] sm:text-2xl">
+              <div className="flex flex-col rounded-lg sm:rounded-none bg-white/60 sm:bg-transparent p-2 sm:p-0 border border-slate-200/60 sm:border-0 text-center sm:text-left">
+                <dd className="order-1 font-display text-lg sm:text-2xl font-bold text-[#172554]">
                   100%
                 </dd>
-                <dt className="order-2 mt-1 text-[10px] leading-snug text-[#5D626B] sm:text-xs">
+                <dt className="order-2 mt-0.5 sm:mt-1 text-[9.5px] sm:text-xs leading-tight text-[#5D626B] font-sans">
                   Diajarin Game Master
                 </dt>
               </div>
@@ -235,159 +467,10 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <figure
-          className="hero-photo-shell group relative min-h-[360px] overflow-hidden bg-[#1C211D] sm:min-h-[440px] lg:min-h-[580px] select-none"
-          onPointerMove={movePhoto}
-          onPointerLeave={(e) => {
-            resetPhoto(e);
-            setIsPaused(false);
-          }}
-          onPointerEnter={() => setIsPaused(true)}
-          onTouchStart={(e) => {
-            setIsPaused(true);
-            touchStartXRef.current = e.touches[0].clientX;
-          }}
-          onTouchEnd={(e) => {
-            setIsPaused(false);
-            if (touchStartXRef.current === null) return;
-            const diffX = e.changedTouches[0].clientX - touchStartXRef.current;
-            if (Math.abs(diffX) > 40) {
-              if (diffX < 0) {
-                nextSlide();
-              } else {
-                prevSlide();
-              }
-            }
-            touchStartXRef.current = null;
-          }}
-          role="region"
-          aria-roledescription="carousel"
-          aria-label="Galeri Suasana Kafe Gitgud"
-        >
-          {/* Segmented iOS-Style Story Progress Bars */}
-          {heroSlides.length > 1 && (
-            <div className="absolute top-4 inset-x-4 sm:inset-x-8 z-30 flex items-center gap-1.5 sm:gap-2">
-              {heroSlides.map((slide, idx) => {
-                const isActive = idx === currentSlide;
-                const isPassed = idx < currentSlide;
-                return (
-                  <button
-                    key={slide.id}
-                    type="button"
-                    onClick={() => goToSlide(idx)}
-                    aria-label={`Buka slide ${idx + 1}: ${slide.title}`}
-                    className="relative h-[3px] sm:h-[3.5px] flex-1 rounded-full bg-white/20 backdrop-blur-sm overflow-hidden transition-all hover:h-[5px] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white cursor-pointer"
-                  >
-                    <span
-                      key={`${slide.id}-${isActive ? currentSlide : "inactive"}`}
-                      className={`absolute inset-0 bg-white rounded-full ${
-                        isPassed
-                          ? "w-full"
-                          : isActive
-                          ? "w-full origin-left"
-                          : "w-0"
-                      }`}
-                      style={
-                        isActive
-                          ? {
-                              animation: `slide-progress ${SLIDE_DURATION}ms linear forwards`,
-                              animationPlayState: isPaused ? "paused" : "running",
-                            }
-                          : undefined
-                      }
-                    />
-                  </button>
-                );
-              })}
-            </div>
-          )}
-
-          {/* Interactive Slide Photos Layer */}
-          <div className="hero-photo-settle absolute inset-0">
-            {heroSlides.map((slide, idx) => {
-              const isActive = idx === currentSlide;
-              return (
-                <div
-                  key={slide.id}
-                  className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-                    isActive ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
-                  }`}
-                  aria-hidden={!isActive}
-                >
-                  <Image
-                    src={slide.src}
-                    alt={slide.alt}
-                    fill
-                    priority={idx === 0}
-                    sizes="(max-width: 1023px) 100vw, 56vw"
-                    className="hero-photo-image object-cover object-[52%_50%]"
-                  />
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Soft Dark Gradient Base for Caption Legibility */}
-          <div
-            className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#0A1120]/95 via-[#0A1120]/50 to-transparent z-15"
-            aria-hidden="true"
-          />
-
-          {/* Sleek Minimal Arrow Controls (reveal on hover for desktop) */}
-          {heroSlides.length > 1 && (
-            <div className="pointer-events-none absolute inset-y-0 inset-x-3 sm:inset-x-5 z-25 flex items-center justify-between">
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  soundEffects.playButtonClick();
-                  prevSlide();
-                }}
-                aria-label="Foto sebelumnya"
-                className="pointer-events-auto w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/40 hover:bg-black/70 border border-white/20 text-white backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 focus-visible:opacity-100 transition-all cursor-pointer shadow-md active:scale-90"
-              >
-                <ChevronLeft className="w-4 h-4 text-white" />
-              </button>
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  soundEffects.playButtonClick();
-                  nextSlide();
-                }}
-                aria-label="Foto selanjutnya"
-                className="pointer-events-auto w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/40 hover:bg-black/70 border border-white/20 text-white backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 focus-visible:opacity-100 transition-all cursor-pointer shadow-md active:scale-90"
-              >
-                <ChevronRight className="w-4 h-4 text-white" />
-              </button>
-            </div>
-          )}
-
-          {/* Dynamic Editorial Caption with Smooth Switch Animation */}
-          <figcaption className="hero-photo-caption absolute inset-x-0 bottom-0 z-20 flex items-end justify-between gap-4 p-5 text-white sm:p-7 lg:p-8">
-            <div key={activeSlideData.id} className="animate-caption-switch">
-              {heroSlides.length > 1 && (
-                <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#FF8566] font-bold block mb-1">
-                  {activeSlideData.badge}
-                </span>
-              )}
-              <p className="font-display text-xl font-bold tracking-tight sm:text-2xl text-white">
-                {activeSlideData.title}
-              </p>
-              <p className="mt-1 max-w-[340px] text-xs leading-relaxed text-white/85 sm:text-sm font-sans">
-                {activeSlideData.description}
-              </p>
-            </div>
-            <div className="hidden shrink-0 flex-col items-end gap-1 font-sans text-[10px] uppercase tracking-[0.18em] text-white/80 sm:flex">
-              <span>{activeSlideData.tag}</span>
-              {heroSlides.length > 1 && (
-                <span className="text-[9px] text-white/50 tracking-wider">
-                  0{currentSlide + 1} / 0{heroSlides.length}
-                </span>
-              )}
-            </div>
-          </figcaption>
-        </figure>
+        {/* Right Column (Desktop Only): Full-height editorial photo showcase */}
+        <div className="hidden lg:block h-full">
+          {renderCarousel(false)}
+        </div>
       </div>
     </section>
   );

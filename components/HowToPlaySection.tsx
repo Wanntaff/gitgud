@@ -38,7 +38,7 @@ export default function HowToPlaySection() {
                 <Compass className="w-3.5 h-3.5 text-[#1B64B4] shrink-0" />
                 <span>Alur Kunjungan</span>
               </div>
-              <h2 className="font-display font-black text-2xl sm:text-[1.75rem] md:text-3xl lg:text-[2rem] xl:text-[2.15rem] text-[#172554] mt-3 tracking-tight leading-tight">
+              <h2 className="font-display font-black text-xl sm:text-[1.75rem] md:text-3xl lg:text-[2rem] xl:text-[2.15rem] text-[#172554] mt-2.5 sm:mt-3 tracking-tight leading-tight">
                 CARA NONGKRONG &amp; MAIN DI GITGUD
               </h2>
             </div>

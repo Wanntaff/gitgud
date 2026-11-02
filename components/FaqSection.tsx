@@ -49,7 +49,7 @@ export default function FaqSection() {
             <span>Bantuan &amp; Info Praktis</span>
           </div>
 
-          <h2 className="font-display font-black text-2xl sm:text-[1.75rem] md:text-3xl lg:text-[2rem] xl:text-[2.15rem] text-[#172554] tracking-tight mt-2.5 sm:mt-3">
+          <h2 className="font-display font-black text-xl sm:text-[1.75rem] md:text-3xl lg:text-[2rem] xl:text-[2.15rem] text-[#172554] tracking-tight mt-2.5 sm:mt-3">
             PERTANYAAN SEPUTAR GITGUD
           </h2>
           <p className="text-[#475569] text-xs sm:text-base mt-1.5 sm:mt-2.5 max-w-xl font-sans">

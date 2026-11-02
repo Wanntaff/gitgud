@@ -326,7 +326,7 @@ export default function GameCatalog() {
             <LayoutGrid className="w-3.5 h-3.5 text-brand-orange shrink-0" />
             <span>Katalog Meja Fisik</span>
           </div>
-          <h2 className="font-display font-black text-2xl sm:text-[1.75rem] md:text-3xl lg:text-[2rem] xl:text-[2.15rem] text-[#172554] mt-2.5 sm:mt-3 tracking-tight leading-tight">
+          <h2 className="font-display font-black text-xl sm:text-[1.75rem] md:text-3xl lg:text-[2rem] xl:text-[2.15rem] text-[#172554] mt-2.5 sm:mt-3 tracking-tight leading-tight">
             362 KOLEKSI BOARD GAME GITGUD
           </h2>
           <p className="text-[#475569] text-xs sm:text-base mt-1.5 sm:mt-2 max-w-2xl font-sans">

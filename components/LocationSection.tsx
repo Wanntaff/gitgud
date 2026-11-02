@@ -20,7 +20,7 @@ export default function LocationSection() {
                 <span>Lokasi &amp; Jam Buka</span>
               </div>
 
-              <h2 className="font-display font-black text-2xl sm:text-[1.75rem] md:text-2xl lg:text-[1.65rem] xl:text-[1.85rem] text-[#172554] mt-2.5 sm:mt-3 tracking-tight sm:whitespace-nowrap lg:whitespace-normal xl:whitespace-nowrap">
+              <h2 className="font-display font-black text-xl sm:text-[1.75rem] md:text-2xl lg:text-[1.65rem] xl:text-[1.85rem] text-[#172554] mt-2.5 sm:mt-3 tracking-tight sm:whitespace-nowrap lg:whitespace-normal xl:whitespace-nowrap">
                 LOKASI &amp; JAM OPERASIONAL
               </h2>
               <p className="text-[#475569] text-xs sm:text-base mt-1.5 sm:mt-2 leading-relaxed">

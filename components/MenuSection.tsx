@@ -672,7 +672,7 @@ export default function MenuSection() {
             <span>Menu Pilihan Baciro HQ</span>
           </div>
 
-          <h2 className="font-display font-black text-2xl sm:text-[1.75rem] md:text-3xl lg:text-[2rem] xl:text-[2.15rem] text-[#172554] mt-3 tracking-tight leading-tight">
+          <h2 className="font-display font-black text-xl sm:text-[1.75rem] md:text-3xl lg:text-[2rem] xl:text-[2.15rem] text-[#172554] mt-2.5 sm:mt-3 tracking-tight leading-tight">
             MENU GITGUD CAFE
           </h2>
           <p className="text-[#475569] text-xs sm:text-sm mt-2 max-w-xl mx-auto leading-relaxed font-sans">
