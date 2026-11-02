@@ -227,10 +227,10 @@ export default function DicePicker({ compact = false }: DicePickerProps) {
               />
             </div>
             <div className="min-w-0">
-              <h3 className="font-display font-bold text-xs sm:text-[13px] text-[#172554] truncate leading-tight">
+              <h3 className="font-display font-bold text-xs sm:text-[13px] text-[#172554] leading-tight">
                 Gud Game Picker
               </h3>
-              <p className="text-[9px] font-sans font-medium text-[#64748B] truncate tracking-wide uppercase">
+              <p className="text-[9px] font-sans font-medium text-[#64748B] tracking-wide uppercase">
                 Baciro Roulette
               </p>
             </div>
@@ -268,7 +268,7 @@ export default function DicePicker({ compact = false }: DicePickerProps) {
             </div>
             <div className="min-w-0">
               <div className="flex items-center gap-1.5 flex-wrap">
-                <h4 className="font-display font-bold text-xs sm:text-sm text-[#172554] truncate">
+                <h4 className="font-display font-bold text-xs sm:text-sm text-[#172554]">
                   {selectedGame.name}
                 </h4>
                 <span className="text-[9px] font-sans font-semibold text-[#172554] bg-white border border-slate-200 px-1.5 py-0.2 rounded">
@@ -327,10 +327,10 @@ export default function DicePicker({ compact = false }: DicePickerProps) {
               </div>
             </div>
             <div className="min-w-0">
-              <h3 className="font-display font-bold text-sm sm:text-[15px] text-[#172554] truncate leading-tight tracking-tight">
+              <h3 className="font-display font-bold text-sm sm:text-[15px] text-[#172554] leading-tight tracking-tight">
                 Gud Game Picker
               </h3>
-              <p className="text-[10px] sm:text-[10.5px] font-sans font-medium text-[#64748B] truncate tracking-wide uppercase">
+              <p className="text-[10px] sm:text-[10.5px] font-sans font-medium text-[#64748B] tracking-wide uppercase">
                 Baciro Tabletop Roulette
               </p>
             </div>
@@ -374,7 +374,7 @@ export default function DicePicker({ compact = false }: DicePickerProps) {
                     D{currentDiceNumber}
                   </span>
                   <span className="text-slate-300 select-none">•</span>
-                  <span className="font-sans text-[10.5px] text-[#475569] font-medium truncate">
+                  <span className="font-sans text-[10.5px] text-[#475569] font-medium">
                     {selectedGame.boxSubtitle}
                   </span>
                 </div>
@@ -412,10 +412,10 @@ export default function DicePicker({ compact = false }: DicePickerProps) {
 
                   {/* Game Title */}
                   <div className="min-w-0">
-                    <h4 className="font-display font-bold text-[13px] sm:text-sm xl:text-[15px] text-[#172554] tracking-tight leading-snug truncate">
+                    <h4 className="font-display font-bold text-[13px] sm:text-sm xl:text-[15px] text-[#172554] tracking-tight leading-snug">
                       {selectedGame.name}
                     </h4>
-                    <p className="text-[10px] sm:text-[10.5px] font-sans text-[#64748B] mt-0.5 truncate tracking-wide">
+                    <p className="text-[10px] sm:text-[10.5px] font-sans text-[#64748B] mt-0.5 tracking-wide">
                       Edisi Meja Fisik Gitgud Cafe
                     </p>
                   </div>
@@ -450,7 +450,7 @@ export default function DicePicker({ compact = false }: DicePickerProps) {
                   <span className="w-3 h-[1.5px] bg-brand-orange/40 rounded-full" />
                   <span>Catatan Game Master</span>
                 </div>
-                <p className="text-[10.5px] sm:text-[11px] text-[#475569] italic leading-snug font-sans line-clamp-2 relative z-10">
+                <p className="text-[10.5px] sm:text-[11px] text-[#475569] italic leading-snug font-sans relative z-10">
                   &ldquo;{selectedGame.gmQuote}&rdquo;
                 </p>
               </div>

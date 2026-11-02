@@ -307,7 +307,7 @@ export default function HeroSection() {
           <p
             className={`text-white/85 font-sans ${
               isMobileVariant
-                ? "text-[11px] leading-tight line-clamp-1 mt-0.5"
+                ? "text-[11px] leading-snug mt-0.5 max-w-[280px]"
                 : "mt-1 max-w-[340px] text-xs sm:text-sm leading-relaxed"
             }`}
           >

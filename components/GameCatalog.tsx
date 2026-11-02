@@ -454,9 +454,9 @@ export default function GameCatalog() {
           </div>
 
           {/* Category Vibe Bar */}
-          <div className="mt-4 p-3.5 sm:p-4 bg-[#F8FAFC] rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs sm:text-sm font-sans">
-            <div className="flex items-center gap-3 min-w-0">
-              <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-white border border-slate-200 shadow-2xs shrink-0">
+          <div className="mt-4 p-3 sm:p-4 bg-[#F8FAFC] rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-3 text-xs sm:text-sm font-sans">
+            <div className="flex items-start sm:items-center gap-2.5 sm:gap-3 min-w-0">
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2 sm:px-2.5 py-1 rounded-md bg-white border border-slate-200 shadow-2xs shrink-0 mt-0.5 sm:mt-0">
                 <activeMeta.icon
                   className={`w-3.5 h-3.5 ${activeMeta.vibeBarColor.replace(
                     "bg-",
@@ -467,13 +467,13 @@ export default function GameCatalog() {
                   VIBE
                 </span>
               </div>
-              <span className="text-[#172554] font-semibold truncate leading-relaxed">
+              <p className="text-[#172554] font-semibold text-xs sm:text-sm leading-relaxed">
                 {activeMeta.vibe}
-              </span>
+              </p>
             </div>
-            <div className="text-[#475569] self-end sm:self-auto shrink-0 font-medium text-xs">
+            <div className="text-[#64748B] text-[11px] sm:text-xs font-medium shrink-0 pt-1 sm:pt-0 border-t border-slate-200/60 sm:border-0 self-start sm:self-auto">
               Menampilkan{" "}
-              <strong className="text-brand-orange">{filteredGames.length}</strong>{" "}
+              <strong className="text-brand-orange font-bold">{filteredGames.length}</strong>{" "}
               dari {ALL_GAMES.length} total game
             </div>
           </div>

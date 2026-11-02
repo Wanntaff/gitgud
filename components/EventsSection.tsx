@@ -102,27 +102,16 @@ export default function EventsSection() {
               </p>
             </div>
 
-            {/* Mobile Swipe Notice */}
-            <div className="flex lg:hidden items-center justify-between text-xs font-sans text-[#64748B] mb-0.5 px-0.5">
-              <span className="inline-flex items-center gap-1.5 text-[11px] font-medium text-[#475569]">
-                <span>Geser jadwal mingguan</span>
-                <span className="text-brand-orange font-bold">→</span>
-              </span>
-              <span className="text-[10px] bg-[#F1F5F9] px-2 py-0.5 rounded-full font-medium text-[#475569]">
-                3 Sesi Rutin
-              </span>
-            </div>
-
-            {/* Events: Mobile Touch-Friendly Snap Track / Desktop Vertical List */}
-            <div className="flex lg:flex-col overflow-x-auto lg:overflow-visible snap-x snap-mandatory scrollbar-none gap-3.5 sm:gap-4.5 mt-0.5 -mx-4 px-4 sm:mx-0 sm:px-0 pb-2 lg:pb-0 scroll-pl-4 scroll-pr-4">
+            {/* Events: Clean Vertical Stack on Mobile & Desktop */}
+            <div className="flex flex-col gap-3 sm:gap-4 mt-2 sm:mt-1">
               {events.map((evt) => (
                 <div
                   key={evt.day}
-                  className="tabletop-slide-card w-[84vw] sm:w-[70vw] max-w-[320px] shrink-0 snap-start lg:w-full lg:max-w-none bg-white hover:bg-slate-50/60 p-4.5 sm:p-5 rounded-xl border border-slate-200 hover:border-slate-300 hover:shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 shadow-xs cursor-default"
+                  className="tabletop-card w-full bg-white hover:bg-slate-50/60 p-3.5 sm:p-5 rounded-xl border border-slate-200 hover:border-slate-300 hover:shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 shadow-xs cursor-default"
                 >
-                  <div className="flex items-start gap-3.5 sm:gap-4">
+                  <div className="flex items-start gap-3 sm:gap-4">
                     <div
-                      className={`w-11 h-11 sm:w-12 sm:h-12 rounded-lg ${evt.dayColor} flex flex-col items-center justify-center font-sans font-bold text-xs shrink-0`}
+                      className={`min-w-[54px] sm:min-w-[58px] px-2 h-10 sm:h-12 rounded-lg ${evt.dayColor} flex flex-col items-center justify-center font-sans font-bold text-[11px] sm:text-xs tracking-wider shrink-0`}
                     >
                       <span>{evt.day}</span>
                     </div>

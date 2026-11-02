@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Logo from "./Logo";
-import { MessageCircle, Menu as MenuIcon, X, Volume2, VolumeX } from "lucide-react";
+import { MessageCircle, Menu as MenuIcon, X, Volume2, VolumeX, Clock, MapPin, Navigation } from "lucide-react";
 import MeepleIcon from "./MeepleIcon";
 import { soundEffects, useSoundSettings } from "@/lib/soundEffects";
 
@@ -523,62 +523,138 @@ export default function Navbar() {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-slate-200 mt-2.5 pt-3 pb-2 flex flex-col gap-2 font-sans text-sm bg-white animate-fade-in-up">
-          {NAV_ITEMS.map((item) => {
-            const isActive = activeSection === item.id;
-            return (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                onClick={(e) => scrollToSection(e, item.id)}
-                aria-current={isActive ? "page" : undefined}
-                className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl border transition-all cursor-pointer ${
-                  isActive
-                    ? item.activeMobileClasses
-                    : "border-transparent bg-[#F8FAFC] text-[#475569] hover:text-[#172554] hover:bg-slate-100"
-                }`}
-              >
-                <div className="flex items-center gap-3">
-                  {/* Step Number Token */}
-                  <span
-                    className={`w-6 h-6 rounded-md flex items-center justify-center text-[10px] font-bold border transition-colors ${
-                      isActive
-                        ? `${item.activeBadgeClasses} shadow-xs`
-                        : "border-slate-200 bg-white text-[#64748B]"
-                    }`}
-                  >
-                    {isActive ? (
-                      <MeepleIcon
-                        className={`w-3.5 h-3.5 ${item.activeIconClass} shrink-0 animate-fade-in-up`}
-                      />
-                    ) : (
-                      item.stepNumber
-                    )}
-                  </span>
-                  <span
-                    className={
-                      isActive
-                        ? "font-bold tracking-tight text-brand-orange"
-                        : "text-[#334155] font-medium"
-                    }
-                  >
-                    {item.mobileLabel}
-                  </span>
-                </div>
+        <div className="lg:hidden border-t border-slate-200 mt-2.5 pt-3 pb-3 flex flex-col gap-3 font-sans text-sm bg-white animate-fade-in-up max-h-[calc(100vh-80px)] overflow-y-auto">
+          {/* Quick Header */}
+          <div className="flex items-center justify-between px-1 text-[10px] font-sans font-bold uppercase tracking-widest text-[#64748B]">
+            <span>Navigasi Halaman</span>
+            <span>Baciro HQ • Jogja</span>
+          </div>
 
-                {isActive ? (
-                  <span
-                    className={`inline-flex items-center gap-1 font-sans text-[10px] tracking-widest uppercase px-2 py-0.5 rounded-md border font-black ${item.activeBadgeClasses}`}
-                  >
-                    <span>✓</span>
-                    <span>DI SINI</span>
-                  </span>
-                ) : (
-                  <span className="text-[#94A3B8] font-sans text-xs pr-1">→</span>
-                )}
-              </a>
-            );
-          })}
+          {/* Navigation Links */}
+          <div className="flex flex-col gap-1.5">
+            {NAV_ITEMS.map((item) => {
+              const isActive = activeSection === item.id;
+              return (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  onClick={(e) => scrollToSection(e, item.id)}
+                  aria-current={isActive ? "page" : undefined}
+                  className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl border transition-all cursor-pointer active:scale-[0.99] ${
+                    isActive
+                      ? item.activeMobileClasses
+                      : "border-transparent bg-[#F8FAFC] text-[#475569] hover:text-[#172554] hover:bg-slate-100"
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    {/* Step Number Token */}
+                    <span
+                      className={`w-6 h-6 rounded-md flex items-center justify-center text-[10px] font-bold border transition-colors ${
+                        isActive
+                          ? `${item.activeBadgeClasses} shadow-xs`
+                          : "border-slate-200 bg-white text-[#64748B]"
+                      }`}
+                    >
+                      {isActive ? (
+                        <MeepleIcon
+                          className={`w-3.5 h-3.5 ${item.activeIconClass} shrink-0 animate-fade-in-up`}
+                        />
+                      ) : (
+                        item.stepNumber
+                      )}
+                    </span>
+                    <span
+                      className={
+                        isActive
+                          ? "font-bold tracking-tight text-brand-orange"
+                          : "text-[#334155] font-medium"
+                      }
+                    >
+                      {item.mobileLabel}
+                    </span>
+                  </div>
+
+                  {isActive ? (
+                    <span
+                      className={`inline-flex items-center gap-1 font-sans text-[10px] tracking-widest uppercase px-2 py-0.5 rounded-md border font-black ${item.activeBadgeClasses}`}
+                    >
+                      <span>✓</span>
+                      <span>DI SINI</span>
+                    </span>
+                  ) : (
+                    <span className="text-[#94A3B8] font-sans text-xs pr-1">→</span>
+                  )}
+                </a>
+              );
+            })}
+          </div>
+
+          {/* Venue Practical Info Card */}
+          <div className="p-3.5 rounded-xl bg-[#F8FAFC] border border-slate-200/90 shadow-2xs space-y-2.5">
+            <div className="flex items-start gap-2.5 text-xs text-[#334155]">
+              <Clock className="w-4 h-4 text-brand-orange shrink-0 mt-0.5" />
+              <div className="font-sans leading-tight">
+                <p className="font-bold text-[#172554]">Jam Buka Kafe:</p>
+                <p className="text-[11px] text-[#475569] mt-0.5">Senin - Kamis: 07.00 - 00.00 WIB</p>
+                <p className="text-[11px] font-bold text-brand-orange mt-0.5">Jumat - Minggu: 24 Jam Non-Stop</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-2.5 text-xs text-[#334155] pt-2 border-t border-slate-200/70">
+              <MapPin className="w-4 h-4 text-brand-orange shrink-0 mt-0.5" />
+              <div className="font-sans leading-tight">
+                <p className="font-bold text-[#172554]">Lokasi Baciro:</p>
+                <p className="text-[11px] text-[#475569] mt-0.5">Jl. Soka no. 44 Baciro, Gondokusuman, Yogyakarta</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Quick External Actions Strip */}
+          <div className="grid grid-cols-3 gap-2">
+            <a
+              href="https://wa.me/6285117484483?text=Halo%20Gitgud,%20mau%20tanya%20info%20kafe%20dong!"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => soundEffects.playButtonClick()}
+              className="flex items-center justify-center gap-1.5 p-2 rounded-lg bg-white border border-slate-200 text-[#172554] hover:text-brand-orange text-[11px] font-semibold shadow-2xs active:scale-95 transition-all text-center"
+            >
+              <MessageCircle className="w-3.5 h-3.5 text-brand-orange shrink-0" />
+              <span>WhatsApp</span>
+            </a>
+            <a
+              href="https://instagram.com/letsgitgud"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => soundEffects.playButtonClick()}
+              className="flex items-center justify-center gap-1.5 p-2 rounded-lg bg-white border border-slate-200 text-[#172554] hover:text-brand-orange text-[11px] font-semibold shadow-2xs active:scale-95 transition-all text-center"
+            >
+              <span>Instagram</span>
+            </a>
+            <a
+              href="https://share.google/u0UPT7njRoXYm9kZc"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => soundEffects.playButtonClick()}
+              className="flex items-center justify-center gap-1.5 p-2 rounded-lg bg-white border border-slate-200 text-[#172554] hover:text-brand-orange text-[11px] font-semibold shadow-2xs active:scale-95 transition-all text-center"
+            >
+              <Navigation className="w-3.5 h-3.5 text-[#1B64B4] shrink-0" />
+              <span>Buka Peta</span>
+            </a>
+          </div>
+
+          {/* Full-Width Reservation Action Button */}
+          <a
+            href="https://wa.me/6285117484483?text=Halo%20Gitgud,%20mau%20reservasi%20meja%20boardgame%20dong!"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => {
+              soundEffects.playSuccessChime();
+              setMobileMenuOpen(false);
+            }}
+            className="luxury-btn luxury-sheen w-full py-3 px-4 rounded-xl bg-brand-orange hover:bg-brand-orange-hover text-white font-display font-bold text-xs tracking-wider flex items-center justify-center gap-2 shadow-sm uppercase active:scale-[0.98] transition-all cursor-pointer"
+          >
+            <MessageCircle className="w-4 h-4" />
+            <span>RESERVASI MEJA VIA WHATSAPP</span>
+          </a>
         </div>
       )}
     </nav>

@@ -894,49 +894,57 @@ export default function MenuSection() {
 
         {/* Featured Munch of the Day & Specialty Highlight Banner */}
         {activeSide === "hungry" ? (
-          <div className="mb-6 sm:mb-8 bg-gradient-to-r from-[#FFF5F2] via-white to-[#FFF5F2] p-3.5 sm:p-5 rounded-xl border border-brand-orange/30 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 animate-fade-in-up">
-            <div className="flex items-center gap-3">
-              <span className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-[#FFF0EB] border border-brand-orange/40 text-brand-orange flex items-center justify-center shrink-0 shadow-xs">
-                <Utensils className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-brand-orange" />
-              </span>
-              <div>
+          <div className="mb-6 sm:mb-8 bg-gradient-to-r from-[#FFF5F2] via-white to-[#FFF5F2] p-3.5 sm:p-5 rounded-xl border border-brand-orange/30 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3 animate-fade-in-up">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
+              <div className="flex items-center justify-between gap-2">
                 <div className="flex items-center gap-2">
+                  <span className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg bg-[#FFF0EB] border border-brand-orange/40 text-brand-orange flex items-center justify-center shrink-0 shadow-xs">
+                    <Utensils className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-brand-orange" />
+                  </span>
                   <span className="text-[10px] font-sans font-bold uppercase tracking-wider text-brand-orange">
                     MUNCH OF THE DAY • BOARDGAME COMBO
                   </span>
                 </div>
-                <p className="text-xs sm:text-sm text-[#334155] mt-0.5">
-                  <strong className="text-[#172554]">Chicken Nanban (32k)</strong> +{" "}
-                  <strong className="text-[#172554]">Honey Yuzunade (33k)</strong> —
-                  paduan juara penambah energi ronde deduksi Blood on the Clocktower!
-                </p>
+                <div className="sm:hidden inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-white text-[#172554] font-sans text-[10px] font-bold uppercase tracking-wider shadow-xs border border-slate-200 shrink-0">
+                  <ChefHat className="w-3 h-3 text-brand-orange shrink-0" />
+                  <span>Barista Pairing</span>
+                </div>
               </div>
+              <p className="text-xs sm:text-sm text-[#334155] leading-relaxed">
+                <strong className="text-[#172554]">Chicken Nanban (32k)</strong> +{" "}
+                <strong className="text-[#172554]">Honey Yuzunade (33k)</strong> —
+                paduan juara penambah energi ronde deduksi Blood on the Clocktower!
+              </p>
             </div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white text-[#172554] font-sans text-[10px] sm:text-[11px] font-bold uppercase tracking-wider shadow-xs border border-slate-200 shrink-0 select-none">
+            <div className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white text-[#172554] font-sans text-[11px] font-bold uppercase tracking-wider shadow-xs border border-slate-200 shrink-0 select-none">
               <ChefHat className="w-3.5 h-3.5 text-brand-orange shrink-0" />
               <span>Barista Pairing</span>
             </div>
           </div>
         ) : (
-          <div className="mb-6 sm:mb-8 bg-gradient-to-r from-[#FFF9F6] via-white to-[#FFF9F6] p-3.5 sm:p-5 rounded-xl border border-brand-orange/30 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 animate-fade-in-up">
-            <div className="flex items-center gap-3">
-              <span className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-[#FFF0EB] border border-brand-orange/40 text-brand-orange flex items-center justify-center shrink-0 shadow-xs">
-                <Award className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-brand-orange" />
-              </span>
-              <div>
+          <div className="mb-6 sm:mb-8 bg-gradient-to-r from-[#FFF9F6] via-white to-[#FFF9F6] p-3.5 sm:p-5 rounded-xl border border-brand-orange/30 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3 animate-fade-in-up">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
+              <div className="flex items-center justify-between gap-2">
                 <div className="flex items-center gap-2">
+                  <span className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg bg-[#FFF0EB] border border-brand-orange/40 text-brand-orange flex items-center justify-center shrink-0 shadow-xs">
+                    <Award className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-brand-orange" />
+                  </span>
                   <span className="text-[10px] font-sans font-bold uppercase tracking-wider text-brand-orange">
                     BARISTA SIGNATURE • ZING &amp; MATCHA PICKS
                   </span>
                 </div>
-                <p className="text-xs sm:text-sm text-[#334155] mt-0.5">
-                  <strong className="text-[#172554]">Honey Yuzunade (33k)</strong> &amp;{" "}
-                  <strong className="text-[#172554]">Orangicano (25k)</strong> —
-                  sensasi citrus yuzu matcha &amp; espresso jeruk segar favorit komunitas!
-                </p>
+                <div className="sm:hidden inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-white text-[#172554] font-sans text-[10px] font-bold uppercase tracking-wider shadow-xs border border-slate-200 shrink-0">
+                  <Flame className="w-3 h-3 text-brand-orange shrink-0" />
+                  <span>Top Rated Zing</span>
+                </div>
               </div>
+              <p className="text-xs sm:text-sm text-[#334155] leading-relaxed">
+                <strong className="text-[#172554]">Honey Yuzunade (33k)</strong> &amp;{" "}
+                <strong className="text-[#172554]">Orangicano (25k)</strong> —
+                sensasi citrus yuzu matcha &amp; espresso jeruk segar favorit komunitas!
+              </p>
             </div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white text-[#172554] font-sans text-[10px] sm:text-[11px] font-bold uppercase tracking-wider shadow-xs border border-slate-200 shrink-0 select-none">
+            <div className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white text-[#172554] font-sans text-[11px] font-bold uppercase tracking-wider shadow-xs border border-slate-200 shrink-0 select-none">
               <Flame className="w-3.5 h-3.5 text-brand-orange shrink-0" />
               <span>Top Rated Zing</span>
             </div>
@@ -979,7 +987,7 @@ export default function MenuSection() {
                       </h3>
 
                       {/* Description */}
-                      <p className="text-xs sm:text-[13px] text-[#475569] mt-1 sm:mt-1.5 leading-relaxed line-clamp-2">
+                      <p className="text-xs sm:text-[13px] text-[#475569] mt-1 sm:mt-1.5 leading-relaxed">
                         {item.description}
                       </p>
                     </div>
@@ -1207,14 +1215,16 @@ export default function MenuSection() {
 
         {/* Cafe Notice Footer */}
         <div className="mt-8 pt-4 border-t border-slate-200">
-          <div className="bg-[#F8FAFC] border border-slate-200 rounded-xl px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-2.5 text-xs font-sans text-[#475569] text-center md:text-left">
-            <div className="inline-flex items-center gap-2">
-              <span className="font-bold text-[#172554] tracking-wide">
-                Nett Price:
+          <div className="bg-[#F8FAFC] border border-slate-200 rounded-xl p-3.5 sm:px-4 sm:py-3 flex flex-col md:flex-row items-center justify-between gap-3 text-xs font-sans text-[#475569] text-center md:text-left">
+            <div className="flex flex-col sm:flex-row items-center gap-1.5 sm:gap-2.5 text-center sm:text-left">
+              <span className="font-bold text-[#172554] tracking-wide whitespace-nowrap bg-white border border-slate-200/90 px-2.5 py-0.5 rounded-md text-[11px] shadow-2xs">
+                Nett Price
               </span>
-              <span>Semua harga sudah termasuk pajak &amp; disajikan siap santap di meja.</span>
+              <span className="text-xs text-[#475569] leading-relaxed">
+                Semua harga sudah termasuk pajak &amp; disajikan siap santap di meja boardgame.
+              </span>
             </div>
-            <span className="text-[#64748B] text-[11px] font-semibold bg-white border border-slate-200 px-3 py-1 rounded-md shadow-2xs shrink-0">
+            <span className="text-[#64748B] text-[11px] font-semibold bg-white border border-slate-200 px-3 py-1 rounded-md shadow-2xs shrink-0 whitespace-nowrap">
               Fresh Daily • Baciro HQ
             </span>
           </div>
