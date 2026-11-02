@@ -1,11 +1,91 @@
 "use client";
 
+import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
-import { Dices, CalendarDays, MapPin, UserCheck, Coffee, Sparkles } from "lucide-react";
-import DicePicker from "./DicePicker";
+import { ArrowRight, ChevronLeft, ChevronRight, Dices, MapPin } from "lucide-react";
 import { soundEffects } from "@/lib/soundEffects";
 
+interface HeroSlide {
+  id: string;
+  src: string;
+  alt: string;
+  badge: string;
+  title: string;
+  description: string;
+  tag: string;
+}
+
+const heroSlides: HeroSlide[] = [
+  {
+    id: "gathering",
+    src: "/cafe/cafe-gathering-v2.png",
+    alt: "Empat teman bermain board game sambil menikmati kopi di suasana kafe yang hangat",
+    badge: "01 // MEJA SQUAD",
+    title: "Meja penuh. HP turun.",
+    description: "Board game, kopi, dan cerita yang nggak kelar-kelar.",
+    tag: "Baciro / Jogja",
+  },
+  {
+    id: "lounge",
+    src: "/cafe/hero-lounge.jpg",
+    alt: "Suasana malam hangat dan koleksi 300+ game di Gitgud Lounge",
+    badge: "02 // 300+ KOLEKSI",
+    title: "Tinggal tunjuk, langsung main.",
+    description: "Koleksi board game fisik terlengkap di Jogja dari party game santai sampai strategi berat.",
+    tag: "Koleksi Terlengkap",
+  },
+  {
+    id: "coffee",
+    src: "/cafe/hero-coffee.jpg",
+    alt: "Espresso bar dan manual brew fresh di Gitgud Cafe",
+    badge: "03 // ARTISAN BAR",
+    title: "Kopi fresh. Gak bikin berminyak.",
+    description: "Seduhan artisan kopi dan snack yang ramah kartu board game selama sesi main.",
+    tag: "Brewed Fresh Daily",
+  },
+  {
+    id: "gamemaster",
+    src: "/cafe/hero-gamemaster.jpg",
+    alt: "Game Master siap memandu dan mengajarkan aturan game langsung di meja",
+    badge: "04 // GAME MASTER READY",
+    title: "Baru pertama kali? Santai.",
+    description: "Game Master kami siap memandu aturan langsung di meja tanpa perlu pusing baca rulebook.",
+    tag: "100% Diajarin",
+  },
+];
+
+const SLIDE_DURATION = 5500; // 5.5s per slide
+
 export default function HeroSection() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const touchStartXRef = useRef<number | null>(null);
+
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+  }, []);
+
+  const prevSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
+  }, []);
+
+  const goToSlide = (index: number) => {
+    soundEffects.playButtonClick();
+    setCurrentSlide(index);
+  };
+
+  useEffect(() => {
+    if (heroSlides.length <= 1 || isPaused) return;
+    const isReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (isReduced) return;
+
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, SLIDE_DURATION);
+
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
   const scrollTo = (
     e: React.MouseEvent<HTMLAnchorElement>,
     sectionId: string
@@ -23,219 +103,290 @@ export default function HeroSection() {
     }
   };
 
+  const movePhoto = (e: React.PointerEvent<HTMLElement>) => {
+    if (
+      e.pointerType === "touch" ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
+    }
+
+    const bounds = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - bounds.left) / bounds.width - 0.5;
+    const y = (e.clientY - bounds.top) / bounds.height - 0.5;
+    e.currentTarget.style.setProperty("--photo-x", `${x * -12}px`);
+    e.currentTarget.style.setProperty("--photo-y", `${y * -10}px`);
+  };
+
+  const resetPhoto = (e: React.PointerEvent<HTMLElement>) => {
+    e.currentTarget.style.setProperty("--photo-x", "0px");
+    e.currentTarget.style.setProperty("--photo-y", "0px");
+  };
+
+  const activeSlideData = heroSlides[currentSlide] ?? heroSlides[0];
+
   return (
     <section
       id="hero"
-      className="relative overflow-hidden bg-gradient-to-b from-white via-[#F8FAFC] to-[#F0F7FF] min-h-[calc(100vh-96px)] flex flex-col justify-center py-6 sm:py-10 lg:py-10 xl:py-12 px-4 sm:px-6 lg:px-12 border-b border-slate-200"
+      className="relative flex flex-col overflow-hidden border-b border-slate-200 bg-[#F3F0E9] lg:min-h-[calc(100svh-112px)]"
     >
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 xl:gap-10 items-center">
-        {/* Kolom Kiri: Copywriting & Hierarki */}
-        <div className="lg:col-span-5 xl:col-span-5 flex flex-col gap-3.5 sm:gap-4.5 z-10">
-          {/* Pill Badge Atas */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-slate-200 text-xs text-[#172554] font-mono w-fit shadow-xs">
-            <MapPin className="w-3.5 h-3.5 text-brand-orange shrink-0" />
-            <span className="font-bold text-[#172554]">Baciro, Jogja</span>
-            <span className="text-[#CBD5E1] select-none">•</span>
-            <span className="text-[#475569] font-medium">Cafe &amp; Board Game Lounge</span>
-          </div>
+      <div className="grid w-full flex-1 grid-cols-1 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
+        <div className="hero-copy relative z-10 flex flex-col justify-center px-5 py-8 sm:px-8 sm:py-12 lg:py-10 xl:py-12">
+          <div className="max-w-[650px]">
+            <div className="mb-5 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-[#475569] sm:mb-7">
+              <span className="inline-flex items-center gap-2 text-[#172554]">
+                <MapPin className="h-4 w-4 text-brand-orange" strokeWidth={1.8} />
+                Baciro, Yogyakarta
+              </span>
+              <span className="h-px w-7 bg-[#A8A196]" aria-hidden="true" />
+              <span>Board game &amp; cafe</span>
+            </div>
 
-          {/* Headline Utama with Squiggle Wave Underline */}
-          <h1 className="font-display font-black text-2xl sm:text-4xl md:text-[2.5rem] lg:text-[2.25rem] xl:text-[2.75rem] leading-[1.15] tracking-tight text-[#172554]">
-            Bosan Nongkrong Cuma Main HP?{" "}
-            <br className="hidden lg:inline" />
-            Saatnya{" "}
-            <span className="relative inline-block text-[#E84A27] whitespace-nowrap">
-              <span>Adu Taktik</span>
-              <svg
-                className="absolute -bottom-1.5 left-0 w-full h-2.5 sm:h-3 text-[#E84A27] pointer-events-none overflow-visible"
-                viewBox="0 0 100 12"
-                fill="none"
-                preserveAspectRatio="none"
-                aria-hidden="true"
+            <h1 className="font-display text-[clamp(2.65rem,4.7vw,4.6rem)] font-bold uppercase leading-[0.96] tracking-[-0.045em] text-[#172554]">
+              <span className="block overflow-hidden">
+                <span className="hero-title-line block whitespace-nowrap">
+                  Bosan
+                </span>
+              </span>
+              <span className="block overflow-hidden">
+                <span
+                  className="hero-title-line block whitespace-nowrap"
+                  style={{ animationDelay: "60ms" }}
+                >
+                  Main HP?
+                </span>
+              </span>
+              <span className="block overflow-hidden">
+                <span
+                  className="hero-title-line block whitespace-nowrap"
+                  style={{ animationDelay: "120ms" }}
+                >
+                  Adu taktik
+                </span>
+              </span>
+              <span className="block overflow-hidden">
+                <span
+                  className="hero-title-line block whitespace-nowrap text-brand-orange"
+                  style={{ animationDelay: "180ms" }}
+                >
+                  di Gitgud.
+                </span>
+              </span>
+            </h1>
+
+            <p className="mt-5 max-w-[520px] text-sm leading-relaxed text-[#475569] sm:mt-6 sm:text-base font-sans">
+              Pilih satu dari 300+ board game, pesan kopi, lalu main bareng
+              sampai lupa cek HP. Baru pertama kali? Game Master kami siap
+              ngajarin di meja.
+            </p>
+
+            <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-4 sm:mt-8">
+              <a
+                href="#games"
+                onClick={(e) => scrollTo(e, "games")}
+                className="group inline-flex cursor-pointer items-center justify-center gap-2 rounded-md border border-brand-orange bg-brand-orange px-5 py-3 font-display text-sm font-bold text-white transition-colors duration-150 hover:border-brand-orange-hover hover:bg-brand-orange-hover focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-orange"
               >
-                <path
-                  d="M0,6 Q12.5,1 25,6 T50,6 T75,6 T100,6"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
+                <Dices className="h-4 w-4" strokeWidth={1.8} />
+                Pilih Game Buat Squad
+              </a>
+              <a
+                href="#events"
+                onClick={(e) => scrollTo(e, "events")}
+                className="group inline-flex cursor-pointer items-center gap-2 border-b border-[#172554]/30 pb-1 font-display text-sm font-bold text-[#172554] transition-colors duration-150 hover:border-brand-orange hover:text-brand-orange focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-orange"
+              >
+                Event BOTC Kamis
+                <ArrowRight
+                  className="h-4 w-4 transition-transform duration-150 group-hover:translate-x-1"
+                  strokeWidth={1.8}
                 />
-              </svg>
-            </span>{" "}
-            <span className="whitespace-nowrap">di Gitgud.</span>
-          </h1>
+              </a>
+            </div>
 
-          {/* Subheadline (Bahasa Indonesia Santai) */}
-          <p className="text-[#334155] text-xs sm:text-[15px] lg:text-[15px] xl:text-base leading-relaxed max-w-xl font-sans">
-            Nongkrong bukan sekadar scrolling HP. Di{" "}
-            <strong className="text-[#172554] font-bold">Gitgud</strong>, kamu
-            bisa duel taktik, tuduh temanmu di{" "}
-            <span className="text-[#1B64B4] font-semibold italic">
-              Blood on the Clocktower
-            </span>
-            , atau santai ngopi sambil coba ratusan board game bareng panduan
-            ramah Game Master kami!
-          </p>
-
-          {/* Tombol CTA */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3.5 pt-0.5 sm:pt-1">
-            <a
-              href="#games"
-              onClick={(e) => scrollTo(e, "games")}
-              className="bg-brand-orange hover:bg-brand-orange-hover active:scale-[0.98] text-white px-5 py-2.5 sm:px-5.5 sm:py-2.5 rounded-lg font-display font-bold text-xs sm:text-sm tracking-wide transition-all flex items-center justify-center gap-2 shadow-xs cursor-pointer"
+            <dl
+              data-testid="hero-stats"
+              className="mt-8 grid max-w-[540px] grid-cols-3 gap-3 border-t border-[#172554]/20 pt-4 sm:mt-10 sm:gap-6"
             >
-              <Dices className="w-4 h-4 shrink-0" />
-              <span>Jelajahi 300+ Koleksi Game</span>
-            </a>
-            <a
-              href="#events"
-              onClick={(e) => scrollTo(e, "events")}
-              className="bg-white hover:bg-slate-50 border border-slate-200 active:scale-[0.98] text-[#172554] px-5 py-2.5 sm:px-5.5 sm:py-2.5 rounded-lg font-display font-bold text-xs sm:text-sm tracking-wide transition-all flex items-center justify-center gap-2 shadow-xs cursor-pointer"
-            >
-              <CalendarDays className="w-4 h-4 text-brand-orange shrink-0" />
-              <span>Event BOTC Kamis</span>
-            </a>
-          </div>
-
-          {/* Quick Stats Bar */}
-          <div
-            data-testid="hero-stats"
-            className="grid grid-cols-3 grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)_minmax(0,1fr)] gap-2 sm:gap-4 lg:gap-5 pt-3 sm:pt-5 mt-0.5 sm:mt-1 border-t border-slate-200 w-full max-w-xl"
-          >
-            <div className="min-w-0">
-              <div className="font-display font-black text-lg sm:text-2xl lg:text-[1.65rem] xl:text-[1.85rem] text-brand-orange tracking-tight whitespace-nowrap">
-                300+
+              <div className="flex flex-col">
+                <dd className="order-1 font-display text-xl font-bold text-[#172554] sm:text-2xl">
+                  300+
+                </dd>
+                <dt className="order-2 mt-1 text-[10px] leading-snug text-[#5D626B] sm:text-xs">
+                  Koleksi board game
+                </dt>
               </div>
-              <div className="text-[10px] sm:text-xs text-[#64748B] font-mono mt-0.5 leading-snug font-medium">
-                Pilihan Board Game
+              <div className="flex flex-col">
+                <dd className="order-1 font-display text-xl font-bold text-[#172554] sm:text-2xl">
+                  24 Jam
+                </dd>
+                <dt className="order-2 mt-1 text-[10px] leading-snug text-[#5D626B] sm:text-xs">
+                  Jumat sampai Minggu
+                </dt>
               </div>
-            </div>
-            <div className="min-w-0">
-              <div className="font-display font-black text-lg sm:text-2xl lg:text-[1.65rem] xl:text-[1.85rem] text-[#172554] tracking-tight whitespace-nowrap">
-                24 Jam
+              <div className="flex flex-col">
+                <dd className="order-1 font-display text-xl font-bold text-[#172554] sm:text-2xl">
+                  100%
+                </dd>
+                <dt className="order-2 mt-1 text-[10px] leading-snug text-[#5D626B] sm:text-xs">
+                  Diajarin Game Master
+                </dt>
               </div>
-              <div className="text-[10px] sm:text-xs text-[#64748B] font-mono mt-0.5 leading-snug font-medium">
-                Buka Jumat – Minggu
-              </div>
-            </div>
-            <div className="min-w-0">
-              <div className="font-display font-black text-lg sm:text-2xl lg:text-[1.65rem] xl:text-[1.85rem] text-[#172554] tracking-tight whitespace-nowrap">
-                100%
-              </div>
-              <div className="text-[10px] sm:text-xs text-[#64748B] font-mono mt-0.5 leading-snug font-medium">
-                Diajarin Game Master
-              </div>
-            </div>
+            </dl>
           </div>
         </div>
 
-        {/* Kolom Kanan: The Living Bento Hero Grid */}
-        <div className="lg:col-span-7 xl:col-span-7 z-10 relative">
-          {/* Ambient Warm Glow */}
+        <figure
+          className="hero-photo-shell group relative min-h-[360px] overflow-hidden bg-[#1C211D] sm:min-h-[440px] lg:min-h-[580px] select-none"
+          onPointerMove={movePhoto}
+          onPointerLeave={(e) => {
+            resetPhoto(e);
+            setIsPaused(false);
+          }}
+          onPointerEnter={() => setIsPaused(true)}
+          onTouchStart={(e) => {
+            setIsPaused(true);
+            touchStartXRef.current = e.touches[0].clientX;
+          }}
+          onTouchEnd={(e) => {
+            setIsPaused(false);
+            if (touchStartXRef.current === null) return;
+            const diffX = e.changedTouches[0].clientX - touchStartXRef.current;
+            if (Math.abs(diffX) > 40) {
+              if (diffX < 0) {
+                nextSlide();
+              } else {
+                prevSlide();
+              }
+            }
+            touchStartXRef.current = null;
+          }}
+          role="region"
+          aria-roledescription="carousel"
+          aria-label="Galeri Suasana Kafe Gitgud"
+        >
+          {/* Segmented iOS-Style Story Progress Bars */}
+          {heroSlides.length > 1 && (
+            <div className="absolute top-4 inset-x-4 sm:inset-x-8 z-30 flex items-center gap-1.5 sm:gap-2">
+              {heroSlides.map((slide, idx) => {
+                const isActive = idx === currentSlide;
+                const isPassed = idx < currentSlide;
+                return (
+                  <button
+                    key={slide.id}
+                    type="button"
+                    onClick={() => goToSlide(idx)}
+                    aria-label={`Buka slide ${idx + 1}: ${slide.title}`}
+                    className="relative h-[3px] sm:h-[3.5px] flex-1 rounded-full bg-white/20 backdrop-blur-sm overflow-hidden transition-all hover:h-[5px] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white cursor-pointer"
+                  >
+                    <span
+                      key={`${slide.id}-${isActive ? currentSlide : "inactive"}`}
+                      className={`absolute inset-0 bg-white rounded-full ${
+                        isPassed
+                          ? "w-full"
+                          : isActive
+                          ? "w-full origin-left"
+                          : "w-0"
+                      }`}
+                      style={
+                        isActive
+                          ? {
+                              animation: `slide-progress ${SLIDE_DURATION}ms linear forwards`,
+                              animationPlayState: isPaused ? "paused" : "running",
+                            }
+                          : undefined
+                      }
+                    />
+                  </button>
+                );
+              })}
+            </div>
+          )}
+
+          {/* Interactive Slide Photos Layer */}
+          <div className="hero-photo-settle absolute inset-0">
+            {heroSlides.map((slide, idx) => {
+              const isActive = idx === currentSlide;
+              return (
+                <div
+                  key={slide.id}
+                  className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                    isActive ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
+                  }`}
+                  aria-hidden={!isActive}
+                >
+                  <Image
+                    src={slide.src}
+                    alt={slide.alt}
+                    fill
+                    priority={idx === 0}
+                    sizes="(max-width: 1023px) 100vw, 56vw"
+                    className="hero-photo-image object-cover object-[52%_50%]"
+                  />
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Soft Dark Gradient Base for Caption Legibility */}
           <div
-            className="absolute -top-12 -bottom-12 -left-12 -right-12 sm:-inset-16 bg-[radial-gradient(circle,rgba(232,74,39,0.06)_0%,transparent_70%)] pointer-events-none rounded-full blur-3xl -z-10"
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#0A1120]/95 via-[#0A1120]/50 to-transparent z-15"
             aria-hidden="true"
           />
 
-          <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 sm:gap-3.5">
-            {/* Cell 1: Primary Cafe & Game Atmosphere Photo */}
-            <div className="sm:col-span-7 relative rounded-2xl overflow-hidden border border-slate-200/90 bg-slate-900 shadow-xs group min-h-[250px] sm:min-h-[300px] flex flex-col justify-between p-3.5 sm:p-4">
-              <Image
-                src="/cafe/hero-lounge.jpg"
-                alt="Suasana Meja Board Game & Cafe Gitgud Baciro Jogja"
-                fill
-                priority
-                sizes="(max-width: 640px) 100vw, 45vw"
-                className="object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
-              />
-              {/* Soft gradient overlay for high contrast readability */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A1120]/90 via-[#0A1120]/30 to-black/15 pointer-events-none" />
+          {/* Sleek Minimal Arrow Controls (reveal on hover for desktop) */}
+          {heroSlides.length > 1 && (
+            <div className="pointer-events-none absolute inset-y-0 inset-x-3 sm:inset-x-5 z-25 flex items-center justify-between">
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  soundEffects.playButtonClick();
+                  prevSlide();
+                }}
+                aria-label="Foto sebelumnya"
+                className="pointer-events-auto w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/40 hover:bg-black/70 border border-white/20 text-white backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 focus-visible:opacity-100 transition-all cursor-pointer shadow-md active:scale-90"
+              >
+                <ChevronLeft className="w-4 h-4 text-white" />
+              </button>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  soundEffects.playButtonClick();
+                  nextSlide();
+                }}
+                aria-label="Foto selanjutnya"
+                className="pointer-events-auto w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/40 hover:bg-black/70 border border-white/20 text-white backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 focus-visible:opacity-100 transition-all cursor-pointer shadow-md active:scale-90"
+              >
+                <ChevronRight className="w-4 h-4 text-white" />
+              </button>
+            </div>
+          )}
 
-              {/* Top Floating Badge */}
-              <div className="relative z-10 flex items-center justify-between gap-2">
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md border border-white/40 text-[#172554] font-mono text-[10px] font-bold shadow-xs">
-                  <MapPin className="w-3 h-3 text-brand-orange shrink-0" />
-                  <span>BACIRO HQ // MEJA 04</span>
+          {/* Dynamic Editorial Caption with Smooth Switch Animation */}
+          <figcaption className="hero-photo-caption absolute inset-x-0 bottom-0 z-20 flex items-end justify-between gap-4 p-5 text-white sm:p-7 lg:p-8">
+            <div key={activeSlideData.id} className="animate-caption-switch">
+              {heroSlides.length > 1 && (
+                <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#FF8566] font-bold block mb-1">
+                  {activeSlideData.badge}
                 </span>
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#172554]/90 backdrop-blur-md border border-white/20 text-white font-mono text-[10px] font-medium">
-                  <Sparkles className="w-3 h-3 text-amber-300 shrink-0" />
-                  <span>Atmosphere</span>
+              )}
+              <p className="font-display text-xl font-bold tracking-tight sm:text-2xl text-white">
+                {activeSlideData.title}
+              </p>
+              <p className="mt-1 max-w-[340px] text-xs leading-relaxed text-white/85 sm:text-sm font-sans">
+                {activeSlideData.description}
+              </p>
+            </div>
+            <div className="hidden shrink-0 flex-col items-end gap-1 font-mono text-[10px] uppercase tracking-[0.18em] text-white/80 sm:flex">
+              <span>{activeSlideData.tag}</span>
+              {heroSlides.length > 1 && (
+                <span className="text-[9px] text-white/50 tracking-wider">
+                  0{currentSlide + 1} / 0{heroSlides.length}
                 </span>
-              </div>
-
-              {/* Bottom Caption & Vibe Detail */}
-              <div className="relative z-10 text-white">
-                <div className="font-mono text-[9.5px] uppercase tracking-widest text-[#FF8566] font-bold mb-0.5">
-                  Tabletop &amp; Cafe Lounge
-                </div>
-                <h3 className="font-display font-bold text-sm sm:text-base text-white leading-snug">
-                  Meja Kayu Lega &amp; Suasana Hangat Bareng Squad
-                </h3>
-                <p className="text-[11px] text-slate-200/90 mt-0.5 line-clamp-2 font-sans">
-                  Ratusan game fisik asli siap dimainkan santai tanpa batasan waktu terburu-buru.
-                </p>
-              </div>
+              )}
             </div>
-
-            {/* Right Stack in Bento: Cell 2 (Coffee) + Cell 3 (Solo Player) */}
-            <div className="sm:col-span-5 flex flex-col gap-3 sm:gap-3.5">
-              {/* Cell 2: Specialty Coffee Bar Macro Photo */}
-              <div className="relative rounded-2xl overflow-hidden border border-slate-200/90 bg-slate-900 shadow-xs group h-[145px] sm:h-[150px] flex flex-col justify-between p-3">
-                <Image
-                  src="/cafe/hero-coffee.jpg"
-                  alt="Specialty Espresso Bar Gitgud Cafe"
-                  fill
-                  sizes="(max-width: 640px) 100vw, 30vw"
-                  className="object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A1120]/90 via-black/35 to-black/10 pointer-events-none" />
-
-                {/* Top Tag */}
-                <div className="relative z-10 flex items-center justify-between">
-                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-white/95 backdrop-blur-md text-[#172554] font-mono text-[9px] font-bold shadow-xs">
-                    <Coffee className="w-3 h-3 text-brand-orange shrink-0" />
-                    <span>SPECIALTY BAR</span>
-                  </span>
-                </div>
-
-                {/* Bottom Label */}
-                <div className="relative z-10 text-white">
-                  <h4 className="font-display font-bold text-xs sm:text-[13px] text-white leading-tight">
-                    Artisan Coffee &amp; Snack
-                  </h4>
-                  <p className="text-[9.5px] text-slate-200 mt-0.5 font-mono">
-                    Diseduh fresh • Gak bikin kartu berminyak
-                  </p>
-                </div>
-              </div>
-
-              {/* Cell 3: Solo Player Friendly Card */}
-              <div className="relative rounded-2xl border border-slate-200 bg-white p-3 sm:p-3.5 shadow-xs flex-1 flex flex-col justify-between overflow-hidden">
-                <div className="absolute left-0 top-3 bottom-3 w-[2.5px] rounded-full bg-brand-orange" />
-                <div className="flex items-start gap-2.5 pl-1">
-                  <div className="w-7 h-7 rounded-lg bg-[#FFF5F0] border border-brand-orange/20 flex items-center justify-center text-brand-orange shrink-0">
-                    <UserCheck className="w-3.5 h-3.5" />
-                  </div>
-                  <div className="min-w-0">
-                    <span className="font-mono text-[8.5px] font-bold text-brand-orange uppercase tracking-wider block">
-                      COMMUNITY WELCOME
-                    </span>
-                    <h4 className="font-display font-bold text-xs text-[#172554] leading-tight mt-0.5">
-                      Datang Solo? No Problem!
-                    </h4>
-                  </div>
-                </div>
-                <p className="text-[10px] text-[#64748B] pl-1 mt-1.5 leading-snug font-sans line-clamp-2">
-                  Game Master kami siap nemenin &amp; ngenalin kamu ke meja open-squad yang ramah.
-                </p>
-              </div>
-            </div>
-
-            {/* Cell 4: Full-width Interactive Base: Compact DicePicker */}
-            <div className="sm:col-span-12">
-              <DicePicker compact />
-            </div>
-          </div>
-        </div>
+          </figcaption>
+        </figure>
       </div>
     </section>
   );

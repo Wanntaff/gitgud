@@ -1,23 +1,12 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Syne, Space_Grotesk } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
-});
-
-const syne = Syne({
-  variable: "--font-syne",
-  subsets: ["latin"],
-  weight: ["700", "800"],
-});
-
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
-  weight: ["600", "700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -38,7 +27,7 @@ export default function RootLayout({
   return (
     <html
       lang="id"
-      className={`${plusJakartaSans.variable} ${syne.variable} ${spaceGrotesk.variable} scroll-smooth`}
+      className={`${plusJakartaSans.variable} scroll-smooth`}
     >
       <body className="bg-white text-[#172554] font-sans antialiased selection:bg-brand-orange selection:text-white min-h-screen">
         {children}
