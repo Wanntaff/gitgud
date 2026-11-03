@@ -24,39 +24,39 @@ interface HeroSlide {
 const heroSlides: HeroSlide[] = [
   {
     id: "gathering",
-    src: "/cafe/cafe-gathering-v2.png",
-    alt: "Empat teman bermain board game sambil menikmati kopi di suasana kafe yang hangat",
+    src: "/cafe/cafe-squad-table.png",
+    alt: "Komunitas dan squad bermain board game dan TTRPG di meja kayu Gitgud Kafe Baciro",
     badge: "01 // MEJA SQUAD",
     title: "Meja penuh. HP turun.",
     description: "Board game, kopi artisan, dan obrolan seru yang nggak kelar-kelar.",
     tag: "Baciro / Jogja",
   },
   {
-    id: "lounge",
-    src: "/cafe/hero-lounge.jpg",
-    alt: "Suasana malam hangat dan koleksi 300+ game di Gitgud Lounge",
+    id: "collection",
+    src: "/cafe/cafe-game-collection.png",
+    alt: "Koleksi rak board game fisik terlengkap di Gitgud Kafe Yogyakarta",
     badge: "02 // 300+ KOLEKSI",
     title: "Tinggal tunjuk, langsung main.",
     description: "Koleksi board game fisik terlengkap di Jogja dari party game santai sampai strategi berat.",
     tag: "Koleksi Terlengkap",
   },
   {
-    id: "coffee",
-    src: "/cafe/hero-coffee.jpg",
-    alt: "Espresso bar dan manual brew fresh di Gitgud Cafe",
-    badge: "03 // ARTISAN BAR",
-    title: "Kopi fresh. Gak bikin berminyak.",
-    description: "Seduhan artisan kopi dan snack yang ramah kartu board game selama sesi main.",
-    tag: "Brewed Fresh Daily",
+    id: "facade",
+    src: "/cafe/cafe-facade.png",
+    alt: "Fasad kaca dan suasana kafe Gitgud Board Game & Cafe Baciro Yogyakarta",
+    badge: "03 // BACIRO HQ",
+    title: "Suasana santai. Meja lega.",
+    description: "Tempat nongkrong nyaman di Baciro, pas buat quality time bareng teman dan komunitas.",
+    tag: "Baciro / Jogja",
   },
   {
-    id: "gamemaster",
-    src: "/cafe/hero-gamemaster.jpg",
-    alt: "Game Master siap memandu dan mengajarkan aturan game langsung di meja",
-    badge: "04 // GAME MASTER READY",
-    title: "Baru pertama kali? Santai.",
-    description: "Game Master kami siap memandu aturan langsung di meja tanpa perlu pusing baca rulebook.",
-    tag: "100% Diajarin",
+    id: "cozy",
+    src: "/cafe/cafe-cozy-corner.png",
+    alt: "Sudut santai dengan sofa dan suasana nyaman di Gitgud Cafe",
+    badge: "04 // COZY CORNER",
+    title: "Kopi fresh. Tempat nyaman.",
+    description: "Sudut santai dengan kopi artisan dan minuman segar buat nemenin sesi mainmu.",
+    tag: "Good Vibes Only",
   },
 ];
 
@@ -227,7 +227,7 @@ export default function HeroSection() {
                 fill
                 priority={idx === 0}
                 sizes="(max-width: 1023px) 100vw, 56vw"
-                className="hero-photo-image object-cover object-[52%_50%]"
+                className="hero-photo-image object-cover object-center"
               />
             </div>
           );
@@ -411,7 +411,7 @@ export default function HeroSection() {
                           fill
                           priority={idx === 0}
                           sizes="100vw"
-                          className="object-cover object-[50%_40%]"
+                          className="object-cover object-center"
                         />
                       </div>
                     );
