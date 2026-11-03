@@ -27,8 +27,8 @@ const heroSlides: HeroSlide[] = [
     src: "/cafe/cafe-squad-table.png",
     alt: "Komunitas dan squad bermain board game dan TTRPG di meja kayu Gitgud Kafe Baciro",
     badge: "01 // MEJA SQUAD",
-    title: "Meja penuh. HP turun.",
-    description: "Board game, kopi artisan, dan obrolan seru yang nggak kelar-kelar.",
+    title: "Nongkrong seru bareng teman.",
+    description: "Main board game seru sambil ngopi santai dan ngobrol bareng teman.",
     tag: "Baciro / Jogja",
   },
   {
@@ -36,8 +36,8 @@ const heroSlides: HeroSlide[] = [
     src: "/cafe/cafe-game-collection.png",
     alt: "Koleksi rak board game fisik terlengkap di Gitgud Kafe Yogyakarta",
     badge: "02 // 300+ KOLEKSI",
-    title: "Tinggal tunjuk, langsung main.",
-    description: "Koleksi board game fisik terlengkap di Jogja dari party game santai sampai strategi berat.",
+    title: "Koleksi 300+ board game.",
+    description: "Koleksi game fisik lengkap dari party game santai sampai game strategi yang seru.",
     tag: "Koleksi Terlengkap",
   },
   {
@@ -45,8 +45,8 @@ const heroSlides: HeroSlide[] = [
     src: "/cafe/cafe-facade.png",
     alt: "Fasad kaca dan suasana kafe Gitgud Board Game & Cafe Baciro Yogyakarta",
     badge: "03 // BACIRO HQ",
-    title: "Suasana santai. Meja lega.",
-    description: "Tempat nongkrong nyaman di Baciro, pas buat quality time bareng teman dan komunitas.",
+    title: "Suasana nyaman dan meja luas.",
+    description: "Tempat nongkrong asyik di Baciro dengan meja kayu yang lega dan nyaman.",
     tag: "Baciro / Jogja",
   },
   {
@@ -54,9 +54,9 @@ const heroSlides: HeroSlide[] = [
     src: "/cafe/cafe-cozy-corner.png",
     alt: "Sudut santai dengan sofa dan suasana nyaman di Gitgud Cafe",
     badge: "04 // COZY CORNER",
-    title: "Kopi fresh. Tempat nyaman.",
-    description: "Sudut santai dengan kopi artisan dan minuman segar buat nemenin sesi mainmu.",
-    tag: "Good Vibes Only",
+    title: "Kopi fresh dan minuman segar.",
+    description: "Pilihan kopi racikan barista dan aneka minuman segar untuk menemani sesi mainmu.",
+    tag: "Baciro / Jogja",
   },
 ];
 
