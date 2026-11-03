@@ -1234,10 +1234,10 @@ export default function MenuSection() {
           <div className="bg-[#F8FAFC] border border-slate-200 rounded-xl p-3.5 sm:px-4 sm:py-3 flex flex-col md:flex-row items-center justify-between gap-3 text-xs font-sans text-[#475569] text-center md:text-left">
             <div className="flex flex-col sm:flex-row items-center gap-1.5 sm:gap-2.5 text-center sm:text-left">
               <span className="font-bold text-[#172554] tracking-wide whitespace-nowrap bg-white border border-slate-200/90 px-2.5 py-0.5 rounded-md text-[11px] shadow-2xs">
-                Nett Price
+                Harga Pas (Nett)
               </span>
               <span className="text-xs text-[#475569] leading-relaxed">
-                Semua harga sudah termasuk pajak &amp; disajikan siap santap di meja boardgame.
+                Semua harga sudah termasuk pajak &amp; siap diantar langsung ke meja bermainmu.
               </span>
             </div>
             <span className="text-[#64748B] text-[11px] font-semibold bg-white border border-slate-200 px-3 py-1 rounded-md shadow-2xs shrink-0 whitespace-nowrap">

@@ -18,7 +18,7 @@ export default function AboutSection() {
             MEJA KAYU LEGA, KOLEKSI LENGKAP, GAK ADA KATA BOSAN
           </h2>
           <p className="text-[#475569] text-sm sm:text-base mt-2.5 max-w-xl mx-auto leading-relaxed font-sans">
-            Mau main party game santai bareng bestie atau adu strategi kampanye berjam-jam, meja di Baciro selalu siap buat squad kamu.
+            Mau main party game santai bareng teman atau adu strategi berjam-jam, meja di Baciro selalu siap buat squad kamu.
           </p>
         </div>
 
@@ -60,7 +60,7 @@ export default function AboutSection() {
                 Game Master Standby
               </h3>
               <p className="text-[#475569] text-xs sm:text-sm leading-relaxed font-sans">
-                Gak perlu pusing baca rulebook puluhan halaman. Game Master kami jelaskan aturan langsung di meja sampai squad kamu paham.
+                Gak perlu pusing baca rulebook puluhan halaman. Game Master kami ngajarin aturan langsung di meja sampai squad kamu paham.
               </p>
             </div>
           </div>

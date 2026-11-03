@@ -17,14 +17,14 @@ export default function EventsSection() {
       dayColor: "bg-[#FFF5F0] text-brand-orange border border-brand-orange/20",
       title: "D&D One-Shot Campaign",
       desc: "Sesi petualangan Dungeons & Dragons ramah pemula. Disediakan lembar karakter & dadu.",
-      badge: "By Registration",
+      badge: "Perlu RSVP",
     },
     {
       day: "MINGGU",
       dayColor: "bg-[#F0F7FF] text-[#172554] border border-slate-200",
       title: "Midnight Gaming Chill",
       desc: "Nongkrong santai 24 jam dengan diskon minuman khusus midnight players.",
-      badge: "24 Hours Non-stop",
+      badge: "Buka 24 Jam",
     },
   ];
 
@@ -54,9 +54,8 @@ export default function EventsSection() {
                 <span>SETIAP KAMIS MALAM: GRATIS!</span>
               </p>
               <p className="text-[#475569] text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5">
-                Desa kembali penuh dengan kecurigaan. Siapa yang jujur? Siapa
-                yang berbohong? Game deduksi sosial nomor 1 di dunia hadir
-                gratis untuk kamu dan teman-teman!
+                Desa kembali dilanda kecurigaan. Siapa warga jujur, siapa iblisnya?
+                Game deduksi sosial paling intens siap dipandu Game Master kami setiap Kamis malam.
               </p>
 
               <div className="space-y-2 text-xs sm:text-sm font-sans text-[#172554] mb-5 sm:mb-6">

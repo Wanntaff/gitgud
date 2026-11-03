@@ -12,15 +12,15 @@ interface FaqItem {
 const FAQS: FaqItem[] = [
   {
     q: "Berapa biaya main board game di Gitgud?",
-    a: "Cukup pesan menu F&B (makanan atau minuman) favoritmu mulai dari 15 ribuan! Tidak ada tiket masuk terpisah, dan kamu bebas pilih 300+ board game sepuasnya dipandu Game Master kami.",
+    a: "Cukup pesan menu makanan atau minuman favoritmu mulai dari 15 ribuan. Tidak ada tiket masuk terpisah, dan kamu bebas pilih 300+ koleksi board game sepuasnya sambil dipandu Game Master kami.",
   },
   {
-    q: "Bisa datang sendirian tanpa teman (Solo Player)?",
-    a: "Tentu saja bisa! Banyak komunitas dan squad open-table yang siap menyambut teman baru. Tim Game Master kami juga siap menemani dan mengenalkan kamu ke sesama board gamers.",
+    q: "Bisa datang sendirian tanpa teman?",
+    a: "Bisa banget! Banyak squad open-table dan sesama pengunjung yang siap menyambut teman baru. Tim Game Master kami juga siap menemani dan mencarikan meja yang cocok buatmu.",
   },
   {
     q: "Kapan jadwal Blood on the Clocktower (BOTC) diadakan?",
-    a: "Sesi Blood on the Clocktower diadakan setiap hari Kamis malam mulai pukul 19.00 WIB. Mainnya GRATIS! Cukup RSVP tempatmu melalui DM Instagram @letsgitgud karena seat terbatas.",
+    a: "Sesi Blood on the Clocktower diadakan setiap hari Kamis malam mulai pukul 19.00 WIB. Mainnya GRATIS! Cukup RSVP tempatmu melalui DM Instagram @letsgitgud karena kuota kursi terbatas.",
   },
   {
     q: "Beneran buka 24 jam non-stop saat weekend?",

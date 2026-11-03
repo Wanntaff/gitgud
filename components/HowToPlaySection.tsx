@@ -20,7 +20,7 @@ export default function HowToPlaySection() {
     {
       num: "04",
       title: "Dipandu Sampai Paham",
-      desc: "Game Master siap menjelaskan aturan main langkah demi langkah. Duduk santai tanpa perlu baca rulebook.",
+      desc: "Game Master siap ngajarin aturan main dari nol. Tinggal duduk santai tanpa pusing baca rulebook.",
     },
   ];
 
@@ -43,7 +43,7 @@ export default function HowToPlaySection() {
               </h2>
             </div>
             <p className="text-xs sm:text-sm text-[#475569] font-sans max-w-sm leading-relaxed">
-              Pertama kali main di cafe board game? Alurnya santai dan fleksibel tanpa birokrasi ribet:
+              Pertama kali main di cafe board game? Alurnya santai dan gak pake ribet:
             </p>
           </div>
 

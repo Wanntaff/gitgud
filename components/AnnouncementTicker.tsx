@@ -12,11 +12,11 @@ export default function AnnouncementTicker() {
     },
     {
       icon: Coffee,
-      text: "Brewing Starts 07.00 WIB",
+      text: "Kopi & Kitchen Siap Mulai 07.00 WIB",
     },
     {
       icon: UserCheck,
-      text: "Game Master Ready to Guide",
+      text: "Game Master Siap Ajari di Meja",
     },
     {
       icon: MapPin,

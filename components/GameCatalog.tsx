@@ -139,7 +139,7 @@ const CATEGORY_DEFINITIONS: CategoryMeta[] = [
     key: "great-for-2",
     label: "2 Pemain",
     icon: Heart,
-    vibe: "52 game yang terbukti paling seru untuk kencan, ngedrop bareng bestie, atau duel 1v1.",
+    vibe: "52 game yang terbukti paling seru untuk kencan, nongkrong santai berdua, atau duel 1v1.",
     activeClass:
       "bg-brand-orange text-white border-brand-orange shadow-xs",
     inactiveClass:
