@@ -1,9 +1,9 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Logo from "./Logo";
-import { MessageCircle, Menu as MenuIcon, X, Volume2, VolumeX, Clock, MapPin, Navigation } from "lucide-react";
+import { MessageCircle, Menu as MenuIcon, X, Volume2, VolumeX } from "lucide-react";
 import MeepleIcon from "./MeepleIcon";
 import { soundEffects, useSoundSettings } from "@/lib/soundEffects";
 
@@ -495,37 +495,42 @@ export default function Navbar() {
             )}
           </button>
 
+          {/* Exclusive Desktop & Tablet Reservation Button */}
           <a
             href="https://wa.me/6285117484483?text=Halo%20Gitgud,%20mau%20reservasi%20meja%20boardgame%20dong!"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => soundEffects.playSuccessChime()}
-            className="bg-brand-orange hover:bg-brand-orange-hover active:scale-[0.98] text-white px-3 sm:px-4 py-1.5 sm:py-2 font-display font-bold text-xs tracking-wide rounded-lg shadow-xs transition-all flex items-center gap-1.5 whitespace-nowrap cursor-pointer"
+            className="hidden sm:inline-flex bg-brand-orange hover:bg-brand-orange-hover active:scale-[0.98] text-white px-3 sm:px-4 py-1.5 sm:py-2 font-display font-bold text-xs tracking-wide rounded-lg shadow-xs transition-all items-center gap-1.5 whitespace-nowrap cursor-pointer luxury-btn"
           >
             <MessageCircle className="w-3.5 h-3.5 shrink-0" />
             <span>RESERVASI</span>
           </a>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - Sleek & Tactile */}
           <button
             type="button"
             onClick={() => {
               soundEffects.playCardSnap();
               setMobileMenuOpen(!mobileMenuOpen);
             }}
-            aria-label="Toggle navigation menu"
-            className="lg:hidden p-1.5 sm:p-2 text-[#172554] hover:text-brand-orange bg-[#F8FAFC] border border-slate-200 rounded-lg cursor-pointer"
+            aria-label={mobileMenuOpen ? "Tutup menu navigasi" : "Buka menu navigasi"}
+            className={`lg:hidden p-1.5 sm:p-2 rounded-lg border transition-all cursor-pointer active:scale-95 ${
+              mobileMenuOpen
+                ? "bg-[#172554] text-white border-[#172554] shadow-xs"
+                : "text-[#172554] hover:text-brand-orange bg-[#F8FAFC] hover:bg-slate-100 border-slate-200"
+            }`}
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <MenuIcon className="w-5 h-5" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile Menu Dropdown - Clean, Exclusive Editorial Boutique Index */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-slate-200 mt-2.5 pt-3 pb-3 flex flex-col gap-3 font-sans text-sm bg-white animate-fade-in-up max-h-[calc(100vh-80px)] overflow-y-auto">
-          {/* Quick Header */}
-          <div className="flex items-center justify-between px-1 text-[10px] font-sans font-bold uppercase tracking-widest text-[#64748B]">
+        <div className="lg:hidden border-t border-slate-200 mt-2.5 pt-3.5 pb-4 flex flex-col gap-3 font-sans text-sm bg-white animate-fade-in-up max-h-[calc(100vh-80px)] overflow-y-auto">
+          {/* Editorial Header */}
+          <div className="flex items-center justify-between px-1 text-[10px] font-sans font-bold uppercase tracking-[0.18em] text-[#64748B]">
             <span>Navigasi Halaman</span>
             <span>Baciro HQ • Jogja</span>
           </div>
@@ -540,7 +545,7 @@ export default function Navbar() {
                   href={`#${item.id}`}
                   onClick={(e) => scrollToSection(e, item.id)}
                   aria-current={isActive ? "page" : undefined}
-                  className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl border transition-all cursor-pointer active:scale-[0.99] ${
+                  className={`flex items-center justify-between px-3.5 py-3 rounded-xl border transition-all cursor-pointer active:scale-[0.99] ${
                     isActive
                       ? item.activeMobileClasses
                       : "border-transparent bg-[#F8FAFC] text-[#475569] hover:text-[#172554] hover:bg-slate-100"
@@ -567,7 +572,7 @@ export default function Navbar() {
                       className={
                         isActive
                           ? "font-bold tracking-tight text-brand-orange"
-                          : "text-[#334155] font-medium"
+                          : "text-[#334155] font-semibold"
                       }
                     >
                       {item.mobileLabel}
@@ -589,72 +594,27 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* Venue Practical Info Card */}
-          <div className="p-3.5 rounded-xl bg-[#F8FAFC] border border-slate-200/90 shadow-2xs space-y-2.5">
-            <div className="flex items-start gap-2.5 text-xs text-[#334155]">
-              <Clock className="w-4 h-4 text-brand-orange shrink-0 mt-0.5" />
-              <div className="font-sans leading-tight">
-                <p className="font-bold text-[#172554]">Jam Buka Kafe:</p>
-                <p className="text-[11px] text-[#475569] mt-0.5">Senin - Kamis: 07.00 - 00.00 WIB</p>
-                <p className="text-[11px] font-bold text-brand-orange mt-0.5">Jumat - Minggu: 24 Jam Non-Stop</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-2.5 text-xs text-[#334155] pt-2 border-t border-slate-200/70">
-              <MapPin className="w-4 h-4 text-brand-orange shrink-0 mt-0.5" />
-              <div className="font-sans leading-tight">
-                <p className="font-bold text-[#172554]">Lokasi Baciro:</p>
-                <p className="text-[11px] text-[#475569] mt-0.5">Jl. Soka no. 44 Baciro, Gondokusuman, Yogyakarta</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Quick External Actions Strip */}
-          <div className="grid grid-cols-3 gap-2">
+          {/* Full-Width Exclusive Reservation Action Button */}
+          <div className="pt-1.5">
             <a
-              href="https://wa.me/6285117484483?text=Halo%20Gitgud,%20mau%20tanya%20info%20kafe%20dong!"
+              href="https://wa.me/6285117484483?text=Halo%20Gitgud,%20mau%20reservasi%20meja%20boardgame%20dong!"
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => soundEffects.playButtonClick()}
-              className="flex items-center justify-center gap-1.5 p-2 rounded-lg bg-white border border-slate-200 text-[#172554] hover:text-brand-orange text-[11px] font-semibold shadow-2xs active:scale-95 transition-all text-center"
+              onClick={() => {
+                soundEffects.playSuccessChime();
+                setMobileMenuOpen(false);
+              }}
+              className="luxury-btn luxury-sheen w-full py-3.5 px-4 rounded-xl bg-brand-orange hover:bg-brand-orange-hover text-white font-display font-bold text-xs tracking-wider flex items-center justify-center gap-2 shadow-sm uppercase active:scale-[0.98] transition-all cursor-pointer text-center"
             >
-              <MessageCircle className="w-3.5 h-3.5 text-brand-orange shrink-0" />
-              <span>WhatsApp</span>
-            </a>
-            <a
-              href="https://instagram.com/letsgitgud"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => soundEffects.playButtonClick()}
-              className="flex items-center justify-center gap-1.5 p-2 rounded-lg bg-white border border-slate-200 text-[#172554] hover:text-brand-orange text-[11px] font-semibold shadow-2xs active:scale-95 transition-all text-center"
-            >
-              <span>Instagram</span>
-            </a>
-            <a
-              href="https://share.google/u0UPT7njRoXYm9kZc"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => soundEffects.playButtonClick()}
-              className="flex items-center justify-center gap-1.5 p-2 rounded-lg bg-white border border-slate-200 text-[#172554] hover:text-brand-orange text-[11px] font-semibold shadow-2xs active:scale-95 transition-all text-center"
-            >
-              <Navigation className="w-3.5 h-3.5 text-[#1B64B4] shrink-0" />
-              <span>Buka Peta</span>
+              <MessageCircle className="w-4 h-4 shrink-0" />
+              <span>RESERVASI MEJA VIA WHATSAPP</span>
             </a>
           </div>
 
-          {/* Full-Width Reservation Action Button */}
-          <a
-            href="https://wa.me/6285117484483?text=Halo%20Gitgud,%20mau%20reservasi%20meja%20boardgame%20dong!"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => {
-              soundEffects.playSuccessChime();
-              setMobileMenuOpen(false);
-            }}
-            className="luxury-btn luxury-sheen w-full py-3 px-4 rounded-xl bg-brand-orange hover:bg-brand-orange-hover text-white font-display font-bold text-xs tracking-wider flex items-center justify-center gap-2 shadow-sm uppercase active:scale-[0.98] transition-all cursor-pointer"
-          >
-            <MessageCircle className="w-4 h-4" />
-            <span>RESERVASI MEJA VIA WHATSAPP</span>
-          </a>
+          {/* Understated Venue Micro-Footer */}
+          <p className="text-center font-sans text-[11px] text-[#94A3B8] pt-1 pb-0.5 tracking-tight">
+            Jl. Soka No. 44, Baciro • 24 Jam Jumat s/d Minggu
+          </p>
         </div>
       )}
     </nav>

@@ -10,7 +10,6 @@ import FaqSection from "@/components/FaqSection";
 import LocationSection from "@/components/LocationSection";
 import CtaBanner from "@/components/CtaBanner";
 import Footer from "@/components/Footer";
-import MobileQuickBar from "@/components/MobileQuickBar";
 import ScrollRevealManager from "@/components/ScrollRevealManager";
 
 export default function Home() {
@@ -31,7 +30,6 @@ export default function Home() {
         <CtaBanner />
       </main>
       <Footer />
-      <MobileQuickBar />
     </div>
   );
 }

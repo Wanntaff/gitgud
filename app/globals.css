@@ -318,9 +318,9 @@ html, body {
    ========================================================================== */
 .scroll-reveal {
   opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 650ms cubic-bezier(0.16, 1, 0.3, 1),
-              transform 650ms cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(42px);
+  transition: opacity 800ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
 }
 
@@ -330,19 +330,19 @@ html, body {
 }
 
 /* Stagger entrance delays for grids and grouped cards */
-.scroll-reveal.stagger-1 { transition-delay: 50ms; }
-.scroll-reveal.stagger-2 { transition-delay: 110ms; }
-.scroll-reveal.stagger-3 { transition-delay: 170ms; }
-.scroll-reveal.stagger-4 { transition-delay: 230ms; }
-.scroll-reveal.stagger-5 { transition-delay: 290ms; }
-.scroll-reveal.stagger-6 { transition-delay: 350ms; }
+.scroll-reveal.stagger-1 { transition-delay: 60ms; }
+.scroll-reveal.stagger-2 { transition-delay: 130ms; }
+.scroll-reveal.stagger-3 { transition-delay: 200ms; }
+.scroll-reveal.stagger-4 { transition-delay: 270ms; }
+.scroll-reveal.stagger-5 { transition-delay: 340ms; }
+.scroll-reveal.stagger-6 { transition-delay: 410ms; }
 
 /* Subtle scale & fade variant for high-impact cards & hero banners */
 .scroll-reveal-scale {
   opacity: 0;
-  transform: scale(0.97) translateY(18px);
-  transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
-              transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  transform: scale(0.96) translateY(32px);
+  transition: opacity 850ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 850ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
 }
 

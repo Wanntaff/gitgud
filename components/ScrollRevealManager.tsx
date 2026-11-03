@@ -39,8 +39,8 @@ export default function ScrollRevealManager() {
         });
       },
       {
-        threshold: 0.08,
-        rootMargin: "0px 0px -36px 0px",
+        threshold: 0.05,
+        rootMargin: "0px 0px -65px 0px",
       }
     );
 
