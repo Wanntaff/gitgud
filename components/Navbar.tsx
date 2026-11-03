@@ -112,7 +112,9 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState<string>("");
   const activeSectionRef = useRef<string>("");
   const isManualScrollRef = useRef(false);
+  const isTouchLockedRef = useRef(false);
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const touchLockTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Guarded state updater so React does not re-render unless active section actually changes
   const applyActiveSection = (newId: string) => {
@@ -123,16 +125,6 @@ export default function Navbar() {
   };
 
   useEffect(() => {
-    const sectionIds = [
-      "hero",
-      "about",
-      "games",
-      "events",
-      "menu",
-      "faq",
-      "location",
-    ];
-
     const navOrder = [
       "about",
       "games",
@@ -142,209 +134,105 @@ export default function Navbar() {
       "location",
     ];
 
-    // 1. Initial hash handling on page load
-    if (window.location.hash) {
-      const id = window.location.hash.slice(1);
-      const targetEl = document.getElementById(id);
-      if (targetEl) {
-        setTimeout(() => {
-          if (navOrder.includes(id)) {
-            applyActiveSection(id);
-          }
-          const nav = document.querySelector("nav");
-          const navHeight = nav ? Math.round(nav.getBoundingClientRect().height) : 58;
-          const top = Math.round(
-            targetEl.getBoundingClientRect().top + window.scrollY - navHeight
-          );
-          window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
-        }, 150);
-      }
-    }
+    const NAV_HEIGHT = 58;
 
-    const hasIntersectionObserver =
-      typeof window !== "undefined" && "IntersectionObserver" in window;
+    // Deterministic, zero-lag scroll spy algorithm
+    const computeActiveSection = () => {
+      if (isManualScrollRef.current) return;
 
-    // Zero-DOM-read tracking of currently visible sections
-    const visibleEntries = new Map<string, IntersectionObserverEntry>();
-
-    const updateActiveSectionFromEntries = () => {
       const scrollY = window.scrollY;
 
-      // Top of page / Hero boundary
-      if (scrollY < 120 || (visibleEntries.has("hero") && scrollY < 320)) {
+      // 1. Hero boundary: at top of page, no navbar link is highlighted
+      if (scrollY < 180) {
         applyActiveSection("");
         return;
       }
 
-      // Bottom of page lock
+      // 2. Bottom of page lock: near footer, lock to "location"
       const docHeight = document.documentElement.scrollHeight;
       const winHeight = window.innerHeight;
-      if (docHeight > 0 && winHeight + scrollY >= docHeight - 80) {
+      if (docHeight > 0 && winHeight + scrollY >= docHeight - 90) {
         applyActiveSection("location");
         return;
       }
 
-      // Filter intersecting sections matching the navigation track
-      const visibleKeys = navOrder.filter((id) => visibleEntries.has(id));
+      // 3. Focal line: ~128px from top of viewport (58px navbar + 70px buffer)
+      // Check from bottom to top so the latest entered section wins decisively
+      const focalOffset = scrollY + NAV_HEIGHT + 70;
 
-      if (visibleKeys.length > 0) {
-        let candidate = visibleKeys[0];
-        for (const id of visibleKeys) {
-          const entry = visibleEntries.get(id);
-          // Highlight the section whose heading or content is actively in view
-          if (entry && entry.boundingClientRect.top <= 280) {
-            candidate = id;
-          }
-        }
-        applyActiveSection(candidate);
-      }
-    };
-
-    // 2. High-performance IntersectionObserver as primary driver
-    let observer: IntersectionObserver | null = null;
-
-    if (hasIntersectionObserver) {
-      observer = new IntersectionObserver(
-        (entries) => {
-          for (const entry of entries) {
-            if (entry.isIntersecting) {
-              visibleEntries.set(entry.target.id, entry);
-            } else {
-              visibleEntries.delete(entry.target.id);
-            }
-          }
-
-          // Do not override user's explicitly clicked target while smooth scroll is animating
-          if (isManualScrollRef.current) return;
-
-          updateActiveSectionFromEntries();
-        },
-        {
-          root: null,
-          rootMargin: "-75px 0px -40% 0px",
-          threshold: [0, 0.1, 0.25, 0.5, 0.75, 1],
-        }
-      );
-
-      sectionIds.forEach((id) => {
+      for (let i = navOrder.length - 1; i >= 0; i--) {
+        const id = navOrder[i];
         const el = document.getElementById(id);
-        if (el) observer?.observe(el);
-      });
-    }
+        if (!el) continue;
+        const top = el.getBoundingClientRect().top + scrollY;
+        if (focalOffset >= top) {
+          applyActiveSection(id);
+          return;
+        }
+      }
 
-    // 3. Fallback measurement cache (used strictly when IntersectionObserver is unsupported)
-    let cachedOffsets: { id: string; top: number }[] = [];
-    const updateCachedOffsets = () => {
-      cachedOffsets = navOrder
-        .map((id) => {
-          const el = document.getElementById(id);
-          return el ? { id, top: el.offsetTop } : null;
-        })
-        .filter(Boolean) as { id: string; top: number }[];
+      applyActiveSection("");
     };
 
-    if (!hasIntersectionObserver) {
-      updateCachedOffsets();
-    }
-
-    // 4. Lightweight scroll handler:
-    // With IntersectionObserver: handles only top/bottom extreme boundaries, zero DOM queries.
-    // Without IntersectionObserver: fallback to cached section offsets.
     let ticking = false;
     const handleScroll = () => {
       if (isManualScrollRef.current) return;
       if (!ticking) {
         window.requestAnimationFrame(() => {
           ticking = false;
-          const scrollY = window.scrollY;
-
-          // Top boundary
-          if (scrollY < 120) {
-            applyActiveSection("");
-            return;
-          }
-
-          // Bottom boundary lock
-          const docHeight = document.documentElement.scrollHeight;
-          const winHeight = window.innerHeight;
-          if (docHeight > 0 && winHeight + scrollY >= docHeight - 80) {
-            applyActiveSection("location");
-            return;
-          }
-
-          // Fallback matching against cached section offsets if IO is unsupported
-          if (!hasIntersectionObserver) {
-            for (let i = cachedOffsets.length - 1; i >= 0; i--) {
-              const sec = cachedOffsets[i];
-              if (scrollY >= sec.top - 240) {
-                applyActiveSection(sec.id);
-                return;
-              }
-            }
-            applyActiveSection("");
-          }
+          computeActiveSection();
         });
         ticking = true;
       }
     };
 
-    // Debounced resize handler for fallback measurements
-    let resizeTimer: NodeJS.Timeout | null = null;
-    const handleResize = () => {
-      if (resizeTimer) clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
-        if (!hasIntersectionObserver) {
-          updateCachedOffsets();
-        }
-        handleScroll();
-      }, 150);
-    };
-
-    const handlePopState = () => {
-      if (window.location.hash) {
-        const id = window.location.hash.slice(1);
-        if (navOrder.includes(id)) {
-          applyActiveSection(id);
-          return;
-        }
-      }
-      handleScroll();
-    };
-
-    // Immediate manual override on user touch/wheel during programmatic smooth scroll
+    // Immediate manual override on deliberate user touch/wheel after grace period
     const handleUserInteraction = () => {
+      if (isTouchLockedRef.current) return;
       if (isManualScrollRef.current) {
         isManualScrollRef.current = false;
         if (scrollTimeoutRef.current) {
           clearTimeout(scrollTimeoutRef.current);
           scrollTimeoutRef.current = null;
         }
-        if (hasIntersectionObserver) {
-          updateActiveSectionFromEntries();
-        }
+        computeActiveSection();
       }
     };
 
+    // Initial hash or load handling
+    if (window.location.hash) {
+      const id = window.location.hash.slice(1);
+      const targetEl = document.getElementById(id);
+      if (targetEl && navOrder.includes(id)) {
+        setTimeout(() => {
+          applyActiveSection(id);
+          const top = Math.round(
+            targetEl.getBoundingClientRect().top + window.scrollY - NAV_HEIGHT
+          );
+          window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+        }, 150);
+      }
+    } else {
+      computeActiveSection();
+    }
+
     window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleResize, { passive: true });
-    window.addEventListener("popstate", handlePopState);
+    window.addEventListener("resize", computeActiveSection, { passive: true });
+    window.addEventListener("popstate", computeActiveSection);
     window.addEventListener("wheel", handleUserInteraction, { passive: true });
     window.addEventListener("touchmove", handleUserInteraction, { passive: true });
 
     return () => {
-      if (observer) {
-        observer.disconnect();
-      }
       window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleResize);
-      window.removeEventListener("popstate", handlePopState);
+      window.removeEventListener("resize", computeActiveSection);
+      window.removeEventListener("popstate", computeActiveSection);
       window.removeEventListener("wheel", handleUserInteraction);
       window.removeEventListener("touchmove", handleUserInteraction);
       if (scrollTimeoutRef.current) {
         clearTimeout(scrollTimeoutRef.current);
       }
-      if (resizeTimer) {
-        clearTimeout(resizeTimer);
+      if (touchLockTimeoutRef.current) {
+        clearTimeout(touchLockTimeoutRef.current);
       }
     };
   }, []);
@@ -355,10 +243,22 @@ export default function Navbar() {
   ) => {
     e.preventDefault();
     soundEffects.playTileTap();
+
+    // 1. Instantly set the clicked section as active
     applyActiveSection(sectionId);
     setMobileMenuOpen(false);
 
+    // 2. Lock scroll spy during programmatic smooth scrolling so intermediate sections don't override
     isManualScrollRef.current = true;
+    isTouchLockedRef.current = true;
+
+    if (touchLockTimeoutRef.current) {
+      clearTimeout(touchLockTimeoutRef.current);
+    }
+    touchLockTimeoutRef.current = setTimeout(() => {
+      isTouchLockedRef.current = false;
+    }, 700);
+
     if (scrollTimeoutRef.current) {
       clearTimeout(scrollTimeoutRef.current);
     }
@@ -372,12 +272,11 @@ export default function Navbar() {
     scrollTimeoutRef.current = setTimeout(() => {
       isManualScrollRef.current = false;
       window.removeEventListener("scrollend", onScrollEnd);
-    }, 1000);
+    }, 1100);
 
     const element = document.getElementById(sectionId);
     if (element) {
-      const nav = document.querySelector("nav");
-      const navHeight = nav ? Math.round(nav.getBoundingClientRect().height) : 58;
+      const navHeight = 58;
       const top = Math.round(
         element.getBoundingClientRect().top + window.scrollY - navHeight
       );
@@ -399,6 +298,13 @@ export default function Navbar() {
               applyActiveSection("");
               setMobileMenuOpen(false);
               isManualScrollRef.current = true;
+              isTouchLockedRef.current = true;
+              if (touchLockTimeoutRef.current) {
+                clearTimeout(touchLockTimeoutRef.current);
+              }
+              touchLockTimeoutRef.current = setTimeout(() => {
+                isTouchLockedRef.current = false;
+              }, 700);
               if (scrollTimeoutRef.current) {
                 clearTimeout(scrollTimeoutRef.current);
               }
@@ -410,7 +316,7 @@ export default function Navbar() {
               scrollTimeoutRef.current = setTimeout(() => {
                 isManualScrollRef.current = false;
                 window.removeEventListener("scrollend", onScrollEnd);
-              }, 1000);
+              }, 1100);
               window.scrollTo({ top: 0, behavior: "smooth" });
               window.history.pushState(null, "", "/");
             }
@@ -526,9 +432,9 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown - Clean, Exclusive Editorial Boutique Index */}
+      {/* Mobile Menu Dropdown - Clean, Exclusive Editorial Boutique Index Overlay */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-slate-200 mt-2.5 pt-3.5 pb-4 flex flex-col gap-3 font-sans text-sm bg-white animate-fade-in-up max-h-[calc(100vh-80px)] overflow-y-auto">
+        <div className="lg:hidden absolute top-full inset-x-0 z-50 bg-white border-b border-slate-200 shadow-xl px-4 pt-3.5 pb-4 flex flex-col gap-3 font-sans text-sm animate-fade-in-up max-h-[calc(100vh-64px)] overflow-y-auto">
           {/* Editorial Header */}
           <div className="flex items-center justify-between px-1 text-[10px] font-sans font-bold uppercase tracking-[0.18em] text-[#64748B]">
             <span>Navigasi Halaman</span>

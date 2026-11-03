@@ -773,10 +773,10 @@ export default function MenuSection() {
               <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-10 bg-gradient-to-r from-[#F8FAFC] via-[#F8FAFC]/80 to-transparent pointer-events-none z-10" />
             )}
 
-            {/* Subcategory Pills Track */}
+            {/* Subcategory Pills Track (Zero Vertical Wiggle) */}
             <div
               ref={subcategoryTrackRef}
-              className="flex-1 min-w-0 flex items-center gap-1.5 overflow-x-auto px-1.5 pb-1 lg:pb-0 scrollbar-none text-xs font-sans font-semibold scroll-smooth"
+              className="flex-1 min-w-0 flex items-center gap-1.5 horizontal-snap-track overflow-y-hidden px-1.5 py-1 lg:py-0 scrollbar-none text-xs font-sans font-semibold scroll-smooth overscroll-x-contain overscroll-y-none"
             >
               {currentSubcategories.map(({ key, label }) => {
                 const isActive = selectedSubcategory === key;

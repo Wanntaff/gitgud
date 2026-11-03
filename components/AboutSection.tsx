@@ -33,8 +33,8 @@ export default function AboutSection() {
           </span>
         </div>
 
-        {/* Cards: Mobile Touch-Friendly Snap Track / Desktop 4-Col Grid */}
-        <div className="flex md:grid md:grid-cols-2 lg:grid-cols-4 overflow-x-auto md:overflow-visible snap-x snap-mandatory scrollbar-none gap-4 sm:gap-6 -mx-4 px-4 sm:mx-0 sm:px-0 pb-3 md:pb-0 scroll-pl-4 scroll-pr-4">
+        {/* Cards: Mobile Touch-Friendly Snap Track / Desktop 4-Col Grid (Zero Vertical Wiggle) */}
+        <div className="flex md:grid md:grid-cols-2 lg:grid-cols-4 horizontal-snap-track overflow-y-hidden md:overflow-visible snap-x snap-mandatory scrollbar-none gap-4 sm:gap-6 -mx-4 px-4 sm:mx-0 sm:px-0 pt-1 pb-3.5 md:pt-0 md:pb-0 scroll-pl-4 scroll-pr-4 overscroll-x-contain overscroll-y-none items-stretch">
           {/* Card 1 */}
           <div className="tabletop-card group w-[80vw] sm:w-[68vw] max-w-[280px] shrink-0 snap-start md:w-auto md:max-w-none bg-white border border-slate-200 rounded-xl p-5 sm:p-6 shadow-xs hover:border-slate-300 hover:shadow-sm flex flex-col justify-between min-h-[210px] sm:min-h-[230px] scroll-reveal stagger-1">
             <div>

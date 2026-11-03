@@ -361,7 +361,7 @@ export default function GameCatalog() {
           </div>
 
           {/* Difficulty Quick Filter */}
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0 scrollbar-none">
+          <div className="flex items-center gap-1.5 horizontal-snap-track overflow-y-hidden pb-1 md:pb-0 scrollbar-none overscroll-x-contain overscroll-y-none">
             <span className="text-[11px] font-sans font-bold text-[#475569] whitespace-nowrap shrink-0 mr-1">
               Kesulitan:
             </span>
@@ -406,7 +406,7 @@ export default function GameCatalog() {
             </span>
           </div>
 
-          <div className="flex md:grid md:grid-cols-4 lg:grid-cols-8 overflow-x-auto md:overflow-visible scrollbar-none gap-2 sm:gap-3 -mx-4 px-4 md:mx-0 md:px-0 pb-1.5 md:pb-0 scroll-pl-4 scroll-pr-4">
+          <div className="flex md:grid md:grid-cols-4 lg:grid-cols-8 horizontal-snap-track overflow-y-hidden md:overflow-visible scrollbar-none gap-2 sm:gap-3 -mx-4 px-4 md:mx-0 md:px-0 pt-0.5 pb-2 md:pt-0 md:pb-0 scroll-pl-4 scroll-pr-4 overscroll-x-contain overscroll-y-none items-stretch">
             {CATEGORY_DEFINITIONS.map((cat) => {
               const isActive = activeCategory === cat.key;
               const Icon = cat.icon;

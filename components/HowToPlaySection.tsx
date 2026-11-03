@@ -58,8 +58,8 @@ export default function HowToPlaySection() {
             </span>
           </div>
 
-          {/* Steps: Mobile Touch-Friendly Snap Track / Desktop 4-Col Grid */}
-          <div className="flex sm:grid sm:grid-cols-2 md:grid-cols-4 overflow-x-auto sm:overflow-visible snap-x snap-mandatory scrollbar-none gap-3.5 sm:gap-6 -mx-4 px-4 sm:mx-0 sm:px-0 pb-2 sm:pb-0 scroll-pl-4 scroll-pr-4">
+          {/* Steps: Mobile Touch-Friendly Snap Track / Desktop 4-Col Grid (Zero Vertical Wiggle) */}
+          <div className="flex sm:grid sm:grid-cols-2 md:grid-cols-4 horizontal-snap-track overflow-y-hidden sm:overflow-visible snap-x snap-mandatory scrollbar-none gap-3.5 sm:gap-6 -mx-4 px-4 sm:mx-0 sm:px-0 pt-1 pb-3 sm:pt-0 sm:pb-0 scroll-pl-4 scroll-pr-4 overscroll-x-contain overscroll-y-none items-stretch">
             {steps.map((step, idx) => (
               <div
                 key={step.num}
